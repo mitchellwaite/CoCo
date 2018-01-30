@@ -1,0 +1,19 @@
+#!/bin/csh
+foreach i (*.pt)
+   if ("$i" == "read.pt") then
+	pti $i < read.dat
+    else
+        pti $i
+    endif
+end
+foreach i (*.pt)
+    ptc $i
+   if ("$i" == "read.pt") then
+	${i:r}.out < read.dat
+    else if ("$i" == "args.pt") then
+	${i:r}.out 1 2 3 args.dat
+    else
+        ${i:r}.out
+    endif
+    /bin/rm ${i:r}.out
+end
