@@ -75,10 +75,10 @@
 #include <sys/types.h>
 
 #ifndef	SELFCONTAINED
-#include "ssl:sst.h"
+#include "ssl_sst.h"
 #endif
 /* The S/SL table file produced by the S/SL Processor */
-#include "ssl:sst.c"
+#include "ssl_sst.c"
 
 #define	true	1
 #define	false	0

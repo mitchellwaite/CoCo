@@ -1,17 +1,17 @@
 DEFS=
-SHELL=		/bin/sh
-CC=		cc
-COPTS=		-g -Bstatic
-BIN=	/local/bin
-CFLAGS=		$(COPTS) $(DEFS) $(INCL)
+SHELL=/bin/sh
+CC=cc
+COPTS=-g -Bstatic
+BIN=/usr/local/bin
+CFLAGS=$(COPTS) $(DEFS) $(INCL)
 
 ssl:	ssl.c
 	$(CC) $(CFLAGS) -I../include -o ssl ssl.c
 
 test:	ssl
 	./ssl ssl.ssl
-	diff ssl.sst.c ssl:sst.c
-	diff ssl.sst.h ssl:sst.h
+	diff ssl.sst.c ssl_sst.c
+	diff ssl.sst.h ssl_sst.h
 
 install:	ssl
 	install -s -m 755 ssl $(BIN)
