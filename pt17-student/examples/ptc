@@ -1,2 +1,2 @@
-#!/bin/bash
+#!/bin/csh
 ../bin/ptc -L ../lib/pt $*
