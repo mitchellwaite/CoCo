@@ -1,0 +1,27 @@
+input:
+	tSyntaxError = -1
+	tIdent		'ident'
+	tString		'string'
+	tInteger	'integer'
+	tSemicolon	';'
+	tNewLine	'<NL>'
+	tEndOfFile	'<EOF>'
+	;
+
+output:
+	aOutputToken;
+
+error:
+	eFirstUserError = 10
+	eSslStackOverflow = 40
+	;
+
+%type Type:
+%	;
+
+%mechanism Mechanism
+%	;
+
+rules
+
+end
