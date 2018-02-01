@@ -5,3 +5,8 @@ Johan - Added change to allow double quotes for string literals instead of singl
 Clara - Added Hash and Bang characters and removed alternate comments
 - Hash '#' replaces the use of comments that were previously '{}'
 - Bang '!' outputs .pBang
+
+Parv - Made changes in Keywords of Phase 1 (only in parser/stdIdentifiers)
+- Removed old PT Keywords
+- Added new Quby Keywords
+- Relace old PT predefined identifiers with new Quby predefined identifiers
