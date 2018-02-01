@@ -34,8 +34,8 @@ Input :
         lRightBracket   ']'
         lLeftBrace      '{'
         lRightBrace     '}'
-        lHash           '#'
-        lBang           '!'
+        lHash           '#'   %Adding new Quby character #
+        lBang           '!'   %Adding new Quby character !
         lBlank
         lIllegal
         lNewLine
@@ -113,7 +113,7 @@ Output :
         pRightParen
         pLeftBracket
         pRightBracket
-        pBang
+        pBang     %Adding the output token for bang
         pDotDot
         lastSyntaxToken = pDotDot;
 
@@ -152,7 +152,7 @@ Scan :
             | lTab:
             | ';':
                 .pSemicolon
-            | '(':
+            | '(':            %Removed the support for alternate comments using parentheses. Now it's just emitted as a left parentheses. 
                 .pLeftParen
             | ')':
                 .pRightParen
@@ -224,13 +224,13 @@ Scan :
                     | *:
                         .pGreater
                 ]
-            | '#':
+            | '#':      % Added the case for hash to handle the comments>
                 @Comment
-            | '!':
-                [
-                    | '=':
+            | '!':      % Added the case for bang  
+                [    
+                    | '=':    % If bang is followed by =, then emit notEquals
                         .pNotEqual
-                    | *:
+                    | *:      % If bang is not followed by =, then emit bang
                         .pBang
                 ]
             | '*':
@@ -292,7 +292,7 @@ Literal :
 
 Comment :
         % Discard the contents of a comment
-
+        % Changed the functionality of Comment to not use the braces anymore
         {[
             | lNewLine:
                 .pNewLine
@@ -304,5 +304,5 @@ Comment :
             | *:        % comment may contain any other character
                 ?
         ]};
-
+%Removed the AlternateComment section
 end

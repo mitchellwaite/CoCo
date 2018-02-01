@@ -59,8 +59,8 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source, parseSt
         lRightBracket = 16;
         lLeftBrace = 17;
         lRightBrace = 18;
-        lHash = 19;
-        lBang = 20;
+        lHash = 19;     {Added the character class for hash}
+        lBang = 20;     {Added the character class for bang}
         lBlank = 21;
         lIllegal = 22;
         lNewLine = 23;
@@ -137,7 +137,7 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source, parseSt
         pRightParen = 48;
         pLeftBracket = 49;
         pRightBracket = 50;
-        pBang = 51;
+        pBang = 51;     {Added the character class for output hash token}
         pDotDot = 52;
         lastSyntaxToken = 52;
 
@@ -318,7 +318,7 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source, parseSt
         { misc. }
         tab = '	';
         blank = ' ';
-        quote = '"';
+        quote = '"';    {Replace the scanning/screening of PT single-quoted char literals 'hi there' with the scanning/screening of Quby double-quoted string literals "hi there"}
         null = 0;
 
         { Phase identification values - for use by common routines }
@@ -816,8 +816,8 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source, parseSt
             charClassMap[ord(']')] := lRightBracket;
             charClassMap[ord('{')] := lLeftBrace;
             charClassMap[ord('}')] := lRightBrace;
-            charClassMap[ord('#')] := lHash;
-            charClassMap[ord('!')] := lBang;
+            charClassMap[ord('#')] := lHash;    {Added the character class for hash}
+            charClassMap[ord('!')] := lBang;    {Added the character class for bang}
 
             { Initialize the scan ssl table }
             reset(scanSsl {, NscanSsl} );
