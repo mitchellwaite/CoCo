@@ -63,7 +63,7 @@ Output :
         pPacked
         pVar
         pIf
-        pExt
+        pExt      % Removed the old PT output keywords token and added new Quby output tokens from 66-77
         pCon
         pTyp
         pDef
@@ -94,7 +94,7 @@ Output :
         pPlus
         pMinus
         pStar
-        pPlusEqual
+        pPlusEqual      % Added non-compound output tokens from line 97-101
         pMinusEqual
         pDoubleEqual
         pLeftBrace
@@ -160,13 +160,13 @@ Scan :
                 .pLeftBracket
             | ']':
                 .pRightBracket
-            | '{':
+            | '{':            % Added the cases to emit left brace instead of using it for comment
                 .pLeftBrace
-            | '}':
+            | '}':            % Added the cases to emit right brace instead of using it for comment
                 .pRightBrace
             | ',':
                 .pComma
-            | ':':
+            | ':':            % Removed the section where : was followed by = for value assignment
                 .pColon
             | lDigit:
                 oBufferSave
@@ -178,14 +178,14 @@ Scan :
                         @Identifier
                     | *:
                 ]
-            | '=':
-                [
+            | '=':            % Added the section where = can be followed by another = to emit DoubleEqual
+                [       
                     | '=':
                         .pDoubleEqual
                     | *:
                         .pEquals
                 ]
-            | '+':
+            | '+':            % Added the section where + can be followed by another = to emit PlusEqual
                 [
                     | '=':
                         .pPlusEqual
@@ -193,8 +193,8 @@ Scan :
                         .pPlus
                 ]
             | lQuote:
-                @Literal
-            | '-':
+                @Literal   
+            | '-':            % Added the section where - can be followed by another = to emit MinusEqual
                 [
                     | '=':
                         .pMinusEqual
