@@ -1,0 +1,151 @@
+	{ Semantic Operations }
+
+	{ Input Tokens }
+	pDiv = 0;
+	firstKeywordToken = 0;
+	pMod = 1;
+	pOr = 2;
+	pAnd = 3;
+	pNot = 4;
+	pThen = 5;
+	pElse = 6;
+	pOf = 7;
+	pEnd = 8;
+	pUntil = 9;
+	pDo = 10;
+	pArray = 11;
+	pFile = 12;
+	pPacked = 13;
+	pProgram = 14;
+	pConst = 15;
+	pVar = 16;
+	pType = 17;
+	pProcedure = 18;
+	pBegin = 19;
+	pIf = 20;
+	pCase = 21;
+	pWhile = 22;
+	pRepeat = 23;
+	lastKeywordToken = 23;
+	pIdentifier = 24;
+	firstCompoundInputToken = 24;
+	pInteger = 25;
+	pLiteral = 26;
+	lastCompoundInputToken = 26;
+	pNewLine = 27;
+	pEndFile = 28;
+	pPlus = 29;
+	pMinus = 30;
+	pStar = 31;
+	pColonEquals = 32;
+	pDot = 33;
+	pComma = 34;
+	pSemicolon = 35;
+	pColon = 36;
+	pEquals = 37;
+	pNotEqual = 38;
+	pLess = 39;
+	pLessEqual = 40;
+	pGreaterEqual = 41;
+	pGreater = 42;
+	pLeftParen = 43;
+	pRightParen = 44;
+	pLeftBracket = 45;
+	pRightBracket = 46;
+	pDotDot = 47;
+	lastSyntaxToken = 47;
+
+	{ Output Tokens }
+	sIdentifier = 0;
+	firstSemanticToken = 0;
+	firstCompoundSemanticToken = 0;
+	sInteger = 1;
+	sLiteral = 2;
+	lastCompoundSemanticToken = 2;
+	sProgram = 3;
+	sParmBegin = 4;
+	sParmEnd = 5;
+	sConst = 6;
+	sType = 7;
+	sVar = 8;
+	sProcedure = 9;
+	sBegin = 10;
+	sEnd = 11;
+	sNegate = 12;
+	sArray = 13;
+	sPacked = 14;
+	sFile = 15;
+	sRange = 16;
+	sCaseStmt = 17;
+	sCaseEnd = 18;
+	sLabelEnd = 19;
+	sExpnEnd = 20;
+	sNullStmt = 21;
+	sAssignmentStmt = 22;
+	sSubscript = 23;
+	sCallStmt = 24;
+	sFieldWidth = 25;
+	sIfStmt = 26;
+	sThen = 27;
+	sElse = 28;
+	sWhileStmt = 29;
+	sRepeatStmt = 30;
+	sRepeatEnd = 31;
+	sEq = 32;
+	sNE = 33;
+	sLT = 34;
+	sLE = 35;
+	sGT = 36;
+	sGE = 37;
+	sAdd = 38;
+	sSubtract = 39;
+	sMultiply = 40;
+	sDivide = 41;
+	sModulus = 42;
+	sInfixOr = 43;
+	sOr = 44;
+	sInfixAnd = 45;
+	sAnd = 46;
+	sNot = 47;
+	sNewLine = 48;
+	sEndOfFile = 49;
+	lastSemanticToken = 49;
+
+	{ Input/Output Tokens }
+
+	{ Error Codes }
+
+	{ Type Values }
+
+	{ S/SL Rule Table Addresses } {
+	Program = 0;
+	Block = 34;
+	ConstantDefinitions = 86;
+	TypeDefinitions = 174;
+	VariableDeclarations = 305;
+	ProcedureHeading = 335;
+	BeginStmt = 509;
+	ConstantValue = 112;
+	UnsignedIntegerConstant = 154;
+	TypeBody = 204;
+	SimpleType = 256;
+	OptionallySignedIntegerConstant = 285;
+	Statement = 383;
+	AssignmentOrCallStmt = 425;
+	IfStmt = 535;
+	WhileStmt = 622;
+	CaseStmt = 559;
+	RepeatStmt = 633;
+	Expression = 663;
+	CallStmt = 465;
+	CaseAlternative = 602;
+	SimpleExpression = 717;
+	Term = 770;
+	Factor = 814;
+	IdentifierExtension = 872;
+	}
+
+	{ S/SL Table Parameters }
+	sslTblSize = 902;
+	minSslTableValue = -32767;
+	maxSslTableValue = 32767;
