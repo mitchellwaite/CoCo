@@ -11,25 +11,28 @@ mod
 or
 and
 not
-then
 else
 of
 end
-until
-do
 array
 file
 packed
-program
-const
 var
-type
-procedure
-begin
 if
-case
-while
-repeat
+
+% Adding new Quby Keywords
+ext
+con
+typ
+def
+pub
+elif
+sel
+is
+rep
+on
+break
+len
 
 % End of keywords
 
@@ -39,8 +42,8 @@ repeat
 
 % Predeclared type names
 integer
-char
 boolean
+string
 text
 
 % Predeclared constants
@@ -50,10 +53,10 @@ false
 % Predeclared procedures and functions
 reset
 rewrite
-write
-writeln
-read
-readln
+print
+nl
+get
+getnl
 chr
 ord
 eoln

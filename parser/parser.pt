@@ -36,7 +36,6 @@
 program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source, parseStream, options);
 
     const
-
 { ===== Character classes (scanner input tokens), copied here from scan.def }
 
         { Input Tokens }
@@ -89,25 +88,25 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source, parseSt
         pOr = 2;
         pAnd = 3;
         pNot = 4;
-        pThen = 5;
-        pElse = 6;
-        pOf = 7;
-        pEnd = 8;
-        pUntil = 9;
-        pDo = 10;
-        pArray = 11;
-        pFile = 12;
-        pPacked = 13;
-        pProgram = 14;
-        pConst = 15;
-        pVar = 16;
-        pType = 17;
-        pProcedure = 18;
-        pBegin = 19;
-        pIf = 20;
-        pCase = 21;
-        pWhile = 22;
-        pRepeat = 23;
+        pElse = 5;
+        pOf = 6;
+        pEnd = 7;
+        pArray = 8;
+        pFile = 9;
+        pPacked = 10;
+        pVar = 11;
+        pIf = 12;
+        pExt = 13;
+        pCon = 14;
+        pTyp = 15;
+        pDef = 16;
+        pPub = 17;
+        pElif = 18;
+        pSel = 19;
+        pIs = 20;
+        pOn = 21;
+        pBreak = 22;
+        pLen = 23;
         lastKeywordToken = 23;
         pIdentifier = 24;
         firstCompoundInputToken = 24;
@@ -119,24 +118,28 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source, parseSt
         pPlus = 29;
         pMinus = 30;
         pStar = 31;
-        pColonEquals = 32;
-        pDot = 33;
-        pComma = 34;
-        pSemicolon = 35;
-        pColon = 36;
-        pEquals = 37;
-        pNotEqual = 38;
-        pLess = 39;
-        pLessEqual = 40;
-        pGreaterEqual = 41;
-        pGreater = 42;
-        pLeftParen = 43;
-        pRightParen = 44;
-        pLeftBracket = 45;
-        pRightBracket = 46;
-        pBang = 47;
-        pDotDot = 48;
-        lastSyntaxToken = 48;
+        pPlusEqual = 32;
+        pMinusEqual = 33;
+        pDoubleEqual = 34;
+        pLeftBrace = 35;
+        pRightBrace = 36;
+        pDot = 37;
+        pComma = 38;
+        pSemicolon = 39;
+        pColon = 40;
+        pEquals = 41;
+        pNotEqual = 42;
+        pLess = 43;
+        pLessEqual = 44;
+        pGreaterEqual = 45;
+        pGreater = 46;
+        pLeftParen = 47;
+        pRightParen = 48;
+        pLeftBracket = 49;
+        pRightBracket = 50;
+        pBang = 51;
+        pDotDot = 52;
+        lastSyntaxToken = 52;
 
 { ===== End of Scanner -> Parser token definitions copied from scan.def }
 
@@ -291,7 +294,7 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source, parseSt
 
         { The following value MUST match the total number of
           keywords and idents entered in the stdIdentifiers file. }
-        numberStdIdentifiers = 43;
+        numberStdIdentifiers = 44;
 
         textBufferSize = 80;
         identTableSize = 1601;       { must be prime }
