@@ -55,26 +55,26 @@ Output :
         pOr
         pAnd
         pNot
-        pThen
         pElse
         pOf
         pEnd
-        pUntil
-        pDo
         pArray
         pFile
         pPacked
-        pProgram
-        pConst
         pVar
-        pType
-        pProcedure
-        pBegin
         pIf
-        pCase
-        pWhile
-        pRepeat
-        lastKeywordToken = pRepeat
+        pExt
+        pCon
+        pTyp
+        pDef
+        pPub
+        pElif
+        pSel
+        pIs
+        pOn
+        pBreak
+        pLen
+        lastKeywordToken = pLen
 
         % Scanner tokens -
         %   These are the tokens actually recognized by the Scanner itself.
@@ -94,7 +94,11 @@ Output :
         pPlus
         pMinus
         pStar
-        pColonEquals
+        pPlusEqual
+        pMinusEqual
+        pDoubleEqual
+        pLeftBrace
+        pRightBrace
         pDot
         pComma
         pSemicolon
@@ -156,15 +160,14 @@ Scan :
                 .pLeftBracket
             | ']':
                 .pRightBracket
+            | '{':
+                .pLeftBrace
+            | '}':
+                .pRightBrace
             | ',':
                 .pComma
             | ':':
-                [
-                    | '=':
-                        .pColonEquals
-                    | *:
-                        .pColon
-                ]
+                .pColon
             | lDigit:
                 oBufferSave
                 @Integer
@@ -176,13 +179,28 @@ Scan :
                     | *:
                 ]
             | '=':
-                .pEquals
+                [
+                    | '=':
+                        .pDoubleEqual
+                    | *:
+                        .pEquals
+                ]
             | '+':
-                .pPlus
+                [
+                    | '=':
+                        .pPlusEqual
+                    | *:
+                        .pPlus
+                ]
             | lQuote:
                 @Literal
             | '-':
-                .pMinus
+                [
+                    | '=':
+                        .pMinusEqual
+                    | *:
+                        .pMinus
+                ]
             | '.':
                 [
                     | '.':
@@ -209,7 +227,12 @@ Scan :
             | '#':
                 @Comment
             | '!':
-                .pBang
+                [
+                    | '=':
+                        .pNotEqual
+                    | *:
+                        .pBang
+                ]
             | '*':
                 .pStar
             | lNewPage:
