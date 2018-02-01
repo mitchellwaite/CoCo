@@ -1,0 +1,39 @@
+Phase 1 Documentation
+
+Team Members : Clara Fu, Parv Mital, Johan Cornelissen, Mitchell Waite
+Group: N
+
+1. Keywords
+   The initial keywords were supported by the PT Pascal compiler, where changes need to be made in order to make the scanner/screener
+   support the new keywords for Quby. The following changes were made in order to achieve this goal:
+   - Removed old PT keywords (then, until, do, program, const, type, procedure, begin, repeat, case, while) from the Language Keywords
+     section in the parser/stdIdentifiers file.
+   - Added new Quby keywords (ext, con, typ, def, pub, elif, sel, is, rep, on, break, len) to the Language Keywords section of the 
+     parser/stdIdentifiers file.
+   - Replaced the old PT predefined identifiers (char, write, written, read and readln) with the new corresponding Quby predefined
+     identifiers (string, print, nl, get, getnl) in the parser/stdIdentifiers file.
+   - Updated the value of numberStdIdentifiers to 44 in the parser/parser.pt file.
+
+2. Character Classes
+   Quby supports new input character hash ("#") and bang ('!') and uses double quotes (") instead of PT Pascal's use of single quotes
+   (') in order to support string literals. The following changes were made in order to achieve this goal:
+   - Added lHash and lBang (with their supported characters # and !) to the input characters in 
+
+Johan - Added change to allow double quotes for string literals instead of single quotes. Added Hello World file.
+
+Clara - Added Hash and Bang characters and removed alternate comments
+- Hash '#' replaces the use of comments that were previously '{}'
+- Bang '!' outputs .pBang
+
+Parv - Made changes in Keywords of Phase 1 (only in parser/stdIdentifiers)
+- Removed old PT Keywords
+- Added new Quby Keywords
+- Relace old PT predefined identifiers with new Quby predefined identifiers
+
+Clara - Modified parset.pt and scan.ssl to handle syntax tokens
+- Updated the numberStdIdentifiers in parser.pt from 43 to 44
+- Modified scan.ssl 
+   - Removed old PT output tokens
+   - Added new Quby output tokens
+   - Replaced some old PT with new Quby output tokens
+   - Also added support for tokens like +=, -=, ==, {, } etc.
