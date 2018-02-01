@@ -34,6 +34,8 @@ Input :
         lRightBracket   ']'
         lLeftBrace      '{'
         lRightBrace     '}'
+        lHash           '#'
+        lBang           '!'
         lBlank
         lIllegal
         lNewLine
@@ -107,6 +109,7 @@ Output :
         pRightParen
         pLeftBracket
         pRightBracket
+        pBang
         pDotDot
         lastSyntaxToken = pDotDot;
 
@@ -146,12 +149,7 @@ Scan :
             | ';':
                 .pSemicolon
             | '(':
-                [
-                    | '*':
-                        @AlternateComment
-                    | *:
-                        .pLeftParen
-                ]
+                .pLeftParen
             | ')':
                 .pRightParen
             | '[':
@@ -208,8 +206,10 @@ Scan :
                     | *:
                         .pGreater
                 ]
-            | '{':
+            | '#':
                 @Comment
+            | '!':
+                .pBang
             | '*':
                 .pStar
             | lNewPage:
@@ -271,33 +271,14 @@ Comment :
         % Discard the contents of a comment
 
         {[
-            | '}':
-                >
             | lNewLine:
                 .pNewLine
+                >
             | lEndFile:         % comment must be closed before EOF
                 #eCommentEOF
                 .pEndFile
                 >
             | *:        % comment may contain any other character
-                ?
-        ]};
-
-AlternateComment :
-        {[
-            | '*':
-                [
-                    | ')':
-                        >
-                    | *:
-                ]
-            | lNewLine:
-                .pNewLine
-            | lEndFile:
-                #eCommentEOF
-                .pEndFile
-                >
-            | *:
                 ?
         ]};
 

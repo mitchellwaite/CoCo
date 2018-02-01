@@ -1,0 +1,7 @@
+Thursday February 1st, 2018
+
+Johan - Added change to allow double quotes for string literals instead of single quotes. Added Hello World file.
+
+Clara - Added Hash and Bang characters and removed alternate comments
+- Hash '#' replaces the use of comments that were previously '{}'
+- Bang '!' outputs .pBang
