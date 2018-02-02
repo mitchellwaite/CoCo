@@ -6,16 +6,20 @@ NC='\033[0m';
 
 for dir in ./*;
 do
-    echo -e "\n\n#######################################################"
-    echo -e "${BLUE}Performing tests in $dir test directory.${NC}"
-    echo -e "########################################################"    
-
-    for i in $dir/*.pt
-    do  
-        if [ -f "$i" ] && [[ $i != *"documentation" ]]
-        then
-           echo -e "\n${BLUE}Testing file: ${NC}$i"
-           ssltrace "ptc -L ../lib/pt -o1 -t1 $i" ../lib/pt/scan.def -e
-        fi
-    done
+    #If a directory (not a file)
+    if [[ -d $dir ]]; then
+       echo -e "\n\n#######################################################"
+       echo -e "${BLUE}Performing tests in $dir test directory.${NC}"
+       echo -e "########################################################"    
+       
+       #Test each PT Pascal file in the directory except documentation files.
+       for i in $dir/*.pt
+       do  
+           if [ -f "$i" ] && [[ $i != *"documentation" ]]
+           then
+              echo -e "\n${BLUE}Testing file: ${NC}$i"
+              ssltrace "ptc -L ../lib/pt -o1 -t1 $i" ../lib/pt/scan.def -e
+           fi
+       done
+    fi
 done

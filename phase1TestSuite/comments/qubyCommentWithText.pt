@@ -1,5 +1,2 @@
-# This test case is meant to test new Quby comments that start with a hash symbol.
-# This header comment already technically serves this purpose but for consistency 
-# the line below was added as a test.
-
 # Regular Comment
+# Second Regular Comment
