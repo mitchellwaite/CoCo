@@ -20,21 +20,16 @@ Test case used to ensure that string with double quotes at the end of line is re
 This test should ensure quby's scanner identifies a string if string has double quotes at the end of the line.
 
 qubyQuotesSingleString.pt
-Test case used to ensure that single line curly braces style comments (PT Pascal style) no longer function in Quby.
-This test should ensure quby's scanner does not identify the combination of braces as a comment.
+Test case used to ensure that single string is recognized in Quby if it has double quotes.
 
 ptQuotesNested.pt        
-Test case used to ensure that single line curly braces style comments (PT Pascal style) no longer function in Quby.
-This test should ensure quby's scanner does not identify the combination of braces as a comment.
+Test case used to ensure that nested single quoutes are not recognized in Quby.
 
 qubyQuotesMultiline.pt  
-Test case used to ensure that single line curly braces style comments (PT Pascal style) no longer function in Quby.
-This test should ensure quby's scanner does not identify the combination of braces as a comment.
+Test case used to ensure that multiline strings are not accepted in Quby.
 
 ptQuotesSingleString.pt  
-Test case used to ensure that single line curly braces style comments (PT Pascal style) no longer function in Quby.
-This test should ensure quby's scanner does not identify the combination of braces as a comment.
+Test case used to ensure that single string is not recognized in Quby if it has single quotes.
 
 qubyQuotesNested.pt
-Test case used to ensure that single line curly braces style comments (PT Pascal style) no longer function in Quby.
-This test should ensure quby's scanner does not identify the combination of braces as a comment.
+Test case used to ensure that nested double quoutes are recognized in Quby.
