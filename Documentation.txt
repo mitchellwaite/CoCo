@@ -3,37 +3,54 @@ Phase 1 Documentation
 Team Members : Clara Fu, Parv Mital, Johan Cornelissen, Mitchell Waite
 Group: N
 
-1. Keywords
-   The initial keywords were supported by the PT Pascal compiler, where changes need to be made in order to make the scanner/screener
-   support the new keywords for Quby. The following changes were made in order to achieve this goal:
+The goal of these modifications is to convert the Screener/Scanner of the PT Pascal compiler into the Screener/Scanner for Quby. A
+detailed listing of all the changes made are listed below:
+
+1. Keywords and Predefined Identifiers
+   The keywords and predefined identifiers that were supported by the PT Pascal compiler but not by Quby were removed and new keywords/
+   predefined identifiers that are supported by Quby were added. The following changes were made in order to achieve this goal:
    - Removed old PT keywords (then, until, do, program, const, type, procedure, begin, repeat, case, while) from the Language Keywords
      section in the parser/stdIdentifiers file.
-   - Added new Quby keywords (ext, con, typ, def, pub, elif, sel, is, rep, on, break, len) to the Language Keywords section of the 
+   - Added new Quby keywords (ext, con, typ, def, pub, elif, sel, is, rep, on, break, len) to the Language Keywords section of the
      parser/stdIdentifiers file.
    - Replaced the old PT predefined identifiers (char, write, written, read and readln) with the new corresponding Quby predefined
      identifiers (string, print, nl, get, getnl) in the parser/stdIdentifiers file.
    - Updated the value of numberStdIdentifiers to 44 in the parser/parser.pt file.
 
-2. Character Classes
-   Quby supports new input character hash ("#") and bang ('!') and uses double quotes (") instead of PT Pascal's use of single quotes
-   (') in order to support string literals. The following changes were made in order to achieve this goal:
-   - Added lHash and lBang (with their supported characters # and !) to the input characters in 
+2. Character Classes and Comments
+   Quby supports new input character hash "#" and bang '!' and PT Pascal used "{}" and "(**)" for comments, which will be replaced by
+   Quby style comments using the hash character until the end of the line. The following changes were made in order to achieve this goal:
+   - Added lHash and lBang (with their recongnized characters # and !) to the input characters and pBang to the output characters in
+     the scan.ssl file.
+   - The left brace character "{" label was removed and Hash "#" and bang "!" were added as labels to the Scan rule in scan.ssl in
+     order to have the scanner recognize these characters.
+     The action for a hash character input calls the Comment rule and the action for the bang character emits a pBang output token.
+   - The Comment rule in scan.ssl was modified to remove the label/if for a right brace and an exit from loop action was added to the
+     actions for the lNewLine label.
+   - AlternateComments using "(*" is not supported in Quby so in the Scan rule in the scan.ssl file, the choice action (case/if between
+     "*" and any other character) in the left paranthesis "(" label was removed and replace with emitting output token pLeftParen. The
+     AlternateComments rule was also removed from the scan.ssl file.
+   - The parser.pt file was modified so that the input and output tokens match the ones in scan.def (since hash and bang input and bang
+     output characters were added) and the hash and bang characters were added to the character class map (charClassMap).
 
-Johan - Added change to allow double quotes for string literals instead of single quotes. Added Hello World file.
+3. Syntax Tokens
+   The syntax tokens and symbols that were supported by PT Pascal but not by Quby were removed and the new Quby syntax tokens and
+   symbols were added. The following changes were made in order to achieve this goal:
+   - The old PT Pascal output tokens (pThen, pUntil, pDo, pProgram, pConst, pType, pProcedure, pBegin, pCase, pWhile, pRepeat)  were
+     removed and replaced with the new Quby output tokens (pExt, pCon, pTyp, pDef, pPub, pElif, pSel, pIs, pOn, pBreak, pLen) in the
+     Output keyword tokens section in the scan.ssl file. The old PT Pascal non-compound scanner output tokens (pColonEquals) was
+     removed and new Quby non-compound scanner output tokens (pPlusEqual, pMinusEqual, pDoubleEqual, pLeftBrace, pRightBrace) was
+     added to the Non-compound output tokens section in the scan.ssl file.
+   - Within the Scan rule in the scan.ssl file, a label was added for the left brace "{" that emits an output token pLeftBrace and a
+     label was added for the right brace "{" that emits an output token pRightBrace. The choice action within the actions for the colon
+     label ":" was removed and replaced with just emitting the pColon output token (pColonEquals ":=" is not supported by Quby). The
+     actions in the labels for equals "=", plus "+", minus "-" and bang "!" were modified to add a choice action with a equals label "=",
+     which emits the corresponding output token (pDoubleEqual, pPlusEqual, pMinusEqual, pNotEqual), and the any other character * label
+     that emits the corresponding character output token (pEquals, pPlus, pMinus, pBang).
+   - The parser.pt file was modified so that the output tokens match the ones in scan.def (since many syntax tokens and symbols were
+     removed and added to the scan.ssl file).
 
-Clara - Added Hash and Bang characters and removed alternate comments
-- Hash '#' replaces the use of comments that were previously '{}'
-- Bang '!' outputs .pBang
-
-Parv - Made changes in Keywords of Phase 1 (only in parser/stdIdentifiers)
-- Removed old PT Keywords
-- Added new Quby Keywords
-- Relace old PT predefined identifiers with new Quby predefined identifiers
-
-Clara - Modified parset.pt and scan.ssl to handle syntax tokens
-- Updated the numberStdIdentifiers in parser.pt from 43 to 44
-- Modified scan.ssl 
-   - Removed old PT output tokens
-   - Added new Quby output tokens
-   - Replaced some old PT with new Quby output tokens
-   - Also added support for tokens like +=, -=, ==, {, } etc.
+4. String Literals
+   The scanning and screening of PT Pascal's single-quoted char literals "'" was replaced with the scanning and screening of Quby's
+   double quoted string literals """. The following change was made in order to achieve this goal:
+   - In the parser.pt file, the quote value in the misc. section was changed from single quotes '''' to double quotes '"'.
