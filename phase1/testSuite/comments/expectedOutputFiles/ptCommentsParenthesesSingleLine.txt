@@ -1,0 +1,18 @@
+ .pLeftParen
+ .pStar
+  .pIdentifier
+  .pIdentifier (screened to pIs)
+  .pIdentifier
+  .pIdentifier
+  .pIdentifier
+  .pIdentifier
+  .pIdentifier
+  .pIdentifier
+  .pIdentifier
+  .pIdentifier
+  .pIdentifier
+ .pDot
+ .pStar
+ .pRightParen
+ .pNewLine
+ .pEndFile

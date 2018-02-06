@@ -1,0 +1,11 @@
+  .pIdentifier
+  .pIdentifier
+  .pIdentifier (screened to pOf)
+  .pIdentifier
+ .pBang
+  .pIdentifier (screened to pAnd)
+  .pIdentifier
+  .pIdentifier
+ .pDot
+ .pNewLine
+ .pEndFile

@@ -1,0 +1,6 @@
+  .pLiteral
+  .pIdentifier
+  .pIdentifier
+  .pLiteral
+ .pNewLine
+ .pEndFile

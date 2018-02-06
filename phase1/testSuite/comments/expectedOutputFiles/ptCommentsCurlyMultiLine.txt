@@ -1,0 +1,24 @@
+ .pLeftBrace
+  .pIdentifier
+  .pIdentifier (screened to pIs)
+  .pIdentifier
+ .pNewLine
+  .pIdentifier
+  .pIdentifier
+  .pIdentifier
+  .pIdentifier
+  .pIdentifier
+  .pIdentifier
+  .pIdentifier
+  .pIdentifier
+ .pDot
+ .pNewLine
+  .pIdentifier
+  .pIdentifier
+  .pIdentifier
+  .pIdentifier
+  .pIdentifier
+ .pDot
+ .pRightBrace
+ .pNewLine
+ .pEndFile

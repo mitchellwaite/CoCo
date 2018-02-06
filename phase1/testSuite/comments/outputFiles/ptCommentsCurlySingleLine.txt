@@ -1,0 +1,11 @@
+ .pLeftBrace
+  .pIdentifier
+  .pIdentifier
+  .pIdentifier
+  .pIdentifier
+  .pIdentifier
+  .pIdentifier
+ .pDot
+ .pRightBrace
+ .pNewLine
+ .pEndFile
