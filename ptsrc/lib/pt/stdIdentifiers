@@ -20,7 +20,7 @@ packed
 var
 if
 
-% Adding new Quby Keywords
+% Adding new Quby Keywords and removed the old PT keywords
 ext
 con
 typ
@@ -43,7 +43,7 @@ len
 % Predeclared type names
 integer
 boolean
-string
+string      % Adding the new Quby string identifier replaing the PT char
 text
 
 % Predeclared constants
@@ -53,10 +53,10 @@ false
 % Predeclared procedures and functions
 reset
 rewrite
-print
-nl
-get
-getnl
+print       % Adding the new Quby print identifier replaing the PT write
+nl          % Adding the new Quby nl identifier replaing the PT writeln
+get         % Adding the new Quby get identifier replaing the PT read
+getnl       % Adding the new Quby getln identifier replaing the PT readln
 chr
 ord
 eoln

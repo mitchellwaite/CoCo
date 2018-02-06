@@ -88,7 +88,7 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source, parseSt
         pOr = 2;
         pAnd = 3;
         pNot = 4;
-        pElse = 5;      % Adding the token definitions for the new keywords from line 91-109
+        pElse = 5;      { Adding the token definitions for the new keywords from line 91-109}
         pOf = 6;
         pEnd = 7;
         pArray = 8;
@@ -119,7 +119,7 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source, parseSt
         pMinus = 30;
         pStar = 31;
         pPlusEqual = 32;     
-        pMinusEqual = 33;  % Adding the token definitions for operators from line 121-142
+        pMinusEqual = 33;  { Adding the token definitions for operators from line 121-142 }
         pDoubleEqual = 34;
         pLeftBrace = 35;
         pRightBrace = 36;
@@ -294,7 +294,7 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source, parseSt
 
         { The following value MUST match the total number of
           keywords and idents entered in the stdIdentifiers file. }
-        numberStdIdentifiers = 44;     % Fixed the number from 43 to 44 as there is one new identifier in Quby
+        numberStdIdentifiers = 44;     { Fixed the number from 43 to 44 as there is one new identifier in Quby }
 
         textBufferSize = 80;
         identTableSize = 1601;       { must be prime }

@@ -18,7 +18,7 @@ do
            if [ -f "$i" ] && [[ $i != *"documentation" ]]
            then
               echo -e "\n${BLUE}Testing file: ${NC}$i"
-              ssltrace "ptc -L ../lib/pt -o1 -t1 $i" ../lib/pt/scan.def -e
+              ssltrace "ptc -L ../ptsrc/lib/pt -o1 -t1 $i" ../ptsrc/lib/pt/scan.def -e
            fi
        done
     fi
