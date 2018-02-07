@@ -1,0 +1,4 @@
+ .pColon
+ .pEquals
+ .pNewLine
+ .pEndFile
