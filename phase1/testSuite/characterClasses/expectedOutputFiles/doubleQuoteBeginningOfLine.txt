@@ -1,3 +1,4 @@
   .pLiteral
+  % Output token text '%'
  .pNewLine
  .pEndFile

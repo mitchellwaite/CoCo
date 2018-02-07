@@ -1,6 +1,11 @@
+  #eLiteralLine
   .pNewLine
   .pIdentifier
+  % Output token text 'it'
   .pIdentifier
+  % Output token text 'should'
   .pIdentifier
+  % Output token text 'fail'
+  #eLiteralLine
   .pNewLine
  .pEndFile

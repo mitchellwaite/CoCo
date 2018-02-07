@@ -1,6 +1,10 @@
   .pLiteral
+  % Output token text 'This is a test '
   .pIdentifier
+  % Output token text 'for'
   .pIdentifier
+  % Output token text 'nested'
   .pLiteral
+  % Output token text ' quotes'
  .pNewLine
  .pEndFile

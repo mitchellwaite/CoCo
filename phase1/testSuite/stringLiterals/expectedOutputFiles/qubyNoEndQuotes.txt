@@ -1,6 +1,10 @@
   .pIdentifier
+  % Output token text 'this'
   .pIdentifier (screened to pIs)
   .pIdentifier
+  % Output token text 'a'
   .pIdentifier
+  % Output token text 'test'
+  #eLiteralLine
   .pNewLine
  .pEndFile

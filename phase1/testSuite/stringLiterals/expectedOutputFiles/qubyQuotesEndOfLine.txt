@@ -1,8 +1,13 @@
   .pIdentifier
+  % Output token text 'this'
   .pIdentifier (screened to pIs)
   .pIdentifier
+  % Output token text 'a'
   .pIdentifier
+  % Output token text 'test'
   .pIdentifier
+  % Output token text 'for'
   .pLiteral
+  % Output token text 'end of line string'
  .pNewLine
  .pEndFile

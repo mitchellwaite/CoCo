@@ -1,10 +1,15 @@
   .pIdentifier
+  % Output token text 'some'
   .pIdentifier
+  % Output token text 'line'
   .pIdentifier (screened to pOf)
   .pIdentifier
+  % Output token text 'text'
   .pIdentifier (screened to pAnd)
   .pIdentifier
+  % Output token text 'more'
   .pIdentifier
+  % Output token text 'words'
  .pDot
   .pNewLine
  .pEndFile

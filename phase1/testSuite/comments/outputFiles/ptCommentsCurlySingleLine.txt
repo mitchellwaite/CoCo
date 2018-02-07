@@ -1,10 +1,16 @@
  .pLeftBrace
   .pIdentifier
+  % Output token text 'this'
   .pIdentifier
+  % Output token text 'comment'
   .pIdentifier
+  % Output token text 'should'
   .pIdentifier
+  % Output token text 'no'
   .pIdentifier
+  % Output token text 'longer'
   .pIdentifier
+  % Output token text 'work'
  .pDot
  .pRightBrace
  .pNewLine

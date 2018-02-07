@@ -1,15 +1,26 @@
   .pIdentifier
+  % Output token text 'this'
   .pIdentifier (screened to pIs)
   .pIdentifier
+  % Output token text 'a'
   .pIdentifier
+  % Output token text 'test'
   .pIdentifier
+  % Output token text 'for'
+ #eIllegalChar
   .pIdentifier
+  % Output token text 'quotes'
   .pIdentifier
+  % Output token text 'at'
   .pIdentifier
+  % Output token text 'the'
   .pIdentifier (screened to pEnd)
   .pIdentifier (screened to pOf)
   .pIdentifier
+  % Output token text 'a'
   .pIdentifier
+  % Output token text 'line'
  .pDot
+ #eIllegalChar
  .pNewLine
  .pEndFile

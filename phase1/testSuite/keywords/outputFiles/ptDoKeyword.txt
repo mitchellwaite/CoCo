@@ -1,3 +1,4 @@
   .pIdentifier
+  % Output token text 'do'
  .pNewLine
  .pEndFile

@@ -1,23 +1,38 @@
  .pLeftBrace
   .pIdentifier
+  % Output token text 'this'
   .pIdentifier (screened to pIs)
   .pIdentifier
+  % Output token text 'a'
  .pNewLine
   .pIdentifier
+  % Output token text 'multi'
   .pIdentifier
+  % Output token text 'line'
   .pIdentifier
+  % Output token text 'comment'
   .pIdentifier
+  % Output token text 'in'
   .pIdentifier
+  % Output token text 'old'
   .pIdentifier
+  % Output token text 'pt'
   .pIdentifier
+  % Output token text 'pascal'
   .pIdentifier
+  % Output token text 'style'
  .pDot
  .pNewLine
   .pIdentifier
+  % Output token text 'it'
   .pIdentifier
+  % Output token text 'should'
   .pIdentifier
+  % Output token text 'no'
   .pIdentifier
+  % Output token text 'longer'
   .pIdentifier
+  % Output token text 'work'
  .pDot
  .pRightBrace
  .pNewLine

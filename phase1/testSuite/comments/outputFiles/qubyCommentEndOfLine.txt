@@ -1,4 +1,6 @@
   .pIdentifier
+  % Output token text 'some'
   .pIdentifier
+  % Output token text 'text'
   .pNewLine
  .pEndFile
