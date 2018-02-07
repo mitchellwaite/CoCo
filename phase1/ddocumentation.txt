@@ -1,7 +1,7 @@
 Phase 1 Documentation
 
 Team Members : Clara Fu, Parv Mital, Johan Cornelissen, Mitchell Waite
-Group: N
+Group: cisc458n
 
 The goal of these modifications is to convert the Screener/Scanner of the PT Pascal compiler into the Screener/Scanner for Quby. A
 detailed listing of all the changes made are listed below:
