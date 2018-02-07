@@ -25,7 +25,7 @@ testSuite/syntaxTokens/syntaxTokenTestCaseDocumentation.txt
       * TestAll (test script to test and verify all changes)
 
 ## How to run tests
-To run all of the test cases (encompassing the 6 test suites seen above), simple run the bash script provided in the testSuite directory (testSuite/TestAll). This script will both run all of the tests using the input files provided (testSuite/\*/inputFiles) and place the outputs into "testSuite/\*/outputFiles" and also verify the output files against the expected output in "testSuite/\*/expectedOutputFiles.
+To run all of the test cases (encompassing the 6 test suites seen above), simply run the bash script provided in the testSuite directory (**testSuite/TestAll**). This script will both **run** all of the tests using the input files provided (testSuite/\*/inputFiles) and place the outputs into "testSuite/\*/outputFiles" and also **verify** the output files against the expected output in "testSuite/\*/expectedOutputFiles.
 
 ## Authors
 * Group: cisc458n
