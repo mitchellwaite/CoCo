@@ -1,0 +1,108 @@
+ptBeginKeyword.pt
+Test case to ensure the old PT keyword "begin" no longer is recognized by the screener. Only valid keywords should show up in the ssltrace output as ".pIdentifier (screen to x)".
+
+ptCaseKeyword.pt
+Test case to ensure the old PT keyword "case" no longer is recognized by the screener. Only valid keywords should show up in the ssltrace output as ".pIdentifier (screen to x)".
+
+ptCharIdentifier.pt
+Test case to ensure the old PT identifier "char" no longer is recognized by the scanner. 
+Since the semantic analysis phase of the compiler is responsible for recognizing predefined identifiers, this test is not yet able to tell if an identifier has been correctly removed or added. However, this test is still created to ensure proper test coverage once the semantic phase has been completed.
+
+ptConstKeyword.pt
+Test case to ensure the old PT keyword "const" no longer is recognized by the screener. Only valid keywords should show up in the ssltrace output as ".pIdentifier (screen to x)".
+
+ptDoKeyword.pt
+Test case to ensure the old PT keyword "do" no longer is recognized by the screener. Only valid keywords should show up in the ssltrace output as ".pIdentifier (screen to x)".
+
+ptProcedureKeyword.pt
+Test case to ensure the old PT keyword "procedure" no longer is recognized by the screener. Only valid keywords should show up in the ssltrace output as ".pIdentifier (screen to x)".
+
+ptProgramKeyword.pt
+Test case to ensure the old PT keyword "program" no longer is recognized by the screener. Only valid keywords should show up in the ssltrace output as ".pIdentifier (screen to x)".
+
+ptReadIdentifier.pt
+Test case to ensure the old PT identifier "read" no longer is recognized by the scanner.  
+Since the semantic analysis phase of the compiler is responsible for recognizing predefined identifiers, this test is not yet able to tell if an identifier has been correctly removed or added. However, this test is still created to ensure proper test coverage once the semantic phase has been completed.
+
+ptReadlnIdentifier.pt
+Test case to ensure the old PT identifier "readln" no longer is recognized by the scanner. 
+Since the semantic analysis phase of the compiler is responsible for recognizing predefined identifiers, this test is not yet able to tell if an identifier has been correctly removed or added. However, this test is still created to ensure proper test coverage once the semantic phase has been completed.
+
+ptRepeatKeyword.pt
+Test case to ensure the old PT keyword "repeat" no longer is recognized by the screener. Only valid keywords should show up in the ssltrace output as ".pIdentifier (screen to x)".
+
+ptThenKeyword.pt
+Test case to ensure the old PT keyword "then" no longer is recognized by the screener. Only valid keywords should show up in the ssltrace output as ".pIdentifier (screen to x)".
+
+ptTypeKeyword.pt
+Test case to ensure the old PT keyword "type" no longer is recognized by the screener. Only valid keywords should show up in the ssltrace output as ".pIdentifier (screen to x)".
+
+ptUntilKeyword.pt
+Test case to ensure the old PT keyword "until" no longer is recognized by the screener. Only valid keywords should show up in the ssltrace output as ".pIdentifier (screen to x)".
+
+ptWhileKeyword.pt
+Test case to ensure the old PT keyword "while" no longer is recognized by the screener. Only valid keywords should show up in the ssltrace output as ".pIdentifier (screen to x)".
+
+ptWriteIdentifier.pt
+Test case to ensure the old PT identifier "write" no longer is recognized by the scanner. 
+Since the semantic analysis phase of the compiler is responsible for recognizing predefined identifiers, this test is not yet able to tell if an identifier has been correctly removed or added. However, this test is still created to ensure proper test coverage once the semantic phase has been completed.
+
+ptWrittenIdentifier.pt
+Test case to ensure the old PT identifier "written" no longer is recognized by the scanner. 
+Since the semantic analysis phase of the compiler is responsible for recognizing predefined identifiers, this test is not yet able to tell if an identifier has been correctly removed or added. However, this test is still created to ensure proper test coverage once the semantic phase has been completed.
+
+qubyBreakKeyword.pt
+Test case to ensure the new Quby keyword "break" IS recognized by the screener. Valid keywords should show up in the ssltrace output as ".pIdentifier (screen to x)".
+
+qubyConKeyword.pt
+Test case to ensure the new Quby keyword "con" IS recognized by the screener. Valid keywords should show up in the ssltrace output as ".pIdentifier (screen to x)".
+
+qubyDefKeyword.pt
+Test case to ensure the new Quby keyword "def" IS recognized by the screener. Valid keywords should show up in the ssltrace output as ".pIdentifier (screen to x)".
+
+qubyElifKeyword.pt
+Test case to ensure the new Quby keyword "elif" IS recognized by the screener. Valid keywords should show up in the ssltrace output as ".pIdentifier (screen to x)".
+
+qubyExtKeyword.pt
+Test case to ensure the new Quby keyword "ext" IS recognized by the screener. Valid keywords should show up in the ssltrace output as ".pIdentifier (screen to x)".
+
+qubyGetIdentifier.pt
+Test case to ensure the new Quby identifier "get" IS recognized by the scanner. 
+Since the semantic analysis phase of the compiler is responsible for recognizing predefined identifiers, this test is not yet able to tell if an identifier has been correctly removed or added. However, this test is still created to ensure proper test coverage once the semantic phase has been completed.
+
+qubyGetnlIdentifier.pt
+Test case to ensure the new Quby identifier "getnl" IS recognized by the scanner. 
+Since the semantic analysis phase of the compiler is responsible for recognizing predefined identifiers, this test is not yet able to tell if an identifier has been correctly removed or added. However, this test is still created to ensure proper test coverage once the semantic phase has been completed.
+
+qubyIsKeyword.pt
+Test case to ensure the new Quby keyword "is" IS recognized by the screener. Valid keywords should show up in the ssltrace output as ".pIdentifier (screen to x)".
+
+qubyLenKeyword.pt
+Test case to ensure the new Quby keyword "len" IS recognized by the screener. Valid keywords should show up in the ssltrace output as ".pIdentifier (screen to x)".
+
+qubyNlIdentifier.pt
+Test case to ensure the new Quby identifier "nl" IS recognized by the scanner. 
+Since the semantic analysis phase of the compiler is responsible for recognizing predefined identifiers, this test is not yet able to tell if an identifier has been correctly removed or added. However, this test is still created to ensure proper test coverage once the semantic phase has been completed.
+
+qubyOnKeyword.pt
+Test case to ensure the new Quby keyword "on" IS recognized by the screener. Valid keywords should show up in the ssltrace output as ".pIdentifier (screen to x)".
+
+qubyPrintIdentifier.pt
+Test case to ensure the new Quby identifier "print" IS recognized by the scanner. 
+Since the semantic analysis phase of the compiler is responsible for recognizing predefined identifiers, this test is not yet able to tell if an identifier has been correctly removed or added. However, this test is still created to ensure proper test coverage once the semantic phase has been completed.
+
+qubyPubKeyword.pt
+Test case to ensure the new Quby keyword "pub" IS recognized by the screener. Valid keywords should show up in the ssltrace output as ".pIdentifier (screen to x)".
+
+qubyRepKeyword.pt
+Test case to ensure the new Quby keyword "rep" IS recognized by the screener. Valid keywords should show up in the ssltrace output as ".pIdentifier (screen to x)".
+
+qubySelKeyword.pt
+Test case to ensure the new Quby keyword "sel" IS recognized by the screener. Valid keywords should show up in the ssltrace output as ".pIdentifier (screen to x)".
+
+qubyStringIdentifier.pt
+Test case to ensure the new Quby keyword "string" IS recognized by the screener. Valid keywords should show up in the ssltrace output as ".pIdentifier (screen to x)".
+Since the semantic analysis phase of the compiler is responsible for recognizing predefined identifiers, this test is not yet able to tell if an identifier has been correctly removed or added. However, this test is still created to ensure proper test coverage once the semantic phase has been completed.
+
+qubyTypKeyword.pt
+Test case to ensure the new Quby keyword "typ" IS recognized by the screener. Valid keywords should show up in the ssltrace output as ".pIdentifier (screen to x)".

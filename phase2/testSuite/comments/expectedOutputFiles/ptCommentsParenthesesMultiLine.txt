@@ -1,0 +1,42 @@
+ .pLeftParen
+ .pStar
+  .pIdentifier
+  % Output token text 'this'
+  .pIdentifier (screened to pIs)
+  .pIdentifier
+  % Output token text 'an'
+  .pIdentifier
+  % Output token text 'old'
+  .pIdentifier
+  % Output token text 'style'
+ .pNewLine
+  .pIdentifier
+  % Output token text 'pt'
+  .pIdentifier
+  % Output token text 'pascal'
+  .pIdentifier
+  % Output token text 'comment'
+  .pIdentifier
+  % Output token text 'that'
+  .pIdentifier (screened to pIs)
+  .pIdentifier
+  % Output token text 'multiline'
+ .pNewLine
+  .pIdentifier (screened to pAnd)
+  .pIdentifier
+  % Output token text 'should'
+  .pIdentifier
+  % Output token text 'no'
+  .pIdentifier
+  % Output token text 'longer'
+  .pIdentifier
+  % Output token text 'work'
+  .pIdentifier
+  % Output token text 'in'
+  .pIdentifier
+  % Output token text 'quby'
+ .pDot
+ .pStar
+ .pRightParen
+ .pNewLine
+ .pEndFile

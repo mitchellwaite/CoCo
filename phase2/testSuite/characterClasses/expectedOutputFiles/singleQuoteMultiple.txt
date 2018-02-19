@@ -1,0 +1,13 @@
+ #eIllegalChar
+ #eIllegalChar
+ #eIllegalChar
+ .pNewLine
+ #eIllegalChar
+ #eIllegalChar
+ #eIllegalChar
+ #eIllegalChar
+ .pNewLine
+ #eIllegalChar
+ #eIllegalChar
+ .pNewLine
+ .pEndFile

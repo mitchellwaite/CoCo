@@ -1,0 +1,28 @@
+ .pLeftParen
+ .pStar
+  .pIdentifier
+  % Output token text 'this'
+  .pIdentifier (screened to pIs)
+  .pIdentifier
+  % Output token text 'old'
+  .pIdentifier
+  % Output token text 'pt'
+  .pIdentifier
+  % Output token text 'style'
+  .pIdentifier
+  % Output token text 'comment'
+  .pIdentifier
+  % Output token text 'that'
+  .pIdentifier
+  % Output token text 'should'
+  .pIdentifier
+  % Output token text 'no'
+  .pIdentifier
+  % Output token text 'longer'
+  .pIdentifier
+  % Output token text 'work'
+ .pDot
+ .pStar
+ .pRightParen
+ .pNewLine
+ .pEndFile

@@ -1,0 +1,13 @@
+ .pBang
+ .pBang
+ .pBang
+ .pNewLine
+ .pBang
+ .pBang
+ .pBang
+ .pBang
+ .pNewLine
+ .pBang
+ .pBang
+ .pNewLine
+ .pEndFile
