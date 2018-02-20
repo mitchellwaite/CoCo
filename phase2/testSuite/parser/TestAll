@@ -26,7 +26,7 @@ do
               fileName="$(echo "$i" | sed -r "s/.+\/(.+)\..+/\1/")"
 
               #Run ssltrace tool in output mode and put test output into outputFiles directory
-              ssltrace "ptc -L ../ptsrc/lib/pt -o1 -t1 $i" ../ptsrc/lib/pt/scan.def -e > $dir/outputFiles/$fileName.txt
+              ssltrace "ptc -L ../../ptsrc/lib/pt -o2 -t2 $i" ../../ptsrc/lib/pt/parser.def > $dir/outputFiles/$fileName.txt #For now use full mode, can be changed to "-e" mode later.
            fi           
 
            OUTPUT1=""

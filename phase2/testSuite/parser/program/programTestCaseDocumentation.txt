@@ -1,0 +1,10 @@
+ptProgram.pt
+Test case to ensure old PT style program statement will no longer be parsed as a valid statement.
+An input such as "program foo(input);" should be treated as a syntax error.
+
+qubyEmptyProgram.pt
+Test case to ensure the new Quby parser recognizes a program with a single parameter.
+Uses new "ext" keyword and then lists any parameters. In this case it is "ext input".
+
+qubyProgramWithOutput.pt
+Test case to ensure new Quby parser recognizes a program with two parameters; input and output.

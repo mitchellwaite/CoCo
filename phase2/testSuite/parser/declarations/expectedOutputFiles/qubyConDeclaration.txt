@@ -1,0 +1,51 @@
+@Program
+ ?pExt (pExt)
+ .sProgram
+ ?pIdentifier (pIdentifier)
+ % value emitted 51
+ .sIdentifier
+ [ (pCon)
+ | *:
+ ] or >
+ .sParmEnd
+ @Block
+  [ (pCon)
+  | pCon:
+  .sConst
+  @ConstantDefinitions
+   ?pIdentifier (pIdentifier)
+   .sIdentifier
+   @ConstantValue
+    ?pEquals (pEquals)
+    [ (pInteger)
+    | pInteger:
+    % value emitted 51
+    .sInteger
+    ] or >
+    >>
+   ;ConstantValue
+   >>
+  ;ConstantDefinitions
+  ] or >
+  }
+  [ (pEndFile)
+  | *:
+  ] or >
+  @BeginStmt
+   .sBegin
+   @Statement
+    [ (pEndFile)
+    | *:
+    .sNullStmt
+    >>
+   ;Statement
+   [ (pEndFile)
+   | *:
+   ] or >
+   .sEnd
+   >>
+  ;BeginStmt
+  >>
+ ;Block
+ >>
+;Program

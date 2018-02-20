@@ -1,0 +1,58 @@
+@Program
+ ?pExt (pExt)
+ .sProgram
+ ?pIdentifier (pIdentifier)
+ % value emitted 51
+ .sIdentifier
+ [ (pVar)
+ | *:
+ ] or >
+ .sParmEnd
+ @Block
+  [ (pVar)
+  | pVar:
+  .sVar
+  @VariableDeclarations
+   ?pIdentifier (pIdentifier)
+   .sIdentifier
+   ?pColon (pColon)
+   @TypeBody
+    [ (pIdentifier)
+    | *:
+    @SimpleType
+     [ (pIdentifier)
+     | pIdentifier:
+     .sIdentifier
+     [ (pSemicolon)
+     | *:
+     ] or >
+     >>
+    ;SimpleType
+    >>
+   ;TypeBody
+   >>
+  ;VariableDeclarations
+  ] or >
+  }
+  [ (pSemicolon)
+  | *:
+  ] or >
+  @BeginStmt
+   .sBegin
+   @Statement
+    [ (pSemicolon)
+    | *:
+    .sNullStmt
+    >>
+   ;Statement
+   [ (pSemicolon)
+   | *:
+   ] or >
+   .sEnd
+   >>
+  ;BeginStmt
+  >>
+ ;Block
+ >>
+;Program
+scan/parse error, line 2: syntax error at: ;

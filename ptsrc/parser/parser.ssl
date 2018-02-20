@@ -24,26 +24,26 @@ Input :
         pOr                     'or'
         pAnd                    'and'
         pNot                    'not'
-        pThen                   'then'
         pElse                   'else'
         pOf                     'of'
         pEnd                    'end'
-        pUntil                  'until'
-        pDo                     'do'
         pArray                  'array'
         pFile                   'file'
         pPacked                 'packed'
-        pProgram                'program'
-        pConst                  'const'
         pVar                    'var'
-        pType                   'type'
-        pProcedure              'procedure'
-        pBegin                  'begin'
         pIf                     'if'
-        pCase                   'case'
-        pWhile                  'while'
-        pRepeat                 'repeat'
-        lastKeywordToken = pRepeat 
+        pExt                    'ext'  % Removed old PT keywords and added keywords seen on lines 35-45
+        pCon                    'con'
+        pTyp                    'typ'
+        pDef                    'def'
+        pPub                    'pub'
+        pElif                   'elif'
+        pSel                    'sel'
+        pIs                     'is'
+        pOn                     'on'
+        pBreak                  'break'
+        pLen                    'len'        
+        lastKeywordToken = pLen 
 
         pIdentifier 
         firstCompoundInputToken = pIdentifier
@@ -56,7 +56,11 @@ Input :
         pPlus                   '+'
         pMinus                  '-'
         pStar                   '*'
-        pColonEquals            ':='
+        pPlusEquals             '+='  % Added Quby plus equals token and remove colon equals := token.
+        pMinusEquals            '-='  % Added Quby minus equals token
+        pDoubleEquals           '=='  % Added Quby double equals token
+        pLeftBrace              '{'   % Added Quby left brace token
+        pRightBrace             '}'   % Added Quby right brace token
         pDot                    '.'
         pComma                  ','
         pSemicolon              ';'
@@ -71,6 +75,7 @@ Input :
         pRightParen             ')'
         pLeftBracket            '['
         pRightBracket           ']'
+        pBang                   '#'   % Added Quby non-compound bang token
         pDotDot                 '..'
         lastSyntaxToken = pDotDot;
 
@@ -96,8 +101,8 @@ Output :
         sPacked
         sFile
         sRange
-        sCaseStmt
-        sCaseEnd
+        sSelStmt   % Changed from sCaseStmt to sSelStmt for Quby select statements
+        sSelEnd    % Changed from sCaseEnd to sSelEnd
         sLabelEnd
         sExpnEnd
         sNullStmt
@@ -108,9 +113,8 @@ Output :
         sIfStmt
         sThen
         sElse
-        sWhileStmt
-        sRepeatStmt
-        sRepeatEnd
+        sRepStmt   % Added sRepStmt and sRepOnBreak, removed PT sWhileStmt, sRepeatStmt, and sRepeatEnd
+        sRepOnBreak
         sEq
         sNE
         sLT
@@ -127,6 +131,10 @@ Output :
         sInfixAnd
         sAnd
         sNot
+        sModule    % Added Quby sModule and sPublic for Quby modules
+        sPublic 
+        sSubstring % Added sSubstring and sLen for Quby string operations
+        sLen
         sNewLine
         sEndOfFile
         lastSemanticToken = sEndOfFile;
@@ -135,11 +143,8 @@ Output :
 rules
 
 Program :
-        'program'  .sProgram
-        % program name
-        pIdentifier
+        'ext'  .sProgram % Quby programs begin with 'ext' not 'program', and do not have a program name, only parameters.
         % program parameters
-        '('
         {
             pIdentifier  .sIdentifier
             [
@@ -148,9 +153,8 @@ Program :
                     >
             ]
         }
-        ')'
         .sParmEnd
-        ';'  @Block  '.';
+        @Block; % Quby has no semicolons and does not use periods after end of program. 
 
 Block :
         % Strictly speaking, standard Pascal requires that declarations
@@ -158,38 +162,31 @@ Block :
         % We allow arbitrary intermixing of these instead to preserve
         % programmer sanity.
         {[
-            | 'const':
+            | 'con':
                 .sConst
                 @ConstantDefinitions
-            | 'type':
+            | 'typ':
                 .sType
                 @TypeDefinitions
             | 'var':
                 .sVar
                 @VariableDeclarations
-            | 'procedure':
+            | 'def':
                 .sProcedure
                 % procedure name
                 pIdentifier  .sIdentifier
                 @ProcedureHeading
-                @Block  ';'
+                @Block  % remove semicolon after procedure statement
             | *:
                 >
         ]}
-        'begin'
+        % Quby no longer uses 'begin' at beginning of procedures
         @BeginStmt;
 
 ConstantDefinitions :
         % Accept one or more named constant definitions
         pIdentifier  .sIdentifier
-        @ConstantValue ';'
-        {[
-            | pIdentifier:
-                .sIdentifier
-                @ConstantValue ';'
-            | *:
-                >
-        ]};
+        @ConstantValue;  % Remove ability to have multiple constant type declaration with only one keyword. Quby require 'con' keyword to be repeated for each declaration.
 
 ConstantValue :
         '='
@@ -218,14 +215,8 @@ UnsignedIntegerConstant :
 TypeDefinitions :
         % Accept one or more named type definitions.
         pIdentifier  .sIdentifier
-        '='  @TypeBody  ';'
-        {[
-            | pIdentifier:
-                .sIdentifier
-                '='  @TypeBody  ';'
-            | *:
-                >
-        ]};
+        ':'  @TypeBody % Look for colon, and no longer expect semicolon
+        ; % Remove ability to have multiple declarations under one 'typ' keyword
 
 TypeBody :
         [
@@ -276,14 +267,8 @@ OptionallySignedIntegerConstant :
 VariableDeclarations :
         % Accept one or more variable declarations.
         pIdentifier  .sIdentifier
-        ':'  @TypeBody  ';'
-        {[
-            | pIdentifier:
-                .sIdentifier
-                ':'  @TypeBody  ';'
-            | *:
-                >
-        ]};
+        ':'  @TypeBody  % don't expect semicolon
+        ; % Remove ability to have multiple var declarations after each other         
 
 ProcedureHeading :
         % Accept zero or more procedure formal parameter declarations.
@@ -317,23 +302,23 @@ Statement :
         [
             | pIdentifier:
                 @AssignmentOrCallStmt
-            | 'begin':
-                @BeginStmt
+%            | 'begin':
+%                @BeginStmt
             | 'if':
                 @IfStmt
-            | 'while':
-                @WhileStmt
-            | 'case':
-                @CaseStmt
-            | 'repeat':
-                @RepeatStmt
-            | *:
+%            | 'while':
+%                @WhileStmt
+%            | 'case':
+%                @CaseStmt
+%            | 'repeat':
+%                @RepeatStmt
+             | *:
                 .sNullStmt
         ];
 
 AssignmentOrCallStmt :
         [
-            | ':=':
+            | '=':
                 .sAssignmentStmt
                 .sIdentifier    % identifier accepted in the Statement rule
                 @Expression
@@ -344,7 +329,7 @@ AssignmentOrCallStmt :
                 .sSubscript
                 @Expression
                 .sExpnEnd
-                ']'  ':='
+%                ']'  ':='
                 @Expression
                 .sExpnEnd
             | *:
@@ -383,49 +368,49 @@ CallStmt :
 BeginStmt :
         .sBegin
         {
-            @Statement
+            @Statement % In Quby declarations and statements are seperate, so after all the statements are complete the program should end.
             [
-                | ';':
-                | 'end':
-                    .sEnd
-                    >
+                  | pNewLine:
+                  | *:
+                       >
             ]
-        };
+        }
+        .sEnd;
 
 IfStmt :
         .sIfStmt
         @Expression
         .sExpnEnd
-        'then'  .sThen
+%        'then'  .sThen
         @Statement
-        [
+         [
             | 'else':
                 .sElse
                 @Statement
             | *:
         ];
 
-CaseStmt :
-        .sCaseStmt
-        @Expression
-        .sExpnEnd
-        'of'
-        @CaseAlternative
-        {[
-            | ';':
-                % since case alternatives cannot be null, allow
-                % for the common situation of an extra semicolon
-                % at the end of the list of case alternatives.
-                [
-                    | 'end':
-                        >
-                    | *:
-                        @CaseAlternative
-                ]
-            | 'end':
-                >
-        ]}
-        .sCaseEnd;
+%CaseStmt :
+%        .sCaseStmt
+%        @Expression
+%        .sExpnEnd
+%        'of'
+%        @CaseAlternative
+%        {[
+%            | ';':
+%                % since case alternatives cannot be null, allow
+%                % for the common situation of an extra semicolon
+%                % at the end of the list of case alternatives.
+%                [
+%                    | 'end':
+%                        >
+%                    | *:
+%                       @CaseAlternative
+%                ]
+%            | 'end':
+%                >
+%        ]}
+%        .sCaseEnd;
 
 CaseAlternative :
         % A case alternative is a statement labelled by
@@ -442,26 +427,26 @@ CaseAlternative :
         .sLabelEnd
         ':'  @Statement;
 
-WhileStmt :
-        .sWhileStmt
-        @Expression
-        .sExpnEnd
-        'do'
-        @Statement;
+%WhileStmt :
+%        .sWhileStmt
+%        @Expression
+%        .sExpnEnd
+%        'do'
+%        @Statement;
 
-RepeatStmt :
-        .sRepeatStmt
-        {
-            @Statement
-            [
-                | ';':
-                | 'until':
-                    .sRepeatEnd
-                    >
-            ]
-        }
-        @Expression
-        .sExpnEnd;
+%RepeatStmt :
+%        .sRepeatStmt
+%        {
+%            @Statement
+%            [
+%                | ';':
+%                | 'until':
+%                    .sRepeatEnd
+%                    >
+%            ]
+%        }
+%        @Expression
+%        .sExpnEnd;
 
 Expression :
         @SimpleExpression

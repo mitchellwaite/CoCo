@@ -1,0 +1,58 @@
+@Program
+ ?pExt (pExt)
+ .sProgram
+ ?pIdentifier (pIdentifier)
+ % value emitted 51
+ .sIdentifier
+ [ (pTyp)
+ | *:
+ ] or >
+ .sParmEnd
+ @Block
+  [ (pTyp)
+  | pTyp:
+  .sType
+  @TypeDefinitions
+   ?pIdentifier (pIdentifier)
+   .sIdentifier
+   ?pColon (pColon)
+   @TypeBody
+    [ (pIdentifier)
+    | *:
+    @SimpleType
+     [ (pIdentifier)
+     | pIdentifier:
+     % value emitted 51
+     .sIdentifier
+     [ (pEndFile)
+     | *:
+     ] or >
+     >>
+    ;SimpleType
+    >>
+   ;TypeBody
+   >>
+  ;TypeDefinitions
+  ] or >
+  }
+  [ (pEndFile)
+  | *:
+  ] or >
+  @BeginStmt
+   .sBegin
+   @Statement
+    [ (pEndFile)
+    | *:
+    .sNullStmt
+    >>
+   ;Statement
+   [ (pEndFile)
+   | *:
+   ] or >
+   .sEnd
+   >>
+  ;BeginStmt
+  >>
+ ;Block
+ >>
+;Program

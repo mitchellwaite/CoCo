@@ -3,6 +3,29 @@ Phase 2 Documentation
 Team Members : Clara Fu, Parv Mital, Johan Cornelissen, Mitchell Waite
 Group: cisc458n
 
+Johan: Updated parser.ssl and parser.pt (using parser.def) with new output tokens emitted by the scanner (in scan.ssl) and removed old input tokens. Ensured that scan.ssl and parser.ssl matched.
+
+Johan: Replaced the old PT parser case statements sCaseStmt, sCaseEnd with new Quby select statements sSelStmt, and sSelEnd (in parser.ss;).
+
+Johan: Replaced the old PT parser loops output tokens sWhileStmt, sRepeatStmt, and sRepeatEnd with the new Quby loop statement tokens sRepStmt and SRepOnBreak.
+This was in the output tokens section of parser.ssl.
+
+Johan: Added new parser output tokens sModule, sPublic and sSubstring and sLen.
+Work was done in output tokens section of parser.ssl.
+
+Johan: Modified the parsing of programs in Quby to accept "ext" and not accept "program". Work was done in @Program rule, by replacing expectation for 'program' with 'ext' and removing the need for a program name. As well ensured no semi colon is needed at end of the line. (Work done in parser.ssl)
+   * Work done in @BeginStmt rule to allow multiple statements (after declarations are complete) until end of file. This is done by proceeding to look for more statements as long as there is a new line character. .sBegin and .sEnd token emitted as appropriate. 
+
+Johan: Modified @Block rule in parser.ssl to accept new declarations format for con (from previous const), typ (from previous type), and var. 
+   * Block rule no longer requires 'begin' keyword.
+   * Removed ability to gave multiple constant declarations under a single "con" keyword.    This was in @ConstantDefinitions rule of parser.ssl
+   * In @ConstantValue rule, removed expectation for semicolon after declaration.
+   * In @TypeDefinitions rule, removed ability to gave multiple type declarations under a single "typ" keyword. Also rule modified to use ":" instead of "=".
+   * In @VariableDeclarations rule, removed ability to gave multiple variable declarations under a single "var" keyword. Also removed expectation for semicolon.
+   * Changed @AssignmentOrCallStmt to use "=" instead of ":=". There is more work to be done here.
+   
+Johan: NOTE, several lines in parser.ssl were commented out for the time being to allow for testing, in the end all the commented sections should be adjusted for quby. Example, if statements, loops etc.
+
 ############################################################
 UPDATE DOCUMENTATION FOR PHASE 2!!!!!!!!!!!!!!!
 ############################################################

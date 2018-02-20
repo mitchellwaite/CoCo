@@ -1,0 +1,38 @@
+@Program
+ ?pExt (pExt)
+ .sProgram
+ ?pIdentifier (pIdentifier)
+ .sIdentifier
+ [ (pComma)
+ | pComma:
+ ] or >
+ }
+ ?pIdentifier (pIdentifier)
+ % value emitted 51
+ .sIdentifier
+ [ (pEndFile)
+ | *:
+ ] or >
+ .sParmEnd
+ @Block
+  [ (pEndFile)
+  | *:
+  ] or >
+  @BeginStmt
+   .sBegin
+   @Statement
+    [ (pEndFile)
+    | *:
+    .sNullStmt
+    >>
+   ;Statement
+   [ (pEndFile)
+   | *:
+   ] or >
+   .sEnd
+   >>
+  ;BeginStmt
+  >>
+ ;Block
+ >>
+;Program

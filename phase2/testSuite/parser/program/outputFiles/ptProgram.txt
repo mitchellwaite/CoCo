@@ -1,0 +1,32 @@
+@Program
+ ?pExt (pIdentifier)
+ scan/parse error, line 1: syntax error at: program
+ .sProgram
+ ?pIdentifier (pIdentifier)
+ .sIdentifier
+ [ (pIdentifier)
+ | *:
+ ] or >
+ .sParmEnd
+ @Block
+  [ (pIdentifier)
+  | *:
+  ] or >
+  @BeginStmt
+   .sBegin
+   @Statement
+    [ (pIdentifier)
+    | *:
+    .sNullStmt
+    >>
+   ;Statement
+   [ (pIdentifier)
+   | *:
+   ] or >
+   .sEnd
+   >>
+  ;BeginStmt
+  >>
+ ;Block
+ >>
+;Program
