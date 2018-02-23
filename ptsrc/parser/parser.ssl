@@ -174,9 +174,15 @@ Block :
             | 'def':
                 .sProcedure
                 % procedure name
+                [
+                    | 'pub':
+                        .sPublic
+                    | *:
+                ]
                 pIdentifier  .sIdentifier
                 @ProcedureHeading
-                @Block  % remove semicolon after procedure statement
+                @Block
+                'end'
             | *:
                 >
         ]}
@@ -280,6 +286,9 @@ ProcedureHeading :
                         | 'var':
                             pIdentifier  .sIdentifier
                             .sVar
+                        | ')':
+                            .sParmEnd
+                            >>
                         | *:
                             pIdentifier  .sIdentifier
                     ]
@@ -287,7 +296,7 @@ ProcedureHeading :
                     % type identifier
                     pIdentifier  .sIdentifier
                     [
-                        | ';':
+                        | ',':
                         | *:
                             >
                     ]
@@ -295,7 +304,6 @@ ProcedureHeading :
                 ')'
             | *:
         ]
-        ';'
         .sParmEnd;
 
 Statement :

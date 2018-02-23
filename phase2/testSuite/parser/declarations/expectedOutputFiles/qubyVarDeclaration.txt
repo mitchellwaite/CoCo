@@ -2,7 +2,6 @@
  ?pExt (pExt)
  .sProgram
  ?pIdentifier (pIdentifier)
- % value emitted 51
  .sIdentifier
  [ (pVar)
  | *:
@@ -22,7 +21,6 @@
     @SimpleType
      [ (pIdentifier)
      | pIdentifier:
-     % value emitted 51
      .sIdentifier
      [ (pEndFile)
      | *:

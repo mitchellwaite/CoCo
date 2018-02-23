@@ -1,0 +1,81 @@
+@Program
+ ?pExt (pExt)
+ .sProgram
+ ?pIdentifier (pIdentifier)
+ .sIdentifier
+ [ (pDef)
+ | *:
+ ] or >
+ .sParmEnd
+ @Block
+  [ (pDef)
+  | pDef:
+  .sProcedure
+  [ (pIdentifier)
+  | *:
+  ?pIdentifier (pIdentifier)
+  .sIdentifier
+  @ProcedureHeading
+   [ (pLeftParen)
+   | pLeftParen:
+   [ (pVar)
+   | pVar:
+   ?pIdentifier (pIdentifier)
+   .sIdentifier
+   .sVar
+   ] or >
+   ?pColon (pColon)
+   ?pIdentifier (pIdentifier)
+   .sIdentifier
+   [ (pRightParen)
+   | *:
+   ] or >
+   ?pRightParen (pRightParen)
+   ] or >
+   .sParmEnd
+   >>
+  ;ProcedureHeading
+  @Block
+   [ (pEnd)
+   | *:
+   ] or >
+   @BeginStmt
+    .sBegin
+    @Statement
+     [ (pEnd)
+     | *:
+     .sNullStmt
+     >>
+    ;Statement
+    [ (pEnd)
+    | *:
+    ] or >
+    .sEnd
+    >>
+   ;BeginStmt
+   >>
+  ;Block
+  ?pEnd (pEnd)
+  ] or >
+  }
+  [ (pEndFile)
+  | *:
+  ] or >
+  @BeginStmt
+   .sBegin
+   @Statement
+    [ (pEndFile)
+    | *:
+    .sNullStmt
+    >>
+   ;Statement
+   [ (pEndFile)
+   | *:
+   ] or >
+   .sEnd
+   >>
+  ;BeginStmt
+  >>
+ ;Block
+ >>
+;Program

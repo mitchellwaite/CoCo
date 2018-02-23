@@ -8,7 +8,6 @@
  ] or >
  }
  ?pIdentifier (pIdentifier)
- % value emitted 51
  .sIdentifier
  [ (pEndFile)
  | *:

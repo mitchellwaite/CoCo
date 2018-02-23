@@ -26,6 +26,9 @@ Johan: Modified @Block rule in parser.ssl to accept new declarations format for 
    
 Johan: NOTE, several lines in parser.ssl were commented out for the time being to allow for testing, in the end all the commented sections should be adjusted for quby. Example, if statements, loops etc.
 
+Clara: Modified parser.ssl in order to add Quby functionality for procedures. Added the option to make the procedure public using the 'pub' keyword and have procedures
+end with 'end'. Multiple parameters into a procedure is separated by commas instead of semicolons. Added only quby tests.
+
 ############################################################
 UPDATE DOCUMENTATION FOR PHASE 2!!!!!!!!!!!!!!!
 ############################################################

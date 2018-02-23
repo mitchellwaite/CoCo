@@ -2,7 +2,6 @@
  ?pExt (pExt)
  .sProgram
  ?pIdentifier (pIdentifier)
- % value emitted 51
  .sIdentifier
  [ (pVar)
  | *:

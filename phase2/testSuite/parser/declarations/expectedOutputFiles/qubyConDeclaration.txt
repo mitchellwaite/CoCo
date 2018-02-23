@@ -2,7 +2,6 @@
  ?pExt (pExt)
  .sProgram
  ?pIdentifier (pIdentifier)
- % value emitted 51
  .sIdentifier
  [ (pCon)
  | *:
@@ -19,7 +18,6 @@
     ?pEquals (pEquals)
     [ (pInteger)
     | pInteger:
-    % value emitted 51
     .sInteger
     ] or >
     >>
