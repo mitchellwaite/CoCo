@@ -29,6 +29,9 @@ Johan: NOTE, several lines in parser.ssl were commented out for the time being t
 Clara: Modified parser.ssl in order to add Quby functionality for procedures. Added the option to make the procedure public using the 'pub' keyword and have procedures
 end with 'end'. Multiple parameters into a procedure is separated by commas instead of semicolons. Added only quby tests.
 
+Johan: Using phase1 feedback made two distinct changes. First change was removing the rule for "<>" being outputted as .pNotEqual, this is no longer the case in Quby. A test case to test this was also added to the ScannerScreener testsuite.
+Second change involved add pRep to the output tokens of scan.ssl, and input tokens of parser.ssl, this token was overlooked in phase1. However it did already exist in stdIdentifiers file, causing some incorrect outputs in the test suite (tokens were being screened to one-off the actual keyword). The expected outputs have been adjusted to ensure they are correct. 
+
 ############################################################
 UPDATE DOCUMENTATION FOR PHASE 2!!!!!!!!!!!!!!!
 ############################################################

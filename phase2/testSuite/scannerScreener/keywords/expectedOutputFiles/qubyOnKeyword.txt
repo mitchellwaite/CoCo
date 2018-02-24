@@ -1,3 +1,3 @@
-  .pIdentifier (screened to pBreak)
+  .pIdentifier (screened to pOn)
  .pNewLine
  .pEndFile

@@ -43,7 +43,8 @@ Input :
         pOn                     'on'
         pBreak                  'break'
         pLen                    'len'        
-        lastKeywordToken = pLen 
+        pRep                    'rep'
+        lastKeywordToken = pRep 
 
         pIdentifier 
         firstCompoundInputToken = pIdentifier

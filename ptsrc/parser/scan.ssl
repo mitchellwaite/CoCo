@@ -74,7 +74,8 @@ Output :
         pOn
         pBreak
         pLen
-        lastKeywordToken = pLen
+        pRep
+        lastKeywordToken = pRep
 
         % Scanner tokens -
         %   These are the tokens actually recognized by the Scanner itself.
@@ -210,8 +211,6 @@ Scan :
                 ]
             | '<':
                 [
-                    | '>':
-                        .pNotEqual
                     | '=':
                         .pLessEqual
                     | *:
