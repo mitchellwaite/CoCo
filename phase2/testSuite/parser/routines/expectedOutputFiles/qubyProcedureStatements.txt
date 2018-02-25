@@ -25,19 +25,6 @@
    ?pColon (pColon)
    ?pIdentifier (pIdentifier)
    .sIdentifier
-   [ (pComma)
-   | pComma:
-   ] or >
-   }
-   [ (pVar)
-   | pVar:
-   ?pIdentifier (pIdentifier)
-   .sIdentifier
-   .sVar
-   ] or >
-   ?pColon (pColon)
-   ?pIdentifier (pIdentifier)
-   .sIdentifier
    [ (pRightParen)
    | *:
    ] or >
@@ -47,15 +34,50 @@
    >>
   ;ProcedureHeading
   @Block
-   [ (pEnd)
+   [ (pIdentifier)
    | *:
    ] or >
    @BeginStmt
     .sBegin
     @Statement
-     [ (pEnd)
-     | *:
-     .sNullStmt
+     [ (pIdentifier)
+     | pIdentifier:
+     @AssignmentOrCallStmt
+      [ (pEquals)
+      | pEquals:
+      .sAssignmentStmt
+      .sIdentifier
+      @Expression
+       @SimpleExpression
+        [ (pInteger)
+        | *:
+        @Term
+         @Factor
+          [ (pInteger)
+          | pInteger:
+          .sInteger
+          ] or >
+          >>
+         ;Factor
+         [ (pEnd)
+         | *:
+         ] or >
+         >>
+        ;Term
+        [ (pEnd)
+        | *:
+        ] or >
+        >>
+       ;SimpleExpression
+       [ (pEnd)
+       | *:
+       >>
+      ;Expression
+      .sExpnEnd
+      ] or >
+      >>
+     ;AssignmentOrCallStmt
+     ] or >
      >>
     ;Statement
     [ (pEnd)

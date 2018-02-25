@@ -18,12 +18,10 @@
   @ProcedureHeading
    [ (pLeftParen)
    | pLeftParen:
-   [ (pVar)
-   | pVar:
+   [ (pIdentifier)
+   | *:
    ?pIdentifier (pIdentifier)
    .sIdentifier
-   .sVar
-   ] or >
    ?pColon (pColon)
    ?pIdentifier (pIdentifier)
    .sIdentifier

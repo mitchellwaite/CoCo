@@ -1,0 +1,94 @@
+@Program
+ ?pExt (pExt)
+ .sProgram
+ ?pIdentifier (pIdentifier)
+ .sIdentifier
+ [ (pMod)
+ | *:
+ ] or >
+ .sParmEnd
+ @Block
+  [ (pMod)
+  | pMod:
+  .sModule
+  ?pIdentifier (pIdentifier)
+  .sIdentifier
+  @Block
+   [ (pIdentifier)
+   | *:
+   ] or >
+   @BeginStmt
+    .sBegin
+    @Statement
+     [ (pIdentifier)
+     | pIdentifier:
+     @AssignmentOrCallStmt
+      [ (pEquals)
+      | pEquals:
+      .sAssignmentStmt
+      .sIdentifier
+      @Expression
+       @SimpleExpression
+        [ (pInteger)
+        | *:
+        @Term
+         @Factor
+          [ (pInteger)
+          | pInteger:
+          .sInteger
+          ] or >
+          >>
+         ;Factor
+         [ (pEnd)
+         | *:
+         ] or >
+         >>
+        ;Term
+        [ (pEnd)
+        | *:
+        ] or >
+        >>
+       ;SimpleExpression
+       [ (pEnd)
+       | *:
+       >>
+      ;Expression
+      .sExpnEnd
+      ] or >
+      >>
+     ;AssignmentOrCallStmt
+     ] or >
+     >>
+    ;Statement
+    [ (pEnd)
+    | *:
+    ] or >
+    .sEnd
+    >>
+   ;BeginStmt
+   >>
+  ;Block
+  ?pEnd (pEnd)
+  ] or >
+  }
+  [ (pEndFile)
+  | *:
+  ] or >
+  @BeginStmt
+   .sBegin
+   @Statement
+    [ (pEndFile)
+    | *:
+    .sNullStmt
+    >>
+   ;Statement
+   [ (pEndFile)
+   | *:
+   ] or >
+   .sEnd
+   >>
+  ;BeginStmt
+  >>
+ ;Block
+ >>
+;Program

@@ -3,26 +3,16 @@
  .sProgram
  ?pIdentifier (pIdentifier)
  .sIdentifier
- [ (pDef)
+ [ (pMod)
  | *:
  ] or >
  .sParmEnd
  @Block
-  [ (pDef)
-  | pDef:
-  .sProcedure
-  [ (pPub)
-  | pPub:
-  .sPublic
-  ] or >
+  [ (pMod)
+  | pMod:
+  .sModule
   ?pIdentifier (pIdentifier)
   .sIdentifier
-  @ProcedureHeading
-   [ (pEnd)
-   | *:
-   .sParmEnd
-   >>
-  ;ProcedureHeading
   @Block
    [ (pEnd)
    | *:

@@ -11,19 +11,54 @@
   [ (pDef)
   | pDef:
   .sProcedure
-  [ (pPub)
-  | pPub:
-  .sPublic
-  ] or >
+  [ (pIdentifier)
+  | *:
   ?pIdentifier (pIdentifier)
   .sIdentifier
   @ProcedureHeading
-   [ (pEnd)
+   [ (pLeftParen)
+   | pLeftParen:
+   [ (pIdentifier)
    | *:
+   ?pIdentifier (pIdentifier)
+   .sIdentifier
+   ?pColon (pColon)
+   ?pIdentifier (pIdentifier)
+   .sIdentifier
+   [ (pRightParen)
+   | *:
+   ] or >
+   ?pRightParen (pRightParen)
+   ] or >
    .sParmEnd
    >>
   ;ProcedureHeading
   @Block
+   [ (pVar)
+   | pVar:
+   .sVar
+   @VariableDeclarations
+    ?pIdentifier (pIdentifier)
+    .sIdentifier
+    ?pColon (pColon)
+    @TypeBody
+     [ (pIdentifier)
+     | *:
+     @SimpleType
+      [ (pIdentifier)
+      | pIdentifier:
+      .sIdentifier
+      [ (pEnd)
+      | *:
+      ] or >
+      >>
+     ;SimpleType
+     >>
+    ;TypeBody
+    >>
+   ;VariableDeclarations
+   ] or >
+   }
    [ (pEnd)
    | *:
    ] or >

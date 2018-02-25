@@ -18,10 +18,8 @@
   ?pIdentifier (pIdentifier)
   .sIdentifier
   @ProcedureHeading
-   [ (pLeftParen)
-   | pLeftParen:
-   [ (pRightParen)
-   | pRightParen:
+   [ (pEnd)
+   | *:
    .sParmEnd
    >>
   ;ProcedureHeading

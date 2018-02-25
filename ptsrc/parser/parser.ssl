@@ -172,6 +172,11 @@ Block :
             | 'var':
                 .sVar
                 @VariableDeclarations
+            | 'mod':                      % Add in handling of Quby Modules
+                .sModule % module name
+                pIdentifier .sIdentifier
+                @Block  % Remember modules can contain declarations and statements blocks just like a regular code block.
+                'end'
             | 'def':
                 .sProcedure
                 % procedure name

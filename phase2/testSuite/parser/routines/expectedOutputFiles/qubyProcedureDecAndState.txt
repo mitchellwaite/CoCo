@@ -1,0 +1,139 @@
+@Program
+ ?pExt (pExt)
+ .sProgram
+ ?pIdentifier (pIdentifier)
+ .sIdentifier
+ [ (pDef)
+ | *:
+ ] or >
+ .sParmEnd
+ @Block
+  [ (pDef)
+  | pDef:
+  .sProcedure
+  [ (pIdentifier)
+  | *:
+  ?pIdentifier (pIdentifier)
+  .sIdentifier
+  @ProcedureHeading
+   [ (pLeftParen)
+   | pLeftParen:
+   [ (pIdentifier)
+   | *:
+   ?pIdentifier (pIdentifier)
+   .sIdentifier
+   ?pColon (pColon)
+   ?pIdentifier (pIdentifier)
+   .sIdentifier
+   [ (pRightParen)
+   | *:
+   ] or >
+   ?pRightParen (pRightParen)
+   ] or >
+   .sParmEnd
+   >>
+  ;ProcedureHeading
+  @Block
+   [ (pVar)
+   | pVar:
+   .sVar
+   @VariableDeclarations
+    ?pIdentifier (pIdentifier)
+    .sIdentifier
+    ?pColon (pColon)
+    @TypeBody
+     [ (pIdentifier)
+     | *:
+     @SimpleType
+      [ (pIdentifier)
+      | pIdentifier:
+      .sIdentifier
+      [ (pIdentifier)
+      | *:
+      ] or >
+      >>
+     ;SimpleType
+     >>
+    ;TypeBody
+    >>
+   ;VariableDeclarations
+   ] or >
+   }
+   [ (pIdentifier)
+   | *:
+   ] or >
+   @BeginStmt
+    .sBegin
+    @Statement
+     [ (pIdentifier)
+     | pIdentifier:
+     @AssignmentOrCallStmt
+      [ (pEquals)
+      | pEquals:
+      .sAssignmentStmt
+      .sIdentifier
+      @Expression
+       @SimpleExpression
+        [ (pInteger)
+        | *:
+        @Term
+         @Factor
+          [ (pInteger)
+          | pInteger:
+          .sInteger
+          ] or >
+          >>
+         ;Factor
+         [ (pEnd)
+         | *:
+         ] or >
+         >>
+        ;Term
+        [ (pEnd)
+        | *:
+        ] or >
+        >>
+       ;SimpleExpression
+       [ (pEnd)
+       | *:
+       >>
+      ;Expression
+      .sExpnEnd
+      ] or >
+      >>
+     ;AssignmentOrCallStmt
+     ] or >
+     >>
+    ;Statement
+    [ (pEnd)
+    | *:
+    ] or >
+    .sEnd
+    >>
+   ;BeginStmt
+   >>
+  ;Block
+  ?pEnd (pEnd)
+  ] or >
+  }
+  [ (pEndFile)
+  | *:
+  ] or >
+  @BeginStmt
+   .sBegin
+   @Statement
+    [ (pEndFile)
+    | *:
+    .sNullStmt
+    >>
+   ;Statement
+   [ (pEndFile)
+   | *:
+   ] or >
+   .sEnd
+   >>
+  ;BeginStmt
+  >>
+ ;Block
+ >>
+;Program

@@ -1,0 +1,4 @@
+ext input
+mod someModuleName
+   x = 5
+end

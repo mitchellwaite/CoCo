@@ -1,0 +1,5 @@
+ext input
+
+def bar(a:integer)
+    a = 5
+end
