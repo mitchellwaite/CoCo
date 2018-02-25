@@ -287,9 +287,6 @@ ProcedureHeading :
                         | 'var':
                             pIdentifier  .sIdentifier
                             .sVar
-                        | ')':
-                            .sParmEnd
-                            >>
                         | *:
                             pIdentifier  .sIdentifier
                     ]

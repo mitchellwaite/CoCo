@@ -32,6 +32,8 @@ end with 'end'. Multiple parameters into a procedure is separated by commas inst
 Johan: Using phase1 feedback made two distinct changes. First change was removing the rule for "<>" being outputted as .pNotEqual, this is no longer the case in Quby. A test case to test this was also added to the ScannerScreener testsuite.
 Second change involved add pRep to the output tokens of scan.ssl, and input tokens of parser.ssl, this token was overlooked in phase1. However it did already exist in stdIdentifiers file, causing some incorrect outputs in the test suite (tokens were being screened to one-off the actual keyword). The expected outputs have been adjusted to ensure they are correct. 
 
+Johan: Changed qubyNoParamsProcedure.pt test, following forum post that it should be "def P" instead of "def P()". Also removed the ssl code used for this section. Forum post: http://cisc458.caslab.queensu.ca/forum/viewtopic.php?f=14&t=555
+
 ############################################################
 UPDATE DOCUMENTATION FOR PHASE 2!!!!!!!!!!!!!!!
 ############################################################
