@@ -142,16 +142,16 @@
 	Statement = 331;
 	AssignmentOrCallStmt = 349;
 	IfStmt = 447;
-	Expression = 487;
+	Expression = 511;
 	CallStmt = 385;
-	CaseAlternative = 467;
-	SimpleExpression = 541;
-	Term = 594;
-	Factor = 638;
-	IdentifierExtension = 696;
+	CaseAlternative = 491;
+	SimpleExpression = 565;
+	Term = 618;
+	Factor = 662;
+	IdentifierExtension = 720;
 	}
 
 	{ S/SL Table Parameters }
-	sslTblSize = 726;
+	sslTblSize = 750;
 	minSslTableValue = -32767;
 	maxSslTableValue = 32767;

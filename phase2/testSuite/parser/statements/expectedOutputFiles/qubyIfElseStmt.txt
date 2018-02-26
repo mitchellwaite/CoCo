@@ -1,0 +1,152 @@
+@Program
+ ?pExt (pExt)
+ .sProgram
+ ?pIdentifier (pIdentifier)
+ .sIdentifier
+ [ (pIf)
+ | *:
+ ] or >
+ .sParmEnd
+ @Block
+  [ (pIf)
+  | *:
+  ] or >
+  @BeginStmt
+   .sBegin
+   @Statement
+    [ (pIf)
+    | pIf:
+    @IfStmt
+     .sIfStmt
+     @Expression
+      @SimpleExpression
+       [ (pIdentifier)
+       | *:
+       @Term
+        @Factor
+         [ (pIdentifier)
+         | pIdentifier:
+         .sIdentifier
+         @IdentifierExtension
+          [ (pLess)
+          | *:
+          >>
+         ;IdentifierExtension
+         ] or >
+         >>
+        ;Factor
+        [ (pLess)
+        | *:
+        ] or >
+        >>
+       ;Term
+       [ (pLess)
+       | *:
+       ] or >
+       >>
+      ;SimpleExpression
+      [ (pLess)
+      | pLess:
+      @SimpleExpression
+       [ (pInteger)
+       | *:
+       @Term
+        @Factor
+         [ (pInteger)
+         | pInteger:
+         .sInteger
+         ] or >
+         >>
+        ;Factor
+        [ (pColon)
+        | *:
+        ] or >
+        >>
+       ;Term
+       [ (pColon)
+       | *:
+       ] or >
+       >>
+      ;SimpleExpression
+      .sLT
+      ] or >
+      >>
+     ;Expression
+     .sExpnEnd
+     .sThen
+     ?pColon (pColon)
+     @BeginStmt
+      .sBegin
+      @Statement
+       [ (pIdentifier)
+       | pIdentifier:
+       @AssignmentOrCallStmt
+        [ (pElse)
+        | *:
+        @CallStmt
+         .sCallStmt
+         .sIdentifier
+         [ (pElse)
+         | *:
+         .sParmEnd
+         >>
+        ;CallStmt
+        >>
+       ;AssignmentOrCallStmt
+       ] or >
+       >>
+      ;Statement
+      [ (pElse)
+      | *:
+      ] or >
+      .sEnd
+      >>
+     ;BeginStmt
+     [ (pElse)
+     | pElse:
+     .sElse
+     ?pColon (pColon)
+     @BeginStmt
+      .sBegin
+      @Statement
+       [ (pIdentifier)
+       | pIdentifier:
+       @AssignmentOrCallStmt
+        [ (pEnd)
+        | *:
+        @CallStmt
+         .sCallStmt
+         .sIdentifier
+         [ (pEnd)
+         | *:
+         .sParmEnd
+         >>
+        ;CallStmt
+        >>
+       ;AssignmentOrCallStmt
+       ] or >
+       >>
+      ;Statement
+      [ (pEnd)
+      | *:
+      ] or >
+      .sEnd
+      >>
+     ;BeginStmt
+     ?pEnd (pEnd)
+     ] or >
+     >>
+    ;IfStmt
+    ] or >
+    >>
+   ;Statement
+   [ (pEndFile)
+   | *:
+   ] or >
+   .sEnd
+   >>
+  ;BeginStmt
+  >>
+ ;Block
+ >>
+;Program

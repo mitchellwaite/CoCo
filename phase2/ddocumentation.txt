@@ -38,6 +38,10 @@ Johan: Added code to allow for Quby "modules", the sole code changes for this we
 
 Johan: Added a few extra tests to routines test suite (tests with declarations, statements, etc, as well as one test to ensure pt style no longer works). Added test case documentation for routines and modules. 
 
+Clara: Made a few changes to the parser.ssl in order to allow if, else statements to be wrapped with a begin and end. They also accept a colon for each if and else statement. Elif was implemented using the second option presented by the professor, which is to have nested if else statements instead of implementing a new elif semantic 
+token. Also replaced the Equals and NotEquals to the new Quby representations of '==' and '!='. Wrote quby tests for each case and did not need to write PT tests
+because the output token behavior should be the same? i think.
+
 ############################################################
 UPDATE DOCUMENTATION FOR PHASE 2!!!!!!!!!!!!!!!
 ############################################################

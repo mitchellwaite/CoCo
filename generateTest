@@ -1,0 +1,24 @@
+#!/bin/bash
+
+set -e
+
+if [ -z "$2" ]; then
+  echo "usage: $0 <destination> <file.pt>"
+  exit 1
+fi
+
+dirname="$1"
+ptfile="$(realpath $2)"
+
+outdir="phase2/testSuite/parser/$dirname"
+filename="$(basename $ptfile)"
+outfilename="$(echo $filename | sed -e 's/.pt$/.txt/')"
+
+mkdir -p "$outdir/"{inputFiles,outputFiles,expectedOutputFiles}
+
+cp "$ptfile" "${outdir}/inputFiles/${filename}"
+
+(
+  cd ptsrc
+  ssltrace "ptc -o2 -t2 -L lib/pt $ptfile" lib/pt/parser.def
+) > "${outdir}/expectedOutputFiles/${outfilename}"

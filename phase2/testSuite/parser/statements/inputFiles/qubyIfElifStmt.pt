@@ -1,0 +1,7 @@
+ext input
+if a == 1 :
+  a
+elif b != 2 :
+  b
+end
+    

@@ -1,0 +1,7 @@
+ext input
+if a < 2 :
+  a
+else:
+  b
+end
+    

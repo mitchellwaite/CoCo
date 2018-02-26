@@ -67,7 +67,7 @@ Input :
         pSemicolon              ';'
         pColon                  ':'
         pEquals                 '='
-        pNotEqual               '<>'
+        pNotEqual               '!='
         pLess                   '<'
         pLessEqual              '<='
         pGreaterEqual           '>='
@@ -311,12 +311,10 @@ ProcedureHeading :
 
 Statement :
         [
-            | pIdentifier:
-                @AssignmentOrCallStmt
-%            | 'begin':
-%                @BeginStmt
-            | 'if':
-                @IfStmt
+             | pIdentifier:
+                 @AssignmentOrCallStmt
+             | 'if':
+                 @IfStmt
 %            | 'while':
 %                @WhileStmt
 %            | 'case':
@@ -392,12 +390,21 @@ IfStmt :
         .sIfStmt
         @Expression
         .sExpnEnd
-%        'then'  .sThen
-        @Statement
-         [
+        .sThen
+        ':'
+        @BeginStmt
+        [
             | 'else':
                 .sElse
-                @Statement
+                ':'
+                @BeginStmt
+                'end'
+            | 'elif':
+                .sElse
+                .sBegin
+                @IfStmt
+                .sEnd
+            | 'end':
             | *:
         ];
 
@@ -462,9 +469,9 @@ CaseAlternative :
 Expression :
         @SimpleExpression
         [
-            | '=':
+            | '==':
                 @SimpleExpression  .sEq
-            | '<>':
+            | '!=':
                 @SimpleExpression  .sNE
             | '<':
                 @SimpleExpression  .sLT
