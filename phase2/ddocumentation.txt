@@ -42,6 +42,9 @@ Clara: Made a few changes to the parser.ssl in order to allow if, else statement
 token. Also replaced the Equals and NotEquals to the new Quby representations of '==' and '!='. Wrote quby tests for each case and did not need to write PT tests
 because the output token behavior should be the same? i think.
 
+Johan: Updated case statement rules to work with 'sel' statement instead. Also added the requirement for 'else' in the case statement rule.
+TODO: add more tests for sel statement, and IMPORTANT, create a statements rule(rule that does .sBegin, accepts unlimited statements, then outputs .sEnd), right now @BeginStmt uses pNewLine which is bad.
+
 ############################################################
 UPDATE DOCUMENTATION FOR PHASE 2!!!!!!!!!!!!!!!
 ############################################################

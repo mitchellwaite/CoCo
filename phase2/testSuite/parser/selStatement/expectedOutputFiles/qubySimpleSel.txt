@@ -1,0 +1,270 @@
+@Program
+ ?pExt (pExt)
+ .sProgram
+ ?pIdentifier (pIdentifier)
+ .sIdentifier
+ [ (pSel)
+ | *:
+ ] or >
+ .sParmEnd
+ @Block
+  [ (pSel)
+  | *:
+  ] or >
+  @BeginStmt
+   .sBegin
+   @Statement
+    [ (pSel)
+    | pSel:
+    @SelStmt
+     .sSelStmt
+     @Expression
+      @SimpleExpression
+       [ (pIdentifier)
+       | *:
+       @Term
+        @Factor
+         [ (pIdentifier)
+         | pIdentifier:
+         .sIdentifier
+         @IdentifierExtension
+          [ (pColon)
+          | *:
+          >>
+         ;IdentifierExtension
+         ] or >
+         >>
+        ;Factor
+        [ (pColon)
+        | *:
+        ] or >
+        >>
+       ;Term
+       [ (pColon)
+       | *:
+       ] or >
+       >>
+      ;SimpleExpression
+      [ (pColon)
+      | *:
+      >>
+     ;Expression
+     .sExpnEnd
+     ?pColon (pColon)
+     ?pIs (pIs)
+     @SelAlternative
+      @OptionallySignedIntegerConstant
+       [ (pInteger)
+       | *:
+       @UnsignedIntegerConstant
+        [ (pInteger)
+        | pInteger:
+        .sInteger
+        ] or >
+        >>
+       ;UnsignedIntegerConstant
+       >>
+      ;OptionallySignedIntegerConstant
+      [ (pColon)
+      | *:
+      ] or >
+      .sLabelEnd
+      ?pColon (pColon)
+      @BeginStmt
+       .sBegin
+       @Statement
+        [ (pIdentifier)
+        | pIdentifier:
+        @AssignmentOrCallStmt
+         [ (pEquals)
+         | pEquals:
+         .sAssignmentStmt
+         .sIdentifier
+         @Expression
+          @SimpleExpression
+           [ (pInteger)
+           | *:
+           @Term
+            @Factor
+             [ (pInteger)
+             | pInteger:
+             .sInteger
+             ] or >
+             >>
+            ;Factor
+            [ (pIs)
+            | *:
+            ] or >
+            >>
+           ;Term
+           [ (pIs)
+           | *:
+           ] or >
+           >>
+          ;SimpleExpression
+          [ (pIs)
+          | *:
+          >>
+         ;Expression
+         .sExpnEnd
+         ] or >
+         >>
+        ;AssignmentOrCallStmt
+        ] or >
+        >>
+       ;Statement
+       [ (pIs)
+       | *:
+       ] or >
+       .sEnd
+       >>
+      ;BeginStmt
+      >>
+     ;SelAlternative
+     [ (pIs)
+     | pIs:
+     @SelAlternative
+      @OptionallySignedIntegerConstant
+       [ (pInteger)
+       | *:
+       @UnsignedIntegerConstant
+        [ (pInteger)
+        | pInteger:
+        .sInteger
+        ] or >
+        >>
+       ;UnsignedIntegerConstant
+       >>
+      ;OptionallySignedIntegerConstant
+      [ (pColon)
+      | *:
+      ] or >
+      .sLabelEnd
+      ?pColon (pColon)
+      @BeginStmt
+       .sBegin
+       @Statement
+        [ (pIdentifier)
+        | pIdentifier:
+        @AssignmentOrCallStmt
+         [ (pEquals)
+         | pEquals:
+         .sAssignmentStmt
+         .sIdentifier
+         @Expression
+          @SimpleExpression
+           [ (pInteger)
+           | *:
+           @Term
+            @Factor
+             [ (pInteger)
+             | pInteger:
+             .sInteger
+             ] or >
+             >>
+            ;Factor
+            [ (pElse)
+            | *:
+            ] or >
+            >>
+           ;Term
+           [ (pElse)
+           | *:
+           ] or >
+           >>
+          ;SimpleExpression
+          [ (pElse)
+          | *:
+          >>
+         ;Expression
+         .sExpnEnd
+         ] or >
+         >>
+        ;AssignmentOrCallStmt
+        ] or >
+        >>
+       ;Statement
+       [ (pElse)
+       | *:
+       ] or >
+       .sEnd
+       >>
+      ;BeginStmt
+      >>
+     ;SelAlternative
+     ] or >
+     }
+     [ (pElse)
+     | pElse:
+     .sElse
+     ?pColon (pColon)
+     @BeginStmt
+      .sBegin
+      @Statement
+       [ (pIdentifier)
+       | pIdentifier:
+       @AssignmentOrCallStmt
+        [ (pEquals)
+        | pEquals:
+        .sAssignmentStmt
+        .sIdentifier
+        @Expression
+         @SimpleExpression
+          [ (pInteger)
+          | *:
+          @Term
+           @Factor
+            [ (pInteger)
+            | pInteger:
+            .sInteger
+            ] or >
+            >>
+           ;Factor
+           [ (pEnd)
+           | *:
+           ] or >
+           >>
+          ;Term
+          [ (pEnd)
+          | *:
+          ] or >
+          >>
+         ;SimpleExpression
+         [ (pEnd)
+         | *:
+         >>
+        ;Expression
+        .sExpnEnd
+        ] or >
+        >>
+       ;AssignmentOrCallStmt
+       ] or >
+       >>
+      ;Statement
+      [ (pEnd)
+      | *:
+      ] or >
+      .sEnd
+      >>
+     ;BeginStmt
+     ] or >
+     }
+     [ (pEnd)
+     | pEnd:
+     ] or >
+     .sSelEnd
+     >>
+    ;SelStmt
+    ] or >
+    >>
+   ;Statement
+   [ (pEndFile)
+   | *:
+   ] or >
+   .sEnd
+   >>
+  ;BeginStmt
+  >>
+ ;Block
+ >>
+;Program

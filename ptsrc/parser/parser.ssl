@@ -317,8 +317,8 @@ Statement :
                  @IfStmt
 %            | 'while':
 %                @WhileStmt
-%            | 'case':
-%                @CaseStmt
+             | 'sel':
+                 @SelStmt
 %            | 'repeat':
 %                @RepeatStmt
              | *:
@@ -379,7 +379,7 @@ BeginStmt :
         {
             @Statement % In Quby declarations and statements are seperate, so after all the statements are complete the program should end.
             [
-                  | pNewLine:
+                  | pNewLine: % We'll need to change this
                   | *:
                        >
             ]
@@ -408,30 +408,27 @@ IfStmt :
             | *:
         ];
 
-%CaseStmt :
-%        .sCaseStmt
-%        @Expression
-%        .sExpnEnd
-%        'of'
-%        @CaseAlternative
-%        {[
-%            | ';':
-%                % since case alternatives cannot be null, allow
-%                % for the common situation of an extra semicolon
-%                % at the end of the list of case alternatives.
-%                [
-%                    | 'end':
-%                        >
-%                    | *:
-%                       @CaseAlternative
-%                ]
-%            | 'end':
-%                >
-%        ]}
-%        .sCaseEnd;
+SelStmt :
+        .sSelStmt
+        @Expression
+        .sExpnEnd
+        ':'
+        'is'
+        @SelAlternative
+        {[
+            | 'else':
+                .sElse
+                ':'
+                @BeginStmt
+            | 'is':
+                @SelAlternative
+            | pEnd:
+                >
+        ]}
+        .sSelEnd;
 
-CaseAlternative :
-        % A case alternative is a statement labelled by
+SelAlternative :
+        % A select alternative is a statement labelled by
         % one or more optionally signed integer constants
 
         {
@@ -443,7 +440,7 @@ CaseAlternative :
             ]
         }
         .sLabelEnd
-        ':'  @Statement;
+        ':'  @BeginStmt; % Calling BeginStmt allows for multiple statements
 
 %WhileStmt :
 %        .sWhileStmt
