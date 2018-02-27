@@ -37,55 +37,53 @@
    [ (pIdentifier)
    | *:
    ] or >
-   @BeginStmt
+   @Statements
     .sBegin
-    @Statement
-     [ (pIdentifier)
-     | pIdentifier:
-     @AssignmentOrCallStmt
-      [ (pEquals)
-      | pEquals:
-      .sAssignmentStmt
-      .sIdentifier
-      @Expression
-       @SimpleExpression
-        [ (pInteger)
-        | *:
-        @Term
-         @Factor
-          [ (pInteger)
-          | pInteger:
-          .sInteger
-          ] or >
-          >>
-         ;Factor
-         [ (pEnd)
-         | *:
+    [ (pIdentifier)
+    | pIdentifier:
+    @AssignmentOrCallStmt
+     [ (pEquals)
+     | pEquals:
+     .sAssignmentStmt
+     .sIdentifier
+     @Expression
+      @SimpleExpression
+       [ (pInteger)
+       | *:
+       @Term
+        @Factor
+         [ (pInteger)
+         | pInteger:
+         .sInteger
          ] or >
          >>
-        ;Term
+        ;Factor
         [ (pEnd)
         | *:
         ] or >
         >>
-       ;SimpleExpression
+       ;Term
        [ (pEnd)
        | *:
+       ] or >
        >>
-      ;Expression
-      .sExpnEnd
-      ] or >
+      ;SimpleExpression
+      [ (pEnd)
+      | *:
       >>
-     ;AssignmentOrCallStmt
+     ;Expression
+     .sExpnEnd
      ] or >
      >>
-    ;Statement
+    ;AssignmentOrCallStmt
+    ] or >
+    }
     [ (pEnd)
     | *:
     ] or >
     .sEnd
     >>
-   ;BeginStmt
+   ;Statements
    >>
   ;Block
   ?pEnd (pEnd)
@@ -94,20 +92,14 @@
   [ (pEndFile)
   | *:
   ] or >
-  @BeginStmt
+  @Statements
    .sBegin
-   @Statement
-    [ (pEndFile)
-    | *:
-    .sNullStmt
-    >>
-   ;Statement
    [ (pEndFile)
    | *:
    ] or >
    .sEnd
    >>
-  ;BeginStmt
+  ;Statements
   >>
  ;Block
  >>

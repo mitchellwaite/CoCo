@@ -36,20 +36,14 @@
   [ (pEndFile)
   | *:
   ] or >
-  @BeginStmt
+  @Statements
    .sBegin
-   @Statement
-    [ (pEndFile)
-    | *:
-    .sNullStmt
-    >>
-   ;Statement
    [ (pEndFile)
    | *:
    ] or >
    .sEnd
    >>
-  ;BeginStmt
+  ;Statements
   >>
  ;Block
  >>

@@ -36,22 +36,37 @@
   [ (pSemicolon)
   | *:
   ] or >
-  @BeginStmt
+  @Statements
    .sBegin
-   @Statement
-    [ (pSemicolon)
-    | *:
-    .sNullStmt
-    >>
-   ;Statement
    [ (pSemicolon)
+   | pSemicolon:
+   ] or >
+   }
+   [ (pIdentifier)
+   | pIdentifier:
+   @AssignmentOrCallStmt
+    [ (pColon)
+    | *:
+    @CallStmt
+     .sCallStmt
+     .sIdentifier
+     [ (pColon)
+     | *:
+     .sParmEnd
+     >>
+    ;CallStmt
+    >>
+   ;AssignmentOrCallStmt
+   ] or >
+   }
+   [ (pColon)
    | *:
    ] or >
    .sEnd
    >>
-  ;BeginStmt
+  ;Statements
   >>
  ;Block
  >>
 ;Program
-scan/parse error, line 2: syntax error at: ;
+scan/parse error, line 3: syntax error at: :

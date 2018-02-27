@@ -12,20 +12,14 @@
   [ (pIdentifier)
   | *:
   ] or >
-  @BeginStmt
+  @Statements
    .sBegin
-   @Statement
-    [ (pIdentifier)
-    | *:
-    .sNullStmt
-    >>
-   ;Statement
    [ (pIdentifier)
    | *:
    ] or >
    .sEnd
    >>
-  ;BeginStmt
+  ;Statements
   >>
  ;Block
  >>

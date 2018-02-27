@@ -11,35 +11,144 @@
   [ (pIdentifier)
   | *:
   ] or >
-  @BeginStmt
+  @Statements
    .sBegin
-   @Statement
+   [ (pIdentifier)
+   | pIdentifier:
+   @AssignmentOrCallStmt
     [ (pIdentifier)
-    | pIdentifier:
-    @AssignmentOrCallStmt
+    | *:
+    @CallStmt
+     .sCallStmt
+     .sIdentifier
      [ (pIdentifier)
      | *:
-     @CallStmt
-      .sCallStmt
-      .sIdentifier
-      [ (pIdentifier)
-      | *:
-      .sParmEnd
-      >>
-     ;CallStmt
+     .sParmEnd
      >>
-    ;AssignmentOrCallStmt
-    ] or >
+    ;CallStmt
     >>
-   ;Statement
+   ;AssignmentOrCallStmt
+   ] or >
+   }
    [ (pIdentifier)
+   | pIdentifier:
+   @AssignmentOrCallStmt
+    [ (pLeftParen)
+    | *:
+    @CallStmt
+     .sCallStmt
+     .sIdentifier
+     [ (pLeftParen)
+     | pLeftParen:
+     @Expression
+      @SimpleExpression
+       [ (pIdentifier)
+       | *:
+       @Term
+        @Factor
+         [ (pIdentifier)
+         | pIdentifier:
+         .sIdentifier
+         @IdentifierExtension
+          [ (pColon)
+          | *:
+          >>
+         ;IdentifierExtension
+         ] or >
+         >>
+        ;Factor
+        [ (pColon)
+        | *:
+        ] or >
+        >>
+       ;Term
+       [ (pColon)
+       | *:
+       ] or >
+       >>
+      ;SimpleExpression
+      [ (pColon)
+      | *:
+      >>
+     ;Expression
+     .sExpnEnd
+     [ (pColon)
+     | pColon:
+     .sFieldWidth
+     @Expression
+      @SimpleExpression
+       [ (pIdentifier)
+       | *:
+       @Term
+        @Factor
+         [ (pIdentifier)
+         | pIdentifier:
+         .sIdentifier
+         @IdentifierExtension
+          [ (pRightParen)
+          | *:
+          >>
+         ;IdentifierExtension
+         ] or >
+         >>
+        ;Factor
+        [ (pRightParen)
+        | *:
+        ] or >
+        >>
+       ;Term
+       [ (pRightParen)
+       | *:
+       ] or >
+       >>
+      ;SimpleExpression
+      [ (pRightParen)
+      | *:
+      >>
+     ;Expression
+     .sExpnEnd
+     ] or >
+     [ (pRightParen)
+     | *:
+     ] or >
+     ?pRightParen (pRightParen)
+     ] or >
+     .sParmEnd
+     >>
+    ;CallStmt
+    >>
+   ;AssignmentOrCallStmt
+   ] or >
+   }
+   [ (pSemicolon)
+   | pSemicolon:
+   ] or >
+   }
+   [ (pIdentifier)
+   | pIdentifier:
+   @AssignmentOrCallStmt
+    [ (pEnd)
+    | *:
+    @CallStmt
+     .sCallStmt
+     .sIdentifier
+     [ (pEnd)
+     | *:
+     .sParmEnd
+     >>
+    ;CallStmt
+    >>
+   ;AssignmentOrCallStmt
+   ] or >
+   }
+   [ (pEnd)
    | *:
    ] or >
    .sEnd
    >>
-  ;BeginStmt
+  ;Statements
   >>
  ;Block
  >>
 ;Program
-scan/parse error, line 2: syntax error at: p
+scan/parse error, line 4: syntax error at: end

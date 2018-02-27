@@ -11,11 +11,98 @@
   [ (pIf)
   | *:
   ] or >
-  @BeginStmt
+  @Statements
    .sBegin
-   @Statement
-    [ (pIf)
-    | pIf:
+   [ (pIf)
+   | pIf:
+   @IfStmt
+    .sIfStmt
+    @Expression
+     @SimpleExpression
+      [ (pIdentifier)
+      | *:
+      @Term
+       @Factor
+        [ (pIdentifier)
+        | pIdentifier:
+        .sIdentifier
+        @IdentifierExtension
+         [ (pDoubleEquals)
+         | *:
+         >>
+        ;IdentifierExtension
+        ] or >
+        >>
+       ;Factor
+       [ (pDoubleEquals)
+       | *:
+       ] or >
+       >>
+      ;Term
+      [ (pDoubleEquals)
+      | *:
+      ] or >
+      >>
+     ;SimpleExpression
+     [ (pDoubleEquals)
+     | pDoubleEquals:
+     @SimpleExpression
+      [ (pInteger)
+      | *:
+      @Term
+       @Factor
+        [ (pInteger)
+        | pInteger:
+        .sInteger
+        ] or >
+        >>
+       ;Factor
+       [ (pColon)
+       | *:
+       ] or >
+       >>
+      ;Term
+      [ (pColon)
+      | *:
+      ] or >
+      >>
+     ;SimpleExpression
+     .sEq
+     ] or >
+     >>
+    ;Expression
+    .sExpnEnd
+    .sThen
+    ?pColon (pColon)
+    @Statements
+     .sBegin
+     [ (pIdentifier)
+     | pIdentifier:
+     @AssignmentOrCallStmt
+      [ (pElif)
+      | *:
+      @CallStmt
+       .sCallStmt
+       .sIdentifier
+       [ (pElif)
+       | *:
+       .sParmEnd
+       >>
+      ;CallStmt
+      >>
+     ;AssignmentOrCallStmt
+     ] or >
+     }
+     [ (pElif)
+     | *:
+     ] or >
+     .sEnd
+     >>
+    ;Statements
+    [ (pElif)
+    | pElif:
+    .sElse
+    .sBegin
     @IfStmt
      .sIfStmt
      @Expression
@@ -28,25 +115,25 @@
          | pIdentifier:
          .sIdentifier
          @IdentifierExtension
-          [ (pDoubleEquals)
+          [ (pNotEqual)
           | *:
           >>
          ;IdentifierExtension
          ] or >
          >>
         ;Factor
-        [ (pDoubleEquals)
+        [ (pNotEqual)
         | *:
         ] or >
         >>
        ;Term
-       [ (pDoubleEquals)
+       [ (pNotEqual)
        | *:
        ] or >
        >>
       ;SimpleExpression
-      [ (pDoubleEquals)
-      | pDoubleEquals:
+      [ (pNotEqual)
+      | pNotEqual:
       @SimpleExpression
        [ (pInteger)
        | *:
@@ -68,178 +155,83 @@
        ] or >
        >>
       ;SimpleExpression
-      .sEq
+      .sNE
       ] or >
       >>
      ;Expression
      .sExpnEnd
      .sThen
      ?pColon (pColon)
-     @BeginStmt
+     @Statements
       .sBegin
-      @Statement
-       [ (pIdentifier)
-       | pIdentifier:
-       @AssignmentOrCallStmt
-        [ (pElif)
+      [ (pIdentifier)
+      | pIdentifier:
+      @AssignmentOrCallStmt
+       [ (pElse)
+       | *:
+       @CallStmt
+        .sCallStmt
+        .sIdentifier
+        [ (pElse)
         | *:
-        @CallStmt
-         .sCallStmt
-         .sIdentifier
-         [ (pElif)
-         | *:
-         .sParmEnd
-         >>
-        ;CallStmt
+        .sParmEnd
         >>
-       ;AssignmentOrCallStmt
-       ] or >
+       ;CallStmt
        >>
-      ;Statement
-      [ (pElif)
+      ;AssignmentOrCallStmt
+      ] or >
+      }
+      [ (pElse)
       | *:
       ] or >
       .sEnd
       >>
-     ;BeginStmt
-     [ (pElif)
-     | pElif:
+     ;Statements
+     [ (pElse)
+     | pElse:
      .sElse
-     .sBegin
-     @IfStmt
-      .sIfStmt
-      @Expression
-       @SimpleExpression
-        [ (pIdentifier)
-        | *:
-        @Term
-         @Factor
-          [ (pIdentifier)
-          | pIdentifier:
-          .sIdentifier
-          @IdentifierExtension
-           [ (pNotEqual)
-           | *:
-           >>
-          ;IdentifierExtension
-          ] or >
-          >>
-         ;Factor
-         [ (pNotEqual)
-         | *:
-         ] or >
-         >>
-        ;Term
-        [ (pNotEqual)
-        | *:
-        ] or >
-        >>
-       ;SimpleExpression
-       [ (pNotEqual)
-       | pNotEqual:
-       @SimpleExpression
-        [ (pInteger)
-        | *:
-        @Term
-         @Factor
-          [ (pInteger)
-          | pInteger:
-          .sInteger
-          ] or >
-          >>
-         ;Factor
-         [ (pColon)
-         | *:
-         ] or >
-         >>
-        ;Term
-        [ (pColon)
-        | *:
-        ] or >
-        >>
-       ;SimpleExpression
-       .sNE
-       ] or >
-       >>
-      ;Expression
-      .sExpnEnd
-      .sThen
-      ?pColon (pColon)
-      @BeginStmt
-       .sBegin
-       @Statement
-        [ (pIdentifier)
-        | pIdentifier:
-        @AssignmentOrCallStmt
-         [ (pElse)
-         | *:
-         @CallStmt
-          .sCallStmt
-          .sIdentifier
-          [ (pElse)
-          | *:
-          .sParmEnd
-          >>
-         ;CallStmt
-         >>
-        ;AssignmentOrCallStmt
-        ] or >
-        >>
-       ;Statement
-       [ (pElse)
-       | *:
-       ] or >
-       .sEnd
-       >>
-      ;BeginStmt
-      [ (pElse)
-      | pElse:
-      .sElse
-      ?pColon (pColon)
-      @BeginStmt
-       .sBegin
-       @Statement
-        [ (pIdentifier)
-        | pIdentifier:
-        @AssignmentOrCallStmt
-         [ (pEnd)
-         | *:
-         @CallStmt
-          .sCallStmt
-          .sIdentifier
-          [ (pEnd)
-          | *:
-          .sParmEnd
-          >>
-         ;CallStmt
-         >>
-        ;AssignmentOrCallStmt
-        ] or >
-        >>
-       ;Statement
+     ?pColon (pColon)
+     @Statements
+      .sBegin
+      [ (pIdentifier)
+      | pIdentifier:
+      @AssignmentOrCallStmt
        [ (pEnd)
        | *:
-       ] or >
-       .sEnd
+       @CallStmt
+        .sCallStmt
+        .sIdentifier
+        [ (pEnd)
+        | *:
+        .sParmEnd
+        >>
+       ;CallStmt
        >>
-      ;BeginStmt
-      ?pEnd (pEnd)
+      ;AssignmentOrCallStmt
       ] or >
+      }
+      [ (pEnd)
+      | *:
+      ] or >
+      .sEnd
       >>
-     ;IfStmt
-     .sEnd
+     ;Statements
+     ?pEnd (pEnd)
      ] or >
      >>
     ;IfStmt
+    .sEnd
     ] or >
     >>
-   ;Statement
+   ;IfStmt
+   ] or >
+   }
    [ (pEndFile)
    | *:
    ] or >
    .sEnd
    >>
-  ;BeginStmt
+  ;Statements
   >>
  ;Block
  >>

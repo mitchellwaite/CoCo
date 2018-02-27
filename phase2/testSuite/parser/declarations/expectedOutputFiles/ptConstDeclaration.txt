@@ -11,35 +11,75 @@
   [ (pIdentifier)
   | *:
   ] or >
-  @BeginStmt
+  @Statements
    .sBegin
-   @Statement
+   [ (pIdentifier)
+   | pIdentifier:
+   @AssignmentOrCallStmt
     [ (pIdentifier)
-    | pIdentifier:
-    @AssignmentOrCallStmt
+    | *:
+    @CallStmt
+     .sCallStmt
+     .sIdentifier
      [ (pIdentifier)
      | *:
-     @CallStmt
-      .sCallStmt
-      .sIdentifier
-      [ (pIdentifier)
-      | *:
-      .sParmEnd
-      >>
-     ;CallStmt
+     .sParmEnd
      >>
-    ;AssignmentOrCallStmt
+    ;CallStmt
+    >>
+   ;AssignmentOrCallStmt
+   ] or >
+   }
+   [ (pIdentifier)
+   | pIdentifier:
+   @AssignmentOrCallStmt
+    [ (pEquals)
+    | pEquals:
+    .sAssignmentStmt
+    .sIdentifier
+    @Expression
+     @SimpleExpression
+      [ (pInteger)
+      | *:
+      @Term
+       @Factor
+        [ (pInteger)
+        | pInteger:
+        .sInteger
+        ] or >
+        >>
+       ;Factor
+       [ (pSemicolon)
+       | *:
+       ] or >
+       >>
+      ;Term
+      [ (pSemicolon)
+      | *:
+      ] or >
+      >>
+     ;SimpleExpression
+     [ (pSemicolon)
+     | *:
+     >>
+    ;Expression
+    .sExpnEnd
     ] or >
     >>
-   ;Statement
-   [ (pIdentifier)
+   ;AssignmentOrCallStmt
+   ] or >
+   }
+   [ (pSemicolon)
+   | pSemicolon:
+   ] or >
+   }
+   [ (pEndFile)
    | *:
    ] or >
    .sEnd
    >>
-  ;BeginStmt
+  ;Statements
   >>
  ;Block
  >>
 ;Program
-scan/parse error, line 2: syntax error at: a

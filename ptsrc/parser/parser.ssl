@@ -193,7 +193,7 @@ Block :
                 >
         ]}
         % Quby no longer uses 'begin' at beginning of procedures
-        @BeginStmt;
+        @Statements;
 
 ConstantDefinitions :
         % Accept one or more named constant definitions
@@ -309,21 +309,22 @@ ProcedureHeading :
         ]
         .sParmEnd;
 
-Statement :
-        [
+Statements :
+        .sBegin
+        {[
              | pIdentifier:
                  @AssignmentOrCallStmt
              | 'if':
                  @IfStmt
-%            | 'while':
-%                @WhileStmt
              | 'sel':
                  @SelStmt
-%            | 'repeat':
+             | 'rep':
 %                @RepeatStmt
+             | ';':
              | *:
-                .sNullStmt
-        ];
+                >
+        ]}
+        .sEnd;
 
 AssignmentOrCallStmt :
         [
@@ -374,30 +375,18 @@ CallStmt :
         ]
         .sParmEnd;
 
-BeginStmt :
-        .sBegin
-        {
-            @Statement % In Quby declarations and statements are seperate, so after all the statements are complete the program should end.
-            [
-                  | pNewLine: % We'll need to change this
-                  | *:
-                       >
-            ]
-        }
-        .sEnd;
-
 IfStmt :
         .sIfStmt
         @Expression
         .sExpnEnd
         .sThen
         ':'
-        @BeginStmt
+        @Statements
         [
             | 'else':
                 .sElse
                 ':'
-                @BeginStmt
+                @Statements
                 'end'
             | 'elif':
                 .sElse
@@ -419,7 +408,7 @@ SelStmt :
             | 'else':
                 .sElse
                 ':'
-                @BeginStmt
+                @Statements
             | 'is':
                 @SelAlternative
             | pEnd:
@@ -440,7 +429,7 @@ SelAlternative :
             ]
         }
         .sLabelEnd
-        ':'  @BeginStmt; % Calling BeginStmt allows for multiple statements
+        ':'  @Statements; % Calling Statements allows for multiple statements
 
 %WhileStmt :
 %        .sWhileStmt

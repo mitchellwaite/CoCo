@@ -27,20 +27,14 @@
    [ (pEnd)
    | *:
    ] or >
-   @BeginStmt
+   @Statements
     .sBegin
-    @Statement
-     [ (pEnd)
-     | *:
-     .sNullStmt
-     >>
-    ;Statement
     [ (pEnd)
     | *:
     ] or >
     .sEnd
     >>
-   ;BeginStmt
+   ;Statements
    >>
   ;Block
   ?pEnd (pEnd)
@@ -49,20 +43,14 @@
   [ (pEndFile)
   | *:
   ] or >
-  @BeginStmt
+  @Statements
    .sBegin
-   @Statement
-    [ (pEndFile)
-    | *:
-    .sNullStmt
-    >>
-   ;Statement
    [ (pEndFile)
    | *:
    ] or >
    .sEnd
    >>
-  ;BeginStmt
+  ;Statements
   >>
  ;Block
  >>
