@@ -339,7 +339,7 @@ AssignmentOrCallStmt :
                 .sSubscript
                 @Expression
                 .sExpnEnd
-%                ']'  ':='
+                ']'  '='
                 @Expression
                 .sExpnEnd
             | *:
@@ -430,13 +430,6 @@ SelAlternative :
         }
         .sLabelEnd
         ':'  @Statements; % Calling Statements allows for multiple statements
-
-%WhileStmt :
-%        .sWhileStmt
-%        @Expression
-%        .sExpnEnd
-%        'do'
-%        @Statement;
 
 RepStmt :
         .sRepStmt

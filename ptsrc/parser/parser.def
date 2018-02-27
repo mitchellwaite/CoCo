@@ -140,19 +140,19 @@
 	SimpleType = 227;
 	OptionallySignedIntegerConstant = 256;
 	AssignmentOrCallStmt = 371;
-	IfStmt = 451;
-	SelStmt = 495;
-	RepStmt = 561;
-	Expression = 595;
-	CallStmt = 407;
-	SelAlternative = 541;
-	SimpleExpression = 649;
-	Term = 702;
-	Factor = 746;
-	IdentifierExtension = 804;
+	IfStmt = 455;
+	SelStmt = 499;
+	RepStmt = 565;
+	Expression = 599;
+	CallStmt = 411;
+	SelAlternative = 545;
+	SimpleExpression = 653;
+	Term = 706;
+	Factor = 750;
+	IdentifierExtension = 808;
 	}
 
 	{ S/SL Table Parameters }
-	sslTblSize = 834;
+	sslTblSize = 838;
 	minSslTableValue = -32767;
 	maxSslTableValue = 32767;

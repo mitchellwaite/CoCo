@@ -54,6 +54,8 @@ Johan: Added ability to parse Quby style 'Rep' loops by modifying @repeatStmt to
 
 Parv: Added tests under parser. 2 tests under conditionals for qubyNotEquals and qubyDoubleEquals. A few tests for selStatements and statements. 
 
+Johan: Deleted old PT style while loop rule from parser.ssl, fixed the array assignment from using ':=' to using '=' for in Quby. Added some tests for simple and array assignments (aka testing that '=' now works but ':=' doesn't).
+
 ############################################################
 UPDATE DOCUMENTATION FOR PHASE 2!!!!!!!!!!!!!!!
 ############################################################
