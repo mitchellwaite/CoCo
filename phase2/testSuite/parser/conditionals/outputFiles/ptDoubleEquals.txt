@@ -1,0 +1,78 @@
+@Program
+ ?pExt (pExt)
+ .sProgram
+ ?pIdentifier (pIdentifier)
+ .sIdentifier
+ [ (pIf)
+ | *:
+ ] or >
+ .sParmEnd
+ @Block
+  [ (pIf)
+  | *:
+  ] or >
+  @Statements
+   .sBegin
+   [ (pIf)
+   | pIf:
+   @IfStmt
+    .sIfStmt
+    @Expression
+     @SimpleExpression
+      [ (pIdentifier)
+      | *:
+      @Term
+       @Factor
+        [ (pIdentifier)
+        | pIdentifier:
+        .sIdentifier
+        @IdentifierExtension
+         [ (pEquals)
+         | *:
+         >>
+        ;IdentifierExtension
+        ] or >
+        >>
+       ;Factor
+       [ (pEquals)
+       | *:
+       ] or >
+       >>
+      ;Term
+      [ (pEquals)
+      | *:
+      ] or >
+      >>
+     ;SimpleExpression
+     [ (pEquals)
+     | *:
+     >>
+    ;Expression
+    .sExpnEnd
+    .sThen
+    ?pColon (pEquals)
+    scan/parse error, line 3: syntax error at: =
+    @Statements
+     .sBegin
+     [ (pEquals)
+     | *:
+     ] or >
+     .sEnd
+     >>
+    ;Statements
+    [ (pEquals)
+    | *:
+    >>
+   ;IfStmt
+   ] or >
+   }
+   [ (pEquals)
+   | *:
+   ] or >
+   .sEnd
+   >>
+  ;Statements
+  >>
+ ;Block
+ >>
+;Program
