@@ -319,10 +319,10 @@ Statements :
              | 'sel':
                  @SelStmt
              | 'rep':
-%                @RepeatStmt
+                 @RepStmt
              | ';':
              | *:
-                >
+                 >
         ]}
         .sEnd;
 
@@ -438,19 +438,21 @@ SelAlternative :
 %        'do'
 %        @Statement;
 
-%RepeatStmt :
-%        .sRepeatStmt
-%        {
-%            @Statement
-%            [
-%                | ';':
-%                | 'until':
-%                    .sRepeatEnd
-%                    >
-%            ]
-%        }
-%        @Expression
-%        .sExpnEnd;
+RepStmt :
+        .sRepStmt
+        {
+            @Statements
+            [
+                | 'on':
+                    .sRepOnBreak
+                    @Expression
+                    ':'
+                    'break'
+                    .sExpnEnd
+                | 'end':
+                   >
+            ]
+        };
 
 Expression :
         @SimpleExpression

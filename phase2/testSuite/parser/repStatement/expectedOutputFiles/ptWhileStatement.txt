@@ -1,0 +1,60 @@
+@Program
+ ?pExt (pExt)
+ .sProgram
+ ?pIdentifier (pIdentifier)
+ .sIdentifier
+ [ (pIdentifier)
+ | *:
+ ] or >
+ .sParmEnd
+ @Block
+  [ (pIdentifier)
+  | *:
+  ] or >
+  @Statements
+   .sBegin
+   [ (pIdentifier)
+   | pIdentifier:
+   @AssignmentOrCallStmt
+    [ (pIdentifier)
+    | *:
+    @CallStmt
+     .sCallStmt
+     .sIdentifier
+     [ (pIdentifier)
+     | *:
+     .sParmEnd
+     >>
+    ;CallStmt
+    >>
+   ;AssignmentOrCallStmt
+   ] or >
+   }
+   [ (pIdentifier)
+   | pIdentifier:
+   @AssignmentOrCallStmt
+    [ (pLess)
+    | *:
+    @CallStmt
+     .sCallStmt
+     .sIdentifier
+     [ (pLess)
+     | *:
+     .sParmEnd
+     >>
+    ;CallStmt
+    >>
+   ;AssignmentOrCallStmt
+   ] or >
+   }
+   [ (pLess)
+   | *:
+   ] or >
+   .sEnd
+   >>
+  ;Statements
+  >>
+ ;Block
+ >>
+;Program
+scan/parse error, line 3: syntax error at: <

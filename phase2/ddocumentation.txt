@@ -47,6 +47,11 @@ TODO: add more tests for sel statement, and IMPORTANT, create a statements rule(
 
 Johan: Added @Statements rule to allow for multiple statements in a row. Removed @BeginStmt and @Statement rule as they are no longer relevant in Quby.
 
+Clara: Added tests for '=' old PT style conditional, and '<>' pt style not equals conditional.
+
+Johan: Added ability to parse Quby style 'Rep' loops by modifying @repeatStmt to be @repStmt, and added appropriate tests in testSuite/parser/repStatement.
+@repStmt now allows for "'on' expression : break" as specified in the quby documentation.
+
 ############################################################
 UPDATE DOCUMENTATION FOR PHASE 2!!!!!!!!!!!!!!!
 ############################################################
