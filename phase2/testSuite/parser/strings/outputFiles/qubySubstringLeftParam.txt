@@ -1,0 +1,79 @@
+@Program
+ ?pExt (pExt)
+ .sProgram
+ ?pIdentifier (pIdentifier)
+ .sIdentifier
+ [ (pIdentifier)
+ | *:
+ ] or >
+ .sParmEnd
+ @Block
+  [ (pIdentifier)
+  | *:
+  ] or >
+  @Statements
+   .sBegin
+   [ (pIdentifier)
+   | pIdentifier:
+   @AssignmentOrCallStmt
+    [ (pEquals)
+    | pEquals:
+    .sAssignmentStmt
+    .sIdentifier
+    @Expression
+     @SimpleExpression
+      [ (pLiteral)
+      | *:
+      @Term
+       @Factor
+        [ (pLiteral)
+        | pLiteral:
+        .sLiteral
+        ] or >
+        >>
+       ;Factor
+       [ (pLeftBrace)
+       | pLeftBrace:
+       @Substring
+        ?pInteger (pInteger)
+        .sInteger
+        ?pColon (pColon)
+        ?pInteger (pRightBrace)
+        scan/parse error, line 2: syntax error at: }
+        .sInteger
+        ?pRightBrace (pRightBrace)
+        .sSubstring
+        >>
+       ;Substring
+       ] or >
+       }
+       [ (pRightBrace)
+       | *:
+       ] or >
+       >>
+      ;Term
+      [ (pRightBrace)
+      | *:
+      ] or >
+      >>
+     ;SimpleExpression
+     [ (pRightBrace)
+     | *:
+     >>
+    ;Expression
+    .sExpnEnd
+    ] or >
+    >>
+   ;AssignmentOrCallStmt
+   ] or >
+   }
+   [ (pRightBrace)
+   | *:
+   ] or >
+   .sEnd
+   >>
+  ;Statements
+  >>
+ ;Block
+ >>
+;Program

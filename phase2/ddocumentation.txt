@@ -54,6 +54,8 @@ Johan: Added ability to parse Quby style 'Rep' loops by modifying @repeatStmt to
 
 Parv: Added tests under parser. 2 tests under conditionals for qubyNotEquals and qubyDoubleEquals. A few tests for selStatements and statements. 
 
+Parv: Added the rule to handle the substring and len operators for a string. Also added the tests in phase2 under testSuite/parser for string operators.
+ 
 ############################################################
 UPDATE DOCUMENTATION FOR PHASE 2!!!!!!!!!!!!!!!
 ############################################################
@@ -108,4 +110,5 @@ detailed listing of all the changes made are listed below:
 4. String Literals
    The scanning and screening of PT Pascal's single-quoted char literals "'" was replaced with the scanning and screening of Quby's
    double quoted string literals """. The following change was made in order to achieve this goal:
+q
    - In the parser.pt file, the quote value in the misc. section was changed from single quotes '''' to double quotes '"'.

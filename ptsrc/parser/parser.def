@@ -148,11 +148,12 @@
 	SelAlternative = 541;
 	SimpleExpression = 649;
 	Term = 702;
-	Factor = 746;
-	IdentifierExtension = 804;
+	Factor = 767;
+	Substring = 752;
+	IdentifierExtension = 835;
 	}
 
 	{ S/SL Table Parameters }
-	sslTblSize = 834;
+	sslTblSize = 865;
 	minSslTableValue = -32767;
 	maxSslTableValue = 32767;

@@ -1,0 +1,26 @@
+@Program
+ ?pExt (pExt)
+ .sProgram
+ ?pIdentifier (pIdentifier)
+ .sIdentifier
+ [ (pLen)
+ | *:
+ ] or >
+ .sParmEnd
+ @Block
+  [ (pLen)
+  | *:
+  ] or >
+  @Statements
+   .sBegin
+   [ (pLen)
+   | *:
+   ] or >
+   .sEnd
+   >>
+  ;Statements
+  >>
+ ;Block
+ >>
+;Program
+scan/parse error, line 2: syntax error at: len

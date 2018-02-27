@@ -501,11 +501,22 @@ Term :
                 @Factor  .sDivide
             | 'mod':
                 @Factor  .sModulus
+            | '{':
+                @Substring
             | 'and':
                 .sInfixAnd  @Factor  .sAnd
             | *:
                 >
         ]};
+
+Substring:
+           pInteger   % .sLiteral has already been emitted
+           .sInteger
+           ':'
+           pInteger
+           .sInteger
+           '}'
+           .sSubstring;              
 
 Factor :
         [
@@ -519,6 +530,10 @@ Factor :
             | 'not':
                 @Factor
                 .sNot
+            | pLen:
+                pLiteral
+                .sLiteral
+                .sLen
             | pLiteral:
                 .sLiteral
             | 'file':
