@@ -1,0 +1,13 @@
+ext input
+if a == 1 :
+  d = 2;
+  e = 1+d; 
+elif b != 2 :
+  f = a;
+  g = f*3;
+elif c == 3 :
+  j = b;
+  k = j div 5;
+  l = k-3;
+end
+    

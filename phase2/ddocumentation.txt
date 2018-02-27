@@ -52,6 +52,8 @@ Clara: Added tests for '=' old PT style conditional, and '<>' pt style not equal
 Johan: Added ability to parse Quby style 'Rep' loops by modifying @repeatStmt to be @repStmt, and added appropriate tests in testSuite/parser/repStatement.
 @repStmt now allows for "'on' expression : break" as specified in the quby documentation.
 
+Parv: Added tests under parser. 2 tests under conditionals for qubyNotEquals and qubyDoubleEquals. A few tests for selStatements and statements. 
+
 ############################################################
 UPDATE DOCUMENTATION FOR PHASE 2!!!!!!!!!!!!!!!
 ############################################################

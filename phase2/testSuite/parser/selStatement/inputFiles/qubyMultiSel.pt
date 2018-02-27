@@ -1,0 +1,20 @@
+ext input
+
+sel i:
+   is 42:
+      x = 5
+   is 43:
+      x = 2
+   else:
+      y = 2
+end
+
+sel j:
+  is 41:
+      z = 5
+  is 45:
+      w = 2
+  else:
+      u = 2
+  end
+
