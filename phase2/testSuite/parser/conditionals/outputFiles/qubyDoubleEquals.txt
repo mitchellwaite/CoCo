@@ -30,25 +30,25 @@
         | pIdentifier:
         .sIdentifier
         @IdentifierExtension
-         [ (pDoubleEquals)
+         [ (pDoubleEqual)
          | *:
          >>
         ;IdentifierExtension
         ] or >
         >>
        ;Factor
-       [ (pDoubleEquals)
+       [ (pDoubleEqual)
        | *:
        ] or >
        >>
       ;Term
-      [ (pDoubleEquals)
+      [ (pDoubleEqual)
       | *:
       ] or >
       >>
      ;SimpleExpression
-     [ (pDoubleEquals)
-     | pDoubleEquals:
+     [ (pDoubleEqual)
+     | pDoubleEqual:
      @SimpleExpression
       [ (pInteger)
       | *:

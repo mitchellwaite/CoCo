@@ -1,0 +1,44 @@
+@Program
+ ?pExt (pExt)
+ .sProgram
+ ?pIdentifier (pIdentifier)
+ .sIdentifier
+ [ (pIdentifier)
+ | *:
+ ] or >
+ .sParmEnd
+ @Block
+  [ (pIdentifier)
+  | *:
+  ] or >
+  @Statements
+   .sBegin
+   [ (pIdentifier)
+   | pIdentifier:
+   @AssignmentOrCallStmt
+    [ (pMinusEqual)
+    | pMinusEqual:
+    .sAssignmentStmt
+    .sIdentifier
+    .sIdentifier
+    [ (pIdentifier)
+    | pIdentifier:
+    .sIdentifier
+    ] or >
+    .sSubtract
+    .sExpnEnd
+    ] or >
+    >>
+   ;AssignmentOrCallStmt
+   ] or >
+   }
+   [ (pEndFile)
+   | *:
+   ] or >
+   .sEnd
+   >>
+  ;Statements
+  >>
+ ;Block
+ >>
+;Program
