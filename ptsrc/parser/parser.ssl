@@ -57,9 +57,9 @@ Input :
         pPlus                   '+'
         pMinus                  '-'
         pStar                   '*'
-        pPlusEquals             '+='  % Added Quby plus equals token and remove colon equals := token.
-        pMinusEquals            '-='  % Added Quby minus equals token
-        pDoubleEquals           '=='  % Added Quby double equals token
+        pPlusEqual              '+='  % Added Quby plus equals token and remove colon equals := token.
+        pMinusEqual             '-='  % Added Quby minus equals token
+        pDoubleEqual            '=='  % Added Quby double equals token
         pLeftBrace              '{'   % Added Quby left brace token
         pRightBrace             '}'   % Added Quby right brace token
         pDot                    '.'
@@ -332,6 +332,32 @@ AssignmentOrCallStmt :
                 .sAssignmentStmt
                 .sIdentifier    % identifier accepted in the Statement rule
                 @Expression
+                .sExpnEnd
+            | '+=':
+                .sAssignmentStmt
+                .sIdentifier    % identifier accepted in the Statement rule
+                .sIdentifier
+                [
+                    | pInteger:
+                        .sInteger
+                    | pIdentifier:
+                        .sIdentifier
+                    | *:
+                ]
+                .sAdd
+                .sExpnEnd
+            | '-=':
+                .sAssignmentStmt
+                .sIdentifier    % identifier accepted in the Statement rule
+                .sIdentifier
+                [
+                    | pInteger:
+                        .sInteger
+                    | pIdentifier:
+                        .sIdentifier
+                    | *:
+                ]
+                .sSubtract
                 .sExpnEnd
             | '[':
                 .sAssignmentStmt

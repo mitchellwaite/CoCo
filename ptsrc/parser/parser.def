@@ -38,9 +38,9 @@
 	pPlus = 30;
 	pMinus = 31;
 	pStar = 32;
-	pPlusEquals = 33;
-	pMinusEquals = 34;
-	pDoubleEquals = 35;
+	pPlusEqual = 33;
+	pMinusEqual = 34;
+	pDoubleEqual = 35;
 	pLeftBrace = 36;
 	pRightBrace = 37;
 	pDot = 38;
@@ -140,20 +140,20 @@
 	SimpleType = 227;
 	OptionallySignedIntegerConstant = 256;
 	AssignmentOrCallStmt = 371;
-	IfStmt = 455;
-	SelStmt = 499;
-	RepStmt = 565;
-	Expression = 599;
-	CallStmt = 411;
-	SelAlternative = 545;
-	SimpleExpression = 653;
-	Term = 706;
-	Factor = 771;
-	Substring = 756;
-	IdentifierExtension = 839;
+	IfStmt = 513;
+	SelStmt = 557;
+	RepStmt = 623;
+	Expression = 657;
+	CallStmt = 469;
+	SelAlternative = 603;
+	SimpleExpression = 711;
+	Term = 764;
+	Factor = 829;
+	Substring = 814;
+	IdentifierExtension = 897;
 	}
 
 	{ S/SL Table Parameters }
-	sslTblSize = 869;
+	sslTblSize = 927;
 	minSslTableValue = -32767;
 	maxSslTableValue = 32767;
