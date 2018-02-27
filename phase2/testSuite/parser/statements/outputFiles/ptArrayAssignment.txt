@@ -1,0 +1,102 @@
+@Program
+ ?pExt (pExt)
+ .sProgram
+ ?pIdentifier (pIdentifier)
+ .sIdentifier
+ [ (pIdentifier)
+ | *:
+ ] or >
+ .sParmEnd
+ @Block
+  [ (pIdentifier)
+  | *:
+  ] or >
+  @Statements
+   .sBegin
+   [ (pIdentifier)
+   | pIdentifier:
+   @AssignmentOrCallStmt
+    [ (pLeftBracket)
+    | pLeftBracket:
+    .sAssignmentStmt
+    .sIdentifier
+    .sSubscript
+    @Expression
+     @SimpleExpression
+      [ (pInteger)
+      | *:
+      @Term
+       @Factor
+        [ (pInteger)
+        | pInteger:
+        .sInteger
+        ] or >
+        >>
+       ;Factor
+       [ (pRightBracket)
+       | *:
+       ] or >
+       >>
+      ;Term
+      [ (pRightBracket)
+      | *:
+      ] or >
+      >>
+     ;SimpleExpression
+     [ (pRightBracket)
+     | *:
+     >>
+    ;Expression
+    .sExpnEnd
+    ?pRightBracket (pRightBracket)
+    ?pEquals (pColon)
+    scan/parse error, line 3: syntax error at: :
+    @Expression
+     @SimpleExpression
+      [ (pColon)
+      | *:
+      @Term
+       @Factor
+        [ (pColon)
+        | *:
+        ?pIdentifier (pColon)
+        }
+        .sIdentifier
+        @IdentifierExtension
+         [ (pColon)
+         | *:
+         >>
+        ;IdentifierExtension
+        ] or >
+        >>
+       ;Factor
+       [ (pColon)
+       | *:
+       ] or >
+       >>
+      ;Term
+      [ (pColon)
+      | *:
+      ] or >
+      >>
+     ;SimpleExpression
+     [ (pColon)
+     | *:
+     >>
+    ;Expression
+    .sExpnEnd
+    ] or >
+    >>
+   ;AssignmentOrCallStmt
+   ] or >
+   }
+   [ (pColon)
+   | *:
+   ] or >
+   .sEnd
+   >>
+  ;Statements
+  >>
+ ;Block
+ >>
+;Program

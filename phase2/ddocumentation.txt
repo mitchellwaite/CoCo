@@ -56,6 +56,8 @@ Parv: Added tests under parser. 2 tests under conditionals for qubyNotEquals and
 
 Parv: Added the rule to handle the substring and len operators for a string. Also added the tests in phase2 under testSuite/parser for string operators.
  
+Johan: Deleted old PT style while loop rule from parser.ssl, fixed the array assignment from using ':=' to using '=' for in Quby. Added some tests for simple and array assignments (aka testing that '=' now works but ':=' doesn't).
+
 ############################################################
 UPDATE DOCUMENTATION FOR PHASE 2!!!!!!!!!!!!!!!
 ############################################################
