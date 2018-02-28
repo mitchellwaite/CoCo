@@ -38,7 +38,7 @@ The goal of these modifications is to convert the Parser of the PT Pascal compil
 5. Modules
    Added the parsing of modules for Quby language. 
    - The output stream emits the token sModule to mark the beginning of a module
-   - Same as procedures, the statements begin by emitting an sBeing token and end with sEnd.
+   - Same as procedures, the statements begin by emitting an sBegin token and end with sEnd.
    - Added code to allow for Quby "modules". A module can contain any other declarations or statements similar to a procedure. Hence, 'mod' selector in @block was made to be recursive.
    
 6. Statement Sequences
