@@ -144,6 +144,12 @@ Output :
 rules
 
 Program :
+        % Rule to handle Quby 'ext' keyword for starting a Quby program block.
+        % Usage as follows: 
+        % ext identifier {,identifier}
+        % {declaration}
+        % {statement}        
+
         'ext'  .sProgram % Quby programs begin with 'ext' not 'program', and do not have a program name, only parameters.
         % program parameters
         {
@@ -158,10 +164,9 @@ Program :
         @Block; % Quby has no semicolons and does not use periods after end of program. 
 
 Block :
-        % Strictly speaking, standard Pascal requires that declarations
-        % appear only in the order consts, types, vars, procedures.
-        % We allow arbitrary intermixing of these instead to preserve
-        % programmer sanity.
+        % Block rule handles all declarations (con, typ, var, mod blocks, and def procedure blocks).
+        % Quby requires all declarations to be complete before starting a statements block.
+
         {[
             | 'con':
                 .sConst
@@ -173,9 +178,9 @@ Block :
                 .sVar
                 @VariableDeclarations
             | 'mod':                      % Add in handling of Quby Modules
-                .sModule % module name
+                .sModule                  % Module name
                 pIdentifier .sIdentifier
-                @Block  % Remember modules can contain declarations and statements blocks just like a regular code block.
+                @Block                    % Remember modules can contain declarations and statements blocks just like a regular code block.
                 'end'
             | 'def':
                 .sProcedure
@@ -192,13 +197,13 @@ Block :
             | *:
                 >
         ]}
-        % Quby no longer uses 'begin' at beginning of procedures
+        % Quby no longer uses 'begin' at beginning of code blocks but should still output .sBegin
         @Statements;
 
 ConstantDefinitions :
         % Accept one or more named constant definitions
         pIdentifier  .sIdentifier
-        @ConstantValue;  % Remove ability to have multiple constant type declaration with only one keyword. Quby require 'con' keyword to be repeated for each declaration.
+        @ConstantValue;  % Remove ability to have multiple constant type declaration with only one keyword. Quby requires 'con' keyword to be repeated for each declaration.
 
 ConstantValue :
         '='
@@ -255,7 +260,7 @@ SimpleType :
                 .sIdentifier
                 [
                     | '..':
-                        .sRange         %% this may be unnecessary
+                        .sRange        
                         @OptionallySignedIntegerConstant
                     | *:
                 ]
@@ -310,6 +315,15 @@ ProcedureHeading :
         .sParmEnd;
 
 Statements :
+        % New statements rule that identifies a statement as a line that matches one of the following cases:
+        % 1. Starts with an identifier (assignment or call statement)
+        % 2. Starts with 'if' (if statement)
+        % 3. Starts with 'sel' (sel statement)
+        % 4. Starts with 'rep' (rep statement)
+        % 5. Starts with ';' (empty statement)
+        %
+        % Remember, Quby allows multiple statements in a statements block as long as they are consecutive.
+
         .sBegin
         {[
              | pIdentifier:
@@ -327,15 +341,19 @@ Statements :
         .sEnd;
 
 AssignmentOrCallStmt :
+        % Rule used for Quby assignment and call statements.
+        % Changes were implemented to use Quby's assignment operator '='
+        % as well as for implementing iterative assignments like '+=', and '-='. 
+
         [
             | '=':
                 .sAssignmentStmt
-                .sIdentifier    % identifier accepted in the Statement rule
+                .sIdentifier    % identifier accepted in the Statements rule
                 @Expression
                 .sExpnEnd
             | '+=':
                 .sAssignmentStmt
-                .sIdentifier    % identifier accepted in the Statement rule
+                .sIdentifier    % identifier accepted in the Statements rule
                 .sIdentifier
                 [
                     | pInteger:
@@ -348,7 +366,7 @@ AssignmentOrCallStmt :
                 .sExpnEnd
             | '-=':
                 .sAssignmentStmt
-                .sIdentifier    % identifier accepted in the Statement rule
+                .sIdentifier    % identifier accepted in the Statements rule
                 .sIdentifier
                 [
                     | pInteger:
@@ -374,7 +392,7 @@ AssignmentOrCallStmt :
 
 CallStmt :
         .sCallStmt
-        .sIdentifier    % procedure identifier accepted in the Statement rule
+        .sIdentifier    % procedure identifier accepted in the Statements rule
         % accept zero or more actual parameters
         [
             | '(':
@@ -402,6 +420,10 @@ CallStmt :
         .sParmEnd;
 
 IfStmt :
+        % Rule to handle Quby if statements.
+        % Changes made to handle elif statements similar to python's handling.
+        % Parser will pretend an elif statement is an else statement with a nested if statement to allow the PT semantic phase to be unaffected.
+
         .sIfStmt
         @Expression
         .sExpnEnd
@@ -424,6 +446,10 @@ IfStmt :
         ];
 
 SelStmt :
+        % New sel statement rule used for Quby sel statement parsing.
+        % The rule differs from PT case statement implementation due to the addition of an 'else' block.
+        % The 'else' block is optional but will act as a default case if none of the alternatives match.
+
         .sSelStmt
         @Expression
         .sExpnEnd
@@ -458,6 +484,16 @@ SelAlternative :
         ':'  @Statements; % Calling Statements allows for multiple statements
 
 RepStmt :
+        % Rule used for parsing Quby 'rep' loop statements.
+        % Quby 'rep' statements follow the following syntax:
+        % rep
+        %     {statement}
+        %     on expression : breal
+        %     {statement}
+        % end
+        %
+        % Note that parsing only allows a single "on expression : break" statement to be valid Quby statement.
+
         .sRepStmt
         {
             @Statements
@@ -512,6 +548,9 @@ SimpleExpression :
         ]};
 
 Term :
+        % Term rule altered to add Quby substring capability using pLiteral {int:int} syntax.
+        % Substring operators are on the same precedence as div and mod in Quby.
+
         @Factor
         {[
             | '*':
@@ -529,15 +568,23 @@ Term :
         ]};
 
 Substring:
-           pInteger   % .sLiteral has already been emitted
-           .sInteger
-           ':'
-           pInteger
-           .sInteger
-           '}'
-           .sSubstring;              
+        % New parsing rule to allow for Quby substring operations.
+        % The general form of a substring in Quby is:
+        % expression { expression : expression }        
+
+        pInteger   % .sLiteral has already been emitted
+        .sInteger  % Allow only integer expressions in splice operator
+        ':'
+        pInteger
+        .sInteger
+        '}'
+        .sSubstring;              
 
 Factor :
+        % Factor rule was altered to add the Quby string length operator; 'len'.
+        % The 'len' operator in Quby has the same precedence to that of the 'not' operator.
+        % The general form of the string length operator is: len expression
+
         [
             | pIdentifier:
                 .sIdentifier

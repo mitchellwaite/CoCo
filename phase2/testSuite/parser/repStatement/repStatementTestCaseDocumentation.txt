@@ -1,0 +1,10 @@
+ptRepeatStatement.pt
+
+ptWhileStatement.pt
+
+qubyMultiStatementsAfterRept.pt
+
+qubyMultiStatementsBeforeRept.pt
+
+qubySimpleRept.pt
+

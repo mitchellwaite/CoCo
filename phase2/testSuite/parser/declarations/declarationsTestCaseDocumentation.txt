@@ -1,0 +1,15 @@
+ptConstDeclaration.pt
+
+ptMultiConstDeclaration.pt
+
+ptMultiVarDeclaration.pt
+
+ptTypeDeclaration.pt
+
+qubyConDeclaration.pt
+
+qubyMultiDeclaration.pt
+
+qubyTypDeclaration.pt
+
+qubyVarDeclaration.pt
