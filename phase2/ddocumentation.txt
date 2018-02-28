@@ -8,7 +8,7 @@ The goal of these modifications is to convert the Parser of the PT Pascal compil
 
 1. Token Definitions
    The parser input tokens were modified to correspond to the new set of output tokens emitted by the Quby Scanner/Screener. At the same time, unused old input tokens were removed and any new Quby input tokens were added. Following changes were made to the parser tokens:
-   - Replaced the old PT parser case statement output tokens sCaseStmt and sCaseEnd with the new Quby select statement tokens sSelStmt and sSelEnd
+   - Replaced the old PT parser case statement output tokens sCaseStmt and sCaseEnd with the new Quby select statement tokens sSelStmt and sSelEnd.
    - Replaced the old PT parser loop statement output tokens sWhileStmt, sRepeatStmt and sRepeatEnd with the new Quby loop statement tokens sRepStmt and sRepOnBreak.
    - Added new parser output tokens for Quby modules, sModule and sPublic, and for the Quby string operations sSubstring and sLen.
 
@@ -83,7 +83,8 @@ The goal of these modifications is to convert the Parser of the PT Pascal compil
 13. String Type
    - Removed the handling of the old PT Pascal char data type and char literals.
    - Added the handling of the string data type and string literals.
-   - Added the handling of the new Quby operators "substring{expression:expression}" and "len:".
+   - Added the handling of the new Quby operators "substring{expression:expression}" where the output tokens are in the order of sLiteral, sInteger, sInteger. The ending token for substring operator is sSubstring.
+   - Added the handling of the new Quby operator "len" where the output token is sLiteral. The ending token for len operator is sLen.
    
 14. Other details
    Using phase1 feedback made two distinct changes. 
