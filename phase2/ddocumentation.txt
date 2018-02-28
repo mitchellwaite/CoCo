@@ -62,19 +62,14 @@ Johan: Deleted old PT style while loop rule from parser.ssl, fixed the array ass
 UPDATE DOCUMENTATION FOR PHASE 2!!!!!!!!!!!!!!!
 ############################################################
 
-The goal of these modifications is to convert the Screener/Scanner of the PT Pascal compiler into the Screener/Scanner for Quby. A
+The goal of these modifications is to convert the Parser of the PT Pascal compiler into the Parser for Quby. A
 detailed listing of all the changes made are listed below:
 
-1. Keywords and Predefined Identifiers
-   The keywords and predefined identifiers that were supported by the PT Pascal compiler but not by Quby were removed and new keywords/
-   predefined identifiers that are supported by Quby were added. The following changes were made in order to achieve this goal:
-   - Removed old PT keywords (then, until, do, program, const, type, procedure, begin, repeat, case, while) from the Language Keywords
-     section in the parser/stdIdentifiers file.
-   - Added new Quby keywords (ext, con, typ, def, pub, elif, sel, is, rep, on, break, len) to the Language Keywords section of the
-     parser/stdIdentifiers file.
-   - Replaced the old PT predefined identifiers (char, write, written, read and readln) with the new corresponding Quby predefined
-     identifiers (string, print, nl, get, getnl) in the parser/stdIdentifiers file.
-   - Updated the value of numberStdIdentifiers to 44 in the parser/parser.pt file.
+1. Token Definitions
+   This parser input tokens were modified to correspond to the new set of output tokens emitted by the Quby Scanner/Screener. At the        same time, unused onld input tokens were removed and any new Quby input tokens were added. Following changes were made to the parser    tokens:
+   - Replaced the old PT parser case statement output tokens sCaseStmt and sCaseEnd with the new Quby select statement tokens sSelStmt      and sSelEnd
+   - Replaced the old PT parser loop statement output tokens sWhileStmt, sRepeatStmt and sRepeatEnd with the new Quby loop statement        tokens sRepStmt and sRepOnBreak.
+   - Added new parser output tokens for Quby modules, sModule and sPublic, and for the Quby string operations sSubstring and sLen.
 
 2. Character Classes and Comments
    Quby supports new input character hash "#" and bang '!' and PT Pascal used "{}" and "(**)" for comments, which will be replaced by
