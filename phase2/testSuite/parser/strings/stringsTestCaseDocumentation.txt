@@ -1,11 +1,37 @@
+qubySubstring.pt
+Test case to verify the Quby parser successfully parses the new substring operator.
+The operator can be used in the following convention: expression { expression : expression }
+However the string must be of type literal, and the splice values must be integer type.
+The input is in form of:
+x = pLiteral {pInteger:pInteger}
+
 qubyEmptyStringSubstring.pt
-
-qubyLenInteger.pt
-
-qubyLenString.pt
+Test case to verify the Quby parser successfully parses the new substring operator when provided an empty string.
+The input is in form of:
+x = "" {pInteger:pInteger}
 
 qubySubstringLeftParam.pt
-
-qubySubstring.pt
+Test case to verify the Quby parser provides an error when the substring operator is provided with only one splice value (character position). Specifically this test case only provides the first character position.
+The input is in form of:
+x = pLiteral {pInteger:}
 
 qubySubstringRightParam.pt
+Test case to verify the Quby parser provides an error when the substring operator is provided with only one splice value (character position). Specifically this test case only provides the last character position.
+The input is in form of:
+x = pLiteral {:pInteger}
+
+qubyNonStringSubstring.pt
+Test case to verify the Quby parser does not allow the substring operation when provided a non-string (non-literal) expression on the left hand side.
+The input is in form of:
+x = pInteger {pInteger:pInteger}
+
+qubyLenString.pt
+Test case for the new Quby "len" operator to be used with Quby's string literals.
+The input for this test is in the form:
+x = len pLiteral  
+
+qubyLenInteger.pt
+Test case to verify the Quby parser will provide an error when the "len" operator is followed by a non-string value such as an integer.
+x = len pInteger  
+
+

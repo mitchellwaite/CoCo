@@ -1,10 +1,53 @@
 ptRepeatStatement.pt
+Test case to ensure the old PT style "repeat" loop statement no longer is accepted as valid input to the Quby parser.
+The format for the input code is as follows:
+repeat
+    statement
+until expression;
+Note, no syntax error will be reported as the parser is not able to tell if "repeat" may instead be a valid function call. The semantic phase will be able to verify if this is a valid statement. However it is expected that the .sRepStmt keyword is not emitted in the test output.
 
 ptWhileStatement.pt
-
-qubyMultiStatementsAfterRept.pt
-
-qubyMultiStatementsBeforeRept.pt
+Test case to ensure the old PT style "while" loop statement no longer is accepted as valid input to the Quby parser.
+The format for the input code is as follows:
+while expression do
+begin
+    statement
+end;
+Note, Although a syntax error does get reported by the parser due to an incomplete statement, no syntax error will be reported for the "while" keyword as the parser is not able to tell if "while" may instead be a valid function call. The semantic phase will be able to verify if this is a valid statement. However it is expected that the .sRepStmt keyword is not emitted in the test output.
 
 qubySimpleRept.pt
+Test case to ensure the new Quby "rep" loop statement is accepted by the Quby parser. The "rep" statement should only allow for one "on expression : break" statement and test input code is structured as below:
+rep
+    statement
+    on expression : break
+    statement
+end
 
+qubySimpleReptMultipleBreak.pt
+Test case to ensure the new Quby "rep" loop statement does not allow for multiple "on expression : break" statements. The test input code is structured as below:
+rep
+    statement
+    on expression : break
+    statement
+	on expression : break
+end
+Expected output should include a syntax error provided by the parser, as seen in the ssltrace output.
+
+qubyMultiStatementsAfterRept.pt
+Test case to ensure the new Quby "rep" loop statement and allows multiple statements (zero or more) *following* an "on expression : break" statement.
+The test input code is structured as below:
+rep
+    statement
+    on expression : break
+    statement
+    statement  
+end
+
+qubyMultiStatementsBeforeRept.pt
+Test case to ensure the new Quby "rep" loop statement and allows multiple statements (zero or more) *preceding* an "on expression : break" statement.
+rep
+    statement
+    statement 
+    on expression : break
+    statement 
+end

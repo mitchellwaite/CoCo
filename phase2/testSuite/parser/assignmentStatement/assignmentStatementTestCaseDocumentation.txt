@@ -1,0 +1,13 @@
+ptArrayAssignment.pt
+Test to verify the parser for Quby no longer recognizes an array assignment statement using the old PT style ":=" assignment operator.
+Expected output should include a syntax error provided by the parser, as seen in the ssltrace output.
+
+ptSimpleAssignment.pt
+Test to verify the parser for Quby no longer recognizes a simple assignment statement using the old PT style ":=" assignment operator.
+Expected output should include a syntax error provided by the parser, as seen in the ssltrace output.
+
+qubyArrayAssignment.pt
+Test to verify the parser for Quby successfully identifies an array assignment using the new '=' assignment operator (replacing the ":=" PT assignment operator).
+
+qubySimpleAssignment.pt
+Test to verify the parser for Quby successfully identifies a simple assignment statement using the new '=' assignment operator (replacing the ":=" PT assignment operator).

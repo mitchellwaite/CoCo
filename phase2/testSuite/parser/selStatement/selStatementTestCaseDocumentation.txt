@@ -1,8 +1,58 @@
-qubyMultiSel.pt
-
-qubySimpleSelMultiStmt.pt
+qubySimpleSel.pt
+Test case to ensure Quby's new "sel" statement is accepted by the Quby parser.
+Specifically this test *includes* the new "else" block which is optional in the Quby "sel" statement.
+The test input is structured as follows:
+sel expression:
+   is expression:
+      statement
+   is expression:
+      statement
+   else:
+      statement
+end
 
 qubySimpleSelNoElse.pt
+Test case to ensure Quby's new "sel" statement is accepted by the Quby parser.
+Specifically this test *omits* the new "else" block which is optional in the Quby "sel" statement.
+The test input is structured as follows:
+sel expression:
+   is expression:
+      statement
+   is expression:
+      statement
+end
 
-qubySimpleSel.pt
+qubyMultiSel.pt
+Test case used to ensure two "sel" statements can be placed consecutively and properly parsed by the Quby parser.
+The test input for this test is structured as follows:
+sel expression:
+   is expression:
+      statement
+   is expression:
+      statement
+   else:
+      statement
+end
+sel expression:
+  is expression:
+      statement
+  is expression:
+      statement
+  else:
+      statement
+end
 
+qubySimpleSelMultiStmt.pt
+Test to ensure Quby's new "sel" statement allows *multiple* statements inside each alternative block.
+Test input is structured as follows:
+sel expression:
+   is expression:
+      statement
+	  statement
+   is expression:
+      statement
+      statement
+   else:
+      statement
+      statement
+end

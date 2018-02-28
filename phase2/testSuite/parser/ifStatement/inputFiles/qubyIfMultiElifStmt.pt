@@ -1,9 +1,9 @@
 ext input
 if a == 1 :
-  a
+  a = 2
 elif b != 2 :
-  b
+  b = 2
 elif c == 3 :
-  c
+  c = 2
 end
     

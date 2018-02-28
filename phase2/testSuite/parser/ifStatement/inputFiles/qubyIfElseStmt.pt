@@ -1,7 +1,7 @@
 ext input
 if a < 2 :
-  a
+  a = 2
 else:
-  b
+  b = 3
 end
     
