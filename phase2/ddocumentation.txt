@@ -4,29 +4,28 @@ Team Members : Clara Fu, Parv Mital, Johan Cornelissen, Mitchell Waite
 Group: cisc458n 
 
 
-The goal of these modifications is to convert the Parser of the PT Pascal compiler into the Parser for Quby. A
-detailed listing of all the changes made are listed below:
+The goal of these modifications is to convert the Parser of the PT Pascal compiler into the Parser for Quby. A detailed listing of all the changes made are listed below:
 
 1. Token Definitions
-   The parser input tokens were modified to correspond to the new set of output tokens emitted by the Quby Scanner/Screener. At the        same time, unused onld input tokens were removed and any new Quby input tokens were added. Following changes were made to the parser    tokens:
-   - Replaced the old PT parser case statement output tokens sCaseStmt and sCaseEnd with the new Quby select statement tokens sSelStmt      and sSelEnd
-   - Replaced the old PT parser loop statement output tokens sWhileStmt, sRepeatStmt and sRepeatEnd with the new Quby loop statement        tokens sRepStmt and sRepOnBreak.
+   The parser input tokens were modified to correspond to the new set of output tokens emitted by the Quby Scanner/Screener. At the same time, unused onld input tokens were removed and any new Quby input tokens were added. Following changes were made to the parser tokens:
+   - Replaced the old PT parser case statement output tokens sCaseStmt and sCaseEnd with the new Quby select statement tokens sSelStmt and sSelEnd
+   - Replaced the old PT parser loop statement output tokens sWhileStmt, sRepeatStmt and sRepeatEnd with the new Quby loop statement tokens sRepStmt and sRepOnBreak.
    - Added new parser output tokens for Quby modules, sModule and sPublic, and for the Quby string operations sSubstring and sLen.
 
 2. Programs
    The parsing of programs was modified for Quby to accept "ext" and not accept "program". 
    - Work was done in @Program rule, by replacing expectation for 'program' with 'ext' and removing the need for a program name. 
    - Also ensured no semi colon is needed at end of the line.
-   - Changes were made in @BeginStmt rule to allow multiple statements (after declarations are complete) until end of file. This was        done by proceeding to look for more statements as long as there is a new line character. ".sBegin" and ".sEnd" token are emitted as      appropriate.
+   - Changes were made in @BeginStmt rule to allow multiple statements (after declarations are complete) until end of file. This was done by proceeding to look for more statements as long as there is a new line character. ".sBegin" and ".sEnd" token are emitted as appropriate.
 
 3. Declarations
    The parsing of constant, type and variable declarations was modified to meet the specifications of Quby language. 
    - Modified @Block rule in parser.ssl to accept new declarations format for con from "const", typ from "type", and var. 
    - Modified @Block rule to no longer requires 'begin' keyword.
-   - Removed tje ability to give multiple constant declarations under a single "con" keyword. This change was made in                      @ConstantDefinitions rule.
+   - Removed tje ability to give multiple constant declarations under a single "con" keyword. This change was made in @ConstantDefinitions rule.
    - In @ConstantValue rule, the expectation for semicolon after declaration was removed.
-   - In @TypeDefinitions rule, removed the ability to give multiple type declarations under a single "typ" keyword. Also modified the      rule to use ":" instead of "=".
-   - In @VariableDeclarations rule, removed the ability to give multiple variable declarations under a single "var" keyword. Also          removed the expectation for semicolon.
+   - In @TypeDefinitions rule, removed the ability to give multiple type declarations under a single "typ" keyword. Also modified the rule to use ":" instead of "=".
+   - In @VariableDeclarations rule, removed the ability to give multiple variable declarations under a single "var" keyword. Also removed the expectation for semicolon.
    - Changed @AssignmentOrCallStmt to use "=" instead of ":=".
 
 4. Routines
@@ -40,19 +39,19 @@ detailed listing of all the changes made are listed below:
    Added the parsing of modules for Quby language. 
    - The output stream emits the token sModule to mark the beginning of a module
    - Same as procedures, the statements begin by emitting an sBeing token and end with sEnd.
-   - Johan: Added code to allow for Quby "modules". A module can contain any other declarations or statements similar to a procedure.      Hence, 'mod' selector in @block was made to be recursive.
+   - Johan: Added code to allow for Quby "modules". A module can contain any other declarations or statements similar to a procedure. Hence, 'mod' selector in @block was made to be recursive.
    
 6. Statement Sequences
    No changes were made in this section as PT Pascal and Quby statements behave the same way.
 
 7. Statements
-   The parsing of if, case, while, repeat and begin statements was modified to meet the Quby language specification for Quby if, sep and    rep statements. 
+   The parsing of if, case, while, repeat and begin statements was modified to meet the Quby language specification for Quby if, sep and rep statements. 
    - Made changes to the parser.ssl in order to allow if, else statements to be wrapped with a begin and end. 
    - They also accept a colon for each if and else statement.
   
 8. Elif Clauses
-   Elif was implemented using the second option presented, which is to have nested if else statements instead of implementing a new elif    semantic token. 
-   - Elif was handled by pretending it is an else with a nested if.
+   Elif was implemented using the second option presented. 
+   - Elif was handled by pretending it is an else with a nested if, instead of implementing a new elif semantic token.
    
 9. Syntactic Details
    Minor syntactic details were changed as follows:
@@ -70,10 +69,10 @@ detailed listing of all the changes made are listed below:
    - Removed the handling of PT Pascal while and repeat statements.
    - The output stream uses the token sRepStmt at the beginning of the statement ans sRepOnBreak for "on expression: break:" clause.
    - The end of the conditional expression following on is marked with with sExpnEnd token. 
-   - Statements rule is used to handle the statement sequences before and after the break, which will output sBegin and sEnd tokens        around the sequences.
+   - Statements rule is used to handle the statement sequences before and after the break, which will output sBegin and sEnd tokens around the sequences.
   
 12. Iterative Assignments
-   Added the support for Quby language to be able to parse the iterative assignment statements "+=+ and "-=". In this case, an              interative assignment will output semantic token stream for a regula assignment. For e.g. i+=1 will output the semantic token stream    for the equivalent regular assignment i=i+1.
+   Added the support for Quby language to be able to parse the iterative assignment statements "+=+ and "-=". In this case, an interative assignment will output semantic token stream for a regula assignment. For e.g. i+=1 will output the semantic token stream for the equivalent regular assignment i=i+1.
 
 13. String Type
    - Removed the hadnling of the old PT Pascal char data type and char literals.
@@ -83,6 +82,6 @@ detailed listing of all the changes made are listed below:
 14. Other details
    Using phase1 feedback made two distinct changes. 
    - First change was removing the rule for "<>" being outputted as .pNotEqual, this is no longer the case in Quby. 
-   - Second change involved adding pRep to the output tokens of scan.ssl, and input tokens of parser.ssl. This token was overlooked in      phase1. However, it did already exist in stdIdentifiers file, causing some incorrect outputs in the test suite (tokens were being        screened to one-off the actual keyword). The expected outputs have been adjusted to ensure they are correct.
+   - Second change involved adding pRep to the output tokens of scan.ssl, and input tokens of parser.ssl. This token was overlooked in phase1. However, it did already exist in stdIdentifiers file, causing some incorrect outputs in the test suite (tokens were being screened to one-off the actual keyword). The expected outputs have been adjusted to ensure they are correct.
    - leted old PT style while loop rule from parser.ssl.
    - "=" cannot be used as comparision operator anymore. Instead, "==" needs to be used for the same. 
