@@ -81,13 +81,14 @@ The goal of these modifications is to convert the Parser of the PT Pascal compil
    - Modified the AssignmentOrCallStmt rule in order to add a '+=' and '-=' label to the choice action. The actions for both labels simply output the sIdentifier token twice and has a choice action for accepting a pInteger or pIdentifier. This choice is to allow the iterative assignments to allow for both an identifier and integer. For e.g. i+=1 and i+=y will both be allowed. Next, the corresponding sAdd and sSubtract will be outputted and finishing with outputting the sExpnEnd token.
 
 13. String Type
+   Modified parser to handle Quby's new string literals.
    - Removed the handling of the old PT Pascal char data type and char literals.
    - Added the handling of the string data type and string literals.
    - Added the handling of the new Quby operators "substring{expression:expression}" where the output tokens are in the order of sLiteral, sInteger, sInteger. The ending token for substring operator is sSubstring.
    - Added the handling of the new Quby operator "len" where the output token is sLiteral. The ending token for len operator is sLen.
    
 14. Other details
+   - Deleted old PT style while loop rule from parser.ssl.
    Using phase1 feedback made two distinct changes. 
    - First change was removing the rule for "<>" being outputted as .pNotEqual, this is no longer the case in Quby. 
    - Second change involved adding pRep to the output tokens of scan.ssl, and input tokens of parser.ssl. This token was overlooked in phase1. However, it did already exist in stdIdentifiers file, causing some incorrect outputs in the test suite (tokens were being screened to one-off the actual keyword). The expected outputs have been adjusted to ensure they are correct.
-   - Deleted old PT style while loop rule from parser.ssl.
