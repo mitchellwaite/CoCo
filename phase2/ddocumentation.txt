@@ -7,7 +7,7 @@ Group: cisc458n
 The goal of these modifications is to convert the Parser of the PT Pascal compiler into the Parser for Quby. A detailed listing of all the changes made are listed below:
 
 1. Token Definitions
-   The parser input tokens were modified to correspond to the new set of output tokens emitted by the Quby Scanner/Screener. At the same time, unused onld input tokens were removed and any new Quby input tokens were added. Following changes were made to the parser tokens:
+   The parser input tokens were modified to correspond to the new set of output tokens emitted by the Quby Scanner/Screener. At the same time, unused old input tokens were removed and any new Quby input tokens were added. Following changes were made to the parser tokens:
    - Replaced the old PT parser case statement output tokens sCaseStmt and sCaseEnd with the new Quby select statement tokens sSelStmt and sSelEnd
    - Replaced the old PT parser loop statement output tokens sWhileStmt, sRepeatStmt and sRepeatEnd with the new Quby loop statement tokens sRepStmt and sRepOnBreak.
    - Added new parser output tokens for Quby modules, sModule and sPublic, and for the Quby string operations sSubstring and sLen.
@@ -22,7 +22,7 @@ The goal of these modifications is to convert the Parser of the PT Pascal compil
    The parsing of constant, type and variable declarations was modified to meet the specifications of Quby language. 
    - Modified @Block rule in parser.ssl to accept new declarations format for con from "const", typ from "type", and var. 
    - Modified @Block rule to no longer requires 'begin' keyword.
-   - Removed tje ability to give multiple constant declarations under a single "con" keyword. This change was made in @ConstantDefinitions rule.
+   - Removed the ability to give multiple constant declarations under a single "con" keyword. This change was made in @ConstantDefinitions rule.
    - In @ConstantValue rule, the expectation for semicolon after declaration was removed.
    - In @TypeDefinitions rule, removed the ability to give multiple type declarations under a single "typ" keyword. Also modified the rule to use ":" instead of "=".
    - In @VariableDeclarations rule, removed the ability to give multiple variable declarations under a single "var" keyword. Also removed the expectation for semicolon.
@@ -42,40 +42,46 @@ The goal of these modifications is to convert the Parser of the PT Pascal compil
    - Added code to allow for Quby "modules". A module can contain any other declarations or statements similar to a procedure. Hence, 'mod' selector in @block was made to be recursive.
    
 6. Statement Sequences
-   No changes were made in this section as PT Pascal and Quby statements behave the same way.
+   Modified statements for Quby language by replacing PT Pascal's begin .. end statements.
+   -  Removed the BeginStmt rule and added outputting of sBegin to the start of the Statements rule and sEnd to the end of the rule. Other rules that originally called BeginStmt will
+      call Statements instead.
 
 7. Statements
    The parsing of if, case, while, repeat and begin statements was modified to meet the Quby language specification for Quby if, sep and rep statements. 
-   - Made changes to the parser.ssl in order to allow if, else statements to be wrapped with a begin and end. 
-   - They also accept a colon for each if and else statement.
+   - Made changes to the parser.ssl to remove the old PT Pascal statements (case, while, repeat and begin) and added the new Quby statements (sep and rep)
+   - Added a label in the Statements rule for allowing a semicolon. There is no action for semicolon.
+   - Added a loop in the Statements rule to allow and handle multiple statements unlike PT Pascal which only accepted 1 statement. 
   
 8. Elif Clauses
    Elif was implemented using the second option presented. 
    - Elif was handled by pretending it is an else with a nested if, instead of implementing a new elif semantic token.
+   - The IfStmt rule was modified to accept a colon character and then an 'elif' label was added to the choice action. The action for this label was to output a sElse and sBegin token
+     and then call itself (IfStmt) and then output a sEnd token.
    
 9. Syntactic Details
    Minor syntactic details were changed as follows:
    - Fixed the assignment operator from using ':=' to using '=' for in Quby. 
    - Also replaced the Equals and NotEquals to the new Quby representations of '==' and '!='. 
+   - '=' (Equals) and '<>' (NotEqual) cannot be used as comparision operator anymore. Instead, '==' (DoubleEqual) and '!=' (NotEqual) are used as replacements.
  
 10. Sel Statements
    Updated case statement rules to work with 'sel' statement instead. 
    - Added the new Quby sSelStmt and sSelEnd tokens in place of the old PT sCase and sCaseEnd semantic tokens.
    - Added the requirement for 'else' in the case statement rule.
-   - Added @Statements for Quby to be able to accept and handle multiple statements unlike PT Pascal which only accepted 1 statement. 
  
 11. Rep Statements
-   Added the ability to parse Quby style 'Rep' loops by modifying @repeatStmt to be @repStmt.
+   Added the ability to parse Quby style 'rep' loops by modifying @repeatStmt to be @repStmt.
    - Removed the handling of PT Pascal while and repeat statements.
    - The output stream uses the token sRepStmt at the beginning of the statement ans sRepOnBreak for "on expression: break:" clause.
    - The end of the conditional expression following on is marked with with sExpnEnd token. 
    - Statements rule is used to handle the statement sequences before and after the break, which will output sBegin and sEnd tokens around the sequences.
   
 12. Iterative Assignments
-   Added the support for Quby language to be able to parse the iterative assignment statements "+=+ and "-=". In this case, an interative assignment will output semantic token stream for a regula assignment. For e.g. i+=1 will output the semantic token stream for the equivalent regular assignment i=i+1.
+   Added the support for Quby language to be able to parse the iterative assignment statements '+=' and '-='. In this case, an interative assignment will output semantic token stream for a regular assignment. For e.g. i+=1 will output the semantic token stream for the equivalent regular assignment i=i+1.
+   - Modified the AssignmentOrCallStmt rule in order to add a '+=' and '-=' label to the choice action. The actions for both labels simply output the sIdentifier token twice and has a choice action for accepting a pInteger or pIdentifier. This choice is to allow the iterative assignments to allow for both an identifier and integer. For e.g. i+=1 and i+=y will both be allowed. Next, the corresponding sAdd and sSubtract will be outputted and finishing with outputting the sExpnEnd token.
 
 13. String Type
-   - Removed the hadnling of the old PT Pascal char data type and char literals.
+   - Removed the handling of the old PT Pascal char data type and char literals.
    - Added the handling of the string data type and string literals.
    - Added the handling of the new Quby operators "substring{expression:expression}" and "len:".
    
@@ -83,5 +89,4 @@ The goal of these modifications is to convert the Parser of the PT Pascal compil
    Using phase1 feedback made two distinct changes. 
    - First change was removing the rule for "<>" being outputted as .pNotEqual, this is no longer the case in Quby. 
    - Second change involved adding pRep to the output tokens of scan.ssl, and input tokens of parser.ssl. This token was overlooked in phase1. However, it did already exist in stdIdentifiers file, causing some incorrect outputs in the test suite (tokens were being screened to one-off the actual keyword). The expected outputs have been adjusted to ensure they are correct.
-   - leted old PT style while loop rule from parser.ssl.
-   - "=" cannot be used as comparision operator anymore. Instead, "==" needs to be used for the same. 
+   - Deleted old PT style while loop rule from parser.ssl.
