@@ -3,11 +3,6 @@ Phase 2 Documentation
 Team Members : Clara Fu, Parv Mital, Johan Cornelissen, Mitchell Waite
 Group: cisc458n 
 
-Clara: Made a few changes to the parser.ssl in order to allow if, else statements to be wrapped with a begin and end. They also accept a colon for each if and else statement.
-
-############################################################
-UPDATE DOCUMENTATION FOR PHASE 2!!!!!!!!!!!!!!!
-############################################################
 
 The goal of these modifications is to convert the Parser of the PT Pascal compiler into the Parser for Quby. A
 detailed listing of all the changes made are listed below:
@@ -51,7 +46,9 @@ detailed listing of all the changes made are listed below:
    No changes were made in this section as PT Pascal and Quby statements behave the same way.
 
 7. Statements
-   ********************************* CLARA, please do this one. Got confusing for me hahaha *************************************
+   The parsing of if, case, while, repeat and begin statements was modified to meet the Quby language specification for Quby if, sep and    rep statements. 
+   - Made changes to the parser.ssl in order to allow if, else statements to be wrapped with a begin and end. 
+   - They also accept a colon for each if and else statement.
   
 8. Elif Clauses
    Elif was implemented using the second option presented, which is to have nested if else statements instead of implementing a new elif    semantic token. 
