@@ -1,80 +1,17 @@
-@Program
- ?pExt (pExt)
  .sProgram
- ?pIdentifier (pIdentifier)
  .sIdentifier
- [ (pDef)
- | *:
- ] or >
  .sParmEnd
- @Block
-  [ (pDef)
-  | pDef:
   .sProcedure
-  [ (pIdentifier)
-  | *:
-  ?pIdentifier (pIdentifier)
   .sIdentifier
-  @ProcedureHeading
-   [ (pLeftParen)
-   | pLeftParen:
-   [ (pIdentifier)
-   | *:
-   ?pIdentifier (pIdentifier)
    .sIdentifier
-   ?pColon (pColon)
-   ?pIdentifier (pIdentifier)
    .sIdentifier
-   [ (pComma)
-   | pComma:
-   ] or >
-   }
-   [ (pVar)
-   | pVar:
-   ?pIdentifier (pIdentifier)
    .sIdentifier
    .sVar
-   ] or >
-   ?pColon (pColon)
-   ?pIdentifier (pIdentifier)
    .sIdentifier
-   [ (pRightParen)
-   | *:
-   ] or >
-   ?pRightParen (pRightParen)
-   ] or >
    .sParmEnd
-   >>
-  ;ProcedureHeading
-  @Block
-   [ (pEnd)
-   | *:
-   ] or >
-   @Statements
     .sBegin
-    [ (pEnd)
-    | *:
-    ] or >
     .sEnd
-    >>
-   ;Statements
-   >>
-  ;Block
-  ?pEnd (pEnd)
-  ] or >
-  }
-  [ (pEndFile)
-  | *:
-  ] or >
-  @Statements
    .sBegin
-   [ (pEndFile)
-   | *:
-   ] or >
    .sEnd
-   >>
-  ;Statements
-  >>
- ;Block
- >>
-;Program
+
+Errors reported by compiler: 

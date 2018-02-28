@@ -1,43 +1,11 @@
-@Program
- ?pExt (pExt)
  .sProgram
- ?pIdentifier (pIdentifier)
  .sIdentifier
- [ (pIdentifier)
- | *:
- ] or >
  .sParmEnd
- @Block
-  [ (pIdentifier)
-  | *:
-  ] or >
-  @Statements
    .sBegin
-   [ (pIdentifier)
-   | pIdentifier:
-   @AssignmentOrCallStmt
-    [ (pColon)
-    | *:
-    @CallStmt
      .sCallStmt
      .sIdentifier
-     [ (pColon)
-     | *:
      .sParmEnd
-     >>
-    ;CallStmt
-    >>
-   ;AssignmentOrCallStmt
-   ] or >
-   }
-   [ (pColon)
-   | *:
-   ] or >
    .sEnd
-   >>
-  ;Statements
-  >>
- ;Block
- >>
-;Program
+
+Errors reported by compiler: 
 scan/parse error, line 3: syntax error at: :

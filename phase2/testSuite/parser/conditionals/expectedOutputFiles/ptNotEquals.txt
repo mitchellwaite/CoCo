@@ -1,108 +1,16 @@
-@Program
- ?pExt (pExt)
  .sProgram
- ?pIdentifier (pIdentifier)
  .sIdentifier
- [ (pIf)
- | *:
- ] or >
  .sParmEnd
- @Block
-  [ (pIf)
-  | *:
-  ] or >
-  @Statements
    .sBegin
-   [ (pIf)
-   | pIf:
-   @IfStmt
     .sIfStmt
-    @Expression
-     @SimpleExpression
-      [ (pIdentifier)
-      | *:
-      @Term
-       @Factor
-        [ (pIdentifier)
-        | pIdentifier:
         .sIdentifier
-        @IdentifierExtension
-         [ (pLess)
-         | *:
-         >>
-        ;IdentifierExtension
-        ] or >
-        >>
-       ;Factor
-       [ (pLess)
-       | *:
-       ] or >
-       >>
-      ;Term
-      [ (pLess)
-      | *:
-      ] or >
-      >>
-     ;SimpleExpression
-     [ (pLess)
-     | pLess:
-     @SimpleExpression
-      [ (pGreater)
-      | *:
-      @Term
-       @Factor
-        [ (pGreater)
-        | *:
-        ?pIdentifier (pGreater)
-        scan/parse error, line 3: syntax error at: >
-        }
         .sIdentifier
-        @IdentifierExtension
-         [ (pGreater)
-         | *:
-         >>
-        ;IdentifierExtension
-        ] or >
-        >>
-       ;Factor
-       [ (pGreater)
-       | *:
-       ] or >
-       >>
-      ;Term
-      [ (pGreater)
-      | *:
-      ] or >
-      >>
-     ;SimpleExpression
      .sLT
-     ] or >
-     >>
-    ;Expression
     .sExpnEnd
     .sThen
-    ?pColon (pGreater)
-    @Statements
      .sBegin
-     [ (pGreater)
-     | *:
-     ] or >
      .sEnd
-     >>
-    ;Statements
-    [ (pGreater)
-    | *:
-    >>
-   ;IfStmt
-   ] or >
-   }
-   [ (pGreater)
-   | *:
-   ] or >
    .sEnd
-   >>
-  ;Statements
-  >>
- ;Block
- >>
-;Program
+
+Errors reported by compiler: 
+scan/parse error, line 3: syntax error at: >

@@ -1,154 +1,22 @@
-@Program
- ?pExt (pExt)
  .sProgram
- ?pIdentifier (pIdentifier)
  .sIdentifier
- [ (pIdentifier)
- | *:
- ] or >
  .sParmEnd
- @Block
-  [ (pIdentifier)
-  | *:
-  ] or >
-  @Statements
    .sBegin
-   [ (pIdentifier)
-   | pIdentifier:
-   @AssignmentOrCallStmt
-    [ (pIdentifier)
-    | *:
-    @CallStmt
      .sCallStmt
      .sIdentifier
-     [ (pIdentifier)
-     | *:
      .sParmEnd
-     >>
-    ;CallStmt
-    >>
-   ;AssignmentOrCallStmt
-   ] or >
-   }
-   [ (pIdentifier)
-   | pIdentifier:
-   @AssignmentOrCallStmt
-    [ (pLeftParen)
-    | *:
-    @CallStmt
      .sCallStmt
      .sIdentifier
-     [ (pLeftParen)
-     | pLeftParen:
-     @Expression
-      @SimpleExpression
-       [ (pIdentifier)
-       | *:
-       @Term
-        @Factor
-         [ (pIdentifier)
-         | pIdentifier:
          .sIdentifier
-         @IdentifierExtension
-          [ (pColon)
-          | *:
-          >>
-         ;IdentifierExtension
-         ] or >
-         >>
-        ;Factor
-        [ (pColon)
-        | *:
-        ] or >
-        >>
-       ;Term
-       [ (pColon)
-       | *:
-       ] or >
-       >>
-      ;SimpleExpression
-      [ (pColon)
-      | *:
-      >>
-     ;Expression
      .sExpnEnd
-     [ (pColon)
-     | pColon:
      .sFieldWidth
-     @Expression
-      @SimpleExpression
-       [ (pIdentifier)
-       | *:
-       @Term
-        @Factor
-         [ (pIdentifier)
-         | pIdentifier:
          .sIdentifier
-         @IdentifierExtension
-          [ (pRightParen)
-          | *:
-          >>
-         ;IdentifierExtension
-         ] or >
-         >>
-        ;Factor
-        [ (pRightParen)
-        | *:
-        ] or >
-        >>
-       ;Term
-       [ (pRightParen)
-       | *:
-       ] or >
-       >>
-      ;SimpleExpression
-      [ (pRightParen)
-      | *:
-      >>
-     ;Expression
      .sExpnEnd
-     ] or >
-     [ (pRightParen)
-     | *:
-     ] or >
-     ?pRightParen (pRightParen)
-     ] or >
      .sParmEnd
-     >>
-    ;CallStmt
-    >>
-   ;AssignmentOrCallStmt
-   ] or >
-   }
-   [ (pSemicolon)
-   | pSemicolon:
-   ] or >
-   }
-   [ (pIdentifier)
-   | pIdentifier:
-   @AssignmentOrCallStmt
-    [ (pEnd)
-    | *:
-    @CallStmt
      .sCallStmt
      .sIdentifier
-     [ (pEnd)
-     | *:
      .sParmEnd
-     >>
-    ;CallStmt
-    >>
-   ;AssignmentOrCallStmt
-   ] or >
-   }
-   [ (pEnd)
-   | *:
-   ] or >
    .sEnd
-   >>
-  ;Statements
-  >>
- ;Block
- >>
-;Program
+
+Errors reported by compiler: 
 scan/parse error, line 4: syntax error at: end

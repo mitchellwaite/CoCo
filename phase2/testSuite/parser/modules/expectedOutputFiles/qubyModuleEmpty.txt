@@ -1,47 +1,11 @@
-@Program
- ?pExt (pExt)
  .sProgram
- ?pIdentifier (pIdentifier)
  .sIdentifier
- [ (pMod)
- | *:
- ] or >
  .sParmEnd
- @Block
-  [ (pMod)
-  | pMod:
   .sModule
-  ?pIdentifier (pIdentifier)
   .sIdentifier
-  @Block
-   [ (pEnd)
-   | *:
-   ] or >
-   @Statements
     .sBegin
-    [ (pEnd)
-    | *:
-    ] or >
     .sEnd
-    >>
-   ;Statements
-   >>
-  ;Block
-  ?pEnd (pEnd)
-  ] or >
-  }
-  [ (pEndFile)
-  | *:
-  ] or >
-  @Statements
    .sBegin
-   [ (pEndFile)
-   | *:
-   ] or >
    .sEnd
-   >>
-  ;Statements
-  >>
- ;Block
- >>
-;Program
+
+Errors reported by compiler: 

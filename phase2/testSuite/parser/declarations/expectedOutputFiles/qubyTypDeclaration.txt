@@ -1,50 +1,10 @@
-@Program
- ?pExt (pExt)
  .sProgram
- ?pIdentifier (pIdentifier)
  .sIdentifier
- [ (pTyp)
- | *:
- ] or >
  .sParmEnd
- @Block
-  [ (pTyp)
-  | pTyp:
   .sType
-  @TypeDefinitions
-   ?pIdentifier (pIdentifier)
    .sIdentifier
-   ?pColon (pColon)
-   @TypeBody
-    [ (pIdentifier)
-    | *:
-    @SimpleType
-     [ (pIdentifier)
-     | pIdentifier:
      .sIdentifier
-     [ (pEndFile)
-     | *:
-     ] or >
-     >>
-    ;SimpleType
-    >>
-   ;TypeBody
-   >>
-  ;TypeDefinitions
-  ] or >
-  }
-  [ (pEndFile)
-  | *:
-  ] or >
-  @Statements
    .sBegin
-   [ (pEndFile)
-   | *:
-   ] or >
    .sEnd
-   >>
-  ;Statements
-  >>
- ;Block
- >>
-;Program
+
+Errors reported by compiler: 

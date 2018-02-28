@@ -1,79 +1,15 @@
-@Program
- ?pExt (pExt)
  .sProgram
- ?pIdentifier (pIdentifier)
  .sIdentifier
- [ (pIdentifier)
- | *:
- ] or >
  .sParmEnd
- @Block
-  [ (pIdentifier)
-  | *:
-  ] or >
-  @Statements
    .sBegin
-   [ (pIdentifier)
-   | pIdentifier:
-   @AssignmentOrCallStmt
-    [ (pEquals)
-    | pEquals:
     .sAssignmentStmt
     .sIdentifier
-    @Expression
-     @SimpleExpression
-      [ (pLiteral)
-      | *:
-      @Term
-       @Factor
-        [ (pLiteral)
-        | pLiteral:
         .sLiteral
-        ] or >
-        >>
-       ;Factor
-       [ (pLeftBrace)
-       | pLeftBrace:
-       @Substring
-        ?pInteger (pColon)
-        scan/parse error, line 2: syntax error at: :
         .sInteger
-        ?pColon (pColon)
-        ?pInteger (pColon)
         .sInteger
-        ?pRightBrace (pColon)
         .sSubstring
-        >>
-       ;Substring
-       ] or >
-       }
-       [ (pColon)
-       | *:
-       ] or >
-       >>
-      ;Term
-      [ (pColon)
-      | *:
-      ] or >
-      >>
-     ;SimpleExpression
-     [ (pColon)
-     | *:
-     >>
-    ;Expression
     .sExpnEnd
-    ] or >
-    >>
-   ;AssignmentOrCallStmt
-   ] or >
-   }
-   [ (pColon)
-   | *:
-   ] or >
    .sEnd
-   >>
-  ;Statements
-  >>
- ;Block
- >>
-;Program
+
+Errors reported by compiler: 
+scan/parse error, line 2: syntax error at: :

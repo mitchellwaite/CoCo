@@ -1,93 +1,16 @@
-@Program
- ?pExt (pExt)
  .sProgram
- ?pIdentifier (pIdentifier)
  .sIdentifier
- [ (pCon)
- | *:
- ] or >
  .sParmEnd
- @Block
-  [ (pCon)
-  | pCon:
   .sConst
-  @ConstantDefinitions
-   ?pIdentifier (pIdentifier)
    .sIdentifier
-   @ConstantValue
-    ?pEquals (pEquals)
-    [ (pInteger)
-    | pInteger:
     .sInteger
-    ] or >
-    >>
-   ;ConstantValue
-   >>
-  ;ConstantDefinitions
-  ] or >
-  }
-  [ (pTyp)
-  | pTyp:
   .sType
-  @TypeDefinitions
-   ?pIdentifier (pIdentifier)
    .sIdentifier
-   ?pColon (pColon)
-   @TypeBody
-    [ (pIdentifier)
-    | *:
-    @SimpleType
-     [ (pIdentifier)
-     | pIdentifier:
      .sIdentifier
-     [ (pVar)
-     | *:
-     ] or >
-     >>
-    ;SimpleType
-    >>
-   ;TypeBody
-   >>
-  ;TypeDefinitions
-  ] or >
-  }
-  [ (pVar)
-  | pVar:
   .sVar
-  @VariableDeclarations
-   ?pIdentifier (pIdentifier)
    .sIdentifier
-   ?pColon (pColon)
-   @TypeBody
-    [ (pIdentifier)
-    | *:
-    @SimpleType
-     [ (pIdentifier)
-     | pIdentifier:
      .sIdentifier
-     [ (pEndFile)
-     | *:
-     ] or >
-     >>
-    ;SimpleType
-    >>
-   ;TypeBody
-   >>
-  ;VariableDeclarations
-  ] or >
-  }
-  [ (pEndFile)
-  | *:
-  ] or >
-  @Statements
    .sBegin
-   [ (pEndFile)
-   | *:
-   ] or >
    .sEnd
-   >>
-  ;Statements
-  >>
- ;Block
- >>
-;Program
+
+Errors reported by compiler: 

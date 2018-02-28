@@ -1,94 +1,14 @@
-@Program
- ?pExt (pExt)
  .sProgram
- ?pIdentifier (pIdentifier)
  .sIdentifier
- [ (pIdentifier)
- | *:
- ] or >
  .sParmEnd
- @Block
-  [ (pIdentifier)
-  | *:
-  ] or >
-  @Statements
    .sBegin
-   [ (pIdentifier)
-   | pIdentifier:
-   @AssignmentOrCallStmt
-    [ (pLeftBracket)
-    | pLeftBracket:
     .sAssignmentStmt
     .sIdentifier
     .sSubscript
-    @Expression
-     @SimpleExpression
-      [ (pInteger)
-      | *:
-      @Term
-       @Factor
-        [ (pInteger)
-        | pInteger:
         .sInteger
-        ] or >
-        >>
-       ;Factor
-       [ (pRightBracket)
-       | *:
-       ] or >
-       >>
-      ;Term
-      [ (pRightBracket)
-      | *:
-      ] or >
-      >>
-     ;SimpleExpression
-     [ (pRightBracket)
-     | *:
-     >>
-    ;Expression
     .sExpnEnd
-    ?pRightBracket (pRightBracket)
-    ?pEquals (pEquals)
-    @Expression
-     @SimpleExpression
-      [ (pInteger)
-      | *:
-      @Term
-       @Factor
-        [ (pInteger)
-        | pInteger:
         .sInteger
-        ] or >
-        >>
-       ;Factor
-       [ (pEndFile)
-       | *:
-       ] or >
-       >>
-      ;Term
-      [ (pEndFile)
-      | *:
-      ] or >
-      >>
-     ;SimpleExpression
-     [ (pEndFile)
-     | *:
-     >>
-    ;Expression
     .sExpnEnd
-    ] or >
-    >>
-   ;AssignmentOrCallStmt
-   ] or >
-   }
-   [ (pEndFile)
-   | *:
-   ] or >
    .sEnd
-   >>
-  ;Statements
-  >>
- ;Block
- >>
-;Program
+
+Errors reported by compiler: 

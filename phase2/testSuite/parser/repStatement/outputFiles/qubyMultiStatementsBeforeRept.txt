@@ -1,248 +1,31 @@
-@Program
- ?pExt (pExt)
  .sProgram
- ?pIdentifier (pIdentifier)
  .sIdentifier
- [ (pRep)
- | *:
- ] or >
  .sParmEnd
- @Block
-  [ (pRep)
-  | *:
-  ] or >
-  @Statements
    .sBegin
-   [ (pRep)
-   | pRep:
-   @RepStmt
     .sRepStmt
-    @Statements
      .sBegin
-     [ (pIdentifier)
-     | pIdentifier:
-     @AssignmentOrCallStmt
-      [ (pEquals)
-      | pEquals:
       .sAssignmentStmt
       .sIdentifier
-      @Expression
-       @SimpleExpression
-        [ (pInteger)
-        | *:
-        @Term
-         @Factor
-          [ (pInteger)
-          | pInteger:
           .sInteger
-          ] or >
-          >>
-         ;Factor
-         [ (pIdentifier)
-         | *:
-         ] or >
-         >>
-        ;Term
-        [ (pIdentifier)
-        | *:
-        ] or >
-        >>
-       ;SimpleExpression
-       [ (pIdentifier)
-       | *:
-       >>
-      ;Expression
       .sExpnEnd
-      ] or >
-      >>
-     ;AssignmentOrCallStmt
-     ] or >
-     }
-     [ (pIdentifier)
-     | pIdentifier:
-     @AssignmentOrCallStmt
-      [ (pEquals)
-      | pEquals:
       .sAssignmentStmt
       .sIdentifier
-      @Expression
-       @SimpleExpression
-        [ (pIdentifier)
-        | *:
-        @Term
-         @Factor
-          [ (pIdentifier)
-          | pIdentifier:
           .sIdentifier
-          @IdentifierExtension
-           [ (pStar)
-           | *:
-           >>
-          ;IdentifierExtension
-          ] or >
-          >>
-         ;Factor
-         [ (pStar)
-         | pStar:
-         @Factor
-          [ (pInteger)
-          | pInteger:
           .sInteger
-          ] or >
-          >>
-         ;Factor
          .sMultiply
-         ] or >
-         }
-         [ (pOn)
-         | *:
-         ] or >
-         >>
-        ;Term
-        [ (pOn)
-        | *:
-        ] or >
-        >>
-       ;SimpleExpression
-       [ (pOn)
-       | *:
-       >>
-      ;Expression
       .sExpnEnd
-      ] or >
-      >>
-     ;AssignmentOrCallStmt
-     ] or >
-     }
-     [ (pOn)
-     | *:
-     ] or >
      .sEnd
-     >>
-    ;Statements
-    [ (pOn)
-    | pOn:
     .sRepOnBreak
-    @Expression
-     @SimpleExpression
-      [ (pIdentifier)
-      | *:
-      @Term
-       @Factor
-        [ (pIdentifier)
-        | pIdentifier:
         .sIdentifier
-        @IdentifierExtension
-         [ (pDoubleEqual)
-         | *:
-         >>
-        ;IdentifierExtension
-        ] or >
-        >>
-       ;Factor
-       [ (pDoubleEqual)
-       | *:
-       ] or >
-       >>
-      ;Term
-      [ (pDoubleEqual)
-      | *:
-      ] or >
-      >>
-     ;SimpleExpression
-     [ (pDoubleEqual)
-     | pDoubleEqual:
-     @SimpleExpression
-      [ (pInteger)
-      | *:
-      @Term
-       @Factor
-        [ (pInteger)
-        | pInteger:
         .sInteger
-        ] or >
-        >>
-       ;Factor
-       [ (pColon)
-       | *:
-       ] or >
-       >>
-      ;Term
-      [ (pColon)
-      | *:
-      ] or >
-      >>
-     ;SimpleExpression
      .sEq
-     ] or >
-     >>
-    ;Expression
-    ?pColon (pColon)
-    ?pBreak (pBreak)
     .sExpnEnd
-    ] or >
-    }
-    @Statements
      .sBegin
-     [ (pIdentifier)
-     | pIdentifier:
-     @AssignmentOrCallStmt
-      [ (pEquals)
-      | pEquals:
       .sAssignmentStmt
       .sIdentifier
-      @Expression
-       @SimpleExpression
-        [ (pInteger)
-        | *:
-        @Term
-         @Factor
-          [ (pInteger)
-          | pInteger:
           .sInteger
-          ] or >
-          >>
-         ;Factor
-         [ (pEnd)
-         | *:
-         ] or >
-         >>
-        ;Term
-        [ (pEnd)
-        | *:
-        ] or >
-        >>
-       ;SimpleExpression
-       [ (pEnd)
-       | *:
-       >>
-      ;Expression
       .sExpnEnd
-      ] or >
-      >>
-     ;AssignmentOrCallStmt
-     ] or >
-     }
-     [ (pEnd)
-     | *:
-     ] or >
      .sEnd
-     >>
-    ;Statements
-    [ (pEnd)
-    | pEnd:
-    ] or >
-    >>
-   ;RepStmt
-   ] or >
-   }
-   [ (pEndFile)
-   | *:
-   ] or >
    .sEnd
-   >>
-  ;Statements
-  >>
- ;Block
- >>
-;Program
+
+Errors reported by compiler: 

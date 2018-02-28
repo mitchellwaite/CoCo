@@ -1,72 +1,14 @@
-@Program
- ?pExt (pExt)
  .sProgram
- ?pIdentifier (pIdentifier)
  .sIdentifier
- [ (pVar)
- | *:
- ] or >
  .sParmEnd
- @Block
-  [ (pVar)
-  | pVar:
   .sVar
-  @VariableDeclarations
-   ?pIdentifier (pIdentifier)
    .sIdentifier
-   ?pColon (pColon)
-   @TypeBody
-    [ (pIdentifier)
-    | *:
-    @SimpleType
-     [ (pIdentifier)
-     | pIdentifier:
      .sIdentifier
-     [ (pSemicolon)
-     | *:
-     ] or >
-     >>
-    ;SimpleType
-    >>
-   ;TypeBody
-   >>
-  ;VariableDeclarations
-  ] or >
-  }
-  [ (pSemicolon)
-  | *:
-  ] or >
-  @Statements
    .sBegin
-   [ (pSemicolon)
-   | pSemicolon:
-   ] or >
-   }
-   [ (pIdentifier)
-   | pIdentifier:
-   @AssignmentOrCallStmt
-    [ (pColon)
-    | *:
-    @CallStmt
      .sCallStmt
      .sIdentifier
-     [ (pColon)
-     | *:
      .sParmEnd
-     >>
-    ;CallStmt
-    >>
-   ;AssignmentOrCallStmt
-   ] or >
-   }
-   [ (pColon)
-   | *:
-   ] or >
    .sEnd
-   >>
-  ;Statements
-  >>
- ;Block
- >>
-;Program
+
+Errors reported by compiler: 
 scan/parse error, line 3: syntax error at: :
