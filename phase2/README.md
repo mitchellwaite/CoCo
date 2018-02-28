@@ -46,10 +46,10 @@ testSuite/parser/strings/stringsTestCaseDocumentation.txt
 		* TestAll (Script used to run and verify all scanner/screener related tests)
 
 ## How to run tests
-###Parser Automated Test Suite
+### Parser Automated Test Suite
 To run all of the parser related test cases (encompassing the 11 test suites seen above), simply run the bash script provided in the parser testSuite directory (**testSuite/parser/TestAll**). This script will both **run** all of the tests using the input files provided (testSuite/parser/\*/inputFiles) and place the outputs into "testSuite/parser/\*/outputFiles" and also **verify** the output files against the expected output in "testSuite/parser/\*/expectedOutputFiles.
 Ssltrace was used for testing without any flags (-e, -i, etc.) to allow for the most rigorous testing including the output of any syntax errors encountered by the parser (which don't exist in the -e output).
-###Scanner/Screener Automated Regression Test Suite
+### Scanner/Screener Automated Regression Test Suite
 To run all of the test cases related to the scanner/screen portion of the compiler, simply run the bash script provided in the scannerScreener testSuite directory (**testSuite/scannerScreener/TestAll**). This script will both **run** all of the tests using the input files provided (testSuite/scannerScreener/\*/inputFiles) and place the outputs into "testSuite/scannerScreener/\*/outputFiles" and also **verify** the output files against the expected output in "testSuite/scannerScreener/\*/expectedOutputFiles.
 The regression test suite ensures that all functionality implemented in phase 1 has not regressed (changed). In general regression testing is a quick and simple check to ensure your new changes aren't affecting old functionality.
 
