@@ -29,9 +29,9 @@ rep
     statement
     on expression : break
     statement
-	on expression : break
+	  on expression : break
 end
-Expected output should include a syntax error provided by the parser, as seen in the ssltrace output.
+The semantic phase will need to ensure that no more than one .sRepOnBreak token exists in a 'rep' block.
 
 qubyMultiStatementsAfterRept.pt
 Test case to ensure the new Quby "rep" loop statement and allows multiple statements (zero or more) *following* an "on expression : break" statement.

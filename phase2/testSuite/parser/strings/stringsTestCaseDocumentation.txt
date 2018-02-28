@@ -20,11 +20,6 @@ Test case to verify the Quby parser provides an error when the substring operato
 The input is in form of:
 x = pLiteral {:pInteger}
 
-qubyNonStringSubstring.pt
-Test case to verify the Quby parser does not allow the substring operation when provided a non-string (non-literal) expression on the left hand side.
-The input is in form of:
-x = pInteger {pInteger:pInteger}
-
 qubyLenString.pt
 Test case for the new Quby "len" operator to be used with Quby's string literals.
 The input for this test is in the form:

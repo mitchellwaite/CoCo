@@ -79,16 +79,38 @@
      [ (pIdentifier)
      | pIdentifier:
      @AssignmentOrCallStmt
-      [ (pElse)
-      | *:
-      @CallStmt
-       .sCallStmt
-       .sIdentifier
+      [ (pEquals)
+      | pEquals:
+      .sAssignmentStmt
+      .sIdentifier
+      @Expression
+       @SimpleExpression
+        [ (pInteger)
+        | *:
+        @Term
+         @Factor
+          [ (pInteger)
+          | pInteger:
+          .sInteger
+          ] or >
+          >>
+         ;Factor
+         [ (pElse)
+         | *:
+         ] or >
+         >>
+        ;Term
+        [ (pElse)
+        | *:
+        ] or >
+        >>
+       ;SimpleExpression
        [ (pElse)
        | *:
-       .sParmEnd
        >>
-      ;CallStmt
+      ;Expression
+      .sExpnEnd
+      ] or >
       >>
      ;AssignmentOrCallStmt
      ] or >
@@ -108,16 +130,38 @@
      [ (pIdentifier)
      | pIdentifier:
      @AssignmentOrCallStmt
-      [ (pEnd)
-      | *:
-      @CallStmt
-       .sCallStmt
-       .sIdentifier
+      [ (pEquals)
+      | pEquals:
+      .sAssignmentStmt
+      .sIdentifier
+      @Expression
+       @SimpleExpression
+        [ (pInteger)
+        | *:
+        @Term
+         @Factor
+          [ (pInteger)
+          | pInteger:
+          .sInteger
+          ] or >
+          >>
+         ;Factor
+         [ (pEnd)
+         | *:
+         ] or >
+         >>
+        ;Term
+        [ (pEnd)
+        | *:
+        ] or >
+        >>
+       ;SimpleExpression
        [ (pEnd)
        | *:
-       .sParmEnd
        >>
-      ;CallStmt
+      ;Expression
+      .sExpnEnd
+      ] or >
       >>
      ;AssignmentOrCallStmt
      ] or >
