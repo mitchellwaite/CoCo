@@ -52,6 +52,7 @@ detailed listing of all the changes made are listed below:
   
 8. Elif Clauses
    Elif was implemented using the second option presented, which is to have nested if else statements instead of implementing a new elif    semantic token. 
+   - Elif was handled by pretending it is an else with a nested if.
    
 9. Syntactic Details
    Minor syntactic details were changed as follows:
