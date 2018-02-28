@@ -2,8 +2,6 @@ Phase 2 Documentation
 
 Team Members : Clara Fu, Parv Mital, Johan Cornelissen, Mitchell Waite
 Group: cisc458n 
-   
-Johan: NOTE, several lines in parser.ssl were commented out for the time being to allow for testing, in the end all the commented sections should be adjusted for quby. Example, if statements, loops etc. 
 
 Clara: Made a few changes to the parser.ssl in order to allow if, else statements to be wrapped with a begin and end. They also accept a colon for each if and else statement.
 
