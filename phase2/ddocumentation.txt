@@ -1,33 +1,9 @@
 Phase 2 Documentation
 
 Team Members : Clara Fu, Parv Mital, Johan Cornelissen, Mitchell Waite
-Group: cisc458n
-
-Johan: Updated parser.ssl and parser.pt (using parser.def) with new output tokens emitted by the scanner (in scan.ssl) and removed old input tokens. Ensured that scan.ssl and parser.ssl matched.
-
-Johan: Replaced the old PT parser case statements sCaseStmt, sCaseEnd with new Quby select statements sSelStmt, and sSelEnd (in parser.ss;).
-
-Johan: Replaced the old PT parser loops output tokens sWhileStmt, sRepeatStmt, and sRepeatEnd with the new Quby loop statement tokens sRepStmt and SRepOnBreak.
-This was in the output tokens section of parser.ssl.
-
-Johan: Added new parser output tokens sModule, sPublic and sSubstring and sLen.
-Work was done in output tokens section of parser.ssl.
-
-Johan: Modified the parsing of programs in Quby to accept "ext" and not accept "program". Work was done in @Program rule, by replacing expectation for 'program' with 'ext' and removing the need for a program name. As well ensured no semi colon is needed at end of the line. (Work done in parser.ssl)
-   * Work done in @BeginStmt rule to allow multiple statements (after declarations are complete) until end of file. This is done by proceeding to look for more statements as long as there is a new line character. .sBegin and .sEnd token emitted as appropriate. 
-
-Johan: Modified @Block rule in parser.ssl to accept new declarations format for con (from previous const), typ (from previous type), and var. 
-   * Block rule no longer requires 'begin' keyword.
-   * Removed ability to gave multiple constant declarations under a single "con" keyword.    This was in @ConstantDefinitions rule of parser.ssl
-   * In @ConstantValue rule, removed expectation for semicolon after declaration.
-   * In @TypeDefinitions rule, removed ability to gave multiple type declarations under a single "typ" keyword. Also rule modified to use ":" instead of "=".
-   * In @VariableDeclarations rule, removed ability to gave multiple variable declarations under a single "var" keyword. Also removed expectation for semicolon.
-   * Changed @AssignmentOrCallStmt to use "=" instead of ":=". There is more work to be done here.
+Group: cisc458n 
    
 Johan: NOTE, several lines in parser.ssl were commented out for the time being to allow for testing, in the end all the commented sections should be adjusted for quby. Example, if statements, loops etc.
-
-Clara: Modified parser.ssl in order to add Quby functionality for procedures. Added the option to make the procedure public using the 'pub' keyword and have procedures
-end with 'end'. Multiple parameters into a procedure is separated by commas instead of semicolons. Added only quby tests. (PT test now also added by Johan)
 
 Johan: Using phase1 feedback made two distinct changes. First change was removing the rule for "<>" being outputted as .pNotEqual, this is no longer the case in Quby. A test case to test this was also added to the ScannerScreener testsuite.
 Second change involved add pRep to the output tokens of scan.ssl, and input tokens of parser.ssl, this token was overlooked in phase1. However it did already exist in stdIdentifiers file, causing some incorrect outputs in the test suite (tokens were being screened to one-off the actual keyword). The expected outputs have been adjusted to ensure they are correct. 
@@ -66,46 +42,29 @@ The goal of these modifications is to convert the Parser of the PT Pascal compil
 detailed listing of all the changes made are listed below:
 
 1. Token Definitions
-   This parser input tokens were modified to correspond to the new set of output tokens emitted by the Quby Scanner/Screener. At the        same time, unused onld input tokens were removed and any new Quby input tokens were added. Following changes were made to the parser    tokens:
+   The parser input tokens were modified to correspond to the new set of output tokens emitted by the Quby Scanner/Screener. At the        same time, unused onld input tokens were removed and any new Quby input tokens were added. Following changes were made to the parser    tokens:
    - Replaced the old PT parser case statement output tokens sCaseStmt and sCaseEnd with the new Quby select statement tokens sSelStmt      and sSelEnd
    - Replaced the old PT parser loop statement output tokens sWhileStmt, sRepeatStmt and sRepeatEnd with the new Quby loop statement        tokens sRepStmt and sRepOnBreak.
    - Added new parser output tokens for Quby modules, sModule and sPublic, and for the Quby string operations sSubstring and sLen.
 
-2. Character Classes and Comments
-   Quby supports new input character hash "#" and bang '!' and PT Pascal used "{}" and "(**)" for comments, which will be replaced by
-   Quby style comments using the hash character until the end of the line. The following changes were made in order to achieve this goal:
-   - Added lHash and lBang (with their recongnized characters # and !) to the input characters and pBang to the output characters in
-     the scan.ssl file.
-   - The left brace character "{" label was removed and Hash "#" and bang "!" were added as labels to the Scan rule in scan.ssl in
-     order to have the scanner recognize these characters.
-     The action for a hash character input calls the Comment rule and the action for the bang character emits a pBang output token.
-   - The Comment rule in scan.ssl was modified to remove the label/if for a right brace and an exit from loop action was added to the
-     actions for the lNewLine label.
-   - AlternateComments using "(*" is not supported in Quby so in the Scan rule in the scan.ssl file, the choice action (case/if between
-     "*" and any other character) in the left paranthesis "(" label was removed and replace with emitting output token pLeftParen. The
-     AlternateComments rule was also removed from the scan.ssl file.
-   - The parser.pt file was modified so that the input and output tokens match the ones in scan.def (since hash and bang input and bang
-     output characters were added) and the hash and bang characters were added to the character class map (charClassMap).
+2. Programs
+   The parsing of programs was modified for Quby to accept "ext" and not accept "program". 
+   - Work was done in @Program rule, by replacing expectation for 'program' with 'ext' and removing the need for a program name. 
+   - Also ensured no semi colon is needed at end of the line.
+   - Changes were made in @BeginStmt rule to allow multiple statements (after declarations are complete) until end of file. This was        done by proceeding to look for more statements as long as there is a new line character. ".sBegin" and ".sEnd" token are emitted as      appropriate.
 
-3. Syntax Tokens
-   The syntax tokens and symbols that were supported by PT Pascal but not by Quby were removed and the new Quby syntax tokens and
-   symbols were added. The following changes were made in order to achieve this goal:
-   - The old PT Pascal output tokens (pThen, pUntil, pDo, pProgram, pConst, pType, pProcedure, pBegin, pCase, pWhile, pRepeat)  were
-     removed and replaced with the new Quby output tokens (pExt, pCon, pTyp, pDef, pPub, pElif, pSel, pIs, pOn, pBreak, pLen) in the
-     Output keyword tokens section in the scan.ssl file. The old PT Pascal non-compound scanner output tokens (pColonEquals) was
-     removed and new Quby non-compound scanner output tokens (pPlusEqual, pMinusEqual, pDoubleEqual, pLeftBrace, pRightBrace) was
-     added to the Non-compound output tokens section in the scan.ssl file.
-   - Within the Scan rule in the scan.ssl file, a label was added for the left brace "{" that emits an output token pLeftBrace and a
-     label was added for the right brace "{" that emits an output token pRightBrace. The choice action within the actions for the colon
-     label ":" was removed and replaced with just emitting the pColon output token (pColonEquals ":=" is not supported by Quby). The
-     actions in the labels for equals "=", plus "+", minus "-" and bang "!" were modified to add a choice action with a equals label "=",
-     which emits the corresponding output token (pDoubleEqual, pPlusEqual, pMinusEqual, pNotEqual), and the any other character * label
-     that emits the corresponding character output token (pEquals, pPlus, pMinus, pBang).
-   - The parser.pt file was modified so that the output tokens match the ones in scan.def (since many syntax tokens and symbols were
-     removed and added to the scan.ssl file).
+3. Declarations
+   The parsing of constant, type and variable declarations was modified to meet the specifications of Quby language. 
+   - Modified @Block rule in parser.ssl to accept new declarations format for con from "const", typ from "type", and var. 
+   - Modified @Block rule to no longer requires 'begin' keyword.
+   - Removed tje ability to give multiple constant declarations under a single "con" keyword. This change was made in                      @ConstantDefinitions rule.
+   - In @ConstantValue rule, the expectation for semicolon after declaration was removed.
+   - In @TypeDefinitions rule, removed the ability to give multiple type declarations under a single "typ" keyword. Also modified the      rule to use ":" instead of "=".
+   - In @VariableDeclarations rule, removed the ability to give multiple variable declarations under a single "var" keyword. Also          removed the expectation for semicolon.
+   - Changed @AssignmentOrCallStmt to use "=" instead of ":=".
 
-4. String Literals
-   The scanning and screening of PT Pascal's single-quoted char literals "'" was replaced with the scanning and screening of Quby's
-   double quoted string literals """. The following change was made in order to achieve this goal:
-q
-   - In the parser.pt file, the quote value in the misc. section was changed from single quotes '''' to double quotes '"'.
+4. Routines
+   The parsing of routines was modified in order to add Quby functionality for procedures.
+   - Added the functionality to output an sBegin token in the beginning of a procedure and have procedures end with 'end'. 
+   - Added the option to make the procedure public using the 'pub' keyword.
+   - Multiple parameters in a procedure are separated by commas instead of semicolons.
