@@ -3,36 +3,9 @@ Phase 2 Documentation
 Team Members : Clara Fu, Parv Mital, Johan Cornelissen, Mitchell Waite
 Group: cisc458n 
    
-Johan: NOTE, several lines in parser.ssl were commented out for the time being to allow for testing, in the end all the commented sections should be adjusted for quby. Example, if statements, loops etc.
+Johan: NOTE, several lines in parser.ssl were commented out for the time being to allow for testing, in the end all the commented sections should be adjusted for quby. Example, if statements, loops etc. 
 
-Johan: Using phase1 feedback made two distinct changes. First change was removing the rule for "<>" being outputted as .pNotEqual, this is no longer the case in Quby. A test case to test this was also added to the ScannerScreener testsuite.
-Second change involved add pRep to the output tokens of scan.ssl, and input tokens of parser.ssl, this token was overlooked in phase1. However it did already exist in stdIdentifiers file, causing some incorrect outputs in the test suite (tokens were being screened to one-off the actual keyword). The expected outputs have been adjusted to ensure they are correct. 
-
-Johan: Changed qubyNoParamsProcedure.pt test, following forum post that it should be "def P" instead of "def P()". Also removed the ssl code used for this section. Forum post: http://cisc458.caslab.queensu.ca/forum/viewtopic.php?f=14&t=555
-
-Johan: Added code to allow for Quby "modules", the sole code changes for this were in the @block rule of parser.ssl. A module can contain any other declarations or statements similar to a procedure, hence why 'mod' selector in @block was made to be recursive. Appropriate test files were created for the new modules block.
-
-Johan: Added a few extra tests to routines test suite (tests with declarations, statements, etc, as well as one test to ensure pt style no longer works). Added test case documentation for routines and modules. 
-
-Clara: Made a few changes to the parser.ssl in order to allow if, else statements to be wrapped with a begin and end. They also accept a colon for each if and else statement. Elif was implemented using the second option presented by the professor, which is to have nested if else statements instead of implementing a new elif semantic 
-token. Also replaced the Equals and NotEquals to the new Quby representations of '==' and '!='. Wrote quby tests for each case and did not need to write PT tests
-because the output token behavior should be the same? i think.
-
-Johan: Updated case statement rules to work with 'sel' statement instead. Also added the requirement for 'else' in the case statement rule.
-TODO: add more tests for sel statement, and IMPORTANT, create a statements rule(rule that does .sBegin, accepts unlimited statements, then outputs .sEnd), right now @BeginStmt uses pNewLine which is bad.
-
-Johan: Added @Statements rule to allow for multiple statements in a row. Removed @BeginStmt and @Statement rule as they are no longer relevant in Quby.
-
-Clara: Added tests for '=' old PT style conditional, and '<>' pt style not equals conditional.
-
-Johan: Added ability to parse Quby style 'Rep' loops by modifying @repeatStmt to be @repStmt, and added appropriate tests in testSuite/parser/repStatement.
-@repStmt now allows for "'on' expression : break" as specified in the quby documentation.
-
-Parv: Added tests under parser. 2 tests under conditionals for qubyNotEquals and qubyDoubleEquals. A few tests for selStatements and statements. 
-
-Parv: Added the rule to handle the substring and len operators for a string. Also added the tests in phase2 under testSuite/parser for string operators.
- 
-Johan: Deleted old PT style while loop rule from parser.ssl, fixed the array assignment from using ':=' to using '=' for in Quby. Added some tests for simple and array assignments (aka testing that '=' now works but ':=' doesn't).
+Clara: Made a few changes to the parser.ssl in order to allow if, else statements to be wrapped with a begin and end. They also accept a colon for each if and else statement.
 
 ############################################################
 UPDATE DOCUMENTATION FOR PHASE 2!!!!!!!!!!!!!!!
@@ -65,6 +38,55 @@ detailed listing of all the changes made are listed below:
 
 4. Routines
    The parsing of routines was modified in order to add Quby functionality for procedures.
-   - Added the functionality to output an sBegin token in the beginning of a procedure and have procedures end with 'end'. 
+   - Definitions are defined with "def P" instead of "def P()".
+   - Added the functionality to output an sBegin token in the beginning of a procedure's statements and have them end with sEnd. 
    - Added the option to make the procedure public using the 'pub' keyword.
    - Multiple parameters in a procedure are separated by commas instead of semicolons.
+
+5. Modules
+   Added the parsing of modules for Quby language. 
+   - The output stream emits the token sModule to mark the beginning of a module
+   - Same as procedures, the statements begin by emitting an sBeing token and end with sEnd.
+   - Johan: Added code to allow for Quby "modules". A module can contain any other declarations or statements similar to a procedure.      Hence, 'mod' selector in @block was made to be recursive.
+   
+6. Statement Sequences
+   No changes were made in this section as PT Pascal and Quby statements behave the same way.
+
+7. Statements
+   ********************************* CLARA, please do this one. Got confusing for me hahaha *************************************
+  
+8. Elif Clauses
+   Elif was implemented using the second option presented, which is to have nested if else statements instead of implementing a new elif    semantic token. 
+   
+9. Syntactic Details
+   Minor syntactic details were changed as follows:
+   - Fixed the assignment operator from using ':=' to using '=' for in Quby. 
+   - Also replaced the Equals and NotEquals to the new Quby representations of '==' and '!='. 
+ 
+10. Sel Statements
+   Updated case statement rules to work with 'sel' statement instead. 
+   - Added the new Quby sSelStmt and sSelEnd tokens in place of the old PT sCase and sCaseEnd semantic tokens.
+   - Added the requirement for 'else' in the case statement rule.
+   - Added @Statements for Quby to be able to accept and handle multiple statements unlike PT Pascal which only accepted 1 statement. 
+ 
+11. Rep Statements
+   Added the ability to parse Quby style 'Rep' loops by modifying @repeatStmt to be @repStmt.
+   - Removed the handling of PT Pascal while and repeat statements.
+   - The output stream uses the token sRepStmt at the beginning of the statement ans sRepOnBreak for "on expression: break:" clause.
+   - The end of the conditional expression following on is marked with with sExpnEnd token. 
+   - Statements rule is used to handle the statement sequences before and after the break, which will output sBegin and sEnd tokens        around the sequences.
+  
+12. Iterative Assignments
+   Added the support for Quby language to be able to parse the iterative assignment statements "+=+ and "-=". In this case, an              interative assignment will output semantic token stream for a regula assignment. For e.g. i+=1 will output the semantic token stream    for the equivalent regular assignment i=i+1.
+
+13. String Type
+   - Removed the hadnling of the old PT Pascal char data type and char literals.
+   - Added the handling of the string data type and string literals.
+   - Added the handling of the new Quby operators "substring{expression:expression}" and "len:".
+   
+14. Other details
+   Using phase1 feedback made two distinct changes. 
+   - First change was removing the rule for "<>" being outputted as .pNotEqual, this is no longer the case in Quby. 
+   - Second change involved adding pRep to the output tokens of scan.ssl, and input tokens of parser.ssl. This token was overlooked in      phase1. However, it did already exist in stdIdentifiers file, causing some incorrect outputs in the test suite (tokens were being        screened to one-off the actual keyword). The expected outputs have been adjusted to ensure they are correct.
+   - leted old PT style while loop rule from parser.ssl.
+   - "=" cannot be used as comparision operator anymore. Instead, "==" needs to be used for the same. 
