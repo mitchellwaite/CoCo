@@ -1,0 +1,4 @@
+# Quby example program
+# Hello world
+ext output
+print ("Hello world") nl

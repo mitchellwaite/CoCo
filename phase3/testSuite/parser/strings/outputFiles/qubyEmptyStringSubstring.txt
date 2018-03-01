@@ -5,8 +5,8 @@
     .sAssignmentStmt
     .sIdentifier
         .sLiteral
-        .sInteger
-        .sInteger
+            .sInteger
+            .sInteger
         .sSubstring
     .sExpnEnd
    .sEnd
