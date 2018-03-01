@@ -1,0 +1,15 @@
+ptDoubleEquals.pt
+Test case to ensure old PT style "equal to" operator '=' is no longer valid in Quby.
+In Quby the "equal to" operator has changed to "==" as tested in qubyDoubleEquals.pt test case.
+Expected output includes a syntax error provided by the parser, as seen in the ssltrace output.
+
+ptNotEquals.pt
+Test case to ensure old PT style "not equal to" operator "<>" is no longer valid in Quby.
+In Quby the "not equal to" operator has changed to "!=" as tested in qubyNotEquals.pt test case.
+Expected output includes a syntax error provided by the parser, as seen in the ssltrace output.
+
+qubyDoubleEquals.pt
+Test case to verify the new Quby style "equal to" operator "==" is accepted by the parser.
+
+qubyNotEquals.pt
+Test case to verify the new Quby style "not equal to" operator "!=" is accepted by the parser.

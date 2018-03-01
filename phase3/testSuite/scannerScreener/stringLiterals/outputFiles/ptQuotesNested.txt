@@ -1,0 +1,23 @@
+ #eIllegalChar
+  .pIdentifier
+  % Output token text 'this'
+  .pIdentifier (screened to pIs)
+  .pIdentifier
+  % Output token text 'a'
+  .pIdentifier (screened to pFile)
+ #eIllegalChar
+  .pIdentifier
+  % Output token text 'to'
+  .pIdentifier
+  % Output token text 'test'
+  .pIdentifier
+  % Output token text 'the'
+  .pIdentifier
+  % Output token text 'nested'
+ #eIllegalChar
+  .pIdentifier
+  % Output token text 'quotes'
+ .pDot
+ #eIllegalChar
+ .pNewLine
+ .pEndFile

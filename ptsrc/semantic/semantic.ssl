@@ -37,8 +37,8 @@ Input :
         sPacked
         sFile
         sRange
-        sCaseStmt
-        sCaseEnd
+        sSelStmt   % Changed from sCaseStmt to sSelStmt for Quby select statements
+        sSelEnd    % Changed from sCaseEnd
         sLabelEnd
         sExpnEnd
         sNullStmt
@@ -49,9 +49,8 @@ Input :
         sIfStmt
         sThen
         sElse
-        sWhileStmt
-        sRepeatStmt
-        sRepeatEnd
+        sRepStmt   % Added sRepStmt and sRepOnBreak, removed PT sWhileStmt, sRepeatStmt, and sRepeatEnd
+        sRepOnBreak
         sEq
         sNE
         sLT
@@ -68,6 +67,10 @@ Input :
         sInfixAnd
         sAnd
         sNot
+        sModule    % Added Quby sModule and sPublic for Quby modules
+        sPublic
+        sSubstring % Added sSubstring and sLen for Quby string operations
+        sLen
         sNewLine
         sEndOfFile
         lastSemanticToken = sEndOfFile;

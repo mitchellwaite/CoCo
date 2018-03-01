@@ -1,0 +1,28 @@
+ptCommmentsCurlySingleLine.pt
+Test case used to ensure that single line curly braces style comments (PT Pascal style) no longer function in Quby.
+This test should ensure quby's scanner does not identify the combination of braces as a comment.
+
+ptCommentsCurlyMultiLine.pt
+Test case used to ensure that multi-line curly braces style comments (PT Pascal style) no longer function in Quby.
+This test should ensure quby's scanner does not identify the combination of braces as a comment even when multi-lined.
+
+ptCommentsParenthesesSingleLine.pt
+Test case used to ensure that single line parenthesis star style comments (PT Pascal style) no longer function in Quby.
+This test should ensure quby's scanner does not identify the combination of parentheses as a comment.
+
+ptCommentsParenthesesMultiLine.pt
+Test case used to ensure that multi-line parenthesis star style comments (PT Pascal style) no longer function in Quby.
+This test should ensure quby's scanner does not identify the combination of parentheses as a comment even when multi-lined.
+
+qubyCommentEmpty.pt
+Test case to ensure that a hash symbol with no text afterwards is still recognized as an empty comment in Quby.
+
+qubyCommentWithText.pt
+Test case to check if a simple Quby style comment using the hash symbol and some text afterwards functions properly.
+
+qubyCommentEndOfLine.pt
+Test case to ensure that Quby style comments (using the hash symbol) function after other program text.
+
+qubyCommentNested.pt
+Test input to test if a Quby style comment can be nested and still be identified properly by the scanner.
+This means that one hash symbol is followed by some text and then another hash symbol.

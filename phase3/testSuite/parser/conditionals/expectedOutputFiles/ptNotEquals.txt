@@ -1,0 +1,16 @@
+ .sProgram
+ .sIdentifier
+ .sParmEnd
+   .sBegin
+    .sIfStmt
+        .sIdentifier
+        .sIdentifier
+     .sLT
+    .sExpnEnd
+    .sThen
+     .sBegin
+     .sEnd
+   .sEnd
+
+Errors reported by compiler: 
+scan/parse error, line 3: syntax error at: >

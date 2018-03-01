@@ -1,0 +1,8 @@
+ext input
+
+sel i:
+   is 42:
+      x = 5
+   is 43:
+      y = 2
+end

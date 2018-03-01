@@ -1,0 +1,6 @@
+ext input
+
+while x < 10 do
+begin
+    x = 4
+end;

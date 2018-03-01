@@ -1,0 +1,22 @@
+ .sProgram
+ .sIdentifier
+ .sParmEnd
+   .sBegin
+     .sCallStmt
+     .sIdentifier
+     .sParmEnd
+     .sCallStmt
+     .sIdentifier
+         .sIdentifier
+     .sExpnEnd
+     .sFieldWidth
+         .sIdentifier
+     .sExpnEnd
+     .sParmEnd
+     .sCallStmt
+     .sIdentifier
+     .sParmEnd
+   .sEnd
+
+Errors reported by compiler: 
+scan/parse error, line 4: syntax error at: end

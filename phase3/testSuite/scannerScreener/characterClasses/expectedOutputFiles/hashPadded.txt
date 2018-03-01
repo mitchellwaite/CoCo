@@ -1,0 +1,9 @@
+  .pIdentifier
+  % Output token text 'some'
+  .pIdentifier
+  % Output token text 'line'
+  .pIdentifier (screened to pOf)
+  .pIdentifier
+  % Output token text 'text'
+  .pNewLine
+ .pEndFile

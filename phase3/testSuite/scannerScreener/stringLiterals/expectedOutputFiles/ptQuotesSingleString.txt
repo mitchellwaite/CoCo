@@ -1,0 +1,20 @@
+ #eIllegalChar
+  .pIdentifier
+  % Output token text 'this'
+  .pIdentifier (screened to pIs)
+  .pIdentifier
+  % Output token text 'a'
+  .pIdentifier
+  % Output token text 'test'
+  .pIdentifier
+  % Output token text 'for'
+  .pIdentifier
+  % Output token text 'a'
+  .pIdentifier
+  % Output token text 'single'
+  .pIdentifier
+  % Output token text 'string'
+ .pDot
+ #eIllegalChar
+ .pNewLine
+ .pEndFile

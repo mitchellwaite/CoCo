@@ -1,0 +1,79 @@
+bangBeginningOfLine.pt
+This test serves to ensure that Quby's new bang character class properly identifies bang symbols in a PT file.
+This test case checks that a bang symbol can be placed at the beginning of a line of text.
+
+bangEndOfLine.pt
+This test serves to ensure that Quby's new bang character class properly identifies bang symbols in a PT file.
+This test case checks that a bang symbol can be placed at the end of a line of text.
+
+bangMidText.pt
+This test serves to ensure that Quby's new bang character class properly identifies bang symbols in a PT file.
+This test case checks that a bang symbol can be placed in the middle of a line.
+
+bangMultiple.pt
+This test serves to ensure that Quby's new bang character class properly identifies bang symbols in a PT file.
+This test case checks that a bang symbol can be placed in succession, while still being identified.
+
+bangPadded.pt
+This test serves to ensure that Quby's new bang character class properly identifies bang symbols in a PT file.
+This test case checks that a bang symbol can be placed in the middle of other characters while still being recognized by the scanner.
+
+doubleQuoteBeginningOfLine.pt
+This test serves to ensure that Quby's new double quote character class properly identifies double quote symbols in a PT file.
+This test case checks that a double quote symbol can be placed at a beginning of a line.
+
+doubleQuoteEndOfLine.pt
+This test serves to ensure that Quby's new double quote character class properly identifies double quote symbols in a PT file.
+This test case checks that a double quote symbol can be placed at the end of a line of text.
+
+doubleQuoteMidText.pt
+This test serves to ensure that Quby's new double quote character class properly identifies double quote symbols in a PT file.
+This test case checks that a double quotes can be placed in the middle of a line.
+
+doubleQuoteMultiple.pt
+This test serves to ensure that Quby's new double quote character class properly identifies double quote symbols in a PT file.
+This test case checks that a double quote symbol can be placed in succession, while still being identified.
+
+doubleQuotePadded.pt
+This test serves to ensure that Quby's new double quote character class properly identifies double quote symbols in a PT file.
+This test case checks that a double quote symbol can be placed in the middle of other characters while still being recognized by the scanner.
+
+hashBeginningOfLine.pt
+This test serves to ensure that Quby's new hash character class properly identifies hash symbols in a PT file.
+This test case checks that a hash symbol can be placed at a beginning of a line.
+
+hashEndOfLine.pt
+This test serves to ensure that Quby's new hash character class properly identifies hash symbols in a PT file.
+This test case checks that a hash symbol can be placed at the end of a line of text.
+
+hashMidText.pt
+This test serves to ensure that Quby's new hash character class properly identifies hash symbols in a PT file.
+This test case checks that a hash symbol can be placed in the middle of a line.
+
+hashMultiple.pt
+This test serves to ensure that Quby's new hash character class properly identifies hash symbols in a PT file.
+This test case checks that a hash symbol can be placed in succession, while still being identified.
+
+hashPadded.pt
+This test serves to ensure that Quby's new hash character class properly identifies hash symbols in a PT file.
+This test case checks that a hash symbol can be placed in the middle of other chars while still being recognized by the scanner.
+
+singleQuoteBeginningOfLine.pt
+This test serves to ensure that PT's old single quote character class is no longer identified by the scanner as a legal token.
+This test case checks that a single quote symbol can be placed at a beginning of a line and will be identified as an illegal token.
+
+singleQuoteEndOfLine.pt
+This test serves to ensure that PT's old single quote character class is no longer identified by the scanner as a legal token.
+This test case checks that a single quote can be placed at the end of a line of text and be recognized as an illegal character.
+
+singleQuoteMidText.pt
+This test serves to ensure that PT's old single quote character class is no longer identified by the scanner as a legal token.
+This test case checks that a single quote can be placed in the middle of a line and identified as an illegal character.
+
+singleQuoteMultiple.pt
+This test serves to ensure that PT's old single quote character class is no longer identified by the scanner as a legal token.
+This test case checks that a single quote character can be placed in succession, while still being identified as an illegal token.
+
+singleQuotePadded.pt
+This test serves to ensure that PT's old single quote character class is no longer identified by the scanner as a legal token.
+This test case checks that a single quote can be placed in the middle of other characters while still being recognized by the scanner as an illegal character.

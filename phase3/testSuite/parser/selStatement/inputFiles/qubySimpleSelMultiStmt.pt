@@ -1,0 +1,13 @@
+ext input
+
+sel i:
+   is 42:
+      x = 1
+      x = x + 2 
+   is 43:
+      x = 2
+      x = x - 3
+   else:
+      y = 2
+      z = y * 3
+end

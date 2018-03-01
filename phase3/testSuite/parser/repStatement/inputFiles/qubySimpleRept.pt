@@ -1,0 +1,7 @@
+ext input
+
+rep
+    x = 5
+    on x == 1 : break
+    y = 4
+end

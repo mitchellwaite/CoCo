@@ -1,0 +1,11 @@
+ .sProgram
+ .sIdentifier
+ .sParmEnd
+   .sBegin
+     .sCallStmt
+     .sIdentifier
+     .sParmEnd
+   .sEnd
+
+Errors reported by compiler: 
+scan/parse error, line 3: syntax error at: :
