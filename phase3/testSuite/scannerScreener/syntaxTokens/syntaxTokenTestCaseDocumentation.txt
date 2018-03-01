@@ -1,0 +1,28 @@
+ptColonEquals.pt     
+Test case used to ensure that ":=" which was a valid token in PT Pascal isn't recognized by Quby anymore.
+Test case should print colon and equal as separate identifiers and not as one.
+
+ptNotEquals.pt
+Test case to ensure that "<>" which was a valid token for "not equals to" in PT Pascal is no longer recognized by Quby.
+Test result should show the combination of "<>" no longer producing a scanner output token of ".pNotEqual".
+
+qubyLeftBrace.pt    
+Test case used to ensure that { is recognized as LeftBrace but not valid for comments in Quby anymore.
+
+qubyRightBrace.pt
+Test case used to ensure that } is recognized as LeftBrace but not valid for comments in Quby anymore.
+
+qubyNotEquals.pt   
+Test case used to ensure that "!=" is recognized as one token NotEquals in Quby, which is the same as PT Pascal.
+
+qubyDoubleEquals.pt  
+Test case used to ensure that "==" is recognized as one token in Quby which isn't recognized in PT Pascal.
+Test case prints as DoubleEquals, and not two separate equal tokens.
+
+qubyMinusEquals.pt  
+Test case used to ensure that "-=" is recognized as one token in Quby which isn't recognized in PT Pascal.
+Test case prints as MinusEquals, and not two separate individual tokens.
+
+qubyPlusEquals.pt
+Test case used to ensure that "+=" is recognized as one token in Quby which isn't recognized in PT Pascal.
+Test case prints as PlusEquals, and not two separate individual tokens.

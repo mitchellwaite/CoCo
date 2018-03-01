@@ -1,0 +1,4 @@
+  .pIdentifier
+  % Output token text 'getnl'
+ .pNewLine
+ .pEndFile

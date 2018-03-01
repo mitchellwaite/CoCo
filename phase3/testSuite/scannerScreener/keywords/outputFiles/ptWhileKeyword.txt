@@ -1,0 +1,4 @@
+  .pIdentifier
+  % Output token text 'while'
+ .pNewLine
+ .pEndFile

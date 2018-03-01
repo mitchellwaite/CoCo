@@ -1,0 +1,15 @@
+qubyMinusEqualsIdentifier.pt
+Test case to test the iterative assignment operator "-=" in Quby as it was not available in PT. This test specifically uses the operator with an identifier on both the left hand side and the right hand side of the operator.
+The expected output tokens should include both .sAssignmentStmt and .sSubtract to inform the semantic phase that both a subtraction and assignment operation is taking place.
+
+qubyMinusEquals.pt
+Test case to test the iterative assignment operator "-=" in Quby as it was not available in PT. This test specifically uses the operator with an identifier on the left hand side of the operator and an integer on the right hand side of the operator.
+The expected output tokens should include both .sAssignmentStmt and .sSubtract to inform the semantic phase that both a subtraction and assignment operation is taking place.
+
+qubyPlusEqualsIdentifier.pt
+Test case to test the iterative assignment operator "+=" in Quby as it was not available in PT. This test specifically uses the operator with an identifier on both the left hand side and the right hand side of the operator.
+The expected output tokens should include both .sAssignmentStmt and .sAdd to inform the semantic phase that both an addition and assignment operation is taking place.
+
+qubyPlusEquals.pt
+Test case to test the iterative assignment operator "+=" in Quby as it was not available in PT. This test specifically uses the operator with an identifier on the left hand side of the operator and an integer on the right hand side of the operator.
+The expected output tokens should include both .sAssignmentStmt and .sAdd to inform the semantic phase that both a addition and assignment operation is taking place.

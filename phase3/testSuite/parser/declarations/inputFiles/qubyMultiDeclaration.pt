@@ -1,0 +1,4 @@
+ext input
+con a = 1
+typ t: integer
+var e: integer

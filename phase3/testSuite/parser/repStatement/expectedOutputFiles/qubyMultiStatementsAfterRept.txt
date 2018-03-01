@@ -1,0 +1,31 @@
+ .sProgram
+ .sIdentifier
+ .sParmEnd
+   .sBegin
+    .sRepStmt
+     .sBegin
+      .sAssignmentStmt
+      .sIdentifier
+          .sInteger
+      .sExpnEnd
+     .sEnd
+    .sRepOnBreak
+        .sIdentifier
+        .sInteger
+     .sEq
+    .sExpnEnd
+     .sBegin
+      .sAssignmentStmt
+      .sIdentifier
+          .sInteger
+      .sExpnEnd
+      .sAssignmentStmt
+      .sIdentifier
+          .sInteger
+          .sIdentifier
+         .sMultiply
+      .sExpnEnd
+     .sEnd
+   .sEnd
+
+Errors reported by compiler: 

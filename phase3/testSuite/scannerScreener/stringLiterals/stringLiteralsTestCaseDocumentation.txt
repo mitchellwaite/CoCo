@@ -1,0 +1,35 @@
+ptNoEndQuotes.pt
+Test case used to ensure that a string is not recognized if there is a beginning and end single quotes.
+This test should ensure quby's scanner does not identify just one single quote as a string.
+
+qubyNoEndQuotes.pt      
+Test case used to ensure that a string is recognized only if there is a beginning and end
+quotes.
+This test should ensure quby's scanner does not identify just one double quotes as a string.
+
+qubyQuotesNullString.pt
+Test case used to ensure that empty string is recognized and accepted
+This test should ensure quby's scanner identifies an empty string and accepts it.
+
+ptQuotesEndOfLine.pt
+Test case used to ensure that string with quotes at the end of line should not be recognized 
+This test should ensure quby's scanner does not identify a string if string has single quotes at the end of the line. 
+
+qubyQuotesEndOfLine.pt  
+Test case used to ensure that string with double quotes at the end of line is recognized
+This test should ensure quby's scanner identifies a string if string has double quotes at the end of the line.
+
+qubyQuotesSingleString.pt
+Test case used to ensure that single string is recognized in Quby if it has double quotes.
+
+ptQuotesNested.pt        
+Test case used to ensure that nested single quoutes are not recognized in Quby.
+
+qubyQuotesMultiline.pt  
+Test case used to ensure that multiline strings are not accepted in Quby.
+
+ptQuotesSingleString.pt  
+Test case used to ensure that single string is not recognized in Quby if it has single quotes.
+
+qubyQuotesNested.pt
+Test case used to ensure that nested double quoutes are recognized in Quby.

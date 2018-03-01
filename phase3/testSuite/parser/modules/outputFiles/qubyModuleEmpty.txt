@@ -1,0 +1,11 @@
+ .sProgram
+ .sIdentifier
+ .sParmEnd
+  .sModule
+  .sIdentifier
+    .sBegin
+    .sEnd
+   .sBegin
+   .sEnd
+
+Errors reported by compiler: 
