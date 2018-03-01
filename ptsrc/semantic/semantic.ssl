@@ -134,19 +134,20 @@ Output :        % corresponds to coder.ssl input
         tWriteEnd
         tReadEnd
 
+        tConcatenate % New string T-codes
+        tSubstring
+        tLength
+        tIndex
+        tStringEqual
+
         % Compound T-codes are those that take operands
         tLiteralAddress
         firstCompoundTcode = tLiteralAddress
         tLiteralInteger 
         tLiteralBoolean
         tLiteralString
-        tStringDescriptor
-        tSkipString
-        tConcatenate % New string T-codes
-        tSubstring
-        tLength
-        tIndex
-        tStringEqual
+%       tStringDescriptor
+%       tSkipString
         tIfThen
         tIfMerge
         tCaseSelect
@@ -428,7 +429,7 @@ type TypeKind :
         tpBoolean
         tpSubrange
         tpArray
-        tpPackedArray   % TODO remove this? 
+%       tpPackedArray   % TODO remove this? 
         tpFile
         tpNull;
 

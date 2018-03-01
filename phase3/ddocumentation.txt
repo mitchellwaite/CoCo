@@ -19,12 +19,16 @@ The goal of these modifications is to convert the Semantic Analyzer of the PT Pa
 4. StdType
    - Changed stdChar to stdString
 
-7. TypeKind
+7. TypeKind (Incomplete)
    - Changed tpChar to tpString
-    **** TODO remove tpPackedArray? ****
+   - Commented out tpPackedArray
+    **** TODO do we need to keep tpPackedArray? ****
 
 8. TrapKind
    - Changed the names of trWriteChar and trReadChar to trWriteString and trReadString
    - Removed redundant trWriteString
    - Changed trap numbers for trWriteString and trReadString to 109 and 108 respectively
    - Changed all uses of char traps to string traps
+
+19. String Literal & T-codes (Incomplete)
+   - Commented out tStringDescriptor and tSkipString
