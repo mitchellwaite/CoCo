@@ -5,7 +5,7 @@
     .sAssignmentStmt
     .sIdentifier
     .sIdentifier
-    .sIdentifier
+        .sIdentifier
     .sSubtract
     .sExpnEnd
    .sEnd

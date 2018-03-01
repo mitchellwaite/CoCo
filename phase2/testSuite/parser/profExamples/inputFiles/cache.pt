@@ -1,0 +1,270 @@
+# Quby example program 
+# Virtual memory cache fault strategy experiment
+
+# Example CISC 211A Assignment 2 Solution 
+# J.R. Cordy, October 1995                
+ext input, output
+
+# Program parameters :
+#     N is the number of customers in the database,
+#     M is the number of random lookups to try      
+
+var N : integer
+var M : integer
+
+# The database is modelled by a set of random integers 
+var customer : array [1 .. 1000] of integer
+
+# Counter for total number of compares 
+var ncompares : integer
+
+# Random seed 
+var seed : integer
+var multiplier : integer
+
+# Cache for use by cache strategy 
+var cachename : array [1 .. 10] of integer
+var cacheindx : array [1 .. 10] of integer
+var cp : integer
+
+var c : integer
+var r : integer
+var j : integer
+var indx : integer
+var cavg : integer
+
+
+# Procedure to generate random numbers 
+
+def randint (var result : integer, modulus : integer)
+    # random number generation 
+    if multiplier == 17 :
+        multiplier = 19
+    else : 
+        multiplier = 17
+    end
+    seed = (seed * multiplier) mod 10000
+    result = (seed mod modulus) + 1
+end #randint
+
+
+# Procedure to initialize the customer database to N random 
+# integers between 100000 and 999999 
+
+def initialize
+    var i : integer
+    var p : integer
+    i = 1
+    rep
+        on i > N : break
+        randint (p, 9000)
+        p += 1000
+        customer [i] = p
+        i += 1
+    end
+end #initialize
+
+
+# Function to generate a random successful lookup key. 
+# We generate a random index of the array, : use 
+# the value there to look up. 
+
+def randomname (var r : integer)
+    var p : integer
+    randint (p, N)
+    r = customer [p]
+end #randomname
+
+
+# Function implementing a naive linear lookup. 
+
+def findlinear (name : integer, var r : integer)
+    var i : integer
+    i = 1
+    r = 0
+    rep
+        on (i >  N) or (r != 0) : break
+        ncompares += 1
+        if customer [i] == name :
+            r = i
+        end
+        i += 1
+    end
+end #findlinear
+
+
+# Function impelementing a linear lookup with cache of size 10. 
+# The cache strategy is LRE - that is, least recently 
+# entered cache item gets replaced.  This is effectively 
+# round-robin use of the cache. 
+
+
+def findcache (name : integer, r : integer)
+    var i : integer
+    var c : integer
+    c = 1
+    r = 0
+    rep
+        on (c > 10) or (r != 0) : break
+        ncompares += 1
+        if cachename [c] == name :
+            r = cacheindx [c]
+        end
+        c += 1
+    end
+    i = 1
+    rep
+        on (c > 10) or (r != 0) : break
+        ncompares += 1
+        if customer [i] == name :
+            # Put it in the cache 
+            cp += 1
+            if cp > 10 :
+                cp = 1
+            end
+            cachename [cp] = name
+            cacheindx [cp] = i
+            r = i
+        end
+        i += 1
+    end
+end #findcache
+
+
+# Procedure to bubble sort the customer array so that 
+# we can use binary search.  Compares used here count 
+# as part of the total cost of that strategy. 
+
+def swap (n1: integer, n2 : integer)
+    var temp : integer
+    temp = customer [n1]
+    customer [n1] = customer [n2]
+    customer [n2] = temp
+end #swap
+
+def bubblesort
+    var j : integer
+    var k : integer
+    var nswaps : integer
+    j = N
+    nswaps = 1
+    rep
+        on (j <= 1) or (nswaps == 0) : break
+        nswaps = 0
+        k = 1
+        rep
+            on k >= j : break
+            ncompares += 1
+            if customer [k] > customer [k + 1] :
+                nswaps += 1
+                swap (k, k + 1)
+            end 
+            k += 1
+        end
+        j -= 1
+    end
+end #bubblesort
+
+
+# Function implementing a binary search. 
+# Assumes that the database is sorted in increasing order. 
+
+def findbinary (name : integer, r : integer)
+    var first : integer; var last : integer; var mid : integer
+    first = 1
+    last = N
+    rep
+        on first == last : break
+        mid = (first + last) div 2
+        ncompares += 1
+        if name > customer [mid] :
+            first = mid + 1
+        else :
+            last = mid
+        end
+    end
+    ncompares += 1
+    if customer [first] == name :
+        r = first
+    else :
+        r = 0
+    end
+end #findbinary
+
+
+# Main program. 
+# Initialize the database to N random integers and look up M of them using each method. 
+
+# initialize random seed 
+seed = 13277
+multiplier = 17
+
+# Get the number of customers in the database N and the number of random lookups to try M 
+print ("Enter N (number of elements, at most 1000, e.g. 100): ")
+get (N) 
+print ("Enter M (number of lookups, e.g. 1000): ")
+get (M) 
+print ("Enter a prime number (e.g. 13, 19, 51, ...): ")
+get (multiplier) 
+
+initialize
+
+# Linear lookup 
+nl print ("Linear lookup") nl
+ncompares = 0
+
+c = 1
+rep
+    on c > M : break
+    randomname (r)
+    findlinear (r, indx)
+    c += 1
+end
+
+cavg = ncompares div M
+print ("N = ", N:1, "  Average compares per search (Cavg) == ", cavg:1) nl
+
+
+# Linear lookup with cache 
+nl print ("Linear lookup with cache") nl
+ncompares = 0
+
+# Initialize the cache to empty 
+cp = 0
+j = 1
+rep
+    on j > 10 : break
+    cachename [j] = 0
+    j = j + 1
+end
+
+c = 1
+rep
+    on c > M : break
+    randomname (r)
+    findlinear (r, indx)
+    c += 1
+end
+
+cavg = ncompares div M
+print ("N = ", N:1, "  Average compares per search (Cavg) == ", cavg:1) nl
+
+
+# Binary search 
+nl print ("Binary search") nl
+ncompares = 0
+
+# Count compares of bubble sort in total 
+bubblesort
+
+c = 1
+rep
+    on c > M : break
+    randomname (r)
+    findbinary (r, indx)
+    c += 1
+end
+
+cavg = ncompares div M
+print ("N = ", N:1, "  Average compares per search (Cavg) == ", cavg:1) nl
+

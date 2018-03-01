@@ -3,7 +3,17 @@ Phase 2 Documentation
 Team Members : Clara Fu, Parv Mital, Johan Cornelissen, Mitchell Waite
 Group: cisc458n 
 
+CHANGES SINCE PHASE2 SUBMISSIONS===============================================================================
 
+1. += & -= --> Changed it to call expression rule instead of pInt and pIdent
+
+2. Substring --> Changed it to call expression rule instead of only two pInt
+
+3. Len --> Changed it to call expression rule instead of only pLit
+
+4. Elif --> Removed the sBegin and sEnd emiting tokens because it should do that once it enters the block itself. 
+
+==============================================================================================================
 The goal of these modifications is to convert the Parser of the PT Pascal compiler into the Parser for Quby. A detailed listing of all the changes made are listed below:
 
 1. Token Definitions

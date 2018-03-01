@@ -1,0 +1,11 @@
+# Quby example program 
+ext input, output
+var word : string
+
+print ("Anything you can say, I can say twice (end with 'bye'):") nl
+rep
+    get (word)
+    print (word + " " + word) nl
+    on word == "bye" : break
+    getnl 
+end

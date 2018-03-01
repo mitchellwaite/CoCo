@@ -1,0 +1,118 @@
+# Quby example program 
+# Binary tree sort
+ext input, output
+
+# Limits
+con nilPointer = 0
+con maxTreeElements = 100
+typ treeReference : 0 .. maxTreeElements
+
+# Binary tree node representation
+var root : treeReference
+var treeleft : array [0 .. maxTreeElements] of treeReference
+var treeright : array [0 .. maxTreeElements] of treeReference
+var treeval : array [0 .. maxTreeElements] of integer
+
+# Keep track of next free node
+var avail : integer
+
+# Binary tree insert routine
+def Insert (val : integer)
+    var node : treeReference
+
+    treeval [avail] = val
+    treeright [avail] = nilPointer
+    treeleft [avail] = nilPointer
+
+    if root == nilPointer :
+        root = avail
+    else : 
+        node = root
+        rep
+            if val < treeval [node] :
+                if treeleft [node] == nilPointer :
+                    treeleft [node] = avail
+                    node = avail
+                else :
+                    node = treeleft [node]
+                end
+
+            elif val > treeval [node] :
+                if treeright [node] == nilPointer :
+                    treeright [node] = avail
+                    node = avail
+                else :
+                    node = treeright [node]
+                end
+            end
+
+            on treeval [node] == val : break
+        end
+
+    end
+
+    avail += 1
+end
+
+# Binary tree depth first left-right walk
+def Walk 
+    var stack : array [0 .. maxTreeElements] of treeReference
+    var top : integer 
+    var node : treeReference
+    var done : boolean
+    top = 0
+    node = root
+    done = false
+    rep
+        if node != nilPointer :
+            top += 1
+            stack [top] = node
+            node = treeLeft [node]
+        else:
+            if top > 0:
+                node = stack [top]
+                top -= 1
+                print (treeval [node]: 1, " ") 
+                node = treeRight [node]
+            else:
+                done = true
+            end
+        end
+
+        on done : break
+    end
+    nl
+end
+
+
+# Main program  
+var s : integer
+var i : integer
+
+# Initialization 
+i = 1
+rep
+    on i > maxTreeElements : break
+    treeval [i] = 0
+    treeleft [i] = nilPointer
+    treeright [i] = nilPointer
+    i += 1
+end
+
+avail = 1
+root = nilPointer
+
+# Get integers to be sorted and insert them in the binary tree
+print ("Type in some integers, please, ending with 0")
+nl
+
+rep
+    get (s)
+    if s != 0 :
+        Insert (s)
+    end
+    on s == 0 : break
+end
+
+# Output the sorted result
+Walk 

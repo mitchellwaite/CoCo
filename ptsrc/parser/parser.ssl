@@ -149,8 +149,8 @@ Program :
         % ext identifier {,identifier}
         % {declaration}
         % {statement}        
+        'ext' .sProgram % Quby programs begin with 'ext' not 'program', and do not have a program name, only parameters.        
 
-        'ext'  .sProgram % Quby programs begin with 'ext' not 'program', and do not have a program name, only parameters.
         % program parameters
         {
             pIdentifier  .sIdentifier
@@ -194,6 +194,7 @@ Block :
                 @ProcedureHeading
                 @Block
                 'end'
+            | ';':
             | *:
                 >
         ]}
@@ -355,26 +356,14 @@ AssignmentOrCallStmt :
                 .sAssignmentStmt
                 .sIdentifier    % identifier accepted in the Statements rule
                 .sIdentifier
-                [
-                    | pInteger:
-                        .sInteger
-                    | pIdentifier:
-                        .sIdentifier
-                    | *:
-                ]
+                @Expression
                 .sAdd
                 .sExpnEnd
             | '-=':
                 .sAssignmentStmt
                 .sIdentifier    % identifier accepted in the Statements rule
                 .sIdentifier
-                [
-                    | pInteger:
-                        .sInteger
-                    | pIdentifier:
-                        .sIdentifier
-                    | *:
-                ]
+                @Expression
                 .sSubtract
                 .sExpnEnd
             | '[':
@@ -438,9 +427,7 @@ IfStmt :
                 'end'
             | 'elif':
                 .sElse
-                .sBegin
                 @IfStmt
-                .sEnd
             | 'end':
             | *:
         ];
@@ -572,11 +559,9 @@ Substring:
         % The general form of a substring in Quby is:
         % expression { expression : expression }        
 
-        pInteger   % .sLiteral has already been emitted
-        .sInteger  % Allow only integer expressions in splice operator
+        @Expression
         ':'
-        pInteger
-        .sInteger
+        @Expression
         '}'
         .sSubstring;              
 
@@ -597,8 +582,7 @@ Factor :
                 @Factor
                 .sNot
             | pLen:
-                pLiteral
-                .sLiteral
+                @Expression
                 .sLen
             | pLiteral:
                 .sLiteral

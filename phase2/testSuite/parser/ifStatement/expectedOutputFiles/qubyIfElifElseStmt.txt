@@ -15,7 +15,6 @@
       .sExpnEnd
      .sEnd
     .sElse
-    .sBegin
      .sIfStmt
          .sIdentifier
          .sInteger
@@ -35,7 +34,6 @@
            .sInteger
        .sExpnEnd
       .sEnd
-    .sEnd
    .sEnd
 
 Errors reported by compiler: 
