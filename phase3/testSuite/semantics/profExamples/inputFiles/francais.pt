@@ -1,0 +1,59 @@
+# Quby example program 
+# Program to conjugate regular French verbs
+ext input, output
+
+var infinitive : string
+var root : string
+
+rep
+    print("Please give me a regular French 'er' verb (end with 'arreter')") nl
+    get (infinitive)
+    nl
+
+    print ("Thanks, here is the present conjugation") nl
+
+    root = infinitive {1 : (len infinitive-2)}
+    print ("The root of this verb is '", root, "'") nl
+    nl
+
+    if infinitive {(len infinitive - 1) : len infinitive} == "er" :
+    
+	if (root {1:1} == "a") or (root {1:1} == "e")
+	       or (root {1:1} == "i") or (root {1:1} == "o")
+	       or (root {1:1} == "u") :
+	    print ("J'" + root + "e")
+	else :
+	    print ("Je " + root + "e")
+	end
+
+	nl
+
+	print ("Tu " + root + "es") nl
+	print ("Il ou elle " + root + "e") nl
+	nl
+
+	if root {len root : len root} == "g" :
+	    print ("Nous " + root + "eons")
+	else :
+	    print ("Nous " + root + "ons")
+	end
+
+	nl
+
+	print ("Vous " + root + "ez") nl
+	print ("Ils ou elles " + root + "ent") nl
+	nl
+
+    elif infinitive {(len infinitive - 1) : len infinitive} == "ir" :
+	print ("I'm too tired to do an 'ir' verb") nl
+	nl
+
+    else : 
+	print ("I don't like the looks of this verb") nl
+	nl
+    end
+
+    on infinitive == "arreter" : break
+
+    getnl
+end

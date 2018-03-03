@@ -1,0 +1,82 @@
+   .tLiteralInteger
+   oEmitValue
+   .tLiteralAddress
+   oEmitDataAddress
+   .tFileDescriptor
+       #eSimpleTypeReqd
+     .tLiteralInteger
+     oEmitValue
+     .tLiteralAddress
+     oEmitDataAddress
+     .tArrayDescriptor
+     .tLiteralInteger
+     oEmitValue
+     .tLiteralAddress
+     oEmitDataAddress
+     .tArrayDescriptor
+   .tSkipProc
+   oEmitNullAddress
+     #eTypeIdentifierReqd
+     .tLiteralAddress
+     oEmitValue
+     .tStoreParmInteger
+     .tLiteralAddress
+     oEmitValue
+     .tStoreParmInteger
+     .tParmEnd
+       .tAssignBegin
+        .tLiteralAddress
+        oEmitValue
+         .tSubscriptBegin
+            .tLiteralAddress
+            oEmitValue
+            .tFetchInteger
+         .tSubscriptInteger
+          .tLiteralAddress
+          oEmitValue
+          .tFetchInteger
+       .tAssignInteger
+   .tProcedureEnd
+   .tSkipProc
+   oEmitNullAddress
+     #eTypeIdentifierReqd
+     .tLiteralAddress
+     oEmitValue
+     .tStoreParmAddress
+     .tLiteralAddress
+     oEmitValue
+     .tStoreParmInteger
+     .tParmEnd
+       .tAssignBegin
+        .tLiteralAddress
+        oEmitValue
+        .tFetchAddress
+          .tLiteralAddress
+          oEmitValue
+           .tSubscriptBegin
+              .tLiteralAddress
+              oEmitValue
+              .tFetchInteger
+           .tSubscriptInteger
+          .tFetchInteger
+       .tAssignInteger
+   .tProcedureEnd
+      #eSimpleTypeReqd
+     .tAssignBegin
+      .tLiteralAddress
+      oEmitValue
+       .tLiteralInteger
+       oEmitValue
+     .tAssignInteger
+### Semantic pass S/SL program failure:  syntax error in semantic token stream
+### Semantic assertion 3 failed: 
+
+Errors reported by compiler: 
+semantic error, line 14: subrange or named type required
+semantic error, line 14: type identifier required
+semantic error, line 18: type identifier required
+semantic error, line 25: subrange or named type required
+### Semantic pass S/SL program failure:  syntax error in semantic token stream
+    (parser output stream does not match expected input stream)
+while processing line         29
+### Semantic assertion 3 failed: 

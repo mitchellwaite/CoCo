@@ -1,0 +1,90 @@
+   .tLiteralInteger
+   oEmitValue
+   .tLiteralAddress
+   oEmitDataAddress
+   .tFileDescriptor
+   .tLiteralInteger
+   oEmitValue
+   .tLiteralAddress
+   oEmitDataAddress
+   .tFileDescriptor
+      #eUndefinedIdentifier
+      #eUndefinedIdentifier
+      #eUndefinedIdentifier
+     #eUndefinedIdentifier
+     #eProcedureReqd
+     #eUndefinedIdentifier
+     #eProcedureReqd
+     #eUndefinedIdentifier
+     #eProcedureReqd
+     #eUndefinedIdentifier
+     #eProcedureReqd
+     .tAssignBegin
+      .tLiteralAddress
+      oEmitValue
+        .tLiteralAddress
+        oEmitValue
+        .tFetchInteger
+       .tLiteralInteger
+       oEmitValue
+       .tAdd
+     .tAssignInteger
+     .tAssignBegin
+      .tLiteralAddress
+      oEmitValue
+        .tLiteralAddress
+        oEmitValue
+        .tFetchInteger
+       .tLiteralInteger
+       oEmitValue
+       .tAdd
+     .tAssignInteger
+     .tAssignBegin
+      .tLiteralAddress
+      oEmitValue
+       #eNullString
+      #eTypeMismatch
+     .tAssignInteger
+     .tAssignBegin
+      .tLiteralAddress
+      oEmitValue
+       #eNullString
+      #eTypeMismatch
+     .tAssignInteger
+     .tAssignBegin
+      .tLiteralAddress
+      oEmitValue
+       #eNullString
+      #eTypeMismatch
+     .tAssignInteger
+     .tAssignBegin
+      .tLiteralAddress
+      oEmitValue
+       .tLiteralInteger
+       oEmitValue
+     .tAssignInteger
+### Semantic pass S/SL program failure:  syntax error in semantic token stream
+### Semantic assertion 3 failed: 
+
+Errors reported by compiler: 
+semantic error, line 6: identifier not declared
+semantic error, line 7: identifier not declared
+semantic error, line 9: identifier not declared
+semantic error, line 19: identifier not declared
+semantic error, line 19: procedure name required
+semantic error, line 20: identifier not declared
+semantic error, line 20: procedure name required
+semantic error, line 21: identifier not declared
+semantic error, line 21: procedure name required
+semantic error, line 22: identifier not declared
+semantic error, line 22: procedure name required
+semantic error, line 28: null literal string not allowed
+semantic error, line 28: type clash
+semantic error, line 28: null literal string not allowed
+semantic error, line 28: type clash
+semantic error, line 29: null literal string not allowed
+semantic error, line 29: type clash
+### Semantic pass S/SL program failure:  syntax error in semantic token stream
+    (parser output stream does not match expected input stream)
+while processing line         30
+### Semantic assertion 3 failed: 

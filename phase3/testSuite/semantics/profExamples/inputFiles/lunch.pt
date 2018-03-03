@@ -1,0 +1,70 @@
+# Quby example program 
+# Lunch - the singing program
+ext output
+
+# Sing about the old lady!
+var animal: array [1 .. 8] of string
+var remark: array [1 .. 8] of string
+
+var verse: integer
+var countdown: integer
+
+# All the animals ...
+animal [1] = "fly"
+animal [2] = "spider"
+animal [3] = "bird"
+animal [4] = "cat"
+animal [5] = "dog"
+animal [6] = "goat"
+animal [7] = "cow"
+animal [8] = "horse"
+
+# ... and their stories
+remark [1] = "I don't know why she swallowed a fly."
+remark [2] = "That wiggled and jiggled and tickled inside her."
+remark [3] = "How absurd, to swallow a bird."
+remark [4] = "Imagine that, she swallowed a cat."
+remark [5] = "What a hog, to swallow a dog."
+remark [6] = "What a dope, to swallow a goat."
+remark [7] = "I don't know how she swallowed that cow."
+remark [8] = "She died of course."
+
+# Title it
+print ("I Know an Old Lady") nl
+
+# Now sing, starting with verse 1
+verse = 1
+
+rep
+    on verse >= 8 : break
+    nl
+    print ("I know an old lady") nl
+    print ("Who swallowed a " + animal [verse]) nl
+    print (remark [verse]) nl
+
+    countdown = verse
+    rep
+	on countdown < 2 : break
+	print ("She swallowed the " + animal [countdown])
+	print (" to catch the " + animal [countdown - 1] + ",") nl
+	countdown -= 1
+    end
+
+    if verse > 1 :
+	print (remark [1]) nl
+    end
+
+    if verse < 8 :
+	print ("Perhaps she'll die.") nl
+    end
+
+    verse += 1
+end
+
+# End nicely
+nl
+print ("The end.") nl 
+nl
+print ("Thank you very much, you're too kind.") nl
+print ("I'll be here until Thursday - try the veal!") nl
+nl
