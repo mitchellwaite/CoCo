@@ -878,7 +878,7 @@ ConstantValue :         % An identifier token has just been accepted
                     | *:
                         % Emit a branch around the string since
                         % it is stored in the code area
-                        .tSkipString
+%                        .tSkipString
                         oFixPushForwardBranch
                         oEmitNullAddress
                         .tLiteralString
@@ -1489,12 +1489,12 @@ Statement :
                 @BeginStmt
             | sIfStmt:
                 @IfStmt
-            | sWhileStmt:
-                @WhileStmt
-            | sCaseStmt:
-                @CaseStmt
-            | sRepeatStmt:
-                @RepeatStmt
+%            | sWhileStmt:
+%                @WhileStmt
+%            | sCaseStmt:
+%                @CaseStmt
+%            | sRepeatStmt:
+%                @RepeatStmt
             | sNullStmt:
         ];
 
@@ -1716,19 +1716,19 @@ WhileStmt :
         oFixPopTargetAddress
         oFixPopForwardBranch;
 
-RepeatStmt :
-        .tRepeatBegin
-        oFixPushTargetAddress           % top-of-loop branch target
-        {[
-            | sRepeatEnd:
-                >
-            | *:
-                @Statement
-        ]}
-        .tRepeatControl
-        @BooleanControlExpression
-        .tRepeatTest
-        oFixPopTargetAddress;
+%RepeatStmt :
+%        .tRepeatBegin
+%        oFixPushTargetAddress           % top-of-loop branch target
+%        {[
+%            | sRepeatEnd:
+%                >
+%            | *:
+%                @Statement
+%        ]}
+%        .tRepeatControl
+%        @BooleanControlExpression
+%        .tRepeatTest
+%        oFixPopTargetAddress;
 
 CaseStmt :
         .tCaseBegin
@@ -1738,12 +1738,13 @@ CaseStmt :
         .tCaseSelect
         oFixPushForwardBranch
         oEmitNullAddress                % address of case branch table
-        {[
-            | sCaseEnd:
-                >
-            | *:
+        {%[
+%            | sCaseEnd:
+%                >
+%            | *:
                 @CaseAlternative
-        ]}
+        %]
+        }
         .tCaseEnd
         oFixPopForwardBranch
         oEmitCaseBranchTable
@@ -1884,7 +1885,7 @@ Operand :
                         oSymbolStkPush(syExpression)
                         % branch around string since
                         % it is stored in the code area
-                        .tSkipString
+%                        .tSkipString
                         oFixPushForwardBranch
                         oEmitNullAddress
                         .tLiteralString
@@ -1895,7 +1896,7 @@ Operand :
                         oFixPopForwardBranch
                         % Descriptor points to the
                         % first character of the string
-                        .tStringDescriptor
+%                        .tStringDescriptor
                         oFixPopTargetAddress
                         oTypeStkPush(tpPackedArray)
                         oTypeStkEnterBounds
@@ -2163,7 +2164,7 @@ ConstantOperand :
             | tpBoolean:
                 .tLiteralBoolean
             | tpPackedArray:    % always a named literal string
-                .tStringDescriptor
+%                .tStringDescriptor
         ]
         oValuePushSymbol
         oEmitValue
