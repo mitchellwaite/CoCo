@@ -8,6 +8,7 @@ The goal of these modifications is to convert the Semantic Analyzer of the PT Pa
 
 1. Input Tokens
    - The semantic analyzer input tokens in semantic.ssl were modified to match the output tokens from the parser
+   - The input, error, operational, type tokens were updated in semantic.pt to match the tokens seen in semantic.def
 
 2. T-Codes
    - All char T-codes were replaced with string T-Codes
