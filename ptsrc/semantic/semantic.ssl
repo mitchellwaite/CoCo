@@ -1489,8 +1489,8 @@ Statement :
                 @BeginStmt
             | sIfStmt:
                 @IfStmt
-%            | sWhileStmt:
-%                @WhileStmt
+            | sRepStmt:
+                @RepStmt
 %            | sCaseStmt:
 %                @CaseStmt
 %            | sRepeatStmt:
@@ -1703,9 +1703,12 @@ IfStmt :
         .tIfEnd
         oFixPopForwardBranch;
 
-WhileStmt :
+RepStmt :
         .tWhileBegin
         oFixPushTargetAddress           % top-of-loop branch target
+        @Statement
+        sRepOnBreak
+        .tWhileOnBreak
         @BooleanControlExpression
         .tWhileTest
         oFixPushForwardBranch

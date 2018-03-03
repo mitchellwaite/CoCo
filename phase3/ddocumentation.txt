@@ -3,6 +3,8 @@ Phase 3 Documentation
 Team Members : Clara Fu, Parv Mital, Johan Cornelissen, Mitchell Waite
 Group: cisc458n 
 
+*********For manual testing:*********
+ssltrace "ptc -L ../../../../ptsrc/lib/pt -o3 -t3 qubySimpleRept.pt" ../../../../ptsrc/lib/pt/semantic.def | egrep '^ *[\.o%]'
 
 The goal of these modifications is to convert the Semantic Analyzer of the PT Pascal compiler into the Semantic Analyzer for Quby. A detailed listing of all the changes made are listed below. They follow the order of the checklist provided in the assignment documentation, adjusted where applicable.
 
@@ -30,6 +32,11 @@ The goal of these modifications is to convert the Semantic Analyzer of the PT Pa
    - Removed redundant trWriteString
    - Changed trap numbers for trWriteString and trReadString to 109 and 108 respectively
    - Changed all uses of char traps to string traps
+
+14. Rep Statements
+   - Changed the WhileStmt rule to RepStmt and other similar name changes as required
+   - Added the support for conditional exit using Quby RepOnBreak
+   - In RepStmt rule, added a call to Statement rule before the sRepOnBreak
 
 19. String Literal & T-codes (Incomplete)
    - Commented out tStringDescriptor and tSkipString

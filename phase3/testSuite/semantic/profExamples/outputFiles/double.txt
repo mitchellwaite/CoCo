@@ -1,0 +1,44 @@
+   .tLiteralInteger
+   oEmitValue
+   .tLiteralAddress
+   oEmitDataAddress
+   .tFileDescriptor
+   .tLiteralInteger
+   oEmitValue
+   .tLiteralAddress
+   oEmitDataAddress
+   .tFileDescriptor
+      #eUndefinedIdentifier
+     #eUndefinedIdentifier
+     #eProcedureReqd
+     #eUndefinedIdentifier
+     #eProcedureReqd
+     .tWhileBegin
+         #eUndefinedIdentifier
+         #eProcedureReqd
+         #eUndefinedIdentifier
+         #eProcedureReqd
+         #eUndefinedIdentifier
+         #eProcedureReqd
+     .tWhileOnBreak
+         .tLiteralAddress
+         oEmitValue
+         .tFetchInteger
+        oEmitNullAddress
+        .tLiteralString
+        oEmitValue
+        oEmitString
+
+Errors reported by compiler: 
+semantic error, line 5: identifier not declared
+semantic error, line 5: identifier not declared
+semantic error, line 5: procedure name required
+semantic error, line 6: identifier not declared
+semantic error, line 6: procedure name required
+semantic error, line 7: identifier not declared
+semantic error, line 7: procedure name required
+semantic error, line 8: identifier not declared
+semantic error, line 8: procedure name required
+semantic error, line 9: identifier not declared
+semantic error, line 9: procedure name required
+

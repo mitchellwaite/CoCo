@@ -63,8 +63,66 @@
        .tLiteralInteger
        oEmitValue
      .tAssignInteger
-### Semantic pass S/SL program failure:  syntax error in semantic token stream
-### Semantic assertion 3 failed: 
+     .tWhileBegin
+     .tWhileOnBreak
+         .tLiteralAddress
+         oEmitValue
+         .tFetchInteger
+         .tLiteralAddress
+         oEmitValue
+         .tFetchInteger
+         .tLiteralAddress
+         oEmitValue
+         .tFetchInteger
+        .tMultiply
+        .tGT
+     .tWhileTest
+     oEmitNullAddress
+         .tIfBegin
+             .tLiteralAddress
+             oEmitValue
+             .tFetchInteger
+             .tLiteralAddress
+             oEmitValue
+             .tFetchInteger
+            .tModulus
+            .tLiteralInteger
+            oEmitValue
+            .tEQ
+         .tIfThen
+         oEmitNullAddress
+             .tAssignBegin
+              .tLiteralAddress
+              oEmitValue
+                .tLiteralAddress
+                oEmitValue
+                .tFetchInteger
+               .tLiteralString
+               oEmitString
+               .tAdd
+                 #eTypeMismatch
+             .tAssignInteger
+             .tAssignBegin
+              .tLiteralAddress
+              oEmitValue
+                .tLiteralAddress
+                oEmitValue
+                .tFetchInteger
+               .tLiteralString
+               oEmitString
+               .tAdd
+                 #eTypeMismatch
+             .tAssignInteger
+             .tAssignBegin
+              .tLiteralAddress
+              oEmitValue
+                .tLiteralAddress
+                oEmitValue
+                .tFetchInteger
+               .tLiteralString
+               oEmitString
+               .tAdd
+                 #eTypeMismatch
 
 Errors reported by compiler: 
 semantic error, line 6: identifier not declared
@@ -84,7 +142,7 @@ semantic error, line 28: null literal string not allowed
 semantic error, line 28: type clash
 semantic error, line 29: null literal string not allowed
 semantic error, line 29: type clash
-### Semantic pass S/SL program failure:  syntax error in semantic token stream
-    (parser output stream does not match expected input stream)
-while processing line         30
-### Semantic assertion 3 failed: 
+semantic error, line 34: type clash
+semantic error, line 35: type clash
+semantic error, line 36: type clash
+*** Processing aborted
