@@ -38,5 +38,13 @@ The goal of these modifications is to convert the Semantic Analyzer of the PT Pa
    - Added the support for conditional exit using Quby RepOnBreak
    - In RepStmt rule, added a call to Statement rule before the sRepOnBreak
 
+16. Ternary Operators (Incomplete)
+   - Added TernaryOperator with an empty rule for sSubstring
+   - Added entry for @TernaryOperator to Expression
+
+18. String length operation
+   - added handling of sLen to UnaryOperator
+   - added check to ensure the type on the type stack is tpString
+
 19. String Literal & T-codes (Incomplete)
    - Commented out tStringDescriptor and tSkipString
