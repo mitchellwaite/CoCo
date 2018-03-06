@@ -42,6 +42,9 @@ The goal of these modifications is to convert the Semantic Analyzer of the PT Pa
    - Added TernaryOperator with an empty rule for sSubstring
    - Added entry for @TernaryOperator to Expression
 
+17. String Concat w/ sAdd
+   - Added handling of string concat within BinaryOperator by adding a rule to sAdd
+
 18. String length operation
    - added handling of sLen to UnaryOperator
    - added check to ensure the type on the type stack is tpString
