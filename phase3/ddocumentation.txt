@@ -19,6 +19,9 @@ The goal of these modifications is to convert the Semantic Analyzer of the PT Pa
    - Added tCaseElse and tWhileOnBreak
    - Added tConcatenate, tSubstring, tLength, tIndex, tStringEqual
 
+3. String Size
+   - Added stringSize definition to the type Integer
+
 4. StdType
    - Changed stdChar to stdString
 
