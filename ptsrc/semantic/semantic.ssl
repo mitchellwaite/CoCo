@@ -804,12 +804,12 @@ Block :
         @BeginStmt;
 
 ConstantDefinitions :           % Process named constant definitions
-        {[
+        [
             | sIdentifier:
                 @ConstantValue
             | *:
-                >
-        ]};
+                >>
+        ];
 
 ConstantValue :         % An identifier token has just been accepted
         oSymbolStkPushLocalIdentifier
