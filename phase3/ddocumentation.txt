@@ -38,6 +38,15 @@ The goal of these modifications is to convert the Semantic Analyzer of the PT Pa
 
 10. Con definitions
    - Removed S/SL cycle from ConstantDefinitions to prevent multiple identifier/value pairs per 'con'
+   - Changed cycle exit to return
+
+11. Type definitions
+   - Removed S/SL cycle from TypeDefinitions to prevent multiple identifier/value pairs
+   - Changed cycle exit to return
+  
+12. Variable Definitions
+   - Removed S/SL cycle from VariableDeclarations to prevent multiple identifier/value pairs per 'var'
+   - Changed cycle exit to return
 
 14. Rep Statements
    - Changed the WhileStmt rule to RepStmt and other similar name changes as required
