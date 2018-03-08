@@ -216,7 +216,7 @@ type Integer :
 
         % These two sizes are machine dependent
         byteSize = 1
-        wordSize = 4;
+        wordSize = 4
         stringSize = 1024;  % added definition for string size
 
 type Boolean :
