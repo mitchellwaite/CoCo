@@ -1,0 +1,28 @@
+   .tLiteralInteger
+   oEmitValue
+   .tLiteralAddress
+   oEmitDataAddress
+   .tFileDescriptor
+     #eUndefinedIdentifier
+     .tAssignBegin
+      #eUndefinedIdentifier
+       #eNullString
+       .tLiteralInteger
+       oEmitValue
+       .tLiteralInteger
+       oEmitValue
+     .tAssignInteger
+ #eExternalUndeclared
+ .tTrapBegin
+ .tTrap
+ oEmitTrapKind(trHalt)
+### Semantic assertion 49 failed: symbol stack not empty at end of semantic phase
+### Semantic assertion 50 failed: type stack not empty at end of semantic phase
+
+Errors reported by compiler: 
+semantic error, line 2: identifier not declared
+semantic error, line 2: identifier not declared
+semantic error, line 2: null literal string not allowed
+semantic error, line 3: undeclared external file (program parameter)
+### Semantic assertion 49 failed: symbol stack not empty at end of semantic phase
+### Semantic assertion 50 failed: type stack not empty at end of semantic phase

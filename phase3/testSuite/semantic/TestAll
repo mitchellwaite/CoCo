@@ -48,10 +48,10 @@ do
 
            # PRINT PASS OR FAIL for the test cases (using green or red text appropriately)
            if [ -z "${OUTPUT1}" ] && [ -z "${OUTPUT2}" ]; then
-               echo -e "${GREEN} ${dir}/inputFiles/${fileName}.txt  TEST PASSED!${NC}";
+               echo -e "${GREEN} ${dir}/inputFiles/${fileName}.pt  TEST PASSED!${NC}";
                passed=$((passed+1));
            else
-               echo -e "${RED} ${dir}/inputFiles/${fileName}.txt TEST FAILED!${NC}";
+               echo -e "${RED} ${dir}/inputFiles/${fileName}.pt TEST FAILED!${NC}";
                failed=$((failed+1));
            fi
  

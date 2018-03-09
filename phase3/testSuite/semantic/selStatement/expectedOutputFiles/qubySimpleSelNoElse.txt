@@ -1,0 +1,34 @@
+   .tLiteralInteger
+   oEmitValue
+   .tLiteralAddress
+   oEmitDataAddress
+   .tFileDescriptor
+     .tCaseBegin
+         .tLiteralAddress
+         oEmitValue
+         .tFetchInteger
+     .tCaseSelect
+     oEmitNullAddress
+          .tAssignBegin
+           .tLiteralAddress
+           oEmitValue
+            .tLiteralInteger
+            oEmitValue
+          .tAssignInteger
+      .tCaseMerge
+      oEmitNullAddress
+          .tAssignBegin
+           .tLiteralAddress
+           oEmitValue
+            .tLiteralInteger
+            oEmitValue
+          .tAssignInteger
+      .tCaseMerge
+      oEmitNullAddress
+     .tCaseEnd
+     oEmitCaseBranchTable
+ .tTrapBegin
+ .tTrap
+ oEmitTrapKind(trHalt)
+
+Errors reported by compiler: 

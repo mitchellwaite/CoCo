@@ -99,8 +99,9 @@
                 .tFetchInteger
                .tLiteralString
                oEmitString
-               .tAdd
+               .tConcatenate
                  #eTypeMismatch
+              #eTypeMismatch
              .tAssignInteger
              .tAssignBegin
               .tLiteralAddress
@@ -110,18 +111,7 @@
                 .tFetchInteger
                .tLiteralString
                oEmitString
-               .tAdd
-                 #eTypeMismatch
-             .tAssignInteger
-             .tAssignBegin
-              .tLiteralAddress
-              oEmitValue
-                .tLiteralAddress
-                oEmitValue
-                .tFetchInteger
-               .tLiteralString
-               oEmitString
-               .tAdd
+               .tConcatenate
                  #eTypeMismatch
 
 Errors reported by compiler: 
@@ -143,6 +133,6 @@ semantic error, line 28: type clash
 semantic error, line 29: null literal string not allowed
 semantic error, line 29: type clash
 semantic error, line 34: type clash
+semantic error, line 34: type clash
 semantic error, line 35: type clash
-semantic error, line 36: type clash
 *** Processing aborted

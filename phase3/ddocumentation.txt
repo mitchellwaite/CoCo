@@ -53,6 +53,15 @@ The goal of these modifications is to convert the Semantic Analyzer of the PT Pa
    - Added the support for conditional exit using Quby RepOnBreak
    - In RepStmt rule, added a call to Statement rule before the sRepOnBreak
 
+15. Sel Statements
+   - Changed CaseStmt rule to be the new Quby SelStmt rule, along with other similar name changes as required.
+   - Changed SelStmt rule to use sSelStmt and sSelEnd instead of sCaseStmt and sCaseEnd respectively.
+   - Added ability to have optional "else" clause in sel statement.
+       -Emits tCaseEnd and tCaseElse before processing statements in else block.
+       -End of else block and end of sel statement noted by sSelEnd. At this point a final .tCaseMerge is also emitted.
+       -Ensured sel alternative count is incremented for else clause. 
+        *****TODO: Ensure this^ is necessary *****
+
 16. Ternary Operators (Incomplete)
    - Added TernaryOperator with an empty rule for sSubstring
    - Added entry for @TernaryOperator to Expression

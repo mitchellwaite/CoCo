@@ -1480,10 +1480,8 @@ Statement :
                 @IfStmt
             | sRepStmt:
                 @RepStmt
-%            | sCaseStmt:
-%                @CaseStmt
-%            | sRepeatStmt:
-%                @RepeatStmt
+            | sSelStmt:
+                @SelStmt
             | sNullStmt:
         ];
 
@@ -1708,21 +1706,7 @@ RepStmt :
         oFixPopTargetAddress
         oFixPopForwardBranch;
 
-%RepeatStmt :
-%        .tRepeatBegin
-%        oFixPushTargetAddress           % top-of-loop branch target
-%        {[
-%            | sRepeatEnd:
-%                >
-%            | *:
-%                @Statement
-%        ]}
-%        .tRepeatControl
-%        @BooleanControlExpression
-%        .tRepeatTest
-%        oFixPopTargetAddress;
-
-CaseStmt :
+SelStmt :
         .tCaseBegin
         @CaseSelectorExpression
         oCasePushDisplay                % handle nested case statements
@@ -1730,16 +1714,28 @@ CaseStmt :
         .tCaseSelect
         oFixPushForwardBranch
         oEmitNullAddress                % address of case branch table
-        {%[
-%            | sCaseEnd:
-%                >
-%            | *:
-                @CaseAlternative
-        %]
-        }
-        .tCaseEnd
-        oFixPopForwardBranch
-        oEmitCaseBranchTable
+        {[
+            | sSelEnd:
+                .tCaseEnd
+                oFixPopForwardBranch
+                oEmitCaseBranchTable
+                >
+            | sElse:
+                .tCaseEnd
+                oFixPopForwardBranch
+                oEmitCaseBranchTable
+                .tCaseElse
+                @Statement
+                sSelEnd                         % once else section is done expect end statement
+                .tCaseMerge
+                oFixPushForwardBranch
+                oEmitNullAddress                % merge branch at end of statement
+                oFixSwap                        % keep case select branch on top
+                oCountIncrement
+                > 
+            | *:
+                @SelAlternative
+        ]}
         % emit merge branches for case alternatives
         {[ oCountChoose         % number of case alternatives
             | zero:
@@ -1751,8 +1747,8 @@ CaseStmt :
         oCasePopDisplay
         oCountPop;
 
-CaseAlternative :
-        % A case alternative is a series of integer
+SelAlternative :
+        % A sel statement alternative is a series of integer
         % constant case labels followed by a statement.
 
         {[

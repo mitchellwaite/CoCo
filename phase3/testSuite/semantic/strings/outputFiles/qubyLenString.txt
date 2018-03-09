@@ -1,0 +1,15 @@
+   .tLiteralInteger
+   oEmitValue
+   .tLiteralAddress
+   oEmitDataAddress
+   .tFileDescriptor
+     .tAssignBegin
+      .tLiteralAddress
+      oEmitValue
+       oEmitNullAddress
+       .tLiteralString
+       oEmitValue
+       oEmitString
+
+Errors reported by compiler: 
+
