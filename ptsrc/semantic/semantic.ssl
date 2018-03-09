@@ -1910,11 +1910,11 @@ UnaryOperator :
             | sLen:
                 [ oTypeStkChooseKind
                     | tpString:
+                      .tLength
+                      oTypeStkPush(tpInteger)
                     | *:
                       #eStringExpnReqd
                 ]
-                .tLength
-                oTypeStkPush(tpInteger)
             | *:
                 >>              % bypass type check
         ]
