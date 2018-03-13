@@ -430,7 +430,6 @@ type TypeKind :
         tpBoolean
         tpSubrange
         tpArray
-        tpPackedArray
         tpFile
         tpNull;
 
@@ -885,7 +884,7 @@ ConstantValue :         % An identifier token has just been accepted
                         oSymbolStkEnterCodeAddress
                         oEmitString
                         oFixPopForwardBranch
-                        oTypeStkPush(tpPackedArray)     % means literal string
+%                        oTypeStkPush(tpPackedArray)     % means literal string
                         oTypeStkEnterBounds
                         oTypeStkLinkToStandardComponentType(stdString)
                         oTypeTblEnter
@@ -1887,7 +1886,7 @@ Operand :
                         % first character of the string
 %                        .tStringDescriptor
                         oFixPopTargetAddress
-                        oTypeStkPush(tpPackedArray)
+%                        oTypeStkPush(tpPackedArray)
                         oTypeStkEnterBounds
                         oTypeStkLinkToStandardComponentType(stdString)
                 ]
@@ -2033,13 +2032,13 @@ CompareAndSwapTypes :
                     | *:
                         #eTypeMismatch
                 ]
-            | tpPackedArray:
-                oTypeStkSwap
-                [ oTypeStkChooseKind
-                    | tpPackedArray:
-                    | *:
-                        #eTypeMismatch
-                ]
+%           | tpPackedArray:
+%               oTypeStkSwap
+%               [ oTypeStkChooseKind
+%                   | tpPackedArray:
+%                   | *:
+%                       #eTypeMismatch
+%               ]
             | tpFile:
                 oTypeStkSwap
                 [ oTypeStkChooseKind
@@ -2177,7 +2176,7 @@ ConstantOperand :
                 .tLiteralString
             | tpBoolean:
                 .tLiteralBoolean
-            | tpPackedArray:    % always a named literal string
+%           | tpPackedArray:    % always a named literal string
 %                .tStringDescriptor
         ]
         oValuePushSymbol
@@ -2425,7 +2424,7 @@ AssignProcedure :
                             | *:
                         ]
                         [ oTypeStkChooseKind
-                            | tpArray, tpPackedArray:   % must be a char array or literal string        
+                            | tpArray:  %, tpPackedArray:   % must be a char array or literal string        
                                 oTypeStkPushComponent
                                 [ oTypeStkChooseKind
                                     | tpString:
@@ -2445,8 +2444,8 @@ AssignProcedure :
                                 .tLiteralInteger
                                 oValuePushTypeStkUpperBound
                                 [ oTypeStkChooseKind
-                                    | tpPackedArray:    % a literal string      
-                                        oValueNegate    % mark as code segment  
+%                                   | tpPackedArray:    % a literal string      
+%                                       oValueNegate    % mark as code segment  
                                     | tpArray:
                                 ]
                                 oEmitValue
@@ -2680,9 +2679,9 @@ WriteString :
                         oValuePush(ten)
                     | tpString:
                         oValuePush(one)
-                    | tpPackedArray:    % a literal string
-                        oValuePushTypeStkUpperBound
-                        oValueNegate    % mark as code segment
+%                   | tpPackedArray:    % a literal string
+%                       oValuePushTypeStkUpperBound
+%                       oValueNegate    % mark as code segment
                     | *:        % An error flagged below
                         oValuePush(zero)
                 ]
@@ -2697,23 +2696,23 @@ WriteString :
             | tpInteger, tpSubrange:
                 .tTrap
                 oEmitTrapKind(trWriteInteger)
-            | tpArray, tpPackedArray:   % must be a char array or literal string
-                oTypeStkPushComponent
-                [ oTypeStkChooseKind
-                    | tpString:
-                    | *:
-                        #eWriteExpn
-                ]
-                oTypeStkPop     % component type
-                oValuePushTypeStkLowerBound
-                [ oValueChoose
-                    | one:
-                    | *:        % string has lower bound one
-                        #eWriteExpn
-                ]
-                oValuePop
-                .tTrap
-                oEmitTrapKind(trWriteString)
+%           | tpArray, tpPackedArray:   % must be a char array or literal string
+%               oTypeStkPushComponent
+%               [ oTypeStkChooseKind
+%                   | tpString:
+%                   | *:
+%                       #eWriteExpn
+%               ]
+%               oTypeStkPop     % component type
+%               oValuePushTypeStkLowerBound
+%               [ oValueChoose
+%                   | one:
+%                   | *:        % string has lower bound one
+%                       #eWriteExpn
+%               ]
+%               oValuePop
+%               .tTrap
+%               oEmitTrapKind(trWriteString)
             | *:
                 #eWriteExpn
         ]

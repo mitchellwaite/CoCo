@@ -25,10 +25,9 @@ The goal of these modifications is to convert the Semantic Analyzer of the PT Pa
 4. StdType
    - Changed stdChar to stdString
 
-7. TypeKind (Incomplete)
+7. TypeKind
    - Changed tpChar to tpString
-   - Commented out tpPackedArray
-    **** TODO do we need to keep tpPackedArray? ****
+   - Commented out all instances of tpPackedArray
 
 8. TrapKind
    - Changed the names of trWriteChar and trReadChar to trWriteString and trReadString
@@ -38,15 +37,15 @@ The goal of these modifications is to convert the Semantic Analyzer of the PT Pa
 
 10. Con definitions
    - Removed S/SL cycle from ConstantDefinitions to prevent multiple identifier/value pairs per 'con'
-   - Changed cycle exit to return
+   - Removed choice action, so we only recognize exactly one 'con', otherwise an error is thrown 
 
 11. Type definitions
    - Removed S/SL cycle from TypeDefinitions to prevent multiple identifier/value pairs
-   - Changed cycle exit to return
+   - Removed choice action, so we only recognize one 'type', otherwise an error is thrown
   
 12. Variable Definitions
    - Removed S/SL cycle from VariableDeclarations to prevent multiple identifier/value pairs per 'var'
-   - Changed cycle exit to return
+   - Removed choice action, so we only recognize one 'var' or else
 
 14. Rep Statements
    - Changed the WhileStmt rule to RepStmt and other similar name changes as required
