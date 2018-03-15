@@ -62,8 +62,8 @@ The goal of these modifications is to convert the Semantic Analyzer of the PT Pa
         *****TODO: Ensure this^ is necessary *****
 
 16. Ternary Operators (Incomplete)
-   - Added TernaryOperator with an empty rule for sSubstring
    - Added entry for @TernaryOperator to Expression
+   - Added code to handle string substring operator
 
 17. String Concat w/ sAdd
    - Added handling of string concat within BinaryOperator by adding a rule to sAdd
