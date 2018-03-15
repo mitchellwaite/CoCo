@@ -3,7 +3,6 @@
    .tLiteralAddress
    oEmitDataAddress
    .tFileDescriptor
-       #eSimpleTypeReqd
      .tLiteralInteger
      oEmitValue
      .tLiteralAddress
@@ -16,10 +15,9 @@
      .tArrayDescriptor
    .tSkipProc
    oEmitNullAddress
-     #eTypeIdentifierReqd
      .tLiteralAddress
      oEmitValue
-     .tStoreParmInteger
+     .tStoreParmBoolean
      .tLiteralAddress
      oEmitValue
      .tStoreParmInteger
@@ -31,15 +29,14 @@
             .tLiteralAddress
             oEmitValue
             .tFetchInteger
-         .tSubscriptInteger
+         .tSubscriptBoolean
           .tLiteralAddress
           oEmitValue
-          .tFetchInteger
-       .tAssignInteger
+          .tFetchBoolean
+       .tAssignBoolean
    .tProcedureEnd
    .tSkipProc
    oEmitNullAddress
-     #eTypeIdentifierReqd
      .tLiteralAddress
      oEmitValue
      .tStoreParmAddress
@@ -57,11 +54,10 @@
               .tLiteralAddress
               oEmitValue
               .tFetchInteger
-           .tSubscriptInteger
-          .tFetchInteger
-       .tAssignInteger
+           .tSubscriptBoolean
+          .tFetchBoolean
+       .tAssignBoolean
    .tProcedureEnd
-      #eSimpleTypeReqd
      .tAssignBegin
       .tLiteralAddress
       oEmitValue
@@ -85,11 +81,10 @@
               .tLiteralAddress
               oEmitValue
               .tFetchInteger
-           .tSubscriptInteger
+           .tSubscriptBoolean
             .tLiteralBoolean
             oEmitValue
-          #eTypeMismatch
-         .tAssignInteger
+         .tAssignBoolean
          .tAssignBegin
           .tLiteralAddress
           oEmitValue
@@ -151,7 +146,6 @@
               .tParmEnd
                  .tLiteralBoolean
                  oEmitValue
-               #eTypeMismatch
               .tParmEnd
              .tCallEnd
              oEmitValue
@@ -199,9 +193,8 @@
             .tInfixOr
              .tLiteralAddress
              oEmitValue
-             .tFetchInteger
+             .tFetchBoolean
             .tOr
-              #eTypeMismatch
          .tWhileTest
          oEmitNullAddress
              .tAssignBegin
@@ -234,10 +227,56 @@
             .tFetchInteger
          .tAssignInteger
      .tWhileEnd
-     #eUndefinedIdentifier
-     #eProcedureReqd
-     #eUndefinedIdentifier
-     #eProcedureReqd
+     .tWriteBegin
+       .tTrapBegin
+       .tLiteralAddress
+       oEmitValue
+       .tVarParm
+       .tParmEnd
+         .tLiteralString
+         oEmitValue
+         oEmitString
+       .tParmEnd
+        .tLiteralInteger
+        oEmitValue
+        .tParmEnd
+        .tTrap
+        oEmitTrapKind(trWriteString)
+       .tTrapBegin
+       .tLiteralAddress
+       oEmitValue
+       .tVarParm
+       .tParmEnd
+          .tLiteralInteger
+          oEmitValue
+       .tParmEnd
+          .tLiteralInteger
+          oEmitValue
+        .tParmEnd
+        .tTrap
+        oEmitTrapKind(trWriteInteger)
+       .tTrapBegin
+       .tLiteralAddress
+       oEmitValue
+       .tVarParm
+       .tParmEnd
+         .tLiteralString
+         oEmitValue
+         oEmitString
+       .tParmEnd
+        .tLiteralInteger
+        oEmitValue
+        .tParmEnd
+        .tTrap
+        oEmitTrapKind(trWriteString)
+      .tWriteEnd
+     .tTrapBegin
+      .tLiteralAddress
+      oEmitValue
+      .tVarParm
+      .tParmEnd
+     .tTrap
+     oEmitTrapKind(trWriteln)
      .tAssignBegin
       .tLiteralAddress
       oEmitValue
@@ -268,12 +307,25 @@
          .tIfBegin
              .tLiteralAddress
              oEmitValue
-             .tFetchInteger
-          #eBooleanExpnReqd
+             .tFetchBoolean
          .tIfThen
          oEmitNullAddress
-             #eUndefinedIdentifier
-             #eProcedureReqd
+             .tWriteBegin
+              .tTrapBegin
+              .tLiteralAddress
+              oEmitValue
+              .tVarParm
+              .tParmEnd
+               .tLiteralAddress
+               oEmitValue
+               .tFetchInteger
+              .tParmEnd
+                 .tLiteralInteger
+                 oEmitValue
+               .tParmEnd
+               .tTrap
+               oEmitTrapKind(trWriteInteger)
+              .tWriteEnd
          .tIfEnd
          .tAssignBegin
           .tLiteralAddress
@@ -286,26 +338,15 @@
            .tAdd
          .tAssignInteger
      .tWhileEnd
-     #eUndefinedIdentifier
-     #eProcedureReqd
+     .tTrapBegin
+      .tLiteralAddress
+      oEmitValue
+      .tVarParm
+      .tParmEnd
+     .tTrap
+     oEmitTrapKind(trWriteln)
  .tTrapBegin
  .tTrap
  oEmitTrapKind(trHalt)
 
 Errors reported by compiler: 
-semantic error, line 14: subrange or named type required
-semantic error, line 14: type identifier required
-semantic error, line 18: type identifier required
-semantic error, line 25: subrange or named type required
-semantic error, line 32: type clash
-semantic error, line 46: type clash
-semantic error, line 54: type clash
-semantic error, line 62: identifier not declared
-semantic error, line 62: procedure name required
-semantic error, line 63: identifier not declared
-semantic error, line 63: procedure name required
-semantic error, line 67: Boolean type expression required
-semantic error, line 68: identifier not declared
-semantic error, line 68: procedure name required
-semantic error, line 73: identifier not declared
-semantic error, line 73: procedure name required

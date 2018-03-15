@@ -3,7 +3,6 @@
    .tLiteralAddress
    oEmitDataAddress
    .tFileDescriptor
-      #eUndefinedIdentifier
      .tAssignBegin
       .tLiteralAddress
       oEmitValue
@@ -13,9 +12,10 @@
      .tAssignBegin
       .tLiteralAddress
       oEmitValue
-       #eNullString
-      #eTypeMismatch
-     .tAssignInteger
+       .tLiteralString
+       oEmitValue
+       oEmitString
+     .tAssignString
      .tWhileBegin
      .tWhileOnBreak
          .tLiteralAddress
@@ -30,17 +30,36 @@
           .tLiteralAddress
           oEmitValue
            .tLiteralString
+           oEmitValue
            oEmitString
             .tLiteralAddress
             oEmitValue
-            .tFetchInteger
-           .tAdd
-             #eTypeMismatch
-         .tAssignInteger
-         #eUndefinedIdentifier
-         #eProcedureReqd
-         #eUndefinedIdentifier
-         #eProcedureReqd
+            .tFetchString
+           .tConcatenate
+         .tAssignString
+         .tWriteBegin
+          .tTrapBegin
+          .tLiteralAddress
+          oEmitValue
+          .tVarParm
+          .tParmEnd
+           .tLiteralAddress
+           oEmitValue
+           .tFetchString
+          .tParmEnd
+           .tLiteralInteger
+           oEmitValue
+           .tParmEnd
+           .tTrap
+           oEmitTrapKind(trWriteString)
+          .tWriteEnd
+         .tTrapBegin
+          .tLiteralAddress
+          oEmitValue
+          .tVarParm
+          .tParmEnd
+         .tTrap
+         oEmitTrapKind(trWriteln)
          .tAssignBegin
           .tLiteralAddress
           oEmitValue
@@ -57,11 +76,3 @@
  oEmitTrapKind(trHalt)
 
 Errors reported by compiler: 
-semantic error, line 6: identifier not declared
-semantic error, line 10: null literal string not allowed
-semantic error, line 10: type clash
-semantic error, line 13: type clash
-semantic error, line 13: identifier not declared
-semantic error, line 13: procedure name required
-semantic error, line 14: identifier not declared
-semantic error, line 14: procedure name required

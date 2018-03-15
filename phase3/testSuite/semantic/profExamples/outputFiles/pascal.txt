@@ -127,10 +127,28 @@
      .tWhileTest
      oEmitNullAddress
      .tWhileEnd
-     #eUndefinedIdentifier
-     #eProcedureReqd
-     #eUndefinedIdentifier
-     #eProcedureReqd
+     .tWriteBegin
+       .tTrapBegin
+       .tLiteralAddress
+       oEmitValue
+       .tVarParm
+       .tParmEnd
+         .tLiteralInteger
+         oEmitValue
+       .tParmEnd
+          .tLiteralInteger
+          oEmitValue
+        .tParmEnd
+        .tTrap
+        oEmitTrapKind(trWriteInteger)
+      .tWriteEnd
+     .tTrapBegin
+      .tLiteralAddress
+      oEmitValue
+      .tVarParm
+      .tParmEnd
+     .tTrap
+     oEmitTrapKind(trWriteln)
      .tAssignBegin
       .tLiteralAddress
       oEmitValue
@@ -190,8 +208,27 @@
             .tGT
          .tWhileTest
          oEmitNullAddress
-             #eUndefinedIdentifier
-             #eProcedureReqd
+             .tWriteBegin
+              .tTrapBegin
+              .tLiteralAddress
+              oEmitValue
+              .tVarParm
+              .tParmEnd
+               .tLiteralAddress
+               oEmitValue
+                .tSubscriptBegin
+                   .tLiteralAddress
+                   oEmitValue
+                   .tFetchInteger
+                .tSubscriptInteger
+               .tFetchInteger
+              .tParmEnd
+                 .tLiteralInteger
+                 oEmitValue
+               .tParmEnd
+               .tTrap
+               oEmitTrapKind(trWriteInteger)
+              .tWriteEnd
              .tAssignBegin
               .tLiteralAddress
               oEmitValue
@@ -203,8 +240,13 @@
                .tAdd
              .tAssignInteger
          .tWhileEnd
-         #eUndefinedIdentifier
-         #eProcedureReqd
+         .tTrapBegin
+          .tLiteralAddress
+          oEmitValue
+          .tVarParm
+          .tParmEnd
+         .tTrap
+         oEmitTrapKind(trWriteln)
          .tAssignBegin
           .tLiteralAddress
           oEmitValue
@@ -230,11 +272,3 @@
  oEmitTrapKind(trHalt)
 
 Errors reported by compiler: 
-semantic error, line 26: identifier not declared
-semantic error, line 26: procedure name required
-semantic error, line 28: identifier not declared
-semantic error, line 28: procedure name required
-semantic error, line 42: identifier not declared
-semantic error, line 42: procedure name required
-semantic error, line 47: identifier not declared
-semantic error, line 47: procedure name required

@@ -15,7 +15,6 @@
      .tArrayDescriptor
    .tSkipProc
    oEmitNullAddress
-     #eTypeIdentifierReqd
      .tLiteralAddress
      oEmitValue
      .tStoreParmAddress
@@ -47,8 +46,7 @@
            .tSubscriptInteger
           .tFetchInteger
          .tLT
-        #eTypeMismatch
-       .tAssignInteger
+       .tAssignBoolean
    .tProcedureEnd
    .tSkipProc
    oEmitNullAddress
@@ -111,8 +109,27 @@
          oEmitValue
        .tAssignInteger
        .tWhileBegin
-           #eUndefinedIdentifier
-           #eProcedureReqd
+           .tWriteBegin
+            .tTrapBegin
+            .tLiteralAddress
+            oEmitValue
+            .tVarParm
+            .tParmEnd
+             .tLiteralAddress
+             oEmitValue
+              .tSubscriptBegin
+                 .tLiteralAddress
+                 oEmitValue
+                 .tFetchInteger
+              .tSubscriptInteger
+             .tFetchInteger
+            .tParmEnd
+               .tLiteralInteger
+               oEmitValue
+             .tParmEnd
+             .tTrap
+             oEmitTrapKind(trWriteInteger)
+            .tWriteEnd
            .tAssignBegin
             .tLiteralAddress
             oEmitValue
@@ -133,13 +150,17 @@
        .tWhileTest
        oEmitNullAddress
        .tWhileEnd
-       #eUndefinedIdentifier
-       #eProcedureReqd
+       .tTrapBegin
+        .tLiteralAddress
+        oEmitValue
+        .tVarParm
+        .tParmEnd
+       .tTrap
+       oEmitTrapKind(trWriteln)
    .tProcedureEnd
    .tSkipProc
    oEmitNullAddress
      .tParmEnd
-        #eSimpleTypeReqd
        .tAssignBegin
         .tLiteralAddress
         oEmitValue
@@ -196,9 +217,8 @@
                .tIfBegin
                    .tLiteralAddress
                    oEmitValue
-                   .tFetchInteger
+                   .tFetchBoolean
                   .tNot
-                   #eTypeMismatch
                .tIfThen
                oEmitNullAddress
                    .tCallBegin
@@ -323,11 +343,3 @@
  oEmitTrapKind(trHalt)
 
 Errors reported by compiler: 
-semantic error, line 17: type identifier required
-semantic error, line 19: type clash
-semantic error, line 33: identifier not declared
-semantic error, line 33: procedure name required
-semantic error, line 38: identifier not declared
-semantic error, line 38: procedure name required
-semantic error, line 45: subrange or named type required
-semantic error, line 52: type clash

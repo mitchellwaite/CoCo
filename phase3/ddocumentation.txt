@@ -74,13 +74,31 @@ The goal of these modifications is to convert the Semantic Analyzer of the PT Pa
    - added handling of sLen to UnaryOperator
    - added check to ensure the type on the type stack is tpString
 
-19. String Literal & T-codes (Incomplete)
+19. String Literal & T-codes
    - Commented out tStringDescriptor and tSkipString
+   - Changed handling of sLiteral in @Operand rule to match the following format:
+         push string length
+         push syExpression on to symbol stack
+         push tpString on to the type stack
+         output tLiteralString
+         emit string size
+         emit the string itself
+         pop the string size value
+
+20. String Constants - INCOMPLETE JOHAN IN PROGRESS
 
 # semantic.pt changes
 
 1. Semantic Operations
    - Copied the contents of the newest semantic.def to the header of semantic.pt
+
+2. Predefined Type String
+   - Changed the predefined type for Char to be a predefined type for String. Changing pidChar, tpChar, and standardCharTypeRef to pidString, tpString, and standardStringTypeRef appropriately.
+   - Changed all standardCharTypeRef references in semantic.pt to standardStringTypeRef.
+   - Lastly, made all tpChar references point to tpString
+
+3. Predefined Type Text
+   - Changed text (file of char) to be file of strings, and use standardStringTypeRef.
 
 5. String Allocation
    - Added rule to allocate `stringSize` bytes for the string type

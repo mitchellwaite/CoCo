@@ -8,50 +8,95 @@
    .tLiteralAddress
    oEmitDataAddress
    .tFileDescriptor
-      #eUndefinedIdentifier
-      #eUndefinedIdentifier
      .tWhileBegin
-         #eUndefinedIdentifier
-         #eProcedureReqd
-         #eUndefinedIdentifier
-         #eProcedureReqd
-         #eUndefinedIdentifier
-         #eProcedureReqd
-         #eUndefinedIdentifier
-         #eProcedureReqd
-         #eUndefinedIdentifier
-         #eProcedureReqd
-         #eUndefinedIdentifier
-         #eProcedureReqd
+         .tWriteBegin
+           .tTrapBegin
+           .tLiteralAddress
+           oEmitValue
+           .tVarParm
+           .tParmEnd
+             .tLiteralString
+             oEmitValue
+             oEmitString
+           .tParmEnd
+            .tLiteralInteger
+            oEmitValue
+            .tParmEnd
+            .tTrap
+            oEmitTrapKind(trWriteString)
+          .tWriteEnd
+         .tTrapBegin
+          .tLiteralAddress
+          oEmitValue
+          .tVarParm
+          .tParmEnd
+         .tTrap
+         oEmitTrapKind(trWriteln)
+         .tReadBegin
+          .tTrapBegin
+          .tLiteralAddress
+          oEmitValue
+          .tVarParm
+          .tParmEnd
+           .tLiteralAddress
+           oEmitValue
+          .tVarParm
+          .tParmEnd
+           .tTrap
+           oEmitTrapKind(trReadString)
+          .tReadEnd
+         .tTrapBegin
+          .tLiteralAddress
+          oEmitValue
+          .tVarParm
+          .tParmEnd
+         .tTrap
+         oEmitTrapKind(trWriteln)
+         .tWriteBegin
+           .tTrapBegin
+           .tLiteralAddress
+           oEmitValue
+           .tVarParm
+           .tParmEnd
+             .tLiteralString
+             oEmitValue
+             oEmitString
+           .tParmEnd
+            .tLiteralInteger
+            oEmitValue
+            .tParmEnd
+            .tTrap
+            oEmitTrapKind(trWriteString)
+          .tWriteEnd
+         .tTrapBegin
+          .tLiteralAddress
+          oEmitValue
+          .tVarParm
+          .tParmEnd
+         .tTrap
+         oEmitTrapKind(trWriteln)
          .tAssignBegin
           .tLiteralAddress
           oEmitValue
             .tLiteralAddress
             oEmitValue
-            .tFetchInteger
+            .tFetchString
            .tLiteralInteger
            oEmitValue
             .tLiteralAddress
             oEmitValue
-            .tFetchInteger
+            .tFetchString
            .tLiteralInteger
            oEmitValue
            .tSubtract
+             #eTypeMismatch
            #eStringExpnReqd
+           #eIntegerExpnReqd
+           .tSubstring
+### Semantic assertion 16 failed: less than two types in type stack in oTypeStkSwap
 
 Errors reported by compiler: 
-semantic error, line 6: identifier not declared
-semantic error, line 8: identifier not declared
-semantic error, line 9: identifier not declared
-semantic error, line 9: procedure name required
-semantic error, line 10: identifier not declared
-semantic error, line 10: procedure name required
-semantic error, line 10: identifier not declared
-semantic error, line 10: procedure name required
-semantic error, line 13: identifier not declared
-semantic error, line 13: procedure name required
-semantic error, line 13: identifier not declared
-semantic error, line 13: procedure name required
-semantic error, line 15: identifier not declared
-semantic error, line 15: procedure name required
-semantic error, line 15: 
+semantic error, line 15: type clash
+semantic error, line 15: String type expression required
+semantic error, line 16: integer type expression required
+### Semantic assertion 16 failed: less than two types in type stack in oTypeStkSwap

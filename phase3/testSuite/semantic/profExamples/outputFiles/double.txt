@@ -8,37 +8,94 @@
    .tLiteralAddress
    oEmitDataAddress
    .tFileDescriptor
-      #eUndefinedIdentifier
-     #eUndefinedIdentifier
-     #eProcedureReqd
-     #eUndefinedIdentifier
-     #eProcedureReqd
+     .tWriteBegin
+       .tTrapBegin
+       .tLiteralAddress
+       oEmitValue
+       .tVarParm
+       .tParmEnd
+         .tLiteralString
+         oEmitValue
+         oEmitString
+       .tParmEnd
+        .tLiteralInteger
+        oEmitValue
+        .tParmEnd
+        .tTrap
+        oEmitTrapKind(trWriteString)
+      .tWriteEnd
+     .tTrapBegin
+      .tLiteralAddress
+      oEmitValue
+      .tVarParm
+      .tParmEnd
+     .tTrap
+     oEmitTrapKind(trWriteln)
      .tWhileBegin
-         #eUndefinedIdentifier
-         #eProcedureReqd
-         #eUndefinedIdentifier
-         #eProcedureReqd
-         #eUndefinedIdentifier
-         #eProcedureReqd
+         .tReadBegin
+          .tTrapBegin
+          .tLiteralAddress
+          oEmitValue
+          .tVarParm
+          .tParmEnd
+           .tLiteralAddress
+           oEmitValue
+          .tVarParm
+          .tParmEnd
+           .tTrap
+           oEmitTrapKind(trReadString)
+          .tReadEnd
+         .tWriteBegin
+          .tTrapBegin
+          .tLiteralAddress
+          oEmitValue
+          .tVarParm
+          .tParmEnd
+           .tLiteralAddress
+           oEmitValue
+           .tFetchString
+            .tLiteralString
+            oEmitValue
+            oEmitString
+            .tConcatenate
+             .tLiteralAddress
+             oEmitValue
+             .tFetchString
+            .tConcatenate
+          .tParmEnd
+           .tLiteralInteger
+           oEmitValue
+           .tParmEnd
+           .tTrap
+           oEmitTrapKind(trWriteString)
+          .tWriteEnd
+         .tTrapBegin
+          .tLiteralAddress
+          oEmitValue
+          .tVarParm
+          .tParmEnd
+         .tTrap
+         oEmitTrapKind(trWriteln)
      .tWhileOnBreak
          .tLiteralAddress
          oEmitValue
-         .tFetchInteger
-        oEmitNullAddress
+         .tFetchString
         .tLiteralString
         oEmitValue
         oEmitString
+        .tEQ
+     .tWhileTest
+     oEmitNullAddress
+         .tTrapBegin
+          .tLiteralAddress
+          oEmitValue
+          .tVarParm
+          .tParmEnd
+         .tTrap
+         oEmitTrapKind(trReadln)
+     .tWhileEnd
+ .tTrapBegin
+ .tTrap
+ oEmitTrapKind(trHalt)
 
 Errors reported by compiler: 
-semantic error, line 5: identifier not declared
-semantic error, line 5: identifier not declared
-semantic error, line 5: procedure name required
-semantic error, line 6: identifier not declared
-semantic error, line 6: procedure name required
-semantic error, line 7: identifier not declared
-semantic error, line 7: procedure name required
-semantic error, line 8: identifier not declared
-semantic error, line 8: procedure name required
-semantic error, line 9: identifier not declared
-semantic error, line 9: procedure name required
-
