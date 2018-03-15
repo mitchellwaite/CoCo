@@ -398,9 +398,8 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
       	tpBoolean = 2;
       	tpSubrange = 3;
       	tpArray = 4;
-      	tpPackedArray = 5;
-      	tpFile = 6;
-      	tpNull = 7;
+      	tpFile = 5;
+      	tpNull = 6;
       	{ Type 21 }
       	trHalt = 0;
       	trReset = 1;
@@ -1788,6 +1787,30 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
                             lexicLevelStackTop := lexicLevelStackTop - 1;
                         end;
 
+                    oSymbolTblMergeScope:
+                        { Copy the attributes of the top symbol stack entry to 
+                          the symbol table entry it references. }
+
+                        begin
+                            Assert((symbolStkSymbolTblRef[symbolStkTop] <> null), assert5);
+                            symbolRef := symbolStkSymbolTblRef[symbolStkTop];
+                            symbolTblKind[symbolRef] := symbolStkKind[symbolStkTop];
+                            symbolTblValue[symbolRef] := symbolStkValue[symbolStkTop];
+                            symbolTblTypeTblLink[symbolRef] := symbolStkTypeTblLink[symbolStkTop];
+                        end;
+
+                    oSymbolTblStripScope:
+                        { Copy the attributes of the top symbol stack entry to 
+                          the symbol table entry it references. }
+
+                        begin
+                            Assert((symbolStkSymbolTblRef[symbolStkTop] <> null), assert5);
+                            symbolRef := symbolStkSymbolTblRef[symbolStkTop];
+                            symbolTblKind[symbolRef] := symbolStkKind[symbolStkTop];
+                            symbolTblValue[symbolRef] := symbolStkValue[symbolStkTop];
+                            symbolTblTypeTblLink[symbolRef] := symbolStkTypeTblLink[symbolStkTop];
+                        end;
+
                     oSymbolTblLookupExternal:
                         { Return yes if the symbol table contains an undeclared 
                           external file name (program parameter), otherwise return no. }
@@ -1976,7 +1999,6 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
                             Assert((symbolStkTop > 0), assert7);
                             symbolStkTop := symbolStkTop - 1
                         end;
-
 
                     { ****
                       *  *  Type Table Mechanism Operations
@@ -2364,7 +2386,7 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
                                 dataAreaEnd := dataAreaEnd + wordSize;
                            { tpChar,} tpBoolean:
                                 dataAreaEnd := dataAreaEnd + byteSize;
-                            tpArray, tpPackedArray:
+                            tpArray: 
                                 begin
                                     size := typeStkUpperBound[typeStkTop] - 
                                         typeStkLowerBound[typeStkTop] + 1;
