@@ -1992,8 +1992,34 @@ TernaryOperator :
         % but that would probably be less efficient on average.
         [
             | sSubstring:
+                [ oTypeStkChooseKind
+                    | tpInteger: %String behaves differently than all other types that "add" supports
+                    | *: %For all other variables, retain old behaviour
+                      #eIntegerExpnReqd
+                ]
 
+                oTypeStkPop             % only result type remains
+                oSymbolStkPop
 
+                [ oTypeStkChooseKind
+                    | tpInteger: %String behaves differently than all other types that "add" supports
+                    | *: %For all other variables, retain old behaviour
+                      #eIntegerExpnReqd
+                ]
+
+                oTypeStkPop             % only result type remains
+                oSymbolStkPop
+
+                [ oTypeStkChooseKind
+                    | tpString: %String behaves differently than all other types that "add" supports
+                    | *: %For all other variables, retain old behaviour
+                      #eStringExpnReqd
+                ]
+
+                oTypeStkPop             % only result type remains
+                .tSubstring
+                oTypeStkPush(tpString) %Result Type
+                @CompareOperandAndResultTypes
             | *:
         ];
 
@@ -2032,13 +2058,6 @@ CompareAndSwapTypes :
                     | *:
                         #eTypeMismatch
                 ]
-%           | tpPackedArray:
-%               oTypeStkSwap
-%               [ oTypeStkChooseKind
-%                   | tpPackedArray:
-%                   | *:
-%                       #eTypeMismatch
-%               ]
             | tpFile:
                 oTypeStkSwap
                 [ oTypeStkChooseKind
