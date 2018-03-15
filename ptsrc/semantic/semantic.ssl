@@ -1939,8 +1939,34 @@ TernaryOperator :
         % but that would probably be less efficient on average.
         [
             | sSubstring:
+                [ oTypeStkChooseKind
+                    | tpInteger: %Top of the stack should be "substring length"
+                    | *: %Otherwise throw an error
+                      #eIntegerExpnReqd
+                ]
 
+                oTypeStkPop             % only result type remains
+                oSymbolStkPop
 
+                [ oTypeStkChooseKind
+                    | tpInteger: %Second on the stack should be "starting index"
+                    | *: %Otherwise throw an error
+                      #eIntegerExpnReqd
+                ]
+
+                oTypeStkPop             % only result type remains
+                oSymbolStkPop
+
+                [ oTypeStkChooseKind
+                    | tpString: %Third on the stack should be the string we want to substring
+                    | *: %Otherwise throw an error
+                      #eStringExpnReqd
+                ]
+
+                oTypeStkPop
+                .tSubstring
+                oTypeStkPush(tpString) %Result Type
+                @CompareOperandAndResultTypes
             | *:
         ];
 
@@ -1979,13 +2005,6 @@ CompareAndSwapTypes :
                     | *:
                         #eTypeMismatch
                 ]
-%           | tpPackedArray:
-%               oTypeStkSwap
-%               [ oTypeStkChooseKind
-%                   | tpPackedArray:
-%                   | *:
-%                       #eTypeMismatch
-%               ]
             | tpFile:
                 oTypeStkSwap
                 [ oTypeStkChooseKind
