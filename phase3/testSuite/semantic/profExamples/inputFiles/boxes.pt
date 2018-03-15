@@ -30,13 +30,13 @@ i = 0
 rep
     on i > width * Nacross : break
     if i mod width == 0 :
-	top += " "
-	middle += "|"
-	bottom += "|"
+        top += " "
+        middle += "|"
+        bottom += "|"
     else : 
-	top += "_"
-	middle += " "
-	bottom += "_"
+        top += "_"
+        middle += " "
+        bottom += "_"
     end
     i += 1
 end
@@ -49,9 +49,9 @@ rep
     on i > Ndown : break
     j = 1
     rep
-	on j >= height - 1 : break
-	print (middle) nl
-	j += 1
+        on j >= height - 1 : break
+        print (middle) nl
+        j += 1
     end
 
     print (bottom) nl

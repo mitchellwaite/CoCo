@@ -1,0 +1,46 @@
+   .tLiteralInteger
+   oEmitValue
+   .tLiteralAddress
+   oEmitDataAddress
+   .tFileDescriptor
+   .tLiteralInteger
+   oEmitValue
+   .tLiteralAddress
+   oEmitDataAddress
+   .tFileDescriptor
+     .tLiteralInteger
+     oEmitValue
+     .tLiteralAddress
+     oEmitDataAddress
+     .tArrayDescriptor
+     .tLiteralInteger
+     oEmitValue
+     .tLiteralAddress
+     oEmitDataAddress
+     .tArrayDescriptor
+     .tLiteralInteger
+     oEmitValue
+     .tLiteralAddress
+     oEmitDataAddress
+     .tArrayDescriptor
+     .tLiteralInteger
+     oEmitValue
+     .tLiteralAddress
+     oEmitDataAddress
+     .tArrayDescriptor
+      #eSimpleTypeReqd
+      #eSimpleTypeReqd
+      #eUndefinedIdentifier
+      #eSimpleTypeReqd
+### Semantic pass S/SL program failure:  syntax error in semantic token stream
+### Semantic assertion 3 failed: 
+
+Errors reported by compiler: 
+semantic error, line 27: subrange or named type required
+semantic error, line 30: subrange or named type required
+semantic error, line 33: identifier not declared
+semantic error, line 40: subrange or named type required
+### Semantic pass S/SL program failure:  syntax error in semantic token stream
+    (parser output stream does not match expected input stream)
+while processing line         40
+### Semantic assertion 3 failed: 

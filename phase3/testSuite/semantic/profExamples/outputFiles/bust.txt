@@ -348,24 +348,6 @@
        oEmitNullAddress
            #eUndefinedIdentifier
            #eProcedureReqd
-           .tIfBegin
-               .tLiteralAddress
-               oEmitValue
-               .tFetchAddress
-                .tSubscriptBegin
-                   .tLiteralAddress
-                   oEmitValue
-                   .tFetchInteger
-                .tSubscriptInteger
-               .tFetchInteger
-              .tLiteralInteger
-              oEmitValue
-              .tEQ
-           .tIfThen
-           oEmitNullAddress
-               #eUndefinedIdentifier
-               #eProcedureReqd
-           .tIfEnd
            .tAssignBegin
             .tLiteralAddress
             oEmitValue
@@ -441,6 +423,8 @@
        .tAssignInteger
        #eUndefinedIdentifier
        #eProcedureReqd
+       #eUndefinedIdentifier
+       #eProcedureReqd
 
 Errors reported by compiler: 
 semantic error, line 27: subrange or named type required
@@ -450,17 +434,17 @@ semantic error, line 39: subrange or named type required
 semantic error, line 46: identifier not declared
 semantic error, line 113: identifier not declared
 semantic error, line 113: procedure name required
-semantic error, line 115: identifier not declared
-semantic error, line 115: procedure name required
-semantic error, line 124: operand and operator types clash
-semantic error, line 125: identifier not declared
-semantic error, line 125: procedure name required
-semantic error, line 126: operand and operator types clash
-semantic error, line 127: identifier not declared
-semantic error, line 127: procedure name required
-semantic error, line 129: identifier not declared
-semantic error, line 129: procedure name required
-semantic error, line 134: type identifier required
-semantic error, line 141: identifier not declared
-semantic error, line 141: procedure name required
+semantic error, line 121: operand and operator types clash
+semantic error, line 122: identifier not declared
+semantic error, line 122: procedure name required
+semantic error, line 123: operand and operator types clash
+semantic error, line 124: identifier not declared
+semantic error, line 124: procedure name required
+semantic error, line 126: identifier not declared
+semantic error, line 126: procedure name required
+semantic error, line 131: type identifier required
+semantic error, line 138: identifier not declared
+semantic error, line 138: procedure name required
+semantic error, line 139: identifier not declared
+semantic error, line 139: procedure name required
 *** Processing aborted

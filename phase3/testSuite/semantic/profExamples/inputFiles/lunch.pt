@@ -44,18 +44,18 @@ rep
 
     countdown = verse
     rep
-	on countdown < 2 : break
-	print ("She swallowed the " + animal [countdown])
-	print (" to catch the " + animal [countdown - 1] + ",") nl
-	countdown -= 1
+        on countdown < 2 : break
+        print ("She swallowed the " + animal [countdown])
+        print (" to catch the " + animal [countdown - 1] + ",") nl
+        countdown -= 1
     end
 
     if verse > 1 :
-	print (remark [1]) nl
+        print (remark [1]) nl
     end
 
     if verse < 8 :
-	print ("Perhaps she'll die.") nl
+        print ("Perhaps she'll die.") nl
     end
 
     verse += 1
