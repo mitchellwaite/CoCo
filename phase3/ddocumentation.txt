@@ -61,7 +61,7 @@ The goal of these modifications is to convert the Semantic Analyzer of the PT Pa
        -Ensured sel alternative count is incremented for else clause. 
         *****TODO: Ensure this^ is necessary *****
 
-16. Ternary Operators (Incomplete)
+16. Ternary Operators
    - Added entry for @TernaryOperator to Expression
    - Added code to handle string substring operator
 

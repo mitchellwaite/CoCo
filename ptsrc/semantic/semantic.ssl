@@ -1993,8 +1993,8 @@ TernaryOperator :
         [
             | sSubstring:
                 [ oTypeStkChooseKind
-                    | tpInteger: %String behaves differently than all other types that "add" supports
-                    | *: %For all other variables, retain old behaviour
+                    | tpInteger: %Top of the stack should be "substring length"
+                    | *: %Otherwise throw an error
                       #eIntegerExpnReqd
                 ]
 
@@ -2002,8 +2002,8 @@ TernaryOperator :
                 oSymbolStkPop
 
                 [ oTypeStkChooseKind
-                    | tpInteger: %String behaves differently than all other types that "add" supports
-                    | *: %For all other variables, retain old behaviour
+                    | tpInteger: %Second on the stack should be "starting index"
+                    | *: %Otherwise throw an error
                       #eIntegerExpnReqd
                 ]
 
@@ -2011,12 +2011,12 @@ TernaryOperator :
                 oSymbolStkPop
 
                 [ oTypeStkChooseKind
-                    | tpString: %String behaves differently than all other types that "add" supports
-                    | *: %For all other variables, retain old behaviour
+                    | tpString: %Third on the stack should be the string we want to substring
+                    | *: %Otherwise throw an error
                       #eStringExpnReqd
                 ]
 
-                oTypeStkPop             % only result type remains
+                oTypeStkPop
                 .tSubstring
                 oTypeStkPush(tpString) %Result Type
                 @CompareOperandAndResultTypes
