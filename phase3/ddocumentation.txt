@@ -8,6 +8,8 @@ ssltrace "ptc -L ../../../../ptsrc/lib/pt -o3 -t3 qubySimpleRept.pt" ../../../..
 
 The goal of these modifications is to convert the Semantic Analyzer of the PT Pascal compiler into the Semantic Analyzer for Quby. A detailed listing of all the changes made are listed below. They follow the order of the checklist provided in the assignment documentation, adjusted where applicable.
 
+# semantic.ssl changes
+
 1. Input Tokens
    - The semantic analyzer input tokens in semantic.ssl were modified to match the output tokens from the parser
    - The input, error, operational, type tokens were updated in semantic.pt to match the tokens seen in semantic.def
@@ -74,3 +76,12 @@ The goal of these modifications is to convert the Semantic Analyzer of the PT Pa
 
 19. String Literal & T-codes (Incomplete)
    - Commented out tStringDescriptor and tSkipString
+
+# semantic.pt changes
+
+1. Semantic Operations
+   - Copied the contents of the newest semantic.def to the header of semantic.pt
+
+5. String Allocation
+   - Added rule to allocate `stringSize` bytes for the string type
+
