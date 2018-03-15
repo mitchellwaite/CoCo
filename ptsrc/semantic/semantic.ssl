@@ -862,38 +862,13 @@ ConstantValue :         % An identifier token has just been accepted
                 oSymbolStkEnterValue
                 oValuePop
             | sLiteral:
-                oValuePush(one) % implicit lower bound of string index type
                 oValuePushStringLength
-                [ oValueChoose
-                    | zero:
-                        #eNullString
-                        @SymbolStkPushStringConstant
-                    | one:
-                        oSymbolStkLinkToStandardType(stdString)
-                        oSymbolStkEnterStringValue
-                    | *:
-                        % Emit a branch around the string since
-                        % it is stored in the code area
-%                        .tSkipString
-                        oFixPushForwardBranch
-                        oEmitNullAddress
-                        .tLiteralString
-                        oEmitValue      % string length
-                        % The string "address" is the location (offset)
-                        % of the first character of the string
-                        oSymbolStkEnterCodeAddress
-                        oEmitString
-                        oFixPopForwardBranch
-%                        oTypeStkPush(tpPackedArray)     % means literal string
-                        oTypeStkEnterBounds
-                        oTypeStkLinkToStandardComponentType(stdString)
-                        oTypeTblEnter
-                        oSymbolStkEnterTypeReference
-                        oTypeStkPop
-                ]
-                oValuePop       % Upper bound
-                oValuePop       % Lower bound
-        ]
+                oSymbolStkLinkToStandardType(stdString)
+                oSymbolStkEnterValue
+                oValuePop
+                % Need more here - Johan
+        
+]
         oSymbolTblEnter
         oSymbolStkPop;          % name being defined
 
@@ -1857,40 +1832,12 @@ Operand :
                 oEmitValue
                 oValuePop
             | sLiteral:
-                oValuePush(one) % implicit lower bound of string index type
                 oValuePushStringLength
-                [ oValueChoose
-                    | zero:
-                        #eNullString
-                        oSymbolStkPush(syExpression)
-                        oTypeStkPush(tpString)
-                    | one:
-                        oSymbolStkPush(syExpression)
-                        oTypeStkPush(tpString)
-                        .tLiteralString
-                        oEmitString
-                    | *:
-                        oSymbolStkPush(syExpression)
-                        % branch around string since
-                        % it is stored in the code area
-%                        .tSkipString
-                        oFixPushForwardBranch
-                        oEmitNullAddress
-                        .tLiteralString
-                        oEmitValue      % string length
-                        oFixPushTargetAddress
-                        oFixSwap                % Forward branch back on top
-                        oEmitString
-                        oFixPopForwardBranch
-                        % Descriptor points to the
-                        % first character of the string
-%                        .tStringDescriptor
-                        oFixPopTargetAddress
-%                        oTypeStkPush(tpPackedArray)
-                        oTypeStkEnterBounds
-                        oTypeStkLinkToStandardComponentType(stdString)
-                ]
-                oValuePop
+                oSymbolStkPush(syExpression)
+                oTypeStkPush(tpString)
+                .tLiteralString
+                oEmitValue      % emit string size
+                oEmitString
                 oValuePop
             | sFile:
                 @Expression
@@ -2063,7 +2010,7 @@ CompareOperandAndResultTypes :
 CompareRelationalOperandTypes :
         % Verify that the types of the two operands are assignment
         % compatible and that they are valid relational expression
-        % operand types (char, integer or subrange).  Pop the
+        % operand types (string, integer or subrange).  Pop the
         % operand symbol and type stack entries and push result
         % symbol and type stack entries.
 
