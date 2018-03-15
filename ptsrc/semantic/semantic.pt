@@ -394,9 +394,8 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
       	tpBoolean = 2;
       	tpSubrange = 3;
       	tpArray = 4;
-      	tpPackedArray = 5;
-      	tpFile = 6;
-      	tpNull = 7;
+      	tpFile = 5;
+      	tpNull = 6;
       	{ Type 21 }
       	trHalt = 0;
       	trReset = 1;
@@ -2358,7 +2357,7 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
                                 dataAreaEnd := dataAreaEnd + wordSize;
                            { tpChar,} tpBoolean:
                                 dataAreaEnd := dataAreaEnd + byteSize;
-                            tpArray, tpPackedArray:
+                            tpArray:
                                 begin
                                     size := typeStkUpperBound[typeStkTop] - 
                                         typeStkLowerBound[typeStkTop] + 1;
