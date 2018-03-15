@@ -1,0 +1,9 @@
+ext input
+var y: integer
+mod test
+  def pub a(var x:integer)
+    var b: integer
+  end
+end
+a(y)
+b = 1

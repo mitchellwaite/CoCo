@@ -1,0 +1,52 @@
+emptyModuleQuby.pt
+Test case to verify that an empty Quby module successfully runs.
+The input is in form of:
+mod test
+end
+
+insideScopeVarModuleQuby.pt
+Test case to verify that a variable declared inside a Quby module can be used in a statement inside the module successfully.
+The input is in form of:
+mod test
+  var i: integer
+  i = 1
+end
+
+outsideScopeVarModuleQuby.pt
+Test case to verify that an error will be provided when a variable declared within the module scope is attempted to be used from outside the module scope.
+The input for this test is in the form:
+mod test
+  var a: integer
+end
+a=1
+
+outsideScopeFuncModuleQuby.pt
+Test case to verify that an error will be provided when a procedure declared inside a Quby module is called from outside the module.
+The input is in form of:
+mod test
+  def a(var i: integer)
+  end
+end
+a(x)
+
+outsideScopePubFuncModuleQuby.pt
+Test case to verify that a public procedure (that is declared inside a module) is successfully called from outside the module.
+The input is in form of:
+mod test
+  def pub a(var i: integer)
+  end
+end
+a(x)
+
+outsideScopePubVarModuleQuby.pt
+Test case to verify that an error will be provided when a variable declared inside a public procedure within a module is attemped to be used from outside the module scope.
+The input for this test is in the form:
+mod test
+  def pub a(var i: integer)
+    var y:integer
+  end
+end
+a(x)
+y=1
+
+

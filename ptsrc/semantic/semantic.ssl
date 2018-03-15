@@ -171,6 +171,7 @@ Error :
         eMultiplyDefined
         eUndefinedIdentifier
         eConstantReqd
+
         eNullString
         eSubrangeReqd
         eScalarReqd
@@ -289,10 +290,18 @@ mechanism SymbolTable :
         % the scope being exited, except for formal parameters
         % which must be retained for type checking.
 
-    oSymbolTblLookupExternal >> Boolean;
+    oSymbolTblLookupExternal >> Boolean
         % Return true if any external names (program parameters)
         % have not yet been declared.
 
+    oSymbolTblMergeScope  % Added for Quby public procedures
+        % Merge the top two scopes in the symbol table
+        % by decrementing the lexical level.
+
+    oSymbolTblStripScope;  % Added for Quby public procedures
+        % Go through the top scope in the symbol table setting
+        % the symbol table reference for each symbol's identifier
+        % index to the one at the next lower lexical level.
 
 % Symbol Stack types and mechanism
 
@@ -305,7 +314,9 @@ type SymbolKind :
         syFunction
         syExternal
         syExpression
-        syUndefined;
+        syUndefined
+        syModule  % Added for Quby modules
+        syPublicProcedure;
 
 type StdRoutine :
         rtReset = 1
@@ -788,6 +799,8 @@ Block :
         % definitions with the intent of providing better error repair.
 
         {[
+            | sModule:
+                @ModuleDefinition
             | sProcedure:
                 @ProcedureDefinition
             | sConst:
@@ -1319,20 +1332,38 @@ AllocateVar :
         ];
 
 ProcedureDefinition :
-        sIdentifier  oSymbolStkPushLocalIdentifier      % procedure name
-        [ oSymbolStkChooseKind
-            | syUndefined:
-            | syExternal:
-                % Program parameters must be declared as file variables
-                #eExternalDeclare
+        [
+            | sPublic:
+                sIdentifier  oSymbolStkPushLocalIdentifier      % procedure name
+                [ oSymbolStkChooseKind
+                    | syUndefined:
+                    | syExternal:
+                        % Program parameters must be declared as file variables
+                        #eExternalDeclare
+                    | *:
+                        #eMultiplyDefined
+                        % New definition obscures old one.
+                ]
+                .tSkipProc      % Branch around the procedure definition
+                oFixPushForwardBranch
+                oEmitNullAddress
+                oSymbolStkSetKind(syPublicProcedure)
             | *:
-                #eMultiplyDefined
-                % New definition obscures old one.
+                sIdentifier  oSymbolStkPushLocalIdentifier      % procedure name
+                [ oSymbolStkChooseKind
+                    | syUndefined:
+                    | syExternal:
+                        % Program parameters must be declared as file variables
+                        #eExternalDeclare
+                    | *:
+                        #eMultiplyDefined
+                        % New definition obscures old one.
+                ]
+                .tSkipProc      % Branch around the procedure definition
+                oFixPushForwardBranch
+                oEmitNullAddress
+                oSymbolStkSetKind(syProcedure)
         ]
-        .tSkipProc      % Branch around the procedure definition
-        oFixPushForwardBranch
-        oEmitNullAddress
-        oSymbolStkSetKind(syProcedure)
         oSymbolStkEnterCodeAddress
         oTypeStkPush(tpNull)
         oTypeStkSetRecursionFlag(yes)
@@ -1467,6 +1498,35 @@ ProcedurePrologue :
         oTypeStkEnterParameterCount     % In procedure's type entry
         oCountPop;
 
+ModuleDefinition :
+        sIdentifier  oSymbolStkPushLocalIdentifier      % module name
+        [ oSymbolStkChooseKind
+            | syUndefined:
+            | syExternal:
+                % Program parameters must be declared as file variables
+                #eExternalDeclare
+            | *:
+                #eMultiplyDefined
+                % New definition obscures old one.
+        ]
+        oEmitNullAddress
+        oSymbolStkSetKind(syModule)
+        oSymbolStkEnterCodeAddress
+        oTypeStkPush(tpNull)
+        oTypeStkSetRecursionFlag(yes)
+        oTypeTblEnter
+        oSymbolStkEnterTypeReference
+        oSymbolTblEnter
+        oSymbolTblPushScope     % module scope
+        @Block
+        oSymbolTblUpdate
+        oSymbolStkPop
+        oTypeStkSetRecursionFlag(no)
+        oTypeTblUpdate
+        oTypeStkPop
+        oSymbolTblStripScope
+        oSymbolTblMergeScope;
+
 Statement :
         [
             | sAssignmentStmt:
@@ -1534,7 +1594,7 @@ CallStmt :
             | *:
         ]
         [ oSymbolStkChooseKind
-            | syProcedure:
+            | syProcedure, syPublicProcedure:
                 [ oSymbolStkChooseStandardRoutine
                     | rtReset:
                         .tTrapBegin

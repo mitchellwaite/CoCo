@@ -1,0 +1,7 @@
+ext input
+var x:integer
+mod test
+  def pub a(var i:integer)
+  end
+end
+a(x)

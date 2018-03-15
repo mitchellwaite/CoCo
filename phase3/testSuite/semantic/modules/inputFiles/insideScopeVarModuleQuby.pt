@@ -1,0 +1,5 @@
+ext input
+mod test
+  var i: integer
+  i = 1
+end

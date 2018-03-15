@@ -25,6 +25,12 @@ The goal of these modifications is to convert the Semantic Analyzer of the PT Pa
 4. StdType
    - Changed stdChar to stdString
 
+5. Symbol Table
+   - Added oSymbolTblStripScope and oSymbolTblMergeScope to the SymbolTable mechanism
+
+6. Symbol Kind
+   - Added syModule and syPublicProcedure to the type SymbolKind
+
 7. TypeKind
    - Changed tpChar to tpString
    - Commented out all instances of tpPackedArray
@@ -34,6 +40,13 @@ The goal of these modifications is to convert the Semantic Analyzer of the PT Pa
    - Removed redundant trWriteString
    - Changed trap numbers for trWriteString and trReadString to 109 and 108 respectively
    - Changed all uses of char traps to string traps
+
+9. Module Definition
+   - Added new ModuleDefinition rule
+   - The body of the ModuleDefinition is incredibly similar to the ProcedureDefinition including using the sIdentifier
+     for accepting the module name and defining the scope. The difference between the ModuleDefinition vs ProcedureDefinition
+     is that the module definition does not need to branch around the definition and oSymbolTblStripScope and oSymbolTblMergeScope
+     were used instead of oSymbolTblPopScope. oSymbolStkSetKind was also given syModule.
 
 10. Con definitions
    - Removed S/SL cycle from ConstantDefinitions to prevent multiple identifier/value pairs per 'con'
@@ -46,6 +59,12 @@ The goal of these modifications is to convert the Semantic Analyzer of the PT Pa
 12. Variable Definitions
    - Removed S/SL cycle from VariableDeclarations to prevent multiple identifier/value pairs per 'var'
    - Removed choice action, so we only recognize one 'var' or else
+
+13. Public Procedure Definition
+   - Added a case statement in the ProcedureDefinition to accept the sPublic token, and if the token is given then the
+     oSymbolStkSetKind is passed syPublicProcedure. If it is not given then oSymbolStkSetKind is passed syProcedure.
+   - In the CallStmt rule, the case statement for oSymbolStkChooseKind was modified so that the case for syProcedure now
+     accepts both syProcedure and syPublicProcedure.
 
 14. Rep Statements
    - Changed the WhileStmt rule to RepStmt and other similar name changes as required
