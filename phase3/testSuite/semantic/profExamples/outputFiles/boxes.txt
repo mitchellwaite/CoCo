@@ -148,6 +148,7 @@
          .tFetchInteger
         .tMultiply
         .tGT
+     .tNot
      .tWhileTest
      oEmitNullAddress
          .tIfBegin
@@ -281,6 +282,7 @@
          oEmitValue
          .tFetchInteger
         .tGT
+     .tNot
      .tWhileTest
      oEmitNullAddress
          .tAssignBegin
@@ -301,6 +303,7 @@
             oEmitValue
             .tSubtract
             .tGE
+         .tNot
          .tWhileTest
          oEmitNullAddress
              .tWriteBegin

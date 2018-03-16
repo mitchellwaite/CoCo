@@ -53,6 +53,7 @@ The goal of these modifications is to convert the Semantic Analyzer of the PT Pa
    - Changed the WhileStmt rule to RepStmt and other similar name changes as required
    - Added the support for conditional exit using Quby RepOnBreak
    - In RepStmt rule, added a call to Statement rule before the sRepOnBreak
+   - Added ssl statement to emit .tNot before .tWhileTest due to rep statements breaking when the "on break" condition is TRUE. Rather in old PT while loops, the loop breaks when the condition is FALSE (keep looping as long as it is true). The .tNot t-code allows the old PT while loop t-codes to be re-used.
 
 15. Sel Statements
    - Changed CaseStmt rule to be the new Quby SelStmt rule, along with other similar name changes as required.

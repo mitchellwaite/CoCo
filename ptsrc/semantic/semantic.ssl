@@ -1671,6 +1671,7 @@ RepStmt :
         sRepOnBreak
         .tWhileOnBreak
         @BooleanControlExpression
+        .tNot                           % Needed because rep statements break when condition is true, while loops break when condition is false
         .tWhileTest
         oFixPushForwardBranch
         oEmitNullAddress                % exit branch

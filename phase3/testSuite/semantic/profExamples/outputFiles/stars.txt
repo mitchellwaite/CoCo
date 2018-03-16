@@ -24,6 +24,7 @@
         .tLiteralInteger
         oEmitValue
         .tGT
+     .tNot
      .tWhileTest
      oEmitNullAddress
          .tAssignBegin

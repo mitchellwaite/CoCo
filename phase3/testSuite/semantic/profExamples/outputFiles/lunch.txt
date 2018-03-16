@@ -236,6 +236,7 @@
         .tLiteralInteger
         oEmitValue
         .tGE
+     .tNot
      .tWhileTest
      oEmitNullAddress
          .tTrapBegin
@@ -343,6 +344,7 @@
             .tLiteralInteger
             oEmitValue
             .tLT
+         .tNot
          .tWhileTest
          oEmitNullAddress
              .tWriteBegin

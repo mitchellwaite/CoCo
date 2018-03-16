@@ -147,6 +147,7 @@
            .tLiteralInteger
            oEmitValue
           .tGT
+       .tNot
        .tWhileTest
        oEmitNullAddress
        .tWhileEnd
@@ -178,6 +179,7 @@
           .tLiteralInteger
           oEmitValue
           .tEQ
+       .tNot
        .tWhileTest
        oEmitNullAddress
            .tAssignBegin
@@ -194,6 +196,7 @@
                .tLiteralInteger
                oEmitValue
               .tEQ
+           .tNot
            .tWhileTest
            oEmitNullAddress
                .tCallBegin
@@ -326,6 +329,7 @@
          .tLiteralInteger
          oEmitValue
         .tEQ
+     .tNot
      .tWhileTest
      oEmitNullAddress
      .tWhileEnd

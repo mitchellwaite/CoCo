@@ -1,0 +1,34 @@
+   .tLiteralInteger
+   oEmitValue
+   .tLiteralAddress
+   oEmitDataAddress
+   .tFileDescriptor
+     .tWhileBegin
+         .tAssignBegin
+          .tLiteralAddress
+          oEmitValue
+           .tLiteralInteger
+           oEmitValue
+         .tAssignInteger
+     .tWhileOnBreak
+         .tLiteralAddress
+         oEmitValue
+         .tFetchInteger
+        .tLiteralInteger
+        oEmitValue
+        .tEQ
+     .tNot
+     .tWhileTest
+     oEmitNullAddress
+         .tAssignBegin
+          .tLiteralAddress
+          oEmitValue
+           .tLiteralInteger
+           oEmitValue
+         .tAssignInteger
+     .tWhileEnd
+ .tTrapBegin
+ .tTrap
+ oEmitTrapKind(trHalt)
+
+Errors reported by compiler: 

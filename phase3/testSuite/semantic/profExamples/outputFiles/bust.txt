@@ -159,6 +159,7 @@
           .tLiteralInteger
           oEmitValue
           .tGT
+       .tNot
        .tWhileTest
        oEmitNullAddress
        .tWhileEnd
@@ -192,6 +193,7 @@
               .tLiteralInteger
               oEmitValue
               .tNE
+           .tNot
            .tWhileTest
            oEmitNullAddress
                .tCallBegin
@@ -254,6 +256,7 @@
           .tLiteralInteger
           oEmitValue
           .tGT
+       .tNot
        .tWhileTest
        oEmitNullAddress
        .tWhileEnd
@@ -339,6 +342,7 @@
            oEmitValue
            .tFetchInteger
           .tGT
+       .tNot
        .tWhileTest
        oEmitNullAddress
            .tWriteBegin
@@ -657,6 +661,7 @@
                   oEmitValue
                   .tLT
                   .tAnd
+               .tNot
                .tWhileTest
                oEmitNullAddress
                    .tWriteBegin
@@ -1553,6 +1558,7 @@
            oEmitValue
            .tFetchInteger
           .tGT
+       .tNot
        .tWhileTest
        oEmitNullAddress
            .tCaseBegin
@@ -1657,6 +1663,7 @@
           oEmitValue
           .tEQ
           .tOr
+       .tNot
        .tWhileTest
        oEmitNullAddress
            .tAssignBegin
@@ -3000,6 +3007,7 @@
          oEmitValue
          .tFetchBoolean
         .tNot
+     .tNot
      .tWhileTest
      oEmitNullAddress
          .tCallBegin
@@ -3018,6 +3026,7 @@
              oEmitValue
              .tFetchBoolean
             .tNot
+         .tNot
          .tWhileTest
          oEmitNullAddress
              .tCallBegin
@@ -3028,6 +3037,7 @@
                  .tLiteralAddress
                  oEmitValue
                  .tFetchBoolean
+             .tNot
              .tWhileTest
              oEmitNullAddress
                  .tCallBegin
@@ -3039,6 +3049,7 @@
                  .tLiteralAddress
                  oEmitValue
                  .tFetchBoolean
+             .tNot
              .tWhileTest
              oEmitNullAddress
                  .tCallBegin

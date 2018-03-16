@@ -84,6 +84,7 @@
         oEmitValue
         oEmitString
         .tEQ
+     .tNot
      .tWhileTest
      oEmitNullAddress
          .tTrapBegin

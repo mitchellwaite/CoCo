@@ -247,6 +247,7 @@
                oEmitValue
                .tFetchInteger
               .tEQ
+           .tNot
            .tWhileTest
            oEmitNullAddress
            .tWhileEnd
@@ -432,6 +433,7 @@
            .tLiteralAddress
            oEmitValue
            .tFetchBoolean
+       .tNot
        .tWhileTest
        oEmitNullAddress
        .tWhileEnd
@@ -457,6 +459,7 @@
          .tLiteralInteger
          oEmitValue
         .tGT
+     .tNot
      .tWhileTest
      oEmitNullAddress
          .tAssignBegin
@@ -576,6 +579,7 @@
         .tLiteralInteger
         oEmitValue
         .tEQ
+     .tNot
      .tWhileTest
      oEmitNullAddress
      .tWhileEnd

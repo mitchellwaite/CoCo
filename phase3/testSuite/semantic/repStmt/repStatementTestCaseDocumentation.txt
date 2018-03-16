@@ -1,0 +1,53 @@
+ptRepeatStatement.pt
+Test case to ensure the old PT style "repeat" loop statement no longer is accepted as valid input to the Quby compiler.
+The format for the input code is as follows:
+repeat
+    statement
+until expression;
+Note: A semantic error should be provided in the output due to the PT "repeat" keyword no longer being a valid identifier in Quby.
+
+ptWhileStatement.pt
+Test case to ensure the old PT style "while" loop statement no longer is accepted as valid input to the Quby compiler.
+The format for the input code is as follows:
+while expression do
+begin
+    statement
+end;
+Note: Either a parser or semantic error should be provided in the output due to the improper Quby syntax. The parsing error can be present due to the comparison operator in the while condition statement.
+
+qubySimpleRept.pt
+Test case to ensure the new Quby "rep" loop statement is accepted by the Quby semantic pahse. The "rep" statement should only allow for one "on expression : break" statement and test input code is structured as below:
+rep
+    statement
+    on expression : break
+    statement
+end
+
+qubySimpleReptMultipleBreak.pt
+Test case to ensure the new Quby "rep" loop statement does not allow for multiple "on expression : break" statements. The test input code is structured as below:
+rep
+    statement
+    on expression : break
+    statement
+	  on expression : break
+end
+The semantic phase will need to ensure that no more than one .sRepOnBreak token exists in a 'rep' block.
+
+qubyMultiStatementsAfterRept.pt
+Test case to ensure the new Quby "rep" loop statement and allows multiple statements (zero or more) *following* an "on expression : break" statement.
+The test input code is structured as below:
+rep
+    statement
+    on expression : break
+    statement
+    statement  
+end
+
+qubyMultiStatementsBeforeRept.pt
+Test case to ensure the new Quby "rep" loop statement and allows multiple statements (zero or more) *preceding* an "on expression : break" statement.
+rep
+    statement
+    statement 
+    on expression : break
+    statement 
+end
