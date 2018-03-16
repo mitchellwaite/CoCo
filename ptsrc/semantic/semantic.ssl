@@ -862,11 +862,18 @@ ConstantValue :         % An identifier token has just been accepted
                 oSymbolStkEnterValue
                 oValuePop
             | sLiteral:
-                oValuePushStringLength
-                oSymbolStkLinkToStandardType(stdString)
-                oSymbolStkEnterValue
+                .tAssignBegin % Pretend con string is a var type string with a following assignment
+                .tLiteralAddress
+                oValuePushSymbol
+                oEmitValue
                 oValuePop
-                % Need more here - Johan
+                oValuePushStringLength
+                .tLiteralString 
+                oEmitValue      % emit string size
+                oEmitString
+                .tAssignString
+                oValuePop
+                
         
 ]
         oSymbolTblEnter

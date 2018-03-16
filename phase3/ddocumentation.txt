@@ -86,7 +86,14 @@ The goal of these modifications is to convert the Semantic Analyzer of the PT Pa
          emit the string itself
          pop the string size value
 
-20. String Constants - INCOMPLETE JOHAN IN PROGRESS
+20. String Constants
+   - Changed con string declarations to act like a var of type string.
+   - Output t-codes in the form of:
+         tAssignBegin
+         tLiteralAddress <con/var name>
+         tLiteralString <string size>
+         "string literal"
+         tAssignString
 
 # semantic.pt changes
 
