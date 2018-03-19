@@ -1,5 +1,5 @@
 ext input
-
+var x : integer
 while x < 10 do
 begin
     x = 4

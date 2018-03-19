@@ -42,8 +42,9 @@ rep
 
 % Predeclared type names
 integer
+string
+% Adding the new Quby string identifier replacing the PT char
 boolean
-string      % Adding the new Quby string identifier replaing the PT char
 text
 
 % Predeclared constants
@@ -53,10 +54,14 @@ false
 % Predeclared procedures and functions
 reset
 rewrite
-print       % Adding the new Quby print identifier replaing the PT write
-nl          % Adding the new Quby nl identifier replaing the PT writeln
-get         % Adding the new Quby get identifier replaing the PT read
-getnl       % Adding the new Quby getln identifier replaing the PT readln
+print
+% Adding the new Quby print identifier replaing the PT write
+nl
+% Adding the new Quby nl identifier replaing the PT writeln
+get
+% Adding the new Quby get identifier replaing the PT read
+getnl
+% Adding the new Quby getln identifier replaing the PT readln
 chr
 ord
 eoln

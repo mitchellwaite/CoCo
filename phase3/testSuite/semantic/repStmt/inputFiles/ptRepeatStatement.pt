@@ -1,5 +1,5 @@
 ext input
-
+var x : integer
 repeat
     x = x + 1
 until x = 5;

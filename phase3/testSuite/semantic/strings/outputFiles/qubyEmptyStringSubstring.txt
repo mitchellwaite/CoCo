@@ -6,23 +6,19 @@
      #eUndefinedIdentifier
      .tAssignBegin
       #eUndefinedIdentifier
-       #eNullString
+       .tLiteralString
+       oEmitValue
+       oEmitString
        .tLiteralInteger
        oEmitValue
        .tLiteralInteger
        oEmitValue
-     .tAssignInteger
- #eExternalUndeclared
- .tTrapBegin
- .tTrap
- oEmitTrapKind(trHalt)
-### Semantic assertion 49 failed: symbol stack not empty at end of semantic phase
-### Semantic assertion 50 failed: type stack not empty at end of semantic phase
+       .tSubstring
+         #eTypeMismatch
+### Semantic assertion 16 failed: less than two types in type stack in oTypeStkSwap
 
 Errors reported by compiler: 
 semantic error, line 2: identifier not declared
 semantic error, line 2: identifier not declared
-semantic error, line 2: null literal string not allowed
-semantic error, line 3: undeclared external file (program parameter)
-### Semantic assertion 49 failed: symbol stack not empty at end of semantic phase
-### Semantic assertion 50 failed: type stack not empty at end of semantic phase
+semantic error, line 3: type clash
+### Semantic assertion 16 failed: less than two types in type stack in oTypeStkSwap

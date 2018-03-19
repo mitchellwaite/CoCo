@@ -8,6 +8,8 @@ ssltrace "ptc -L ../../../../ptsrc/lib/pt -o3 -t3 qubySimpleRept.pt" ../../../..
 
 The goal of these modifications is to convert the Semantic Analyzer of the PT Pascal compiler into the Semantic Analyzer for Quby. A detailed listing of all the changes made are listed below. They follow the order of the checklist provided in the assignment documentation, adjusted where applicable.
 
+# semantic.ssl changes
+
 1. Input Tokens
    - The semantic analyzer input tokens in semantic.ssl were modified to match the output tokens from the parser
    - The input, error, operational, type tokens were updated in semantic.pt to match the tokens seen in semantic.def
@@ -70,6 +72,7 @@ The goal of these modifications is to convert the Semantic Analyzer of the PT Pa
    - Changed the WhileStmt rule to RepStmt and other similar name changes as required
    - Added the support for conditional exit using Quby RepOnBreak
    - In RepStmt rule, added a call to Statement rule before the sRepOnBreak
+   - Added ssl statement to emit .tNot before .tWhileTest due to rep statements breaking when the "on break" condition is TRUE. Rather in old PT while loops, the loop breaks when the condition is FALSE (keep looping as long as it is true). The .tNot t-code allows the old PT while loop t-codes to be re-used.
 
 15. Sel Statements
    - Changed CaseStmt rule to be the new Quby SelStmt rule, along with other similar name changes as required.
@@ -80,9 +83,9 @@ The goal of these modifications is to convert the Semantic Analyzer of the PT Pa
        -Ensured sel alternative count is incremented for else clause. 
         *****TODO: Ensure this^ is necessary *****
 
-16. Ternary Operators (Incomplete)
-   - Added TernaryOperator with an empty rule for sSubstring
+16. Ternary Operators
    - Added entry for @TernaryOperator to Expression
+   - Added code to handle string substring operator
 
 17. String Concat w/ sAdd
    - Added handling of string concat within BinaryOperator by adding a rule to sAdd
@@ -91,5 +94,39 @@ The goal of these modifications is to convert the Semantic Analyzer of the PT Pa
    - added handling of sLen to UnaryOperator
    - added check to ensure the type on the type stack is tpString
 
-19. String Literal & T-codes (Incomplete)
+19. String Literal & T-codes
    - Commented out tStringDescriptor and tSkipString
+   - Changed handling of sLiteral in @Operand rule to match the following format:
+         push string length
+         push syExpression on to symbol stack
+         push tpString on to the type stack
+         output tLiteralString
+         emit string size
+         emit the string itself
+         pop the string size value
+
+20. String Constants
+   - Changed con string declarations to act like a var of type string.
+   - Output t-codes in the form of:
+         tAssignBegin
+         tLiteralAddress <con/var name>
+         tLiteralString <string size>
+         "string literal"
+         tAssignString
+
+# semantic.pt changes
+
+1. Semantic Operations
+   - Copied the contents of the newest semantic.def to the header of semantic.pt
+
+2. Predefined Type String
+   - Changed the predefined type for Char to be a predefined type for String. Changing pidChar, tpChar, and standardCharTypeRef to pidString, tpString, and standardStringTypeRef appropriately.
+   - Changed all standardCharTypeRef references in semantic.pt to standardStringTypeRef.
+   - Lastly, made all tpChar references point to tpString
+
+3. Predefined Type Text
+   - Changed text (file of char) to be file of strings, and use standardStringTypeRef.
+
+5. String Allocation
+   - Added rule to allocate `stringSize` bytes for the string type
+

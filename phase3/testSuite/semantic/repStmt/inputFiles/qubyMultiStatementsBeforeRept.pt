@@ -1,5 +1,6 @@
 ext input
-
+var x : integer
+var y : integer
 rep
     x = 5
     x = x * 3

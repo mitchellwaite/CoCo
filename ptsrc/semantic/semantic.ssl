@@ -875,38 +875,20 @@ ConstantValue :         % An identifier token has just been accepted
                 oSymbolStkEnterValue
                 oValuePop
             | sLiteral:
-                oValuePush(one) % implicit lower bound of string index type
+                .tAssignBegin % Pretend con string is a var type string with a following assignment
+                .tLiteralAddress
+                oValuePushSymbol
+                oEmitValue
+                oValuePop
                 oValuePushStringLength
-                [ oValueChoose
-                    | zero:
-                        #eNullString
-                        @SymbolStkPushStringConstant
-                    | one:
-                        oSymbolStkLinkToStandardType(stdString)
-                        oSymbolStkEnterStringValue
-                    | *:
-                        % Emit a branch around the string since
-                        % it is stored in the code area
-%                        .tSkipString
-                        oFixPushForwardBranch
-                        oEmitNullAddress
-                        .tLiteralString
-                        oEmitValue      % string length
-                        % The string "address" is the location (offset)
-                        % of the first character of the string
-                        oSymbolStkEnterCodeAddress
-                        oEmitString
-                        oFixPopForwardBranch
-%                        oTypeStkPush(tpPackedArray)     % means literal string
-                        oTypeStkEnterBounds
-                        oTypeStkLinkToStandardComponentType(stdString)
-                        oTypeTblEnter
-                        oSymbolStkEnterTypeReference
-                        oTypeStkPop
-                ]
-                oValuePop       % Upper bound
-                oValuePop       % Lower bound
-        ]
+                .tLiteralString 
+                oEmitValue      % emit string size
+                oEmitString
+                .tAssignString
+                oValuePop
+                
+        
+]
         oSymbolTblEnter
         oSymbolStkPop;          % name being defined
 
@@ -1756,6 +1738,7 @@ RepStmt :
         sRepOnBreak
         .tWhileOnBreak
         @BooleanControlExpression
+        .tNot                           % Needed because rep statements break when condition is true, while loops break when condition is false
         .tWhileTest
         oFixPushForwardBranch
         oEmitNullAddress                % exit branch
@@ -1917,40 +1900,12 @@ Operand :
                 oEmitValue
                 oValuePop
             | sLiteral:
-                oValuePush(one) % implicit lower bound of string index type
                 oValuePushStringLength
-                [ oValueChoose
-                    | zero:
-                        #eNullString
-                        oSymbolStkPush(syExpression)
-                        oTypeStkPush(tpString)
-                    | one:
-                        oSymbolStkPush(syExpression)
-                        oTypeStkPush(tpString)
-                        .tLiteralString
-                        oEmitString
-                    | *:
-                        oSymbolStkPush(syExpression)
-                        % branch around string since
-                        % it is stored in the code area
-%                        .tSkipString
-                        oFixPushForwardBranch
-                        oEmitNullAddress
-                        .tLiteralString
-                        oEmitValue      % string length
-                        oFixPushTargetAddress
-                        oFixSwap                % Forward branch back on top
-                        oEmitString
-                        oFixPopForwardBranch
-                        % Descriptor points to the
-                        % first character of the string
-%                        .tStringDescriptor
-                        oFixPopTargetAddress
-%                        oTypeStkPush(tpPackedArray)
-                        oTypeStkEnterBounds
-                        oTypeStkLinkToStandardComponentType(stdString)
-                ]
-                oValuePop
+                oSymbolStkPush(syExpression)
+                oTypeStkPush(tpString)
+                .tLiteralString
+                oEmitValue      % emit string size
+                oEmitString
                 oValuePop
             | sFile:
                 @Expression
@@ -2052,8 +2007,34 @@ TernaryOperator :
         % but that would probably be less efficient on average.
         [
             | sSubstring:
+                [ oTypeStkChooseKind
+                    | tpInteger: %Top of the stack should be "substring length"
+                    | *: %Otherwise throw an error
+                      #eIntegerExpnReqd
+                ]
 
+                oTypeStkPop             % only result type remains
+                oSymbolStkPop
 
+                [ oTypeStkChooseKind
+                    | tpInteger: %Second on the stack should be "starting index"
+                    | *: %Otherwise throw an error
+                      #eIntegerExpnReqd
+                ]
+
+                oTypeStkPop             % only result type remains
+                oSymbolStkPop
+
+                [ oTypeStkChooseKind
+                    | tpString: %Third on the stack should be the string we want to substring
+                    | *: %Otherwise throw an error
+                      #eStringExpnReqd
+                ]
+
+                oTypeStkPop
+                .tSubstring
+                oTypeStkPush(tpString) %Result Type
+                @CompareOperandAndResultTypes
             | *:
         ];
 
@@ -2092,13 +2073,6 @@ CompareAndSwapTypes :
                     | *:
                         #eTypeMismatch
                 ]
-%           | tpPackedArray:
-%               oTypeStkSwap
-%               [ oTypeStkChooseKind
-%                   | tpPackedArray:
-%                   | *:
-%                       #eTypeMismatch
-%               ]
             | tpFile:
                 oTypeStkSwap
                 [ oTypeStkChooseKind
@@ -2123,7 +2097,7 @@ CompareOperandAndResultTypes :
 CompareRelationalOperandTypes :
         % Verify that the types of the two operands are assignment
         % compatible and that they are valid relational expression
-        % operand types (char, integer or subrange).  Pop the
+        % operand types (string, integer or subrange).  Pop the
         % operand symbol and type stack entries and push result
         % symbol and type stack entries.
 

@@ -1,0 +1,75 @@
+# Quby example program with modules 
+# Primes: determine the primes up to maxprimes using the sieve method 
+ext output
+
+# Limits
+con maxprimes = 100
+con maxfactor = 50  # maxprimes div 2 
+
+con prime = true
+con notprime = false
+
+mod flags
+    var flagvector: array [1 .. maxprimes] of boolean
+
+    def pub flagset (f: integer, tf: boolean)
+        flagvector [f] = tf
+    end
+
+    def pub flag (f: integer, var set: boolean)
+        set = flagvector [f]
+    end
+
+    # Everything begins as prime 
+    var i : integer
+    i = 1
+    rep
+        on i > maxprimes : break
+        flagvector [i] = prime
+        i += 1
+    end
+end
+
+
+# Main program
+var nextfactor: integer; var multiple: integer; var factor: integer
+var isprime: boolean
+
+# Pick out multiples of each prime factor and set these to notprime 
+multiple = 2
+factor = 2
+
+rep
+    on factor > maxfactor : break
+
+    # Set multiples of factor to notprime  
+    multiple = factor + factor
+    rep
+        on multiple > maxprimes : break
+        flagset (multiple, notprime)
+        multiple += factor
+    end
+
+    # Set factor = next prime 
+    nextfactor = factor + 1
+    flag (nextfactor, isprime)
+    rep
+        on (nextfactor > maxprimes) or isprime : break
+        nextfactor += 1
+        flag (nextfactor, isprime)
+    end
+    factor = nextfactor
+end
+
+# Now report the results 
+print ("The primes up to ", maxprimes:1, " are:") nl
+nextfactor = 2
+rep
+    on nextfactor > maxprimes : break
+    flag (nextfactor, isprime)
+    if isprime :
+        print (nextfactor:4)
+    end
+    nextfactor += 1
+end
+nl

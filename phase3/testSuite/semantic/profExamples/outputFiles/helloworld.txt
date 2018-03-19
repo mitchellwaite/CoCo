@@ -3,16 +3,31 @@
    .tLiteralAddress
    oEmitDataAddress
    .tFileDescriptor
-     #eUndefinedIdentifier
-     #eProcedureReqd
-     #eUndefinedIdentifier
-     #eProcedureReqd
+     .tWriteBegin
+       .tTrapBegin
+       .tLiteralAddress
+       oEmitValue
+       .tVarParm
+       .tParmEnd
+         .tLiteralString
+         oEmitValue
+         oEmitString
+       .tParmEnd
+        .tLiteralInteger
+        oEmitValue
+        .tParmEnd
+        .tTrap
+        oEmitTrapKind(trWriteString)
+      .tWriteEnd
+     .tTrapBegin
+      .tLiteralAddress
+      oEmitValue
+      .tVarParm
+      .tParmEnd
+     .tTrap
+     oEmitTrapKind(trWriteln)
  .tTrapBegin
  .tTrap
  oEmitTrapKind(trHalt)
 
 Errors reported by compiler: 
-semantic error, line 4: identifier not declared
-semantic error, line 4: procedure name required
-semantic error, line 5: identifier not declared
-semantic error, line 5: procedure name required

@@ -1,5 +1,6 @@
 ext input
-
+var x : integer
+var y : integer
 rep
     x = 5
     on x == 1 : break

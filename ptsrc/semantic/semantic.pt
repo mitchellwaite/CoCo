@@ -329,6 +329,7 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
       	ten = 10;
       	byteSize = 1;
       	wordSize = 4;
+        stringSize = 1024;
       	{ Type 14 }
       	no = 0;
       	yes = 1;
@@ -418,7 +419,7 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
         Program = 0;
         ProgramParameter = 41;
         Block = 101;
-        AllocateVar = 852;
+        AllocateVar = 849;
         ModuleDefinition = 1169;
         ProcedureDefinition = 930;
         ConstantDefinitions = 143;
@@ -488,7 +489,6 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
         sslTblSize = 4189;
       	minSslTableValue = -32767;
       	maxSslTableValue = 32767;
-       
         { ===== End of contents of semantic.def }
 
         { firstFatalErrorCode MUST be bigger than lastSslErrorCode }
@@ -574,6 +574,7 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
         assert56 = 56;
         assert57 = 57;
         assert58 = 58;
+        assert59 = 59;
 
         { The S/SL Rule Call Stack Size }
         sslStackSize = 127;
@@ -775,7 +776,7 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
 
         { Predefined type table entries }
         standardIntegerTypeRef: TypeTblReference;
-        standardCharTypeRef:    TypeTblReference;
+        standardStringTypeRef:    TypeTblReference;
         standardBooleanTypeRef: TypeTblReference;
         standardTextTypeRef:    TypeTblReference;
         
@@ -1003,13 +1004,11 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
             standardIntegerTypeRef := pidInteger;
 
 
-            { char }
-{
-            symbolTblKind[pidChar] := syType;
-            symbolTblTypeTblLink[pidChar] := pidChar;
-            typeTblKind[pidChar] := tpChar;
-            standardCharTypeRef := pidChar;
-}
+            { String }
+            symbolTblKind[pidString] := syType;
+            symbolTblTypeTblLink[pidString] := pidString;
+            typeTblKind[pidString] := tpString;
+            standardStringTypeRef := pidString;
 
             { Boolean }
             symbolTblKind[pidBoolean] := syType;
@@ -1017,11 +1016,11 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
             typeTblKind[pidBoolean] := tpBoolean;
             standardBooleanTypeRef := pidBoolean;
 
-            { text (i.e. file of char) }
+            { text (i.e. file of string) }
             symbolTblKind[pidText] := syType;
             symbolTblTypeTblLink[pidText] := pidText;
             typeTblKind[pidText] := tpFile;
-            typeTblComponentLink[pidText] := standardCharTypeRef;
+            typeTblComponentLink[pidText] := standardStringTypeRef;
             standardTextTypeRef := pidText;
 
             { true (1) }
@@ -1158,9 +1157,8 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
                     write('integer type expression required');
                 eBooleanExpnReqd:
                     write('Boolean type expression required');
- {               eCharExpnReqd:
-                    write('char type expression required');
-  }  
+                eStringExpnReqd:
+                    write('String type expression required');  
                 eArrayVarReqd:
                     write('array variable required');
                 eVariableReqd:
@@ -1181,9 +1179,9 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
                     write('invalid field width specification');
                 eWriteExpn:
                     write('invalid write expression');
-               { eCharFileVarReqd:
+                eStringFileVarReqd:
                     write('text file required');
-               }
+               
                  eReadVar:
                     write('invalid read variable');
                 eSslStackOverflow:
@@ -1955,9 +1953,8 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
                         case parameterValue of
                             stdInteger:
                                 symbolStkTypeTblLink[symbolStkTop] := standardIntegerTypeRef;
-                     {       stdChar:
-                                symbolStkTypeTblLink[symbolStkTop] := standardCharTypeRef;
-                      }
+                            stdString:
+                                symbolStkTypeTblLink[symbolStkTop] := standardStringTypeRef;
                             stdBoolean:
                                 symbolStkTypeTblLink[symbolStkTop] := standardBooleanTypeRef;
                             stdText:
@@ -2109,9 +2106,9 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
                             case parameterValue of
                                 stdInteger:
                                     typeStkComponentLink[typeStkTop] := standardIntegerTypeRef;
-                               { stdChar:
-                                    typeStkComponentLink[typeStkTop] := standardCharTypeRef;
-                               } stdBoolean:
+                                stdString:
+                                    typeStkComponentLink[typeStkTop] := standardStringTypeRef;
+                                stdBoolean:
                                     typeStkComponentLink[typeStkTop] := standardBooleanTypeRef;
                             end
                         end;
@@ -2409,9 +2406,11 @@ program SemanticAnalysis (output, semanticSsl, parseStream, temp, tCode, options
                         case typeStkKind[typeStkTop] of
                             tpInteger, tpSubrange:
                                 dataAreaEnd := dataAreaEnd + wordSize;
-                           { tpChar,} tpBoolean:
+                            tpBoolean:
                                 dataAreaEnd := dataAreaEnd + byteSize;
-                            tpArray: 
+                            tpString:
+                                dataAreaEnd := dataAreaEnd + stringSize;
+                            tpArray:
                                 begin
                                     size := typeStkUpperBound[typeStkTop] - 
                                         typeStkLowerBound[typeStkTop] + 1;

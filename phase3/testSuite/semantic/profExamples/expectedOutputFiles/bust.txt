@@ -386,38 +386,6 @@
               .tTrap
               oEmitTrapKind(trWriteString)
             .tWriteEnd
-           .tIfBegin
-               .tLiteralAddress
-               oEmitValue
-               .tFetchAddress
-                .tSubscriptBegin
-                   .tLiteralAddress
-                   oEmitValue
-                   .tFetchInteger
-                .tSubscriptInteger
-               .tFetchInteger
-              .tLiteralInteger
-              oEmitValue
-              .tEQ
-           .tIfThen
-           oEmitNullAddress
-               .tWriteBegin
-                 .tTrapBegin
-                 .tLiteralAddress
-                 oEmitValue
-                 .tVarParm
-                 .tParmEnd
-                   .tLiteralString
-                   oEmitValue
-                   oEmitString
-                 .tParmEnd
-                  .tLiteralInteger
-                  oEmitValue
-                  .tParmEnd
-                  .tTrap
-                  oEmitTrapKind(trWriteString)
-                .tWriteEnd
-           .tIfEnd
            .tAssignBegin
             .tLiteralAddress
             oEmitValue
@@ -1594,7 +1562,7 @@
        .tNot
        .tWhileTest
        oEmitNullAddress
-           .tIfBegin
+           .tCaseBegin
                .tLiteralAddress
                oEmitValue
                .tFetchAddress
@@ -1604,99 +1572,70 @@
                    .tFetchInteger
                 .tSubscriptInteger
                .tFetchInteger
-              .tLiteralInteger
-              oEmitValue
-              .tGT
-              .tInfixAnd
-               .tLiteralAddress
-               oEmitValue
-               .tFetchAddress
-                .tSubscriptBegin
-                   .tLiteralAddress
-                   oEmitValue
-                   .tFetchInteger
-                .tSubscriptInteger
-               .tFetchInteger
-              .tLiteralInteger
-              oEmitValue
-              .tLT
-              .tAnd
-           .tIfThen
+           .tCaseSelect
            oEmitNullAddress
-               .tAssignBegin
-                .tLiteralAddress
-                oEmitValue
-                .tFetchAddress
-                  .tLiteralAddress
-                  oEmitValue
-                  .tFetchAddress
-                  .tFetchInteger
-                  .tLiteralAddress
-                  oEmitValue
-                  .tFetchAddress
-                   .tSubscriptBegin
-                      .tLiteralAddress
-                      oEmitValue
-                      .tFetchInteger
-                   .tSubscriptInteger
-                  .tFetchInteger
-                 .tAdd
-               .tAssignInteger
-           .tIfMerge
-           oEmitNullAddress
-             .tIfBegin
+                .tAssignBegin
                  .tLiteralAddress
                  oEmitValue
                  .tFetchAddress
-                  .tSubscriptBegin
-                     .tLiteralAddress
-                     oEmitValue
-                     .tFetchInteger
-                  .tSubscriptInteger
-                 .tFetchInteger
-                .tLiteralInteger
-                oEmitValue
-                .tEQ
-             .tIfThen
-             oEmitNullAddress
-                 .tAssignBegin
-                  .tLiteralAddress
-                  oEmitValue
-                  .tFetchAddress
-                    .tLiteralAddress
-                    oEmitValue
-                    .tFetchAddress
-                    .tFetchInteger
-                   .tLiteralInteger
+                   .tLiteralAddress
                    oEmitValue
-                   .tAdd
-                 .tAssignInteger
-                 .tAssignBegin
-                  .tLiteralAddress
-                  oEmitValue
-                    .tLiteralAddress
-                    oEmitValue
-                    .tFetchInteger
-                   .tLiteralInteger
+                   .tFetchAddress
+                   .tFetchInteger
+                   .tLiteralAddress
                    oEmitValue
-                   .tAdd
-                 .tAssignInteger
-             .tIfMerge
-             oEmitNullAddress
-                 .tAssignBegin
-                  .tLiteralAddress
-                  oEmitValue
-                  .tFetchAddress
-                    .tLiteralAddress
-                    oEmitValue
-                    .tFetchAddress
-                    .tFetchInteger
-                   .tLiteralInteger
+                   .tFetchAddress
+                    .tSubscriptBegin
+                       .tLiteralAddress
+                       oEmitValue
+                       .tFetchInteger
+                    .tSubscriptInteger
+                   .tFetchInteger
+                  .tAdd
+                .tAssignInteger
+            .tCaseMerge
+            oEmitNullAddress
+                .tAssignBegin
+                 .tLiteralAddress
+                 oEmitValue
+                 .tFetchAddress
+                   .tLiteralAddress
                    oEmitValue
-                   .tAdd
-                 .tAssignInteger
-             .tIfEnd
-           .tIfEnd
+                   .tFetchAddress
+                   .tFetchInteger
+                  .tLiteralInteger
+                  oEmitValue
+                  .tAdd
+                .tAssignInteger
+                .tAssignBegin
+                 .tLiteralAddress
+                 oEmitValue
+                   .tLiteralAddress
+                   oEmitValue
+                   .tFetchInteger
+                  .tLiteralInteger
+                  oEmitValue
+                  .tAdd
+                .tAssignInteger
+            .tCaseMerge
+            oEmitNullAddress
+           .tCaseEnd
+           oEmitCaseBranchTable
+            .tCaseElse
+                .tAssignBegin
+                 .tLiteralAddress
+                 oEmitValue
+                 .tFetchAddress
+                   .tLiteralAddress
+                   oEmitValue
+                   .tFetchAddress
+                   .tFetchInteger
+                  .tLiteralInteger
+                  oEmitValue
+                  .tAdd
+                .tAssignInteger
+            .tCaseMerge
+            oEmitNullAddress
            .tAssignBegin
             .tLiteralAddress
             oEmitValue

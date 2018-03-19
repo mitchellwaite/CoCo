@@ -6,10 +6,17 @@
      .tAssignBegin
       .tLiteralAddress
       oEmitValue
-       oEmitNullAddress
        .tLiteralString
        oEmitValue
        oEmitString
+       .tLength
+        #eTypeMismatch
+     .tAssignInteger
+ #eExternalUndeclared
+ .tTrapBegin
+ .tTrap
+ oEmitTrapKind(trHalt)
 
 Errors reported by compiler: 
-
+semantic error, line 4: type clash
+semantic error, line 4: undeclared external file (program parameter)
