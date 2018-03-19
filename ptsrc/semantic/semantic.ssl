@@ -1969,10 +1969,21 @@ BinaryOperator :
                 oTypeStkPush(tpBoolean)
                 @CompareOperandAndResultTypes
             | sEq:
-                .tEq
+                [ oTypeStkChooseKind
+                  | tpString:
+                    .tStringEqual
+                  | *:
+                    .tEq
+                ]
                 @CompareRelationalOperandTypes
             | sNE:
-                .tNE
+                [ oTypeStkChooseKind
+                  | tpString:
+                    .tStringEqual
+                    .tNot
+                  | *:
+                    .tNE
+                ]
                 @CompareRelationalOperandTypes
             | sGT:
                 .tGT

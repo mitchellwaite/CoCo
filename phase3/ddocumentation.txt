@@ -8,6 +8,16 @@ ssltrace "ptc -L ../../../../ptsrc/lib/pt -o3 -t3 qubySimpleRept.pt" ../../../..
 
 The goal of these modifications is to convert the Semantic Analyzer of the PT Pascal compiler into the Semantic Analyzer for Quby. A detailed listing of all the changes made are listed below. They follow the order of the checklist provided in the assignment documentation, adjusted where applicable.
 
+# Non-checklist semantic.ssl changes
+
+1. String equality & String inequality
+  - For sEq, added a choice rule, one for tpString that emits tStringEqual and a wildcard to retain old functionality for other types
+  - For sNe, added a choice rule, one for tpString that emits tStringEqual and tNot, and a wildcard retain old functionality for other types
+
+# Non-checklist semantic.pt changes
+
+...
+
 # semantic.ssl changes
 
 1. Input Tokens
