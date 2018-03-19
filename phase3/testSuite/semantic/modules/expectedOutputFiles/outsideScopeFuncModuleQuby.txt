@@ -1,0 +1,22 @@
+   .tLiteralInteger
+   oEmitValue
+   .tLiteralAddress
+   oEmitDataAddress
+   .tFileDescriptor
+   oEmitNullAddress
+     .tSkipProc
+     oEmitNullAddress
+       .tLiteralAddress
+       oEmitValue
+       .tStoreParmAddress
+       .tParmEnd
+     .tProcedureEnd
+     #eUndefinedIdentifier
+     #eProcedureReqd
+ .tTrapBegin
+ .tTrap
+ oEmitTrapKind(trHalt)
+
+Errors reported by compiler: 
+semantic error, line 7: identifier not declared
+semantic error, line 7: procedure name required

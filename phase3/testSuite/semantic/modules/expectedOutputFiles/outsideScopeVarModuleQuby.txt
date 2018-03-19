@@ -1,0 +1,19 @@
+   .tLiteralInteger
+   oEmitValue
+   .tLiteralAddress
+   oEmitDataAddress
+   .tFileDescriptor
+   oEmitNullAddress
+     #eUndefinedIdentifier
+     .tAssignBegin
+      #eUndefinedIdentifier
+       .tLiteralInteger
+       oEmitValue
+     .tAssignInteger
+ .tTrapBegin
+ .tTrap
+ oEmitTrapKind(trHalt)
+
+Errors reported by compiler: 
+semantic error, line 5: identifier not declared
+semantic error, line 5: identifier not declared
