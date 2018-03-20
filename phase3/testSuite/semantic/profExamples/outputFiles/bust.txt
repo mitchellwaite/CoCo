@@ -408,7 +408,7 @@
           .tLiteralString
           oEmitValue
           oEmitString
-          .tEQ
+          .tStringEqual
        .tIfThen
        oEmitNullAddress
            .tWriteBegin
@@ -436,7 +436,7 @@
             .tLiteralString
             oEmitValue
             oEmitString
-            .tEQ
+            .tStringEqual
          .tIfThen
          oEmitNullAddress
              .tWriteBegin
@@ -587,7 +587,7 @@
           .tLiteralString
           oEmitValue
           oEmitString
-          .tEQ
+          .tStringEqual
        .tIfThen
        oEmitNullAddress
            .tAssignBegin
@@ -606,7 +606,8 @@
               .tLiteralString
               oEmitValue
               oEmitString
-              .tNE
+              .tStringEqual
+              .tNot
            .tIfThen
            oEmitNullAddress
                .tWriteBegin
@@ -709,7 +710,7 @@
               .tLiteralString
               oEmitValue
               oEmitString
-              .tEQ
+              .tStringEqual
            .tIfThen
            oEmitNullAddress
                .tTrapBegin
@@ -1229,7 +1230,7 @@
                     .tLiteralString
                     oEmitValue
                     oEmitString
-                    .tEQ
+                    .tStringEqual
                  .tIfThen
                  oEmitNullAddress
                      .tWriteBegin
@@ -2372,7 +2373,7 @@
                 .tLiteralString
                 oEmitValue
                 oEmitString
-                .tEQ
+                .tStringEqual
              .tIfThen
              oEmitNullAddress
                  .tCallBegin

@@ -83,7 +83,7 @@
         .tLiteralString
         oEmitValue
         oEmitString
-        .tEQ
+        .tStringEqual
      .tNot
      .tWhileTest
      oEmitNullAddress

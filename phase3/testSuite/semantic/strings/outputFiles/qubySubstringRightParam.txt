@@ -1,3 +1,0 @@
-
-Errors reported by compiler: 
-scan/parse error, line 2: syntax error at: :

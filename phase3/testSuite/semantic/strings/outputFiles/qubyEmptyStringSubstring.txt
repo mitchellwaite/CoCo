@@ -3,9 +3,9 @@
    .tLiteralAddress
    oEmitDataAddress
    .tFileDescriptor
-     #eUndefinedIdentifier
      .tAssignBegin
-      #eUndefinedIdentifier
+      .tLiteralAddress
+      oEmitValue
        .tLiteralString
        oEmitValue
        oEmitString
@@ -14,11 +14,9 @@
        .tLiteralInteger
        oEmitValue
        .tSubstring
-         #eTypeMismatch
-### Semantic assertion 16 failed: less than two types in type stack in oTypeStkSwap
+     .tAssignString
+ .tTrapBegin
+ .tTrap
+ oEmitTrapKind(trHalt)
 
 Errors reported by compiler: 
-semantic error, line 2: identifier not declared
-semantic error, line 2: identifier not declared
-semantic error, line 3: type clash
-### Semantic assertion 16 failed: less than two types in type stack in oTypeStkSwap

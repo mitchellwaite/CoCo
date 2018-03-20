@@ -1925,7 +1925,9 @@ UnaryOperator :
                 [ oTypeStkChooseKind
                     | tpString:
                       .tLength
-                      oTypeStkPush(tpInteger)
+                      oTypeStkPop   % Remove string type from type stack
+                      oTypeStkPush(tpInteger) % result type
+                      >> % Bypass regular type checking as input can only be string and output can only be integer
                     | *:
                       #eStringExpnReqd
                 ]
@@ -2045,7 +2047,6 @@ TernaryOperator :
                 oTypeStkPop
                 .tSubstring
                 oTypeStkPush(tpString) %Result Type
-                @CompareOperandAndResultTypes
             | *:
         ];
 

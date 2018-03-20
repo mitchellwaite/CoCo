@@ -75,3 +75,5 @@
  .tTrapBegin
  .tTrap
  oEmitTrapKind(trHalt)
+
+Errors reported by compiler: 

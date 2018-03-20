@@ -3,14 +3,13 @@
    .tLiteralAddress
    oEmitDataAddress
    .tFileDescriptor
-     .tAssignBegin
-      .tLiteralAddress
-      oEmitValue
-       .tLiteralString
-       oEmitValue
-       oEmitString
-       .tLength
-     .tAssignInteger
+    .tAssignBegin
+    .tLiteralAddress
+    oEmitValue
+    .tLiteralString
+    oEmitValue
+    oEmitString
+    .tAssignString
  .tTrapBegin
  .tTrap
  oEmitTrapKind(trHalt)

@@ -8,6 +8,15 @@ ssltrace "ptc -L ../../../../ptsrc/lib/pt -o3 -t3 qubySimpleRept.pt" ../../../..
 
 The goal of these modifications is to convert the Semantic Analyzer of the PT Pascal compiler into the Semantic Analyzer for Quby. A detailed listing of all the changes made are listed below. They follow the order of the checklist provided in the assignment documentation, adjusted where applicable.
 
+# Changes to the Quby parser since phase 2 completion:
+1. += & -= (plus-equals and minus-equals): Changed to call expression rule instead of explicit requirement of pInt and pIdent as RHS and LHS respectively.
+
+2. Substring: Changed to call expression rule instead of only allowing two pInt in operator.
+
+3. Len: Changed it to call @Factor rule instead of only allowing pLit as input.
+
+4. Elif: Removed the sBegin and sEnd emiting tokens because it should do that only once it enters the block itself. (not duplicately) 
+
 # Non-checklist semantic.ssl changes
 
 1. String equality & String inequality

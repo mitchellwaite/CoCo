@@ -582,7 +582,7 @@ Factor :
                 @Factor
                 .sNot
             | pLen:
-                @Expression
+                @Factor
                 .sLen
             | pLiteral:
                 .sLiteral

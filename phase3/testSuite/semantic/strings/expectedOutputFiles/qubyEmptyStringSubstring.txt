@@ -1,14 +1,22 @@
- .sProgram
- .sIdentifier
- .sParmEnd
-   .sBegin
-    .sAssignmentStmt
-    .sIdentifier
-        .sLiteral
-            .sInteger
-            .sInteger
-        .sSubstring
-    .sExpnEnd
-   .sEnd
+   .tLiteralInteger
+   oEmitValue
+   .tLiteralAddress
+   oEmitDataAddress
+   .tFileDescriptor
+     .tAssignBegin
+      .tLiteralAddress
+      oEmitValue
+       .tLiteralString
+       oEmitValue
+       oEmitString
+       .tLiteralInteger
+       oEmitValue
+       .tLiteralInteger
+       oEmitValue
+       .tSubstring
+     .tAssignString
+ .tTrapBegin
+ .tTrap
+ oEmitTrapKind(trHalt)
 
 Errors reported by compiler: 
