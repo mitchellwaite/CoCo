@@ -182,8 +182,13 @@
          .tAssignInteger
          .tWhileBegin
              .tCallBegin
-             #eRecursiveCall
-              #eExtraActuals
+                .tLiteralAddress
+                oEmitValue
+               .tVarParm
+              .tParmEnd
+                .tLiteralInteger
+                oEmitValue
+              .tParmEnd
              .tCallEnd
              oEmitValue
              .tWhileBegin
@@ -203,8 +208,13 @@
              .tWhileTest
              oEmitNullAddress
                  .tCallBegin
-                 #eRecursiveCall
-                  #eExtraActuals
+                    .tLiteralAddress
+                    oEmitValue
+                   .tVarParm
+                  .tParmEnd
+                    .tLiteralInteger
+                    oEmitValue
+                  .tParmEnd
                  .tCallEnd
                  oEmitValue
              .tWhileEnd
@@ -1093,7 +1103,13 @@
      oEmitValue
      .tStoreParmAddress
      .tParmEnd
-       #eProcedureReqd
+       .tCallBegin
+          .tLiteralAddress
+          oEmitValue
+         .tVarParm
+        .tParmEnd
+       .tCallEnd
+       oEmitValue
        .tIfBegin
            .tLiteralAddress
            oEmitValue
@@ -1483,7 +1499,18 @@
          oEmitValue
          .tAdd
        .tAssignInteger
-       #eProcedureReqd
+       .tCallBegin
+          .tLiteralAddress
+          oEmitValue
+           .tSubscriptBegin
+              .tLiteralAddress
+              oEmitValue
+              .tFetchInteger
+           .tSubscriptInteger
+         .tVarParm
+        .tParmEnd
+       .tCallEnd
+       oEmitValue
    .tProcedureEnd
    .tSkipProc
    oEmitNullAddress
@@ -1498,7 +1525,18 @@
          oEmitValue
          .tAdd
        .tAssignInteger
-       #eProcedureReqd
+       .tCallBegin
+          .tLiteralAddress
+          oEmitValue
+           .tSubscriptBegin
+              .tLiteralAddress
+              oEmitValue
+              .tFetchInteger
+           .tSubscriptInteger
+         .tVarParm
+        .tParmEnd
+       .tCallEnd
+       oEmitValue
    .tProcedureEnd
    .tSkipProc
    oEmitNullAddress
@@ -1575,12 +1613,14 @@
           oEmitTrapKind(trWriteString)
         .tWriteEnd
        .tCallBegin
+           .tLiteralAddress
+           oEmitValue
+           .tFetchInteger
+        .tParmEnd
           .tLiteralAddress
           oEmitValue
          .tVarParm
-         #eParameterTypeMismatch
         .tParmEnd
-        #eExtraActuals
        .tCallEnd
        oEmitValue
        .tTrapBegin
@@ -1607,12 +1647,14 @@
           oEmitTrapKind(trWriteString)
         .tWriteEnd
        .tCallBegin
+           .tLiteralAddress
+           oEmitValue
+           .tFetchInteger
+        .tParmEnd
           .tLiteralAddress
           oEmitValue
          .tVarParm
-         #eParameterTypeMismatch
         .tParmEnd
-        #eExtraActuals
        .tCallEnd
        oEmitValue
        .tWriteBegin
@@ -2164,12 +2206,14 @@
               oEmitTrapKind(trWriteString)
             .tWriteEnd
            .tCallBegin
+               .tLiteralAddress
+               oEmitValue
+               .tFetchInteger
+            .tParmEnd
               .tLiteralAddress
               oEmitValue
              .tVarParm
-             #eParameterTypeMismatch
             .tParmEnd
-            #eExtraActuals
            .tCallEnd
            oEmitValue
            .tTrapBegin
@@ -2595,12 +2639,14 @@
                 oEmitTrapKind(trWriteString)
               .tWriteEnd
              .tCallBegin
+                 .tLiteralAddress
+                 oEmitValue
+                 .tFetchInteger
+              .tParmEnd
                 .tLiteralAddress
                 oEmitValue
                .tVarParm
-               #eParameterTypeMismatch
               .tParmEnd
-              #eExtraActuals
              .tCallEnd
              oEmitValue
              .tTrapBegin
@@ -2977,7 +3023,6 @@
      .tWhileTest
      oEmitNullAddress
          .tCallBegin
-          #eInsufficientActuals
          .tCallEnd
          oEmitValue
          .tCallBegin
@@ -3044,19 +3089,3 @@
  oEmitTrapKind(trHalt)
 
 Errors reported by compiler: 
-semantic error, line 89: recursion not allowed
-semantic error, line 89: too many actual parameters supplied
-semantic error, line 92: recursion not allowed
-semantic error, line 92: too many actual parameters supplied
-semantic error, line 217: procedure name required
-semantic error, line 254: procedure name required
-semantic error, line 261: procedure name required
-semantic error, line 282: formal and actual parameter types clash
-semantic error, line 282: too many actual parameters supplied
-semantic error, line 284: formal and actual parameter types clash
-semantic error, line 284: too many actual parameters supplied
-semantic error, line 371: formal and actual parameter types clash
-semantic error, line 371: too many actual parameters supplied
-semantic error, line 460: formal and actual parameter types clash
-semantic error, line 460: too many actual parameters supplied
-semantic error, line 495: not enough actual parameters supplied

@@ -143,7 +143,16 @@
          .tNot
          .tWhileTest
          oEmitNullAddress
-             #eProcedureReqd
+             .tCallBegin
+                 .tLiteralAddress
+                 oEmitValue
+                 .tFetchInteger
+              .tParmEnd
+                 .tLiteralBoolean
+                 oEmitValue
+              .tParmEnd
+             .tCallEnd
+             oEmitValue
              .tAssignBegin
               .tLiteralAddress
               oEmitValue
@@ -347,4 +356,3 @@
  oEmitTrapKind(trHalt)
 
 Errors reported by compiler: 
-semantic error, line 49: procedure name required
