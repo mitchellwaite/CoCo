@@ -26,17 +26,17 @@ do
               fileName="$(echo "$i" | sed -r "s/.+\/(.+)\..+/\1/")"
 
               #Run ssltrace tool in output mode and put test output into outputFiles directory
-              ssltrace "ptc -L ../../ptsrc/lib/pt -o3 -t3 $i" ../../ptsrc/lib/pt/semantic.def -e > $dir/outputFiles/$fileName.txt #2> /dev/null
+              ssltrace "ptc -L ../../ptsrc/lib/pt -o3 -t3 $i" ../../ptsrc/lib/pt/semantic.def -e > $dir/outputFiles/$fileName.txt 2> /dev/null
 
               #Display any errors found by the parser at the end of the file (append)
               echo -e "\nErrors reported by compiler: " >> $dir/outputFiles/$fileName.txt
-              ptc -L ../../ptsrc/lib/pt $i >> $dir/outputFiles/$fileName.txt # 2> /dev/null 
+              ptc -L ../../ptsrc/lib/pt $i >> $dir/outputFiles/$fileName.txt 2> /dev/null 
 
            fi           
 
            OUTPUT1=""
            OUTPUT2=""
-           echo -e "\nOutput vs. Expected Output differences:"
+           echo -e "Output vs. Expected Output differences:"
            if [ ! -f $dir/outputFiles/$fileName.txt ] || [ ! -f $dir/expectedOutputFiles/$fileName.txt ]; then
                OUTPUT1="Output or Expected output file not found for $dir/inputFiles/${fileName}.txt!"
                echo "${OUTPUT1}"
