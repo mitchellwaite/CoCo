@@ -3,7 +3,6 @@
    .tLiteralAddress
    oEmitDataAddress
    .tFileDescriptor
-   oEmitNullAddress
        .tLiteralInteger
        oEmitValue
        .tLiteralAddress
@@ -233,11 +232,18 @@
        .tCallBegin
        .tCallEnd
        oEmitValue
-       #eProcedureReqd
+       .tCallBegin
+           .tLiteralInteger
+           oEmitValue
+        .tParmEnd
+           .tLiteralInteger
+           oEmitValue
+        .tParmEnd
+       .tCallEnd
+       oEmitValue
    .tProcedureEnd
  .tTrapBegin
  .tTrap
  oEmitTrapKind(trHalt)
 
 Errors reported by compiler: 
-semantic error, line 58: procedure name required

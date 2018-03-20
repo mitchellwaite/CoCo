@@ -28,7 +28,6 @@
      .tLiteralAddress
      oEmitDataAddress
      .tArrayDescriptor
-   oEmitNullAddress
      .tSkipProc
      oEmitNullAddress
        .tParmEnd
@@ -111,7 +110,6 @@
        .tCallBegin
        .tCallEnd
        oEmitValue
-   oEmitNullAddress
        .tLiteralInteger
        oEmitValue
        .tLiteralAddress
@@ -329,7 +327,6 @@
            .tAdd
          .tAssignInteger
      .tProcedureEnd
-   oEmitNullAddress
        .tLiteralInteger
        oEmitValue
        .tLiteralAddress
@@ -2225,7 +2222,6 @@
            oEmitTrapKind(trWriteln)
        .tIfEnd
    .tProcedureEnd
-   oEmitNullAddress
      .tSkipProc
      oEmitNullAddress
        .tParmEnd
