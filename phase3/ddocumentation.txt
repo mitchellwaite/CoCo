@@ -155,6 +155,14 @@ The goal of these modifications is to convert the Semantic Analyzer of the PT Pa
 3. Predefined Type Text
    - Changed text (file of char) to be file of strings, and use standardStringTypeRef.
 
+4. Added the case for new semantic operations oSymbolTblStripScope and oSymbolTblMergeScope
+   - For oSymbolTblMergeScope, merge the top two scopes in the symbol table by decrementing the lexical level but not changing the symbol table top
+   - For oSymbolTblStripScope, goes through the top scope in the symbol table setting the symbol table reference for each symbol's identifier index to the one at the next lower lexical level
+   - Added an assertion to write empty lexic level stack in oSymbolTblStripScope
+
 5. String Allocation
    - Added rule to allocate `stringSize` bytes for the string type
 
+6. Modified the assertions on the top of SymbolStack to allow for syPublicProcedure
+   - Or-ed the assertions for syPublicProcedure with syProcedure
+   - Added input tokens for syModule and syPublicProcedure
