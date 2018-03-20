@@ -12,3 +12,6 @@
    .sEnd
 
 Errors reported by compiler: 
+semantic error, line 3: identifier not declared
+semantic error, line 3: identifier not declared
+semantic error, line 3: array variable required

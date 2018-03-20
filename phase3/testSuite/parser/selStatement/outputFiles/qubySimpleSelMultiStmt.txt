@@ -50,3 +50,24 @@
    .sEnd
 
 Errors reported by compiler: 
+semantic error, line 3: identifier not declared
+semantic error, line 3: expression operand required
+semantic error, line 5: identifier not declared
+semantic error, line 5: identifier not declared
+semantic error, line 6: identifier not declared
+semantic error, line 6: identifier not declared
+semantic error, line 6: identifier not declared
+semantic error, line 6: expression operand required
+semantic error, line 8: identifier not declared
+semantic error, line 8: identifier not declared
+semantic error, line 9: identifier not declared
+semantic error, line 9: identifier not declared
+semantic error, line 9: identifier not declared
+semantic error, line 9: expression operand required
+semantic error, line 11: identifier not declared
+semantic error, line 11: identifier not declared
+semantic error, line 12: identifier not declared
+semantic error, line 12: identifier not declared
+semantic error, line 12: identifier not declared
+semantic error, line 12: expression operand required
+*** Processing aborted

@@ -20,13 +20,7 @@
           .sInteger
       .sExpnEnd
      .sEnd
-    .sRepOnBreak
-        .sIdentifier
-        .sInteger
-     .sEq
-    .sExpnEnd
-     .sBegin
-     .sEnd
    .sEnd
 
 Errors reported by compiler: 
+scan/parse error, line 7: syntax error at: on

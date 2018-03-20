@@ -195,6 +195,7 @@ Block :
                 @Block
                 'end'
             | ';':
+                .sNullStmt
             | *:
                 >
         ]}
@@ -428,8 +429,8 @@ IfStmt :
             | 'elif':
                 .sElse
                 @IfStmt
-            | 'end':
             | *:
+                'end'
         ];
 
 SelStmt :
@@ -444,15 +445,19 @@ SelStmt :
         'is'
         @SelAlternative
         {[
-            | 'else':
-                .sElse
-                ':'
-                @Statements
-            | 'is':
+           | 'is':
                 @SelAlternative
-            | pEnd:
+            | *:
                 >
         ]}
+        [
+            | 'else':
+               .sElse
+               ':'
+               @Statements
+            | *:
+        ]    
+        pEnd
         .sSelEnd;
 
 SelAlternative :
@@ -482,19 +487,10 @@ RepStmt :
         % Note that parsing only allows a single "on expression : break" statement to be valid Quby statement.
 
         .sRepStmt
-        {
-            @Statements
-            [
-                | 'on':
-                    .sRepOnBreak
-                    @Expression
-                    ':'
-                    'break'
-                    .sExpnEnd
-                | 'end':
-                   >
-            ]
-        };
+        @Statements
+        'on' .sRepOnBreak @Expression ':' 'break' .sExpnEnd
+        @Statements
+        'end';
 
 Expression :
         @SimpleExpression

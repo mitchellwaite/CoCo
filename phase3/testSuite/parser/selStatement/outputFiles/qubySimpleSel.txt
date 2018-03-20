@@ -32,3 +32,11 @@
    .sEnd
 
 Errors reported by compiler: 
+semantic error, line 3: identifier not declared
+semantic error, line 3: expression operand required
+semantic error, line 5: identifier not declared
+semantic error, line 5: identifier not declared
+semantic error, line 7: identifier not declared
+semantic error, line 7: identifier not declared
+semantic error, line 9: identifier not declared
+semantic error, line 9: identifier not declared

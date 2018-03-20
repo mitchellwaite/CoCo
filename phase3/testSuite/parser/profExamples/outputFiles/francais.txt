@@ -39,10 +39,10 @@
       .sIdentifier
           .sIdentifier
               .sInteger
-                      .sIdentifier
-                      .sInteger
-                    .sSubtract
+                   .sIdentifier
                   .sLen
+                  .sInteger
+                .sSubtract
           .sSubstring
       .sExpnEnd
        .sCallStmt
@@ -62,11 +62,11 @@
        .sParmEnd
       .sIfStmt
           .sIdentifier
-                      .sIdentifier
-                      .sInteger
-                    .sSubtract
+                   .sIdentifier
                   .sLen
-                  .sIdentifier
+                  .sInteger
+                .sSubtract
+               .sIdentifier
               .sLen
           .sSubstring
           .sLiteral
@@ -170,9 +170,9 @@
          .sParmEnd
         .sIfStmt
             .sIdentifier
-                    .sIdentifier
+                 .sIdentifier
                 .sLen
-                    .sIdentifier
+                 .sIdentifier
                 .sLen
             .sSubstring
             .sLiteral
@@ -236,11 +236,11 @@
       .sElse
        .sIfStmt
            .sIdentifier
-                       .sIdentifier
-                       .sInteger
-                     .sSubtract
+                    .sIdentifier
                    .sLen
-                   .sIdentifier
+                   .sInteger
+                 .sSubtract
+                .sIdentifier
                .sLen
            .sSubstring
            .sLiteral

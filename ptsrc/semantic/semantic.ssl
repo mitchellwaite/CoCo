@@ -809,6 +809,7 @@ Block :
                 @TypeDefinitions
             | sVar:
                 @VariableDeclarations
+            | sNullStmt:
             | *:
                 >
         ]}

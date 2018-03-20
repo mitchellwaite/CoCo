@@ -21,6 +21,14 @@ The goal of these modifications is to convert the Semantic Analyzer of the PT Pa
 
 4. Elif: Removed the sBegin and sEnd emiting tokens because it should do that only once it enters the block itself. (not duplicately) 
 
+5. sNullStmt: Instead of just passing over ';' in the input, parser now outputs sNullStmt and still passes over for any ';' statements.
+
+6. IfStmt: The 'end' statement was made as a requirement at the end of an if-statement instead of being optional (in error).
+
+7. SelStmt: The 'else' statement was made to only be allowed after all select cases. Phase 2 had the ability to have the else statement appear anywhere between the select cases in error.
+
+8. RepStmt: Phase 2 parser.ssl implementation allowed many "on" break statements to appear. Changes were made to ensure only a single "on" break statement is allowed in the parsing phase.
+
 # Non-checklist semantic.ssl changes
 
 1. String equality & String inequality
