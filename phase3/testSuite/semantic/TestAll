@@ -42,7 +42,7 @@ do
                echo "${OUTPUT1}"
            else 
                fileName="$(echo "${dir}/outputFiles/${fileName}.txt" | sed -r "s/.+\/(.+)\..+/\1/")"
-               OUTPUT2="$(diff ${dir}/outputFiles/${fileName}.txt $dir/expectedOutputFiles/$fileName.txt)"
+               OUTPUT2="$(diff -b ${dir}/outputFiles/${fileName}.txt $dir/expectedOutputFiles/$fileName.txt)"
                echo "${OUTPUT2}"
            fi
 
