@@ -4,5 +4,5 @@ var x : string
 
 x = "string"  
 
-if x == "test":
+if x != "test":
 end

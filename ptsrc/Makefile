@@ -13,6 +13,11 @@ scanner:
 	cd cmd; make $(ACTION)
 	cd parser; make scanner
 
+semant:
+	cd cmd; make $(ACTION)
+	cd parser; make
+	cd semantic; make
+
 install: 
 	make all ACTION=install
 

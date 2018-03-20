@@ -1,0 +1,32 @@
+   .tLiteralInteger
+   oEmitValue
+   .tLiteralAddress
+   oEmitDataAddress
+   .tFileDescriptor
+     .tAssignBegin
+      .tLiteralAddress
+      oEmitValue
+       .tLiteralString
+       oEmitValue
+       oEmitString
+     .tAssignString
+     .tIfBegin
+         .tLiteralAddress
+         oEmitValue
+         .tFetchString
+        .tLiteralString
+        oEmitValue
+        oEmitString
+        .tGT
+         #eIntegerExpnReqd
+         #eIntegerExpnReqd
+     .tIfThen
+     oEmitNullAddress
+     .tIfEnd
+ .tTrapBegin
+ .tTrap
+ oEmitTrapKind(trHalt)
+
+Errors reported by compiler: 
+semantic error, line 7: integer type expression required
+semantic error, line 7: integer type expression required

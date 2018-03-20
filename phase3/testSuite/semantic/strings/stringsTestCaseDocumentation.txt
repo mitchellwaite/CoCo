@@ -29,4 +29,26 @@ qubyLenInteger.pt
 Test case to verify the Quby parser will provide an error when the "len" operator is followed by a non-string value such as an integer.
 x = len pInteger  
 
+qubyStringEqual.pt
+Test case to verify the Quby semantic analyzer will generate the correct T-code for a string equality operation
+x == "test"
 
+qubyStringNotEqual.pt
+Test case to verify the Quby semantic analyzer will generate the correct T-code for a string inequality operation
+x != "test"
+
+qubyStringGreaterThan.pt
+Test case to verify the Quby semantic analyzer will generate the correct error for a greater than operation
+x > "test"
+
+qubyStringGreaterEqual.pt
+Test case to verify the Quby semantic analyzer will generate the correct error for a greater equal operation
+x >= "test"
+
+qubyStringLess.pt
+Test case to verify the Quby semantic analyzer will generate the correct error for a less than operation
+x < "test"
+
+qubyStringLessEqual.pt
+Test case to verify the Quby semantic analyzer will generate the correct error for a less than equal operation
+x <= "test"

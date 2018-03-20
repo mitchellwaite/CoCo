@@ -1,0 +1,29 @@
+   .tLiteralInteger
+   oEmitValue
+   .tLiteralAddress
+   oEmitDataAddress
+   .tFileDescriptor
+     .tAssignBegin
+      .tLiteralAddress
+      oEmitValue
+       .tLiteralString
+       oEmitValue
+       oEmitString
+     .tAssignString
+     .tIfBegin
+         .tLiteralAddress
+         oEmitValue
+         .tFetchString
+        .tLiteralString
+        oEmitValue
+        oEmitString
+        .tStringEqual
+        .tNot
+     .tIfThen
+     oEmitNullAddress
+     .tIfEnd
+ .tTrapBegin
+ .tTrap
+ oEmitTrapKind(trHalt)
+
+Errors reported by compiler: 
