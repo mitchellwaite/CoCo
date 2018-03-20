@@ -53,7 +53,7 @@ The goal of these modifications is to convert the Semantic Analyzer of the PT Pa
 2. T-Codes
    - All char T-codes were replaced with string T-Codes
    - Changed char T-codes in SSL source to use string T-coded
-   - Removed rep T-codes
+   - Removed repeat T-codes
    - Added tCaseElse and tWhileOnBreak
    - Added tConcatenate, tSubstring, tLength, tIndex, tStringEqual
 
