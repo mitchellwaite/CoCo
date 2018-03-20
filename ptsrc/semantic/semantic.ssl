@@ -2492,45 +2492,15 @@ AssignProcedure :
                     | *:
                         @Expression
                         [ oTypeStkChooseKind
-                            | tpArray:
-                                .tSubscriptBegin
+                            | tpString:
+                                .tParmEnd
+                                % Get length of string as well
                                 .tLiteralInteger
-                                oValuePush(one)
+                                oValuePush(stringSize)
                                 oEmitValue
                                 oValuePop
-                                .tSubscriptString
-                                .tVarParm
-                            | *:
-                        ]
-                        [ oTypeStkChooseKind
-                            | tpArray:  %, tpPackedArray:   % must be a char array or literal string        
-                                oTypeStkPushComponent
-                                [ oTypeStkChooseKind
-                                    | tpString:
-                                    | *:
-                                        #eFileNameReqd
-                                ]
-                                oTypeStkPop     % component type
-                                oValuePushTypeStkLowerBound
-                                [ oValueChoose
-                                    | one:
-                                    | *:        % string has lower bound one
-                                        #eFileNameReqd
-                                ]
-                                oValuePop
-                                .tParmEnd
-                                % need length of string as well
-                                .tLiteralInteger
-                                oValuePushTypeStkUpperBound
-                                [ oTypeStkChooseKind
-%                                   | tpPackedArray:    % a literal string      
-%                                       oValueNegate    % mark as code segment  
-                                    | tpArray:
-                                ]
-                                oEmitValue
-                                oValuePop
-                                .tParmEnd
                                 sParmEnd
+                                .tParmEnd
                             | *:
                                 #eFileNameReqd
                                 @FlushActuals
@@ -2582,17 +2552,6 @@ WriteProcedure :
                                             .tVarParm
                                             .tParmEnd
                                             @Expression
-                                            [ oTypeStkChooseKind
-                                                | tpArray:
-                                                    .tSubscriptBegin
-                                                    .tLiteralInteger
-                                                    oValuePush(one)
-                                                    oEmitValue
-                                                    oValuePop
-                                                    .tSubscriptString
-                                                    .tVarParm
-                                                | *:
-                                            ]
                                             .tParmEnd
                                             @WriteString
                                             [
@@ -2673,17 +2632,6 @@ WriteProcedure :
                                 oTypeStkPushSymbol
                         ]
                         @Expression
-                        [ oTypeStkChooseKind
-                            | tpArray:
-                                .tSubscriptBegin
-                                .tLiteralInteger
-                                oValuePush(one)
-                                oEmitValue
-                                oValuePop
-                                .tSubscriptString
-                                .tVarParm
-                            | *:
-                        ]
                         .tParmEnd
                         @WriteString
                         @WriteStandardExpnList
@@ -2758,9 +2706,6 @@ WriteString :
                         oValuePush(ten)
                     | tpString:
                         oValuePush(one)
-%                   | tpPackedArray:    % a literal string
-%                       oValuePushTypeStkUpperBound
-%                       oValueNegate    % mark as code segment
                     | *:        % An error flagged below
                         oValuePush(zero)
                 ]
@@ -2775,23 +2720,23 @@ WriteString :
             | tpInteger, tpSubrange:
                 .tTrap
                 oEmitTrapKind(trWriteInteger)
-%           | tpArray, tpPackedArray:   % must be a char array or literal string
-%               oTypeStkPushComponent
-%               [ oTypeStkChooseKind
-%                   | tpString:
-%                   | *:
-%                       #eWriteExpn
-%               ]
-%               oTypeStkPop     % component type
-%               oValuePushTypeStkLowerBound
-%               [ oValueChoose
-%                   | one:
-%                   | *:        % string has lower bound one
-%                       #eWriteExpn
-%               ]
-%               oValuePop
-%               .tTrap
-%               oEmitTrapKind(trWriteString)
+            | tpArray:   % must be a char array or literal string
+                oTypeStkPushComponent
+                [ oTypeStkChooseKind
+                    | tpString:
+                    | *:
+                        #eWriteExpn
+                ]
+                oTypeStkPop     % component type
+                oValuePushTypeStkLowerBound
+                [ oValueChoose
+                    | one:
+                    | *:        % string has lower bound one
+                        #eWriteExpn
+                ]
+                oValuePop
+                .tTrap
+                oEmitTrapKind(trWriteString)
             | *:
                 #eWriteExpn
         ]
