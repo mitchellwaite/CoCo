@@ -3,7 +3,6 @@
    .tLiteralAddress
    oEmitDataAddress
    .tFileDescriptor
-   oEmitNullAddress
        .tAssignBegin
         .tLiteralAddress
         oEmitValue
