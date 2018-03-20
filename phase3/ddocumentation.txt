@@ -164,8 +164,8 @@ The goal of these modifications is to convert the Semantic Analyzer of the PT Pa
    - Changed text (file of char) to be file of strings, and use standardStringTypeRef.
 
 4. Added the case for new semantic operations oSymbolTblStripScope and oSymbolTblMergeScope
-   - For oSymbolTblMergeScope, merge the top two scopes in the symbol table by decrementing the lexical level but not changing the symbol table top
-   - For oSymbolTblStripScope, goes through the top scope in the symbol table setting the symbol table reference for each symbol's identifier index to the one at the next lower lexical level
+   - For oSymbolTblMergeScope, decrements the lexical level in order to merge the scopes 
+   - For oSymbolTblStripScope, goes through the top scope in the symbol table setting the symbol table reference for each symbol's identifier index to the one at the next lower lexical level only if the procedure is not public
    - Added an assertion to write empty lexic level stack in oSymbolTblStripScope
 
 5. String Allocation
