@@ -1,0 +1,23 @@
+ext a
+
+var x : string
+
+x = "string"  
+
+if x > "test":
+end
+
+if x < "test":
+end
+
+if x <= "test":
+end
+
+if x >= "test":
+end
+
+if x == "test":
+end
+
+if x != "test":
+end

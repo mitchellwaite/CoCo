@@ -23,6 +23,11 @@ The goal of these modifications is to convert the Semantic Analyzer of the PT Pa
   - For sEq, added a choice rule, one for tpString that emits tStringEqual and a wildcard to retain old functionality for other types
   - For sNe, added a choice rule, one for tpString that emits tStringEqual and tNot, and a wildcard retain old functionality for other types
 
+2. Prevent use of string types with relational operators
+  - Added CompareEqualityOperandTypes, which is essentially the original CompareRelationalOperandTypes code that supports strings and integers
+  - Updated CompareRelationalOperandTypes to cough up an error if a string type is detected
+  - Modified the handling code for sEq and sNe to call CompareEqualityOperandTypes
+
 # Non-checklist semantic.pt changes
 
 ...

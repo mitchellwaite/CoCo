@@ -1977,7 +1977,7 @@ BinaryOperator :
                   | *:
                     .tEq
                 ]
-                @CompareRelationalOperandTypes
+                @CompareEqualityOperandTypes
             | sNE:
                 [ oTypeStkChooseKind
                   | tpString:
@@ -1986,7 +1986,7 @@ BinaryOperator :
                   | *:
                     .tNE
                 ]
-                @CompareRelationalOperandTypes
+                @CompareEqualityOperandTypes
             | sGT:
                 .tGT
                 @CompareRelationalOperandTypes
@@ -2106,9 +2106,9 @@ CompareOperandAndResultTypes :
         oSymbolStkPop
         oSymbolStkSetKind(syExpression);
 
-CompareRelationalOperandTypes :
+CompareEqualityOperandTypes :
         % Verify that the types of the two operands are assignment
-        % compatible and that they are valid relational expression
+        % compatible and that they are valid equality expression
         % operand types (string, integer or subrange).  Pop the
         % operand symbol and type stack entries and push result
         % symbol and type stack entries.
@@ -2125,6 +2125,39 @@ CompareRelationalOperandTypes :
                 oTypeStkPop
                 [ oTypeStkChooseKind
                     | tpString:
+                    | *:
+                        #eOperandOperatorTypeMismatch
+                ]
+            | *:
+                #eOperandOperatorTypeMismatch
+                oTypeStkPop
+        ]
+        oTypeStkPop
+        oTypeStkPush(tpBoolean)
+        oSymbolStkPop
+        oSymbolStkSetKind(syExpression);
+
+CompareRelationalOperandTypes :
+        % Verify that the types of the two operands are assignment
+        % compatible and that they are valid relational expression
+        % operand types (integer or subrange).  Pop the
+        % operand symbol and type stack entries and push result
+        % symbol and type stack entries.
+
+        [ oTypeStkChooseKind
+            | tpInteger, tpSubrange:
+                oTypeStkPop
+                [ oTypeStkChooseKind
+                    | tpInteger, tpSubrange:
+                    | *:
+                        #eOperandOperatorTypeMismatch
+                ]
+            | tpString:
+                #eIntegerExpnReqd
+                oTypeStkPop
+                [ oTypeStkChooseKind
+                    | tpString:
+                      #eIntegerExpnReqd
                     | *:
                         #eOperandOperatorTypeMismatch
                 ]
