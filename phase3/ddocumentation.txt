@@ -3,10 +3,12 @@ Phase 3 Documentation
 Team Members : Clara Fu, Parv Mital, Johan Cornelissen, Mitchell Waite
 Group: cisc458n 
 
-
+==================================================================================================================================
 The goal of these modifications is to convert the Semantic Analyzer of the PT Pascal compiler into the Semantic Analyzer for Quby. A detailed listing of all the changes made are listed below. They follow the order of the checklist provided in the assignment documentation, adjusted where applicable.
 
-# Changes to the Quby parser since phase 2 completion:
+==================================================================================================================================
+CHANGES TO THE QUBY PARSER SINCE PHASE 2 SUBMISSION
+
 1. += & -= (plus-equals and minus-equals): Changed to call expression rule instead of explicit requirement of pInt and pIdent as RHS and LHS respectively.
 
 2. Substring: Changed to call expression rule instead of only allowing two pInt in operator.
@@ -23,7 +25,8 @@ The goal of these modifications is to convert the Semantic Analyzer of the PT Pa
 
 8. RepStmt: Phase 2 parser.ssl implementation allowed many "on" break statements to appear. Changes were made to ensure only a single "on" break statement is allowed in the parsing phase.
 
-# Non-checklist semantic.ssl changes
+===================================================================================================================================
+NON-CHECKLIST SEMANTIC.SSL CHANGES
 
 1. String equality & String inequality
   - For sEq, added a choice rule, one for tpString that emits tStringEqual and a wildcard to retain old functionality for other types
@@ -34,11 +37,13 @@ The goal of these modifications is to convert the Semantic Analyzer of the PT Pa
   - Updated CompareRelationalOperandTypes to cough up an error if a string type is detected
   - Modified the handling code for sEq and sNe to call CompareEqualityOperandTypes
 
-# Non-checklist semantic.pt changes
+====================================================================================================================================
+NON-CHECKLIST SEMANTIC.PT CHANGES
 
 ...
 
-# semantic.ssl changes
+====================================================================================================================================
+CHECKLIST SEMANTIC.SSL CHANGES
 
 1. Input Tokens
    - The semantic analyzer input tokens in semantic.ssl were modified to match the output tokens from the parser
@@ -143,7 +148,8 @@ The goal of these modifications is to convert the Semantic Analyzer of the PT Pa
          "string literal"
          tAssignString
 
-# semantic.pt changes
+===================================================================================================================================
+CHECKLIST SEMANTIC.PT CHANGES
 
 1. Semantic Operations
    - Copied the contents of the newest semantic.def to the header of semantic.pt
