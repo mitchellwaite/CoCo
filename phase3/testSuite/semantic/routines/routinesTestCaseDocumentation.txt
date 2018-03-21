@@ -39,4 +39,4 @@ Comprehensive test case to ensure a single parameter procedure can contain both 
 
 ptProcedure.pt
 Test case to ensure the PT style procedure block is no longer accepted.
-Expected output should contain a syntax arror for the "end" keyword that is part of the PT procedure but not part of the new Quby procedure syntax. The "program" keyword does not show up as a syntax error due to the parser interpreting the indentifier as a simple function call. The function call can only be verified to be valid once in the semantic phase of the compiler.
+A scan/parse error should be present in the output for this test.

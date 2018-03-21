@@ -1,24 +1,29 @@
+qubyBasicStringAssign.pt
+Test case to ensure a basic string variable can be assigned a string literal in Quby and that the appropriate t-codes are produced by the semantic phase.
+
+qubyConString.pt
+Test to ensure changes for a Quby con type string work successfully. Semantic.ssl was altered to treat constant strings as string variables with a consecutive assignment. Appropriate t-codes should be produced by the semantic phase to show both the string variable declaration and assignment.
+
+qubyLenNonValidString.pt
+Test to ensure Quby compiler throws an error when the len operator is provided an invalid (undeclared variable) expression. The len operator should only accept string/literal inputs.
+
+qubyStringConcatenateLiterals.pt
+Test to verify two string literal constants can be concatenated and assigned to a string variable. Appropriate t-code's should be outputted by the Quby compiler semantic phase.
+
+qubyStringConcatenate.pt
+Test case to ensure two Quby string variables can be concatenated together to make one new string. Quby semantic phase should output the appropiate t-codes to ensure the strings are properly concatenated.
+
 qubySubstring.pt
-Test case to verify the Quby parser successfully parses the new substring operator.
+Test case to verify the Quby semantic phase successfully outputs t-code for the new substring operator.
 The operator can be used in the following convention: expression { expression : expression }
 However the string must be of type literal, and the splice values must be integer type.
 The input is in form of:
 x = pLiteral {pInteger:pInteger}
 
 qubyEmptyStringSubstring.pt
-Test case to verify the Quby parser successfully parses the new substring operator when provided an empty string.
+Test case to verify the Quby semantic phase successfully outputs t-code for the new substring operator when provided an empty string.
 The input is in form of:
 x = "" {pInteger:pInteger}
-
-qubySubstringLeftParam.pt
-Test case to verify the Quby parser provides an error when the substring operator is provided with only one splice value (character position). Specifically this test case only provides the first character position.
-The input is in form of:
-x = pLiteral {pInteger:}
-
-qubySubstringRightParam.pt
-Test case to verify the Quby parser provides an error when the substring operator is provided with only one splice value (character position). Specifically this test case only provides the last character position.
-The input is in form of:
-x = pLiteral {:pInteger}
 
 qubyLenString.pt
 Test case for the new Quby "len" operator to be used with Quby's string literals.
@@ -26,29 +31,36 @@ The input for this test is in the form:
 x = len pLiteral  
 
 qubyLenInteger.pt
-Test case to verify the Quby parser will provide an error when the "len" operator is followed by a non-string value such as an integer.
+Test case to verify the Quby compiler will provide an error when the "len" operator is followed by a non-string value such as an integer.
+The input is in form of:
 x = len pInteger  
 
 qubyStringEqual.pt
 Test case to verify the Quby semantic analyzer will generate the correct T-code for a string equality operation
+The input is in form of:
 x == "test"
 
 qubyStringNotEqual.pt
 Test case to verify the Quby semantic analyzer will generate the correct T-code for a string inequality operation
+The input is in form of:
 x != "test"
 
 qubyStringGreaterThan.pt
 Test case to verify the Quby semantic analyzer will generate the correct error for a greater than operation
+The input is in form of:
 x > "test"
 
 qubyStringGreaterEqual.pt
 Test case to verify the Quby semantic analyzer will generate the correct error for a greater equal operation
+The input is in form of:
 x >= "test"
 
 qubyStringLess.pt
 Test case to verify the Quby semantic analyzer will generate the correct error for a less than operation
+The input is in form of:
 x < "test"
 
 qubyStringLessEqual.pt
 Test case to verify the Quby semantic analyzer will generate the correct error for a less than equal operation
+The input is in form of:
 x <= "test"

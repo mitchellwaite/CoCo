@@ -1,12 +1,12 @@
 qubyIfStmt.pt
-Quby test case to ensure the modified Quby parser can successfully parse a simple if-statement without an elif or else block.
+Quby test case to ensure the modified Quby semantic phase can successfully output t-code for a simple if-statement without an elif or else block.
 The input test code is in the form of:
 if expression :
   statement
 end
 
 qubyIfElifStmt.pt
-Test case to ensure Quby's parser is successful in outputting the appropriate semantic tokens for a complete if-elif block (note the omission of an else block).
+Test case to ensure Quby's semantic phase is successful in outputting the appropriate t-code for a complete if-elif block (note the omission of an else block).
 The input test code is in the form of:
 if expression :
   statement
@@ -15,7 +15,7 @@ elif expression :
 end
 
 qubyIfElseStmt.pt
-Test case to ensure the traditional simple if-else block is still valid using the Quby parser (note the omission of an elif block).
+Test case to ensure the traditional simple if-else block is still valid using the Quby semantic phase (note the omission of an elif block).
 The input test code is in the form of:
 if expression :
   statement
@@ -24,7 +24,7 @@ else:
 end
 
 qubyIfElifElseStmt.pt
-Test case to ensure Quby's parser is successful in outputting the appropriate semantic tokens for a complete if-elif-else block.
+Test case to ensure Quby's semantic phase is successful in outputting the appropriate t-code for a complete if-elif-else block.
 The input test code is in the form of:
 if expression :
   statement
@@ -35,7 +35,7 @@ else :
 end
 
 qubyIfMultiElifStmt.pt
-Test case to ensure Quby's parser is successful in outputting the appropriate semantic tokens for a complete if-elif-elif block (note the omission of an else block and inclusion of multiple elif blocks).
+Test case to ensure Quby's semantic phase is successful in outputting the appropriate t-code for a complete if-elif-elif block (note the omission of an else block and inclusion of multiple elif blocks).
 The input test code is in the form of:
 if expression :
   statement
@@ -46,7 +46,7 @@ elif expression :
 end
 
 qubyIfMultiElifMultiStmt.pt
-Test case to ensure Quby's parser is successful in outputting the appropriate semantic tokens for a complete if-elif-elif block (note the omission of an else block) with *multiple* statements inside of each code block.
+Test case to ensure Quby's semantic phase is successful in outputting the appropriate t-codes for a complete if-elif-elif block (note the omission of an else block) with *multiple* statements inside of each code block.
 The input test code is in the form of:
 if expression :
   statement
@@ -58,3 +58,7 @@ elif expression :
   statement
   statement
 end
+
+qubyIfStmtWithoutEnd.pt
+Test case to ensure Quby's semantic phase will throw an error whenever an if statement is implemented without a corresponding "end" statement.
+The output for this test case should contain parser/semantic errors.

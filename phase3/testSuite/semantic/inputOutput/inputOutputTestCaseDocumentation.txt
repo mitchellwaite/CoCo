@@ -1,0 +1,13 @@
+qubyAssignProcedure.pt
+Test to ensure the changes made to the writeProcedure rule in semantic.ssl has not broken Quby's assign procedure for assigning a text file to a variable.
+
+qubyWriteProcedureFileVar.pt
+Test case to ensure Quby's modified semantic phase is able to successfully write to a file.
+Input is in the form of:
+ext foo
+var foo:text
+print(foo,"string")
+nl(foo)
+
+qubyWriteProcedure.pt
+Test case to ensure Quby's modified semantic phase is able to write to the output parameter of the program as specified by "ext" in the beginning of the program.

@@ -1,0 +1,22 @@
+This set of test cases is used as full comprehensive Quby tests.
+Rather than unit tests (like the other test suites), this test suite aims to test integration by using full Quby programs. Each program has varying Quby components/operators/structures being used. The expected output used for these tests are those provided by the professor of the course. These test cases are a good indication of the overall reliability of the Quby compiler.
+
+Tests with Quby Modules included:
+mbubblesort.pt
+mbust.pt
+mprimes.pt
+
+Other misc. tests:
+primes.pt
+pascal.pt
+francais.pt
+cache.pt
+bust.pt
+helloworld.pt
+bubblesort.pt
+stars.pt
+boxes.pt
+treesort.pt
+double.pt
+lunch.pt
+

@@ -31,7 +31,7 @@ rep
     statement
 	  on expression : break
 end
-The semantic phase will need to ensure that no more than one .sRepOnBreak token exists in a 'rep' block.
+The parsing and semantic phase ensures that no more than one .sRepOnBreak token exists in a 'rep' block.
 
 qubyMultiStatementsAfterRept.pt
 Test case to ensure the new Quby "rep" loop statement and allows multiple statements (zero or more) *following* an "on expression : break" statement.

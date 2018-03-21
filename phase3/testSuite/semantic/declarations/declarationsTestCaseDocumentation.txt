@@ -1,39 +1,33 @@
 ptConstDeclaration.pt
-Test case to ensure old PT Style constant variable declaration using "const" keyword is no longer accepted by the Quby parser.
+Test case to ensure old PT Style constant variable declaration using "const" keyword is no longer accepted by the Quby parser and semantic phase.
 Quby implements the constant variable declaration using the "con" keyword as seen in qubyConDeclaration.pt test case.
-Note, no syntax error will be reported as the parser is not able to tell if "const" may instead be a valid function call. The semantic phase will be able to verify if this is a valid statement. However it is expected that the .sConst keyword is not emitted in the test output.
+Semantic errors should be reported in the output of this test.
 
 ptMultiConstDeclaration.pt
-Test case to ensure old PT Style constant variable declaration using "const" keyword is no longer accepted by the Quby parser when used *consecutively*.
+Test case to ensure old PT Style constant variable declaration using "const" keyword is no longer accepted by the Quby parser and semantic phase when used *consecutively*.
 Quby implements the constant variable declaration using the "con" keyword as seen in qubyConDeclaration.pt test case.
-Note, no syntax error will be reported as the parser is not able to tell if "const" may instead be a valid function call. The semantic phase will be able to verify if this is a valid statement. However it is expected that the .sConst keyword is not emitted in the test output.
+Semantic errors should be reported in the output of this test.
 
 ptMultiVarDeclaration.pt
-Test case to ensure variable declaration using "var" keyword is no longer accepted by the Quby parser when used *consecutively*.
+Test case to ensure variable declaration using "var" keyword is no longer accepted by the Quby parser and semantic phase when used *consecutively*.
 Quby requires the "var" keyword to be repeated for each declaration, unlike the PT parser which allow multiple declarations under a single "var" keyword.
 
 ptTypeDeclaration.pt
-Test case to ensure old PT Style type declaration using "type" keyword is no longer accepted by the Quby parser.
+Test case to ensure old PT Style type declaration using "type" keyword is no longer accepted by the Quby parser and semantic phase.
 Quby implements the type declaration using the "typ" keyword as seen in qubyTypDeclaration.pt test case.
-Note, no syntax error will be reported as the parser is not able to tell if "type" may instead be a valid function call. The semantic phase will be able to verify if this is a valid statement. However it is expected that the .sVar keyword is not emitted in the test output.
+Semantic errors should be reported in the output of this test.
+
+qubyConAssignment.pt
+Test case to ensure a Quby constant variable cannot be assigned to later on in the program. A semantic error should be reported in the output of this test.
 
 qubyConDeclaration.pt
-Test case to ensure the Quby parser accepts a constant variable declaration using the "con" keyword. Expected output should be in the form of:
-sConst
-sIdentifier
-sInteger
+Test case to ensure the Quby semantic phase accepts a constant variable declaration using the "con" keyword.
 
 qubyMultiDeclaration.pt
-Test to ensure that the Quby parser has no issues parsing multiple declaration statements consecutively (versus just one declaration statement in a block).
+Test to ensure that the Quby semantic phase has no issues producing t-codes for multiple declaration statements consecutively (versus just one declaration statement in a block).
 
 qubyTypDeclaration.pt
-Test case to ensure the Quby parser accepts a type declaration using the "typ" keyword. Expected output should be in the form of:
-sType
-sIdentifier
-sIdentifier
+Test case to ensure the Quby semantic phase accepts a type declaration using the "typ" keyword.
 
 qubyVarDeclaration.pt
-Test case to ensure the Quby parser accepts a variable declaration using the "var" keyword. Expected output should be in the form of:
-sVar
-sIdentifier
-sIdentifier
+Test case to ensure the Quby semantic phase  accepts a variable declaration using the "var" keyword.
