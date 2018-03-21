@@ -1,4 +1,9 @@
 ext input
+con a = 2; con b = 10; con c = 3
+var d : integer; var e : integer; var f : integer;
+var g : integer; var h : integer; var k : integer;
+var l : integer; var j : integer
+
 if a == 1 :
   d = 2;
   e = 1+d; 

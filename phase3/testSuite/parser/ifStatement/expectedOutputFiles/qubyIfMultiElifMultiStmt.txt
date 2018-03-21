@@ -1,6 +1,48 @@
  .sProgram
  .sIdentifier
  .sParmEnd
+  .sConst
+   .sIdentifier
+    .sInteger
+  .sNullStmt
+  .sConst
+   .sIdentifier
+    .sInteger
+  .sNullStmt
+  .sConst
+   .sIdentifier
+    .sInteger
+  .sVar
+   .sIdentifier
+     .sIdentifier
+  .sNullStmt
+  .sVar
+   .sIdentifier
+     .sIdentifier
+  .sNullStmt
+  .sVar
+   .sIdentifier
+     .sIdentifier
+  .sNullStmt
+  .sVar
+   .sIdentifier
+     .sIdentifier
+  .sNullStmt
+  .sVar
+   .sIdentifier
+     .sIdentifier
+  .sNullStmt
+  .sVar
+   .sIdentifier
+     .sIdentifier
+  .sNullStmt
+  .sVar
+   .sIdentifier
+     .sIdentifier
+  .sNullStmt
+  .sVar
+   .sIdentifier
+     .sIdentifier
    .sBegin
     .sIfStmt
         .sIdentifier

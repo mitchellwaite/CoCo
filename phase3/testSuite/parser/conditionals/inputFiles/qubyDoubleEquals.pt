@@ -1,2 +1,4 @@
-ext a 
-  y = x == 2
+ext input 
+var y : boolean
+var x : integer
+y = x == 2

@@ -1,6 +1,9 @@
  .sProgram
  .sIdentifier
  .sParmEnd
+  .sVar
+   .sIdentifier
+     .sIdentifier
   .sModule
   .sIdentifier
     .sBegin

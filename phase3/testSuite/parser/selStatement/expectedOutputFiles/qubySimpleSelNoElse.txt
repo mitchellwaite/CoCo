@@ -1,18 +1,16 @@
  .sProgram
  .sIdentifier
  .sParmEnd
+  .sVar
+   .sIdentifier
+     .sIdentifier
+  .sVar
+   .sIdentifier
+     .sIdentifier
    .sBegin
     .sSelStmt
         .sIdentifier
     .sExpnEnd
-       .sInteger
-     .sLabelEnd
-      .sBegin
-       .sAssignmentStmt
-       .sIdentifier
-           .sInteger
-       .sExpnEnd
-      .sEnd
        .sInteger
      .sLabelEnd
       .sBegin

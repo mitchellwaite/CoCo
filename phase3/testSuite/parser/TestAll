@@ -36,22 +36,22 @@ do
 
            OUTPUT1=""
            OUTPUT2=""
-           echo -e "\nOutput vs. Expected Output differences:"
+           echo -e "Output vs. Expected Output differences:"
            if [ ! -f $dir/outputFiles/$fileName.txt ] || [ ! -f $dir/expectedOutputFiles/$fileName.txt ]; then
                OUTPUT1="Output or Expected output file not found for $dir/inputFiles/${fileName}.txt!"
                echo "${OUTPUT1}"
            else 
                fileName="$(echo "${dir}/outputFiles/${fileName}.txt" | sed -r "s/.+\/(.+)\..+/\1/")"
-               OUTPUT2="$(diff ${dir}/outputFiles/${fileName}.txt $dir/expectedOutputFiles/$fileName.txt)"
+               OUTPUT2="$(diff -b ${dir}/outputFiles/${fileName}.txt $dir/expectedOutputFiles/$fileName.txt)"
                echo "${OUTPUT2}"
            fi
 
            # PRINT PASS OR FAIL for the test cases (using green or red text appropriately)
            if [ -z "${OUTPUT1}" ] && [ -z "${OUTPUT2}" ]; then
-               echo -e "${GREEN} ${dir}/inputFiles/${fileName}.txt  TEST PASSED!${NC}";
+               echo -e "${GREEN} ${dir}/inputFiles/${fileName}.pt  TEST PASSED!${NC}";
                passed=$((passed+1));
            else
-               echo -e "${RED} ${dir}/inputFiles/${fileName}.txt TEST FAILED!${NC}";
+               echo -e "${RED} ${dir}/inputFiles/${fileName}.pt TEST FAILED!${NC}";
                failed=$((failed+1));
            fi
  

@@ -4,6 +4,7 @@
   .sVar
    .sIdentifier
      .sIdentifier
+  .sNullStmt
    .sBegin
      .sCallStmt
      .sIdentifier

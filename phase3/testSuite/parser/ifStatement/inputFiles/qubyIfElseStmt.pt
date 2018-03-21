@@ -1,7 +1,10 @@
 ext input
+var a : integer; con b = 2
+a = 3
+
 if a < 2 :
   a = 2
 else:
-  b = 3
+  a = 3
 end
     

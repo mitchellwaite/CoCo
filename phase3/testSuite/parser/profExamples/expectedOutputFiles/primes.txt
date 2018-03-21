@@ -56,9 +56,11 @@
   .sVar
    .sIdentifier
      .sIdentifier
+  .sNullStmt
   .sVar
    .sIdentifier
      .sIdentifier
+  .sNullStmt
   .sVar
    .sIdentifier
      .sIdentifier

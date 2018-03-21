@@ -1,4 +1,6 @@
 ext input
+var i : integer; var x : integer; var y : integer
+i = 42
 
 sel i:
    is 42:
@@ -9,5 +11,5 @@ sel i:
       x = x - 3
    else:
       y = 2
-      z = y * 3
+      x = y * 3
 end

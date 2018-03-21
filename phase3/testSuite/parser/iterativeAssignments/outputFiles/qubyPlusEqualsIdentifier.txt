@@ -1,6 +1,13 @@
  .sProgram
  .sIdentifier
  .sParmEnd
+  .sConst
+   .sIdentifier
+    .sInteger
+  .sNullStmt
+  .sVar
+   .sIdentifier
+     .sIdentifier
    .sBegin
     .sAssignmentStmt
     .sIdentifier
@@ -11,9 +18,3 @@
    .sEnd
 
 Errors reported by compiler: 
-semantic error, line 3: identifier not declared
-semantic error, line 3: identifier not declared
-semantic error, line 3: identifier not declared
-semantic error, line 3: expression operand required
-semantic error, line 4: identifier not declared
-semantic error, line 4: expression operand required

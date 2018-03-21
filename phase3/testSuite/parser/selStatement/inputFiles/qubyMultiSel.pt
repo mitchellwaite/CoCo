@@ -1,4 +1,7 @@
 ext input
+var i : integer; var x : integer
+var j : integer; var z : integer
+i = 2; j = 5
 
 sel i:
    is 42:
@@ -6,15 +9,15 @@ sel i:
    is 43:
       x = 2
    else:
-      y = 2
+      x = 2
 end
 
 sel j:
   is 41:
       z = 5
   is 45:
-      w = 2
+      z = 2
   else:
-      u = 2
+      j = 2
 end
 

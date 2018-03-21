@@ -1,6 +1,9 @@
  .sProgram
  .sIdentifier
  .sParmEnd
+  .sVar
+   .sIdentifier
+     .sIdentifier
    .sBegin
      .sCallStmt
      .sIdentifier
@@ -23,11 +26,5 @@
 Errors reported by compiler: 
 semantic error, line 4: identifier not declared
 semantic error, line 4: procedure name required
-semantic error, line 4: identifier not declared
-semantic error, line 4: identifier not declared
-semantic error, line 4: identifier not declared
-semantic error, line 4: expression operand required
 semantic error, line 5: identifier not declared
 semantic error, line 5: procedure name required
-semantic error, line 5: identifier not declared
-semantic error, line 5: identifier not declared

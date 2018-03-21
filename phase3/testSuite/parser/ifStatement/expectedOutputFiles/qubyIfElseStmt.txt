@@ -1,7 +1,18 @@
  .sProgram
  .sIdentifier
  .sParmEnd
+  .sVar
+   .sIdentifier
+     .sIdentifier
+  .sNullStmt
+  .sConst
+   .sIdentifier
+    .sInteger
    .sBegin
+    .sAssignmentStmt
+    .sIdentifier
+        .sInteger
+    .sExpnEnd
     .sIfStmt
         .sIdentifier
         .sInteger

@@ -1,3 +1,3 @@
 ext input
-
+con b = 3; var a : integer
 a += b

@@ -1,6 +1,9 @@
  .sProgram
  .sIdentifier
  .sParmEnd
+  .sVar
+   .sIdentifier
+     .sIdentifier
    .sBegin
     .sAssignmentStmt
     .sIdentifier
@@ -12,4 +15,4 @@
    .sEnd
 
 Errors reported by compiler: 
-scan/parse error, line 2: syntax error at: }
+scan/parse error, line 3: syntax error at: }

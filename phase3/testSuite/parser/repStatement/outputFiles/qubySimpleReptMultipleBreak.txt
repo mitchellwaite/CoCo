@@ -1,6 +1,12 @@
  .sProgram
  .sIdentifier
  .sParmEnd
+  .sVar
+   .sIdentifier
+     .sIdentifier
+  .sVar
+   .sIdentifier
+     .sIdentifier
    .sBegin
     .sRepStmt
      .sBegin
@@ -23,4 +29,4 @@
    .sEnd
 
 Errors reported by compiler: 
-scan/parse error, line 7: syntax error at: on
+scan/parse error, line 8: syntax error at: on
