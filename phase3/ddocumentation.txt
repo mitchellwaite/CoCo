@@ -3,14 +3,8 @@ Phase 3 Documentation
 Team Members : Clara Fu, Parv Mital, Johan Cornelissen, Mitchell Waite
 Group: cisc458n 
 
-*********For manual testing:*********
-ssltrace "ptc -L ../../../../ptsrc/lib/pt -o3 -t3 qubySimpleRept.pt" ../../../../ptsrc/lib/pt/semantic.def | egrep '^ *[\.o%]'
 
 The goal of these modifications is to convert the Semantic Analyzer of the PT Pascal compiler into the Semantic Analyzer for Quby. A detailed listing of all the changes made are listed below. They follow the order of the checklist provided in the assignment documentation, adjusted where applicable.
-
-###
-### You can make everything up to the semantic phase by running `make clean` and then `make semant` from the ptsrc directory. 
-###
 
 # Changes to the Quby parser since phase 2 completion:
 1. += & -= (plus-equals and minus-equals): Changed to call expression rule instead of explicit requirement of pInt and pIdent as RHS and LHS respectively.
@@ -58,10 +52,10 @@ The goal of these modifications is to convert the Semantic Analyzer of the PT Pa
    - Added tConcatenate, tSubstring, tLength, tIndex, tStringEqual
 
 3. String Size
-   - Added stringSize definition to the type Integer
+   - Added stringSize definition to the type Integer with a value of 1024
 
 4. StdType
-   - Changed stdChar to stdString
+   - Changed stdChar to stdString in StdType
 
 5. Symbol Table
    - Added oSymbolTblStripScope and oSymbolTblMergeScope to the SymbolTable mechanism
@@ -117,13 +111,12 @@ The goal of these modifications is to convert the Semantic Analyzer of the PT Pa
        -Emits tCaseEnd and tCaseElse before processing statements in else block.
        -End of else block and end of sel statement noted by sSelEnd. At this point a final .tCaseMerge is also emitted.
        -Ensured sel alternative count is incremented for else clause. 
-        *****TODO: Ensure this^ is necessary *****
 
 16. Ternary Operators
    - Added entry for @TernaryOperator to Expression
    - Added code to handle string substring operator
 
-17. String Concat w/ sAdd
+17. String Concat with sAdd
    - Added handling of string concat within BinaryOperator by adding a rule to sAdd
 
 18. String length operation
