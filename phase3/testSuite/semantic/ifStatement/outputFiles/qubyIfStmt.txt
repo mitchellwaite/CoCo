@@ -3,31 +3,28 @@
    .tLiteralAddress
    oEmitDataAddress
    .tFileDescriptor
-     .tCaseBegin
+     .tAssignBegin
+      .tLiteralAddress
+      oEmitValue
+       .tLiteralInteger
+       oEmitValue
+     .tAssignInteger
+     .tIfBegin
          .tLiteralAddress
          oEmitValue
          .tFetchInteger
-     .tCaseSelect
+        .tLiteralInteger
+        oEmitValue
+        .tLT
+     .tIfThen
      oEmitNullAddress
-          .tAssignBegin
-           .tLiteralAddress
-           oEmitValue
-            .tLiteralInteger
-            oEmitValue
-          .tAssignInteger
-      .tCaseMerge
-      oEmitNullAddress
-     .tCaseEnd
-     oEmitCaseBranchTable
-     .tCaseElse
          .tAssignBegin
           .tLiteralAddress
           oEmitValue
            .tLiteralInteger
            oEmitValue
          .tAssignInteger
-     .tCaseMerge
-     oEmitNullAddress
+     .tIfEnd
  .tTrapBegin
  .tTrap
  oEmitTrapKind(trHalt)

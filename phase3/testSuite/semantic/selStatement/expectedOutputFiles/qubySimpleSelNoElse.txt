@@ -17,14 +17,6 @@
           .tAssignInteger
       .tCaseMerge
       oEmitNullAddress
-          .tAssignBegin
-           .tLiteralAddress
-           oEmitValue
-            .tLiteralInteger
-            oEmitValue
-          .tAssignInteger
-      .tCaseMerge
-      oEmitNullAddress
      .tCaseEnd
      oEmitCaseBranchTable
  .tTrapBegin

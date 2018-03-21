@@ -6,6 +6,12 @@ var y:integer
 sel i:
    is 42:
       x = 5
+   is 43:
+      x = 2
+   is 24:
+      y = 3
+   is 2:
+      y = x
    else:
       y = 2
 end

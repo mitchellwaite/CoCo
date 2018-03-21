@@ -1,0 +1,4 @@
+ext input
+procedure p(a:integer);
+begin
+end;

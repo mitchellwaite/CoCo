@@ -1,0 +1,17 @@
+   .tLiteralInteger
+   oEmitValue
+   .tLiteralAddress
+   oEmitDataAddress
+   .tFileDescriptor
+   .tSkipProc
+   oEmitNullAddress
+     .tLiteralAddress
+     oEmitValue
+     .tStoreParmAddress
+     .tParmEnd
+   .tProcedureEnd
+ .tTrapBegin
+ .tTrap
+ oEmitTrapKind(trHalt)
+
+Errors reported by compiler: 

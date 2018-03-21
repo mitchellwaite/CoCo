@@ -1,0 +1,35 @@
+   .tLiteralInteger
+   oEmitValue
+   .tLiteralAddress
+   oEmitDataAddress
+   .tFileDescriptor
+     .tAssignBegin
+      .tLiteralAddress
+      oEmitValue
+       .tLiteralString
+       oEmitValue
+       oEmitString
+     .tAssignString
+     .tAssignBegin
+      .tLiteralAddress
+      oEmitValue
+       .tLiteralString
+       oEmitValue
+       oEmitString
+     .tAssignString
+     .tAssignBegin
+      .tLiteralAddress
+      oEmitValue
+        .tLiteralAddress
+        oEmitValue
+        .tFetchString
+        .tLiteralAddress
+        oEmitValue
+        .tFetchString
+       .tConcatenate
+     .tAssignString
+ .tTrapBegin
+ .tTrap
+ oEmitTrapKind(trHalt)
+
+Errors reported by compiler: 

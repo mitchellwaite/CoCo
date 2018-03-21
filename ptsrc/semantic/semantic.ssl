@@ -146,8 +146,6 @@ Output :        % corresponds to coder.ssl input
         tLiteralInteger 
         tLiteralBoolean
         tLiteralString
-%       tStringDescriptor
-%       tSkipString
         tIfThen
         tIfMerge
         tCaseSelect
@@ -2255,8 +2253,6 @@ ConstantOperand :
                 .tLiteralString
             | tpBoolean:
                 .tLiteralBoolean
-%           | tpPackedArray:    % always a named literal string
-%                .tStringDescriptor
         ]
         oValuePushSymbol
         oEmitValue
