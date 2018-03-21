@@ -38,11 +38,6 @@ NON-CHECKLIST SEMANTIC.SSL CHANGES
   - Modified the handling code for sEq and sNe to call CompareEqualityOperandTypes
 
 ====================================================================================================================================
-NON-CHECKLIST SEMANTIC.PT CHANGES
-
-...
-
-====================================================================================================================================
 CHECKLIST SEMANTIC.SSL CHANGES
 
 1. Input Tokens
