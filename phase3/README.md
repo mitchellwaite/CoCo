@@ -17,12 +17,12 @@ testSuite/semantic/routines/routinesTestCaseDocumentation.txt
                                                         
 ## Directory structure
 * phase3
-   * ptsrc/ (complete source code including parser changes)
+   * ptsrc/ (complete source code including semantic changes)
    * README.MD (this file)
    * ddocumentation.txt (main documentation file)
    * testSuite/
    	* semantic (Automated test suite for testing Quby semantic phase)
-        	* declarations/ (test suite for declaration changes)
+		* declarations/ (test suite for declaration changes)
 		* ifStatement/ (test suite for 'if'/'elif'/'else' statement related changes)
 		* inputOutput/ (test suite for input/output related changes)
 		* modules/ (test suite for Quby's new 'mod' block)
