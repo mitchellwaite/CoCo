@@ -1,35 +1,56 @@
    .tLiteralInteger
    oEmitValue
+   % value emitted 1
    .tLiteralAddress
    oEmitDataAddress
+   % value emitted 0
    .tFileDescriptor
      .tAssignBegin
       .tLiteralAddress
       oEmitValue
+      % value emitted 4
        .tLiteralString
        oEmitValue
+       % value emitted 4
        oEmitString
+       % value emitted 98
+       % value emitted 97
+       % value emitted 98
+       % value emitted 121
      .tAssignString
      .tAssignBegin
       .tLiteralAddress
       oEmitValue
+      % value emitted 1028
        .tLiteralString
        oEmitValue
+       % value emitted 7
        oEmitString
+       % value emitted 32
+       % value emitted 100
+       % value emitted 114
+       % value emitted 105
+       % value emitted 118
+       % value emitted 101
+       % value emitted 114
      .tAssignString
      .tAssignBegin
       .tLiteralAddress
       oEmitValue
+      % value emitted 4
         .tLiteralAddress
         oEmitValue
+        % value emitted 4
         .tFetchString
         .tLiteralAddress
         oEmitValue
+        % value emitted 1028
         .tFetchString
        .tConcatenate
      .tAssignString
  .tTrapBegin
  .tTrap
  oEmitTrapKind(trHalt)
+ % value emitted 0
 
 Errors reported by compiler: 

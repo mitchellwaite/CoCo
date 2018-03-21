@@ -1,4 +1,9 @@
+ % value emitted 51
+ % value emitted 51
  .sProgram
+ % value emitted 51
+ % value emitted 51
+ % value emitted 51
  .sIdentifier
  .sParmEnd
   .sVar
@@ -7,6 +12,7 @@
        .sInteger
      .sRange
        .sInteger
+     % value emitted 51
      .sIdentifier
   .sVar
    .sIdentifier
@@ -14,12 +20,18 @@
        .sInteger
      .sRange
        .sInteger
+     % value emitted 51
+     % value emitted 51
      .sIdentifier
   .sVar
    .sIdentifier
+     % value emitted 51
      .sIdentifier
   .sVar
    .sIdentifier
+     % value emitted 51
+     % value emitted 51
+     % value emitted 51
      .sIdentifier
    .sBegin
     .sAssignmentStmt
@@ -27,6 +39,7 @@
     .sSubscript
         .sInteger
     .sExpnEnd
+        % value emitted 51
         .sLiteral
     .sExpnEnd
     .sAssignmentStmt
@@ -34,6 +47,7 @@
     .sSubscript
         .sInteger
     .sExpnEnd
+        % value emitted 51
         .sLiteral
     .sExpnEnd
     .sAssignmentStmt
@@ -41,6 +55,7 @@
     .sSubscript
         .sInteger
     .sExpnEnd
+        % value emitted 51
         .sLiteral
     .sExpnEnd
     .sAssignmentStmt
@@ -48,6 +63,7 @@
     .sSubscript
         .sInteger
     .sExpnEnd
+        % value emitted 51
         .sLiteral
     .sExpnEnd
     .sAssignmentStmt
@@ -55,6 +71,7 @@
     .sSubscript
         .sInteger
     .sExpnEnd
+        % value emitted 51
         .sLiteral
     .sExpnEnd
     .sAssignmentStmt
@@ -62,6 +79,7 @@
     .sSubscript
         .sInteger
     .sExpnEnd
+        % value emitted 51
         .sLiteral
     .sExpnEnd
     .sAssignmentStmt
@@ -69,6 +87,7 @@
     .sSubscript
         .sInteger
     .sExpnEnd
+        % value emitted 51
         .sLiteral
     .sExpnEnd
     .sAssignmentStmt
@@ -76,6 +95,9 @@
     .sSubscript
         .sInteger
     .sExpnEnd
+        % value emitted 51
+        % value emitted 51
+        % value emitted 51
         .sLiteral
     .sExpnEnd
     .sAssignmentStmt
@@ -83,6 +105,7 @@
     .sSubscript
         .sInteger
     .sExpnEnd
+        % value emitted 51
         .sLiteral
     .sExpnEnd
     .sAssignmentStmt
@@ -90,6 +113,7 @@
     .sSubscript
         .sInteger
     .sExpnEnd
+        % value emitted 51
         .sLiteral
     .sExpnEnd
     .sAssignmentStmt
@@ -97,6 +121,7 @@
     .sSubscript
         .sInteger
     .sExpnEnd
+        % value emitted 51
         .sLiteral
     .sExpnEnd
     .sAssignmentStmt
@@ -104,6 +129,7 @@
     .sSubscript
         .sInteger
     .sExpnEnd
+        % value emitted 51
         .sLiteral
     .sExpnEnd
     .sAssignmentStmt
@@ -111,6 +137,7 @@
     .sSubscript
         .sInteger
     .sExpnEnd
+        % value emitted 51
         .sLiteral
     .sExpnEnd
     .sAssignmentStmt
@@ -118,6 +145,7 @@
     .sSubscript
         .sInteger
     .sExpnEnd
+        % value emitted 51
         .sLiteral
     .sExpnEnd
     .sAssignmentStmt
@@ -125,6 +153,7 @@
     .sSubscript
         .sInteger
     .sExpnEnd
+        % value emitted 51
         .sLiteral
     .sExpnEnd
     .sAssignmentStmt
@@ -132,6 +161,9 @@
     .sSubscript
         .sInteger
     .sExpnEnd
+        % value emitted 51
+        % value emitted 51
+        % value emitted 51
         .sLiteral
     .sExpnEnd
      .sCallStmt
@@ -139,13 +171,19 @@
          .sLiteral
      .sExpnEnd
      .sParmEnd
+   % value emitted 51
+   % value emitted 51
+   % value emitted 51
      .sCallStmt
      .sIdentifier
      .sParmEnd
     .sAssignmentStmt
     .sIdentifier
+        % value emitted 51
+        % value emitted 51
         .sInteger
     .sExpnEnd
+   % value emitted 51
     .sRepStmt
      .sBegin
      .sEnd
@@ -153,8 +191,10 @@
         .sIdentifier
         .sInteger
      .sGE
+    % value emitted 51
     .sExpnEnd
      .sBegin
+     % value emitted 51
        .sCallStmt
        .sIdentifier
        .sParmEnd
@@ -163,6 +203,7 @@
            .sLiteral
        .sExpnEnd
        .sParmEnd
+     % value emitted 51
        .sCallStmt
        .sIdentifier
        .sParmEnd
@@ -176,6 +217,7 @@
          .sAdd
        .sExpnEnd
        .sParmEnd
+     % value emitted 51
        .sCallStmt
        .sIdentifier
        .sParmEnd
@@ -187,13 +229,17 @@
             .sExpnEnd
        .sExpnEnd
        .sParmEnd
+     % value emitted 51
+     % value emitted 51
        .sCallStmt
        .sIdentifier
        .sParmEnd
       .sAssignmentStmt
       .sIdentifier
+          % value emitted 51
           .sIdentifier
       .sExpnEnd
+     % value emitted 51
       .sRepStmt
        .sBegin
        .sEnd
@@ -201,6 +247,7 @@
           .sIdentifier
           .sInteger
        .sLT
+      % value emitted 51
       .sExpnEnd
        .sBegin
          .sCallStmt
@@ -212,6 +259,7 @@
               .sExpnEnd
            .sAdd
          .sExpnEnd
+         % value emitted 51
          .sParmEnd
          .sCallStmt
          .sIdentifier
@@ -227,22 +275,27 @@
            .sAdd
          .sExpnEnd
          .sParmEnd
+       % value emitted 51
          .sCallStmt
          .sIdentifier
          .sParmEnd
         .sAssignmentStmt
         .sIdentifier
         .sIdentifier
+            % value emitted 51
             .sInteger
         .sSubtract
         .sExpnEnd
        .sEnd
+      % value emitted 51
+      % value emitted 51
       .sIfStmt
           .sIdentifier
           .sInteger
        .sGT
       .sExpnEnd
       .sThen
+      % value emitted 51
        .sBegin
          .sCallStmt
          .sIdentifier
@@ -252,33 +305,45 @@
               .sExpnEnd
          .sExpnEnd
          .sParmEnd
+       % value emitted 51
          .sCallStmt
          .sIdentifier
          .sParmEnd
        .sEnd
+      % value emitted 51
+      % value emitted 51
       .sIfStmt
           .sIdentifier
           .sInteger
        .sLT
       .sExpnEnd
       .sThen
+      % value emitted 51
        .sBegin
          .sCallStmt
          .sIdentifier
              .sLiteral
          .sExpnEnd
          .sParmEnd
+       % value emitted 51
          .sCallStmt
          .sIdentifier
          .sParmEnd
        .sEnd
+      % value emitted 51
+      % value emitted 51
       .sAssignmentStmt
       .sIdentifier
       .sIdentifier
+          % value emitted 51
           .sInteger
       .sAdd
       .sExpnEnd
      .sEnd
+    % value emitted 51
+    % value emitted 51
+    % value emitted 51
+   % value emitted 51
      .sCallStmt
      .sIdentifier
      .sParmEnd
@@ -287,17 +352,11 @@
          .sLiteral
      .sExpnEnd
      .sParmEnd
+   % value emitted 51
      .sCallStmt
      .sIdentifier
      .sParmEnd
-     .sCallStmt
-     .sIdentifier
-     .sParmEnd
-     .sCallStmt
-     .sIdentifier
-         .sLiteral
-     .sExpnEnd
-     .sParmEnd
+   % value emitted 51
      .sCallStmt
      .sIdentifier
      .sParmEnd
@@ -306,9 +365,20 @@
          .sLiteral
      .sExpnEnd
      .sParmEnd
+   % value emitted 51
      .sCallStmt
      .sIdentifier
      .sParmEnd
+     .sCallStmt
+     .sIdentifier
+         .sLiteral
+     .sExpnEnd
+     .sParmEnd
+   % value emitted 51
+     .sCallStmt
+     .sIdentifier
+     .sParmEnd
+   % value emitted 51
      .sCallStmt
      .sIdentifier
      .sParmEnd

@@ -1,4 +1,5 @@
  .sProgram
+ % value emitted 51
  .sIdentifier
  .sParmEnd
    .sBegin
@@ -9,10 +10,12 @@
     .sIdentifier
         .sInteger
     .sExpnEnd
+   % value emitted 51
     .sAssignmentStmt
     .sIdentifier
         .sInteger
     .sExpnEnd
+   % value emitted 51
    .sEnd
 
 Errors reported by compiler: 

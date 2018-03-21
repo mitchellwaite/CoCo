@@ -1,17 +1,21 @@
  .sProgram
+ % value emitted 51
  .sIdentifier
  .sParmEnd
   .sVar
    .sIdentifier
+     % value emitted 51
      .sIdentifier
    .sBegin
     .sAssignmentStmt
     .sIdentifier
+        % value emitted 51
         .sInteger
     .sExpnEnd
     .sAssignmentStmt
     .sIdentifier
     .sIdentifier
+        % value emitted 51
         .sInteger
     .sSubtract
     .sExpnEnd

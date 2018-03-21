@@ -1,58 +1,76 @@
    .tLiteralInteger
    oEmitValue
+   % value emitted 2
    .tLiteralAddress
    oEmitDataAddress
+   % value emitted 0
    .tFileDescriptor
      .tLiteralInteger
      oEmitValue
+     % value emitted 1
      .tLiteralAddress
      oEmitDataAddress
+     % value emitted 4
      .tArrayDescriptor
      .tLiteralInteger
      oEmitValue
+     % value emitted 100
      .tLiteralAddress
      oEmitDataAddress
+     % value emitted 8
      .tArrayDescriptor
    .tSkipProc
    oEmitNullAddress
+   % value emitted -32767
      .tLiteralAddress
      oEmitValue
+     % value emitted 116
      .tStoreParmBoolean
      .tLiteralAddress
      oEmitValue
+     % value emitted 112
      .tStoreParmInteger
      .tParmEnd
        .tAssignBegin
         .tLiteralAddress
         oEmitValue
+        % value emitted 4
          .tSubscriptBegin
             .tLiteralAddress
             oEmitValue
+            % value emitted 112
             .tFetchInteger
          .tSubscriptBoolean
           .tLiteralAddress
           oEmitValue
+          % value emitted 116
           .tFetchBoolean
        .tAssignBoolean
    .tProcedureEnd
    .tSkipProc
    oEmitNullAddress
+   % value emitted -32767
      .tLiteralAddress
      oEmitValue
+     % value emitted 124
      .tStoreParmAddress
      .tLiteralAddress
      oEmitValue
+     % value emitted 120
      .tStoreParmInteger
      .tParmEnd
        .tAssignBegin
         .tLiteralAddress
         oEmitValue
+        % value emitted 124
         .tFetchAddress
           .tLiteralAddress
           oEmitValue
+          % value emitted 4
            .tSubscriptBegin
               .tLiteralAddress
               oEmitValue
+              % value emitted 120
               .tFetchInteger
            .tSubscriptBoolean
           .tFetchBoolean
@@ -61,73 +79,95 @@
      .tAssignBegin
       .tLiteralAddress
       oEmitValue
+      % value emitted 144
        .tLiteralInteger
        oEmitValue
+       % value emitted 1
      .tAssignInteger
      .tWhileBegin
      .tWhileOnBreak
          .tLiteralAddress
          oEmitValue
+         % value emitted 144
          .tFetchInteger
          .tLiteralInteger
          oEmitValue
+         % value emitted 100
         .tGT
      .tNot
      .tWhileTest
      oEmitNullAddress
+     % value emitted -32767
          .tAssignBegin
           .tLiteralAddress
           oEmitValue
+          % value emitted 4
            .tSubscriptBegin
               .tLiteralAddress
               oEmitValue
+              % value emitted 144
               .tFetchInteger
            .tSubscriptBoolean
             .tLiteralBoolean
             oEmitValue
+            % value emitted 1
          .tAssignBoolean
          .tAssignBegin
           .tLiteralAddress
           oEmitValue
+          % value emitted 144
             .tLiteralAddress
             oEmitValue
+            % value emitted 144
             .tFetchInteger
            .tLiteralInteger
            oEmitValue
+           % value emitted 1
            .tAdd
          .tAssignInteger
      .tWhileEnd
+     % value emitted 87
      .tAssignBegin
       .tLiteralAddress
       oEmitValue
+      % value emitted 132
        .tLiteralInteger
        oEmitValue
+       % value emitted 2
      .tAssignInteger
      .tAssignBegin
       .tLiteralAddress
       oEmitValue
+      % value emitted 136
        .tLiteralInteger
        oEmitValue
+       % value emitted 2
      .tAssignInteger
      .tWhileBegin
      .tWhileOnBreak
          .tLiteralAddress
          oEmitValue
+         % value emitted 136
          .tFetchInteger
          .tLiteralInteger
          oEmitValue
+         % value emitted 50
         .tGT
      .tNot
      .tWhileTest
      oEmitNullAddress
+     % value emitted -32767
          .tAssignBegin
           .tLiteralAddress
           oEmitValue
+          % value emitted 132
             .tLiteralAddress
             oEmitValue
+            % value emitted 136
             .tFetchInteger
             .tLiteralAddress
             oEmitValue
+            % value emitted 136
             .tFetchInteger
            .tAdd
          .tAssignInteger
@@ -135,223 +175,310 @@
          .tWhileOnBreak
              .tLiteralAddress
              oEmitValue
+             % value emitted 132
              .tFetchInteger
              .tLiteralInteger
              oEmitValue
+             % value emitted 100
             .tGT
          .tNot
          .tWhileTest
          oEmitNullAddress
+         % value emitted -32767
              .tCallBegin
                  .tLiteralAddress
                  oEmitValue
+                 % value emitted 132
                  .tFetchInteger
               .tParmEnd
                  .tLiteralBoolean
                  oEmitValue
+                 % value emitted 0
               .tParmEnd
              .tCallEnd
              oEmitValue
+             % value emitted 21
              .tAssignBegin
               .tLiteralAddress
               oEmitValue
+              % value emitted 132
                 .tLiteralAddress
                 oEmitValue
+                % value emitted 132
                 .tFetchInteger
                 .tLiteralAddress
                 oEmitValue
+                % value emitted 136
                 .tFetchInteger
                .tAdd
              .tAssignInteger
          .tWhileEnd
+         % value emitted 175
          .tAssignBegin
           .tLiteralAddress
           oEmitValue
+          % value emitted 128
             .tLiteralAddress
             oEmitValue
+            % value emitted 136
             .tFetchInteger
            .tLiteralInteger
            oEmitValue
+           % value emitted 1
            .tAdd
          .tAssignInteger
          .tCallBegin
              .tLiteralAddress
              oEmitValue
+             % value emitted 128
              .tFetchInteger
           .tParmEnd
             .tLiteralAddress
             oEmitValue
+            % value emitted 140
            .tVarParm
           .tParmEnd
          .tCallEnd
          oEmitValue
+         % value emitted 49
          .tWhileBegin
          .tWhileOnBreak
              .tLiteralAddress
              oEmitValue
+             % value emitted 128
              .tFetchInteger
              .tLiteralInteger
              oEmitValue
+             % value emitted 100
             .tGT
             .tInfixOr
              .tLiteralAddress
              oEmitValue
+             % value emitted 140
              .tFetchBoolean
             .tOr
          .tNot
          .tWhileTest
          oEmitNullAddress
+         % value emitted -32767
              .tAssignBegin
               .tLiteralAddress
               oEmitValue
+              % value emitted 128
                 .tLiteralAddress
                 oEmitValue
+                % value emitted 128
                 .tFetchInteger
                .tLiteralInteger
                oEmitValue
+               % value emitted 1
                .tAdd
              .tAssignInteger
              .tCallBegin
                  .tLiteralAddress
                  oEmitValue
+                 % value emitted 128
                  .tFetchInteger
               .tParmEnd
                 .tLiteralAddress
                 oEmitValue
+                % value emitted 140
                .tVarParm
               .tParmEnd
              .tCallEnd
              oEmitValue
+             % value emitted 49
          .tWhileEnd
+         % value emitted 244
          .tAssignBegin
           .tLiteralAddress
           oEmitValue
+          % value emitted 136
             .tLiteralAddress
             oEmitValue
+            % value emitted 128
             .tFetchInteger
          .tAssignInteger
      .tWhileEnd
+     % value emitted 147
      .tWriteBegin
        .tTrapBegin
        .tLiteralAddress
        oEmitValue
+       % value emitted 0
        .tVarParm
        .tParmEnd
          .tLiteralString
          oEmitValue
+         % value emitted 17
          oEmitString
+         % value emitted 84
+         % value emitted 104
+         % value emitted 101
+         % value emitted 32
+         % value emitted 112
+         % value emitted 114
+         % value emitted 105
+         % value emitted 109
+         % value emitted 101
+         % value emitted 115
+         % value emitted 32
+         % value emitted 117
+         % value emitted 112
+         % value emitted 32
+         % value emitted 116
+         % value emitted 111
+         % value emitted 32
        .tParmEnd
         .tLiteralInteger
         oEmitValue
+        % value emitted 1
         .tParmEnd
         .tTrap
         oEmitTrapKind(trWriteString)
+        % value emitted 109
        .tTrapBegin
        .tLiteralAddress
        oEmitValue
+       % value emitted 0
        .tVarParm
        .tParmEnd
           .tLiteralInteger
           oEmitValue
+          % value emitted 100
        .tParmEnd
           .tLiteralInteger
           oEmitValue
+          % value emitted 1
         .tParmEnd
         .tTrap
         oEmitTrapKind(trWriteInteger)
+        % value emitted 8
        .tTrapBegin
        .tLiteralAddress
        oEmitValue
+       % value emitted 0
        .tVarParm
        .tParmEnd
          .tLiteralString
          oEmitValue
+         % value emitted 5
          oEmitString
+         % value emitted 32
+         % value emitted 97
+         % value emitted 114
+         % value emitted 101
+         % value emitted 58
        .tParmEnd
         .tLiteralInteger
         oEmitValue
+        % value emitted 1
         .tParmEnd
         .tTrap
         oEmitTrapKind(trWriteString)
+        % value emitted 109
       .tWriteEnd
      .tTrapBegin
       .tLiteralAddress
       oEmitValue
+      % value emitted 0
       .tVarParm
       .tParmEnd
      .tTrap
      oEmitTrapKind(trWriteln)
+     % value emitted 6
      .tAssignBegin
       .tLiteralAddress
       oEmitValue
+      % value emitted 128
        .tLiteralInteger
        oEmitValue
+       % value emitted 2
      .tAssignInteger
      .tWhileBegin
      .tWhileOnBreak
          .tLiteralAddress
          oEmitValue
+         % value emitted 128
          .tFetchInteger
          .tLiteralInteger
          oEmitValue
+         % value emitted 100
         .tGT
      .tNot
      .tWhileTest
      oEmitNullAddress
+     % value emitted -32767
          .tCallBegin
              .tLiteralAddress
              oEmitValue
+             % value emitted 128
              .tFetchInteger
           .tParmEnd
             .tLiteralAddress
             oEmitValue
+            % value emitted 140
            .tVarParm
           .tParmEnd
          .tCallEnd
          oEmitValue
+         % value emitted 49
          .tIfBegin
              .tLiteralAddress
              oEmitValue
+             % value emitted 140
              .tFetchBoolean
          .tIfThen
          oEmitNullAddress
+         % value emitted -32767
              .tWriteBegin
               .tTrapBegin
               .tLiteralAddress
               oEmitValue
+              % value emitted 0
               .tVarParm
               .tParmEnd
                .tLiteralAddress
                oEmitValue
+               % value emitted 128
                .tFetchInteger
               .tParmEnd
                  .tLiteralInteger
                  oEmitValue
+                 % value emitted 4
                .tParmEnd
                .tTrap
                oEmitTrapKind(trWriteInteger)
+               % value emitted 8
               .tWriteEnd
          .tIfEnd
          .tAssignBegin
           .tLiteralAddress
           oEmitValue
+          % value emitted 128
             .tLiteralAddress
             oEmitValue
+            % value emitted 128
             .tFetchInteger
            .tLiteralInteger
            oEmitValue
+           % value emitted 1
            .tAdd
          .tAssignInteger
      .tWhileEnd
+     % value emitted 386
      .tTrapBegin
       .tLiteralAddress
       oEmitValue
+      % value emitted 0
       .tVarParm
       .tParmEnd
      .tTrap
      oEmitTrapKind(trWriteln)
+     % value emitted 6
  .tTrapBegin
  .tTrap
  oEmitTrapKind(trHalt)
+ % value emitted 0
 
 Errors reported by compiler: 

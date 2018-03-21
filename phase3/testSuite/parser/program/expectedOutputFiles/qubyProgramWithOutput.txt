@@ -1,5 +1,6 @@
  .sProgram
  .sIdentifier
+ % value emitted 51
  .sIdentifier
  .sParmEnd
    .sBegin

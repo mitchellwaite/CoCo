@@ -1,11 +1,14 @@
  .sProgram
+ % value emitted 51
  .sIdentifier
  .sParmEnd
   .sProcedure
+  % value emitted 51
   .sIdentifier
    .sParmEnd
     .sBegin
     .sEnd
+  % value emitted 51
    .sBegin
    .sEnd
 

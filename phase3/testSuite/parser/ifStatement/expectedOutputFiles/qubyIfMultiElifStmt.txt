@@ -1,4 +1,5 @@
  .sProgram
+ % value emitted 51
  .sIdentifier
  .sParmEnd
   .sVar
@@ -11,18 +12,23 @@
   .sNullStmt
   .sVar
    .sIdentifier
+     % value emitted 51
      .sIdentifier
    .sBegin
     .sAssignmentStmt
     .sIdentifier
+        % value emitted 51
         .sInteger
     .sExpnEnd
     .sAssignmentStmt
     .sIdentifier
+        % value emitted 51
         .sInteger
     .sExpnEnd
     .sAssignmentStmt
     .sIdentifier
+        % value emitted 51
+        % value emitted 51
         .sInteger
     .sExpnEnd
     .sIfStmt
@@ -31,9 +37,11 @@
      .sEq
     .sExpnEnd
     .sThen
+    % value emitted 51
      .sBegin
       .sAssignmentStmt
       .sIdentifier
+          % value emitted 51
           .sInteger
       .sExpnEnd
      .sEnd
@@ -44,9 +52,11 @@
       .sNE
      .sExpnEnd
      .sThen
+     % value emitted 51
       .sBegin
        .sAssignmentStmt
        .sIdentifier
+           % value emitted 51
            .sInteger
        .sExpnEnd
       .sEnd
@@ -57,12 +67,16 @@
        .sEq
       .sExpnEnd
       .sThen
+      % value emitted 51
        .sBegin
         .sAssignmentStmt
         .sIdentifier
+            % value emitted 51
             .sInteger
         .sExpnEnd
        .sEnd
+      % value emitted 51
+      % value emitted 51
    .sEnd
 
 Errors reported by compiler: 

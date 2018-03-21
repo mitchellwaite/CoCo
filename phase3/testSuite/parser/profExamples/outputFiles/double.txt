@@ -1,9 +1,13 @@
+ % value emitted 51
  .sProgram
  .sIdentifier
+ % value emitted 51
  .sIdentifier
  .sParmEnd
   .sVar
    .sIdentifier
+     % value emitted 51
+     % value emitted 51
      .sIdentifier
    .sBegin
      .sCallStmt
@@ -11,15 +15,18 @@
          .sLiteral
      .sExpnEnd
      .sParmEnd
+   % value emitted 51
      .sCallStmt
      .sIdentifier
      .sParmEnd
+   % value emitted 51
     .sRepStmt
      .sBegin
        .sCallStmt
        .sIdentifier
            .sIdentifier
        .sExpnEnd
+       % value emitted 51
        .sParmEnd
        .sCallStmt
        .sIdentifier
@@ -30,6 +37,7 @@
          .sAdd
        .sExpnEnd
        .sParmEnd
+     % value emitted 51
        .sCallStmt
        .sIdentifier
        .sParmEnd
@@ -38,12 +46,15 @@
         .sIdentifier
         .sLiteral
      .sEq
+    % value emitted 51
     .sExpnEnd
      .sBegin
+     % value emitted 51
        .sCallStmt
        .sIdentifier
        .sParmEnd
      .sEnd
+    % value emitted 51
    .sEnd
 
 Errors reported by compiler: 

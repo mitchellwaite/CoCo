@@ -1,16 +1,20 @@
    .tLiteralInteger
    oEmitValue
+   % value emitted 1
    .tLiteralAddress
    oEmitDataAddress
+   % value emitted 0
    .tFileDescriptor
      .tAssignBegin
       #eVariableReqd
        .tLiteralInteger
        oEmitValue
+       % value emitted 3
      .tAssignInteger
  .tTrapBegin
  .tTrap
  oEmitTrapKind(trHalt)
+ % value emitted 0
 
 Errors reported by compiler: 
 semantic error, line 3: variable required

@@ -1,18 +1,23 @@
    .tLiteralInteger
    oEmitValue
+   % value emitted 1
    .tLiteralAddress
    oEmitDataAddress
+   % value emitted 0
    .tFileDescriptor
      #eUndefinedIdentifier
      #eProcedureReqd
      .tAssignBegin
       .tLiteralAddress
       oEmitValue
+      % value emitted 4
         .tLiteralAddress
         oEmitValue
+        % value emitted 4
         .tFetchInteger
        .tLiteralInteger
        oEmitValue
+       % value emitted 1
        .tAdd
      .tAssignInteger
      #eUndefinedIdentifier
@@ -20,12 +25,15 @@
      .tAssignBegin
       .tLiteralAddress
       oEmitValue
+      % value emitted 4
        .tLiteralInteger
        oEmitValue
+       % value emitted 5
      .tAssignInteger
  .tTrapBegin
  .tTrap
  oEmitTrapKind(trHalt)
+ % value emitted 0
 
 Errors reported by compiler: 
 semantic error, line 4: identifier not declared
