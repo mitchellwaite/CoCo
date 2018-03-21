@@ -137,7 +137,6 @@ Output :        % corresponds to coder.ssl input
         tConcatenate % New string T-codes
         tSubstring
         tLength
-        tIndex
         tStringEqual
 
         % Compound T-codes are those that take operands
