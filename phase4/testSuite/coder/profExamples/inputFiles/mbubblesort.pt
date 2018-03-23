@@ -1,0 +1,77 @@
+# Quby example program 
+# Bubble sort a list of random integers 
+ext output
+
+# Limits
+con nelements = 25
+con maxval = 99
+
+mod elements
+    # The list 
+    var list : array [1 .. nelements] of integer
+
+    # Utility routines
+    def pub lessthan (i : integer, j : integer, var b : boolean)
+        b = (list [i] < list [j])
+    end
+
+    def pub swap (i: integer, j : integer)
+        var t : integer
+        t = list [i]
+        list [i] = list [j]
+        list [j] = t
+    end
+
+    # Routine to print the list
+    def pub show 
+        var i: integer
+        i = 1
+        rep
+            print (list[i]:4)
+            i = i + 1
+            on i > nelements : break
+        end
+        nl
+    end
+
+    # Counters
+    var i: integer
+    var j: integer
+
+    # Initialize list to a random set of integers 
+    list[1] = 61
+
+    i = 1
+    rep
+        i += 1
+        j = list[i-1] * 1271
+        list[i] = j mod maxval
+        on i == nelements : break
+    end
+end
+
+# The bubble sort algorithm
+def sort
+    var i: integer
+    var j: integer
+    var lt: boolean
+    i = nelements - 1
+    rep 
+        on i == 0 : break
+        j = 1
+        rep
+            on j == nelements : break
+            lessthan (j, j+1, lt)
+            if not lt :
+                swap (j, j + 1)
+            end
+            j += 1
+        end
+        i -= 1
+    end
+end
+
+# Main program - show them, sort, then show them sorted
+show
+sort
+show
