@@ -17,6 +17,7 @@ NON-CHECKLIST CODER.SSL CHANGES
 ====================================================================================================================================
 CHECKLIST CODER.SSL CHANGES
 
+1. Added the input T-codes to coder.ssl from output of semantic.ssl. Also updated coder.pt using coder.def 
 
 ===================================================================================================================================
 CHECKLIST CODER.PT CHANGES

@@ -1,2 +1,11 @@
+  oEmitNone(iData)
+  oEmitDouble(iSpace)
+  oEmitProcLabel(mLineNum)
+  oEmitSingle(iWord)
+  oEmitNone(iText)
+  oEmitSingle(iGlobl)
+  oEmitProcLabel(mMainProc)
+  oEmitNone(iEnter)
 
 Errors reported by compiler: 
+
