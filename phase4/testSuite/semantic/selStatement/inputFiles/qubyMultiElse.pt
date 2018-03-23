@@ -1,0 +1,15 @@
+ext input
+var i:integer
+var x:integer
+var y:integer
+
+sel i:
+   is 42:
+      x = 5
+   is 43:
+      x = 2
+   else:
+      y = 2
+   else:
+      x = 4
+end

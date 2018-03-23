@@ -1,0 +1,6 @@
+ext input
+var string1 : string
+var string2 : string
+string1 = "baby"
+string2 = " driver"
+string1 = string1 + string2

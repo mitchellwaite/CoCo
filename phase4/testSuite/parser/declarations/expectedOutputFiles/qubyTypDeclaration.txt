@@ -1,0 +1,12 @@
+ .sProgram
+ % value emitted 51
+ .sIdentifier
+ .sParmEnd
+  .sType
+   .sIdentifier
+     % value emitted 51
+     .sIdentifier
+   .sBegin
+   .sEnd
+
+Errors reported by compiler: 

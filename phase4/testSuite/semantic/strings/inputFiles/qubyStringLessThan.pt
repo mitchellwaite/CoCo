@@ -1,0 +1,8 @@
+ext input 
+
+var x : string
+
+x = "string"  
+
+if x <  "test":
+end

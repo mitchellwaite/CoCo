@@ -1,0 +1,4 @@
+ext input 
+var y : boolean
+var x : integer
+y = x == 2

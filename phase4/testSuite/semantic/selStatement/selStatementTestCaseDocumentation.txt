@@ -1,0 +1,67 @@
+qubySimpleSel.pt
+Test case to ensure Quby's new "sel" statement produces the proper t-code in Quby's semantic pahse..
+Specifically this test *includes* the new "else" block which is optional in the Quby "sel" statement.
+The test input is structured as follows:
+sel expression:
+   is expression:
+      statement
+   else:
+      statement
+end
+
+qubySimpleSelNoElse.pt
+Test case to ensure Quby's new "sel" statement is accepted by the Quby semantic phase.
+Specifically this test *omits* the new "else" block which is optional in the Quby "sel" statement.
+The test input is structured as follows:
+sel expression:
+   is expression:
+      statement
+end
+
+qubySelMultiExpression.pt
+Test case to ensure Quby's semantic phase properly produces t-code for a sel alternative with multiple conditions.
+The test input is structured as follows:
+sel expression:
+   is expression, expression, expression:
+       statement
+   else:
+       statement
+end
+
+qubyMultiElse.pt
+Test case to ensure the parser/semantic phase of Quby's compiler does not allow multiple else blocks in a single sel block. 
+The test input is structured as follows:
+sel expression:
+   is expression:
+      statement
+   else:
+      statement
+   else:
+      statement
+end
+
+
+qubyMultiCase.pt
+Test case to ensure the parser/semantic phase of Quby's compiler functions properly and produces the correct t-code when dealing with a sel statement with multiple alternatives (cases).
+The test input is structured as follows:
+sel expression:
+   is expression:
+      statement
+   ...
+   is expression:
+      statement
+end
+
+
+qubyElseBeforeCase.pt
+Test case to ensure the parser/semantic phase of Quby's compiler does not allow an else clause before another sel alternative. It should enforce that the else clause is the last block of the sel statement.
+The test input is structured as follows:
+sel expression:
+   is expression:
+      statement
+   else:
+      statement
+   is expression:
+      statement
+end
+

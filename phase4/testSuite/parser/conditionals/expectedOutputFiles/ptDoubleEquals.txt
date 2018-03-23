@@ -1,0 +1,16 @@
+ .sProgram
+ % value emitted 51
+ % value emitted 51
+ .sIdentifier
+ .sParmEnd
+   .sBegin
+    .sIfStmt
+        .sIdentifier
+    .sExpnEnd
+    .sThen
+     .sBegin
+     .sEnd
+   .sEnd
+
+Errors reported by compiler: 
+scan/parse error, line 3: syntax error at: =

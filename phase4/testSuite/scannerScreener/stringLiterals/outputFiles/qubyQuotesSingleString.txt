@@ -1,0 +1,4 @@
+  .pLiteral
+  % Output token text 'This is a test for a single string.'
+ .pNewLine
+ .pEndFile

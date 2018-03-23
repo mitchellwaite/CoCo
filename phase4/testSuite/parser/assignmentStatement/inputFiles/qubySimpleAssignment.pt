@@ -1,0 +1,4 @@
+ext input
+var x : integer
+x = 5
+

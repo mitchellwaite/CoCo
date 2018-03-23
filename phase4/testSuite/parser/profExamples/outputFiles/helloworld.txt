@@ -1,0 +1,19 @@
+ % value emitted 51
+ % value emitted 51
+ .sProgram
+ % value emitted 51
+ .sIdentifier
+ .sParmEnd
+   .sBegin
+     .sCallStmt
+     .sIdentifier
+         .sLiteral
+     .sExpnEnd
+     .sParmEnd
+   % value emitted 51
+     .sCallStmt
+     .sIdentifier
+     .sParmEnd
+   .sEnd
+
+Errors reported by compiler: 

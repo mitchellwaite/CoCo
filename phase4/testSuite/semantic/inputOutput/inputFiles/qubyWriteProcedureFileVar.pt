@@ -1,0 +1,5 @@
+ext foo
+var foo: text
+
+print (foo, "hi") 
+nl (foo)

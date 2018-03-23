@@ -1,0 +1,25 @@
+ .sProgram
+ % value emitted 51
+ .sIdentifier
+ .sParmEnd
+   .sBegin
+     .sCallStmt
+     .sIdentifier
+     .sParmEnd
+     .sCallStmt
+     .sIdentifier
+         .sIdentifier
+     .sExpnEnd
+     .sFieldWidth
+         .sIdentifier
+     .sExpnEnd
+     .sParmEnd
+   % value emitted 51
+   % value emitted 51
+     .sCallStmt
+     .sIdentifier
+     .sParmEnd
+   .sEnd
+
+Errors reported by compiler: 
+scan/parse error, line 4: syntax error at: end

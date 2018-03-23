@@ -1,0 +1,7 @@
+ext foo
+var foo: text
+
+assign (foo, "foo.txt")
+rewrite (foo)
+print (foo, "hi")
+nl (foo)

@@ -1,0 +1,1256 @@
+   .tLiteralInteger
+   oEmitValue
+   % value emitted 2
+   .tLiteralAddress
+   oEmitDataAddress
+   % value emitted 0
+   .tFileDescriptor
+     .tLiteralInteger
+     oEmitValue
+     % value emitted 1
+     .tLiteralAddress
+     oEmitDataAddress
+     % value emitted 4
+     .tArrayDescriptor
+     .tLiteralInteger
+     oEmitValue
+     % value emitted 8
+     .tLiteralAddress
+     oEmitDataAddress
+     % value emitted 8
+     .tArrayDescriptor
+     .tLiteralInteger
+     oEmitValue
+     % value emitted 1
+     .tLiteralAddress
+     oEmitDataAddress
+     % value emitted 20
+     .tArrayDescriptor
+     .tLiteralInteger
+     oEmitValue
+     % value emitted 8
+     .tLiteralAddress
+     oEmitDataAddress
+     % value emitted 24
+     .tArrayDescriptor
+     .tAssignBegin
+      .tLiteralAddress
+      oEmitValue
+      % value emitted 4
+       .tSubscriptBegin
+         .tLiteralInteger
+         oEmitValue
+         % value emitted 1
+       .tSubscriptString
+       .tLiteralString
+       oEmitValue
+       % value emitted 3
+       oEmitString
+       % value emitted 102
+       % value emitted 108
+       % value emitted 121
+     .tAssignString
+     .tAssignBegin
+      .tLiteralAddress
+      oEmitValue
+      % value emitted 4
+       .tSubscriptBegin
+         .tLiteralInteger
+         oEmitValue
+         % value emitted 2
+       .tSubscriptString
+       .tLiteralString
+       oEmitValue
+       % value emitted 6
+       oEmitString
+       % value emitted 115
+       % value emitted 112
+       % value emitted 105
+       % value emitted 100
+       % value emitted 101
+       % value emitted 114
+     .tAssignString
+     .tAssignBegin
+      .tLiteralAddress
+      oEmitValue
+      % value emitted 4
+       .tSubscriptBegin
+         .tLiteralInteger
+         oEmitValue
+         % value emitted 3
+       .tSubscriptString
+       .tLiteralString
+       oEmitValue
+       % value emitted 4
+       oEmitString
+       % value emitted 98
+       % value emitted 105
+       % value emitted 114
+       % value emitted 100
+     .tAssignString
+     .tAssignBegin
+      .tLiteralAddress
+      oEmitValue
+      % value emitted 4
+       .tSubscriptBegin
+         .tLiteralInteger
+         oEmitValue
+         % value emitted 4
+       .tSubscriptString
+       .tLiteralString
+       oEmitValue
+       % value emitted 3
+       oEmitString
+       % value emitted 99
+       % value emitted 97
+       % value emitted 116
+     .tAssignString
+     .tAssignBegin
+      .tLiteralAddress
+      oEmitValue
+      % value emitted 4
+       .tSubscriptBegin
+         .tLiteralInteger
+         oEmitValue
+         % value emitted 5
+       .tSubscriptString
+       .tLiteralString
+       oEmitValue
+       % value emitted 3
+       oEmitString
+       % value emitted 100
+       % value emitted 111
+       % value emitted 103
+     .tAssignString
+     .tAssignBegin
+      .tLiteralAddress
+      oEmitValue
+      % value emitted 4
+       .tSubscriptBegin
+         .tLiteralInteger
+         oEmitValue
+         % value emitted 6
+       .tSubscriptString
+       .tLiteralString
+       oEmitValue
+       % value emitted 4
+       oEmitString
+       % value emitted 103
+       % value emitted 111
+       % value emitted 97
+       % value emitted 116
+     .tAssignString
+     .tAssignBegin
+      .tLiteralAddress
+      oEmitValue
+      % value emitted 4
+       .tSubscriptBegin
+         .tLiteralInteger
+         oEmitValue
+         % value emitted 7
+       .tSubscriptString
+       .tLiteralString
+       oEmitValue
+       % value emitted 3
+       oEmitString
+       % value emitted 99
+       % value emitted 111
+       % value emitted 119
+     .tAssignString
+     .tAssignBegin
+      .tLiteralAddress
+      oEmitValue
+      % value emitted 4
+       .tSubscriptBegin
+         .tLiteralInteger
+         oEmitValue
+         % value emitted 8
+       .tSubscriptString
+       .tLiteralString
+       oEmitValue
+       % value emitted 5
+       oEmitString
+       % value emitted 104
+       % value emitted 111
+       % value emitted 114
+       % value emitted 115
+       % value emitted 101
+     .tAssignString
+     .tAssignBegin
+      .tLiteralAddress
+      oEmitValue
+      % value emitted 20
+       .tSubscriptBegin
+         .tLiteralInteger
+         oEmitValue
+         % value emitted 1
+       .tSubscriptString
+       .tLiteralString
+       oEmitValue
+       % value emitted 37
+       oEmitString
+       % value emitted 73
+       % value emitted 32
+       % value emitted 100
+       % value emitted 111
+       % value emitted 110
+       % value emitted 39
+       % value emitted 116
+       % value emitted 32
+       % value emitted 107
+       % value emitted 110
+       % value emitted 111
+       % value emitted 119
+       % value emitted 32
+       % value emitted 119
+       % value emitted 104
+       % value emitted 121
+       % value emitted 32
+       % value emitted 115
+       % value emitted 104
+       % value emitted 101
+       % value emitted 32
+       % value emitted 115
+       % value emitted 119
+       % value emitted 97
+       % value emitted 108
+       % value emitted 108
+       % value emitted 111
+       % value emitted 119
+       % value emitted 101
+       % value emitted 100
+       % value emitted 32
+       % value emitted 97
+       % value emitted 32
+       % value emitted 102
+       % value emitted 108
+       % value emitted 121
+       % value emitted 46
+     .tAssignString
+     .tAssignBegin
+      .tLiteralAddress
+      oEmitValue
+      % value emitted 20
+       .tSubscriptBegin
+         .tLiteralInteger
+         oEmitValue
+         % value emitted 2
+       .tSubscriptString
+       .tLiteralString
+       oEmitValue
+       % value emitted 48
+       oEmitString
+       % value emitted 84
+       % value emitted 104
+       % value emitted 97
+       % value emitted 116
+       % value emitted 32
+       % value emitted 119
+       % value emitted 105
+       % value emitted 103
+       % value emitted 103
+       % value emitted 108
+       % value emitted 101
+       % value emitted 100
+       % value emitted 32
+       % value emitted 97
+       % value emitted 110
+       % value emitted 100
+       % value emitted 32
+       % value emitted 106
+       % value emitted 105
+       % value emitted 103
+       % value emitted 103
+       % value emitted 108
+       % value emitted 101
+       % value emitted 100
+       % value emitted 32
+       % value emitted 97
+       % value emitted 110
+       % value emitted 100
+       % value emitted 32
+       % value emitted 116
+       % value emitted 105
+       % value emitted 99
+       % value emitted 107
+       % value emitted 108
+       % value emitted 101
+       % value emitted 100
+       % value emitted 32
+       % value emitted 105
+       % value emitted 110
+       % value emitted 115
+       % value emitted 105
+       % value emitted 100
+       % value emitted 101
+       % value emitted 32
+       % value emitted 104
+       % value emitted 101
+       % value emitted 114
+       % value emitted 46
+     .tAssignString
+     .tAssignBegin
+      .tLiteralAddress
+      oEmitValue
+      % value emitted 20
+       .tSubscriptBegin
+         .tLiteralInteger
+         oEmitValue
+         % value emitted 3
+       .tSubscriptString
+       .tLiteralString
+       oEmitValue
+       % value emitted 30
+       oEmitString
+       % value emitted 72
+       % value emitted 111
+       % value emitted 119
+       % value emitted 32
+       % value emitted 97
+       % value emitted 98
+       % value emitted 115
+       % value emitted 117
+       % value emitted 114
+       % value emitted 100
+       % value emitted 44
+       % value emitted 32
+       % value emitted 116
+       % value emitted 111
+       % value emitted 32
+       % value emitted 115
+       % value emitted 119
+       % value emitted 97
+       % value emitted 108
+       % value emitted 108
+       % value emitted 111
+       % value emitted 119
+       % value emitted 32
+       % value emitted 97
+       % value emitted 32
+       % value emitted 98
+       % value emitted 105
+       % value emitted 114
+       % value emitted 100
+       % value emitted 46
+     .tAssignString
+     .tAssignBegin
+      .tLiteralAddress
+      oEmitValue
+      % value emitted 20
+       .tSubscriptBegin
+         .tLiteralInteger
+         oEmitValue
+         % value emitted 4
+       .tSubscriptString
+       .tLiteralString
+       oEmitValue
+       % value emitted 34
+       oEmitString
+       % value emitted 73
+       % value emitted 109
+       % value emitted 97
+       % value emitted 103
+       % value emitted 105
+       % value emitted 110
+       % value emitted 101
+       % value emitted 32
+       % value emitted 116
+       % value emitted 104
+       % value emitted 97
+       % value emitted 116
+       % value emitted 44
+       % value emitted 32
+       % value emitted 115
+       % value emitted 104
+       % value emitted 101
+       % value emitted 32
+       % value emitted 115
+       % value emitted 119
+       % value emitted 97
+       % value emitted 108
+       % value emitted 108
+       % value emitted 111
+       % value emitted 119
+       % value emitted 101
+       % value emitted 100
+       % value emitted 32
+       % value emitted 97
+       % value emitted 32
+       % value emitted 99
+       % value emitted 97
+       % value emitted 116
+       % value emitted 46
+     .tAssignString
+     .tAssignBegin
+      .tLiteralAddress
+      oEmitValue
+      % value emitted 20
+       .tSubscriptBegin
+         .tLiteralInteger
+         oEmitValue
+         % value emitted 5
+       .tSubscriptString
+       .tLiteralString
+       oEmitValue
+       % value emitted 29
+       oEmitString
+       % value emitted 87
+       % value emitted 104
+       % value emitted 97
+       % value emitted 116
+       % value emitted 32
+       % value emitted 97
+       % value emitted 32
+       % value emitted 104
+       % value emitted 111
+       % value emitted 103
+       % value emitted 44
+       % value emitted 32
+       % value emitted 116
+       % value emitted 111
+       % value emitted 32
+       % value emitted 115
+       % value emitted 119
+       % value emitted 97
+       % value emitted 108
+       % value emitted 108
+       % value emitted 111
+       % value emitted 119
+       % value emitted 32
+       % value emitted 97
+       % value emitted 32
+       % value emitted 100
+       % value emitted 111
+       % value emitted 103
+       % value emitted 46
+     .tAssignString
+     .tAssignBegin
+      .tLiteralAddress
+      oEmitValue
+      % value emitted 20
+       .tSubscriptBegin
+         .tLiteralInteger
+         oEmitValue
+         % value emitted 6
+       .tSubscriptString
+       .tLiteralString
+       oEmitValue
+       % value emitted 31
+       oEmitString
+       % value emitted 87
+       % value emitted 104
+       % value emitted 97
+       % value emitted 116
+       % value emitted 32
+       % value emitted 97
+       % value emitted 32
+       % value emitted 100
+       % value emitted 111
+       % value emitted 112
+       % value emitted 101
+       % value emitted 44
+       % value emitted 32
+       % value emitted 116
+       % value emitted 111
+       % value emitted 32
+       % value emitted 115
+       % value emitted 119
+       % value emitted 97
+       % value emitted 108
+       % value emitted 108
+       % value emitted 111
+       % value emitted 119
+       % value emitted 32
+       % value emitted 97
+       % value emitted 32
+       % value emitted 103
+       % value emitted 111
+       % value emitted 97
+       % value emitted 116
+       % value emitted 46
+     .tAssignString
+     .tAssignBegin
+      .tLiteralAddress
+      oEmitValue
+      % value emitted 20
+       .tSubscriptBegin
+         .tLiteralInteger
+         oEmitValue
+         % value emitted 7
+       .tSubscriptString
+       .tLiteralString
+       oEmitValue
+       % value emitted 40
+       oEmitString
+       % value emitted 73
+       % value emitted 32
+       % value emitted 100
+       % value emitted 111
+       % value emitted 110
+       % value emitted 39
+       % value emitted 116
+       % value emitted 32
+       % value emitted 107
+       % value emitted 110
+       % value emitted 111
+       % value emitted 119
+       % value emitted 32
+       % value emitted 104
+       % value emitted 111
+       % value emitted 119
+       % value emitted 32
+       % value emitted 115
+       % value emitted 104
+       % value emitted 101
+       % value emitted 32
+       % value emitted 115
+       % value emitted 119
+       % value emitted 97
+       % value emitted 108
+       % value emitted 108
+       % value emitted 111
+       % value emitted 119
+       % value emitted 101
+       % value emitted 100
+       % value emitted 32
+       % value emitted 116
+       % value emitted 104
+       % value emitted 97
+       % value emitted 116
+       % value emitted 32
+       % value emitted 99
+       % value emitted 111
+       % value emitted 119
+       % value emitted 46
+     .tAssignString
+     .tAssignBegin
+      .tLiteralAddress
+      oEmitValue
+      % value emitted 20
+       .tSubscriptBegin
+         .tLiteralInteger
+         oEmitValue
+         % value emitted 8
+       .tSubscriptString
+       .tLiteralString
+       oEmitValue
+       % value emitted 19
+       oEmitString
+       % value emitted 83
+       % value emitted 104
+       % value emitted 101
+       % value emitted 32
+       % value emitted 100
+       % value emitted 105
+       % value emitted 101
+       % value emitted 100
+       % value emitted 32
+       % value emitted 111
+       % value emitted 102
+       % value emitted 32
+       % value emitted 99
+       % value emitted 111
+       % value emitted 117
+       % value emitted 114
+       % value emitted 115
+       % value emitted 101
+       % value emitted 46
+     .tAssignString
+     .tWriteBegin
+       .tTrapBegin
+       .tLiteralAddress
+       oEmitValue
+       % value emitted 0
+       .tVarParm
+       .tParmEnd
+         .tLiteralString
+         oEmitValue
+         % value emitted 18
+         oEmitString
+         % value emitted 73
+         % value emitted 32
+         % value emitted 75
+         % value emitted 110
+         % value emitted 111
+         % value emitted 119
+         % value emitted 32
+         % value emitted 97
+         % value emitted 110
+         % value emitted 32
+         % value emitted 79
+         % value emitted 108
+         % value emitted 100
+         % value emitted 32
+         % value emitted 76
+         % value emitted 97
+         % value emitted 100
+         % value emitted 121
+       .tParmEnd
+        .tLiteralInteger
+        oEmitValue
+        % value emitted 1
+        .tParmEnd
+        .tTrap
+        oEmitTrapKind(trWriteString)
+        % value emitted 109
+      .tWriteEnd
+     .tTrapBegin
+      .tLiteralAddress
+      oEmitValue
+      % value emitted 0
+      .tVarParm
+      .tParmEnd
+     .tTrap
+     oEmitTrapKind(trWriteln)
+     % value emitted 6
+     .tAssignBegin
+      .tLiteralAddress
+      oEmitValue
+      % value emitted 36
+       .tLiteralInteger
+       oEmitValue
+       % value emitted 1
+     .tAssignInteger
+     .tWhileBegin
+     .tWhileOnBreak
+         .tLiteralAddress
+         oEmitValue
+         % value emitted 36
+         .tFetchInteger
+        .tLiteralInteger
+        oEmitValue
+        % value emitted 8
+        .tGE
+     .tNot
+     .tWhileTest
+     oEmitNullAddress
+     % value emitted -32767
+         .tTrapBegin
+          .tLiteralAddress
+          oEmitValue
+          % value emitted 0
+          .tVarParm
+          .tParmEnd
+         .tTrap
+         oEmitTrapKind(trWriteln)
+         % value emitted 6
+         .tWriteBegin
+           .tTrapBegin
+           .tLiteralAddress
+           oEmitValue
+           % value emitted 0
+           .tVarParm
+           .tParmEnd
+             .tLiteralString
+             oEmitValue
+             % value emitted 18
+             oEmitString
+             % value emitted 73
+             % value emitted 32
+             % value emitted 107
+             % value emitted 110
+             % value emitted 111
+             % value emitted 119
+             % value emitted 32
+             % value emitted 97
+             % value emitted 110
+             % value emitted 32
+             % value emitted 111
+             % value emitted 108
+             % value emitted 100
+             % value emitted 32
+             % value emitted 108
+             % value emitted 97
+             % value emitted 100
+             % value emitted 121
+           .tParmEnd
+            .tLiteralInteger
+            oEmitValue
+            % value emitted 1
+            .tParmEnd
+            .tTrap
+            oEmitTrapKind(trWriteString)
+            % value emitted 109
+          .tWriteEnd
+         .tTrapBegin
+          .tLiteralAddress
+          oEmitValue
+          % value emitted 0
+          .tVarParm
+          .tParmEnd
+         .tTrap
+         oEmitTrapKind(trWriteln)
+         % value emitted 6
+         .tWriteBegin
+           .tTrapBegin
+           .tLiteralAddress
+           oEmitValue
+           % value emitted 0
+           .tVarParm
+           .tParmEnd
+             .tLiteralString
+             oEmitValue
+             % value emitted 16
+             oEmitString
+             % value emitted 87
+             % value emitted 104
+             % value emitted 111
+             % value emitted 32
+             % value emitted 115
+             % value emitted 119
+             % value emitted 97
+             % value emitted 108
+             % value emitted 108
+             % value emitted 111
+             % value emitted 119
+             % value emitted 101
+             % value emitted 100
+             % value emitted 32
+             % value emitted 97
+             % value emitted 32
+              .tLiteralAddress
+              oEmitValue
+              % value emitted 4
+               .tSubscriptBegin
+                  .tLiteralAddress
+                  oEmitValue
+                  % value emitted 36
+                  .tFetchInteger
+               .tSubscriptString
+              .tFetchString
+             .tConcatenate
+           .tParmEnd
+            .tLiteralInteger
+            oEmitValue
+            % value emitted 1
+            .tParmEnd
+            .tTrap
+            oEmitTrapKind(trWriteString)
+            % value emitted 109
+          .tWriteEnd
+         .tTrapBegin
+          .tLiteralAddress
+          oEmitValue
+          % value emitted 0
+          .tVarParm
+          .tParmEnd
+         .tTrap
+         oEmitTrapKind(trWriteln)
+         % value emitted 6
+         .tWriteBegin
+          .tTrapBegin
+          .tLiteralAddress
+          oEmitValue
+          % value emitted 0
+          .tVarParm
+          .tParmEnd
+           .tLiteralAddress
+           oEmitValue
+           % value emitted 20
+            .tSubscriptBegin
+               .tLiteralAddress
+               oEmitValue
+               % value emitted 36
+               .tFetchInteger
+            .tSubscriptString
+           .tFetchString
+          .tParmEnd
+           .tLiteralInteger
+           oEmitValue
+           % value emitted 1
+           .tParmEnd
+           .tTrap
+           oEmitTrapKind(trWriteString)
+           % value emitted 109
+          .tWriteEnd
+         .tTrapBegin
+          .tLiteralAddress
+          oEmitValue
+          % value emitted 0
+          .tVarParm
+          .tParmEnd
+         .tTrap
+         oEmitTrapKind(trWriteln)
+         % value emitted 6
+         .tAssignBegin
+          .tLiteralAddress
+          oEmitValue
+          % value emitted 40
+            .tLiteralAddress
+            oEmitValue
+            % value emitted 36
+            .tFetchInteger
+         .tAssignInteger
+         .tWhileBegin
+         .tWhileOnBreak
+             .tLiteralAddress
+             oEmitValue
+             % value emitted 40
+             .tFetchInteger
+            .tLiteralInteger
+            oEmitValue
+            % value emitted 2
+            .tLT
+         .tNot
+         .tWhileTest
+         oEmitNullAddress
+         % value emitted -32767
+             .tWriteBegin
+               .tTrapBegin
+               .tLiteralAddress
+               oEmitValue
+               % value emitted 0
+               .tVarParm
+               .tParmEnd
+                 .tLiteralString
+                 oEmitValue
+                 % value emitted 18
+                 oEmitString
+                 % value emitted 83
+                 % value emitted 104
+                 % value emitted 101
+                 % value emitted 32
+                 % value emitted 115
+                 % value emitted 119
+                 % value emitted 97
+                 % value emitted 108
+                 % value emitted 108
+                 % value emitted 111
+                 % value emitted 119
+                 % value emitted 101
+                 % value emitted 100
+                 % value emitted 32
+                 % value emitted 116
+                 % value emitted 104
+                 % value emitted 101
+                 % value emitted 32
+                  .tLiteralAddress
+                  oEmitValue
+                  % value emitted 4
+                   .tSubscriptBegin
+                      .tLiteralAddress
+                      oEmitValue
+                      % value emitted 40
+                      .tFetchInteger
+                   .tSubscriptString
+                  .tFetchString
+                 .tConcatenate
+               .tParmEnd
+                .tLiteralInteger
+                oEmitValue
+                % value emitted 1
+                .tParmEnd
+                .tTrap
+                oEmitTrapKind(trWriteString)
+                % value emitted 109
+              .tWriteEnd
+             .tWriteBegin
+               .tTrapBegin
+               .tLiteralAddress
+               oEmitValue
+               % value emitted 0
+               .tVarParm
+               .tParmEnd
+                 .tLiteralString
+                 oEmitValue
+                 % value emitted 14
+                 oEmitString
+                 % value emitted 32
+                 % value emitted 116
+                 % value emitted 111
+                 % value emitted 32
+                 % value emitted 99
+                 % value emitted 97
+                 % value emitted 116
+                 % value emitted 99
+                 % value emitted 104
+                 % value emitted 32
+                 % value emitted 116
+                 % value emitted 104
+                 % value emitted 101
+                 % value emitted 32
+                  .tLiteralAddress
+                  oEmitValue
+                  % value emitted 4
+                   .tSubscriptBegin
+                      .tLiteralAddress
+                      oEmitValue
+                      % value emitted 40
+                      .tFetchInteger
+                     .tLiteralInteger
+                     oEmitValue
+                     % value emitted 1
+                     .tSubtract
+                   .tSubscriptString
+                  .tFetchString
+                 .tConcatenate
+                 .tLiteralString
+                 oEmitValue
+                 % value emitted 1
+                 oEmitString
+                 % value emitted 44
+                 .tConcatenate
+               .tParmEnd
+                .tLiteralInteger
+                oEmitValue
+                % value emitted 1
+                .tParmEnd
+                .tTrap
+                oEmitTrapKind(trWriteString)
+                % value emitted 109
+              .tWriteEnd
+             .tTrapBegin
+              .tLiteralAddress
+              oEmitValue
+              % value emitted 0
+              .tVarParm
+              .tParmEnd
+             .tTrap
+             oEmitTrapKind(trWriteln)
+             % value emitted 6
+             .tAssignBegin
+              .tLiteralAddress
+              oEmitValue
+              % value emitted 40
+                .tLiteralAddress
+                oEmitValue
+                % value emitted 40
+                .tFetchInteger
+               .tLiteralInteger
+               oEmitValue
+               % value emitted 1
+               .tSubtract
+             .tAssignInteger
+         .tWhileEnd
+         % value emitted 731
+         .tIfBegin
+             .tLiteralAddress
+             oEmitValue
+             % value emitted 36
+             .tFetchInteger
+            .tLiteralInteger
+            oEmitValue
+            % value emitted 1
+            .tGT
+         .tIfThen
+         oEmitNullAddress
+         % value emitted -32767
+             .tWriteBegin
+              .tTrapBegin
+              .tLiteralAddress
+              oEmitValue
+              % value emitted 0
+              .tVarParm
+              .tParmEnd
+               .tLiteralAddress
+               oEmitValue
+               % value emitted 20
+                .tSubscriptBegin
+                  .tLiteralInteger
+                  oEmitValue
+                  % value emitted 1
+                .tSubscriptString
+               .tFetchString
+              .tParmEnd
+               .tLiteralInteger
+               oEmitValue
+               % value emitted 1
+               .tParmEnd
+               .tTrap
+               oEmitTrapKind(trWriteString)
+               % value emitted 109
+              .tWriteEnd
+             .tTrapBegin
+              .tLiteralAddress
+              oEmitValue
+              % value emitted 0
+              .tVarParm
+              .tParmEnd
+             .tTrap
+             oEmitTrapKind(trWriteln)
+             % value emitted 6
+         .tIfEnd
+         .tIfBegin
+             .tLiteralAddress
+             oEmitValue
+             % value emitted 36
+             .tFetchInteger
+            .tLiteralInteger
+            oEmitValue
+            % value emitted 8
+            .tLT
+         .tIfThen
+         oEmitNullAddress
+         % value emitted -32767
+             .tWriteBegin
+               .tTrapBegin
+               .tLiteralAddress
+               oEmitValue
+               % value emitted 0
+               .tVarParm
+               .tParmEnd
+                 .tLiteralString
+                 oEmitValue
+                 % value emitted 19
+                 oEmitString
+                 % value emitted 80
+                 % value emitted 101
+                 % value emitted 114
+                 % value emitted 104
+                 % value emitted 97
+                 % value emitted 112
+                 % value emitted 115
+                 % value emitted 32
+                 % value emitted 115
+                 % value emitted 104
+                 % value emitted 101
+                 % value emitted 39
+                 % value emitted 108
+                 % value emitted 108
+                 % value emitted 32
+                 % value emitted 100
+                 % value emitted 105
+                 % value emitted 101
+                 % value emitted 46
+               .tParmEnd
+                .tLiteralInteger
+                oEmitValue
+                % value emitted 1
+                .tParmEnd
+                .tTrap
+                oEmitTrapKind(trWriteString)
+                % value emitted 109
+              .tWriteEnd
+             .tTrapBegin
+              .tLiteralAddress
+              oEmitValue
+              % value emitted 0
+              .tVarParm
+              .tParmEnd
+             .tTrap
+             oEmitTrapKind(trWriteln)
+             % value emitted 6
+         .tIfEnd
+         .tAssignBegin
+          .tLiteralAddress
+          oEmitValue
+          % value emitted 36
+            .tLiteralAddress
+            oEmitValue
+            % value emitted 36
+            .tFetchInteger
+           .tLiteralInteger
+           oEmitValue
+           % value emitted 1
+           .tAdd
+         .tAssignInteger
+     .tWhileEnd
+     % value emitted 577
+     .tTrapBegin
+      .tLiteralAddress
+      oEmitValue
+      % value emitted 0
+      .tVarParm
+      .tParmEnd
+     .tTrap
+     oEmitTrapKind(trWriteln)
+     % value emitted 6
+     .tWriteBegin
+       .tTrapBegin
+       .tLiteralAddress
+       oEmitValue
+       % value emitted 0
+       .tVarParm
+       .tParmEnd
+         .tLiteralString
+         oEmitValue
+         % value emitted 8
+         oEmitString
+         % value emitted 84
+         % value emitted 104
+         % value emitted 101
+         % value emitted 32
+         % value emitted 101
+         % value emitted 110
+         % value emitted 100
+         % value emitted 46
+       .tParmEnd
+        .tLiteralInteger
+        oEmitValue
+        % value emitted 1
+        .tParmEnd
+        .tTrap
+        oEmitTrapKind(trWriteString)
+        % value emitted 109
+      .tWriteEnd
+     .tTrapBegin
+      .tLiteralAddress
+      oEmitValue
+      % value emitted 0
+      .tVarParm
+      .tParmEnd
+     .tTrap
+     oEmitTrapKind(trWriteln)
+     % value emitted 6
+     .tTrapBegin
+      .tLiteralAddress
+      oEmitValue
+      % value emitted 0
+      .tVarParm
+      .tParmEnd
+     .tTrap
+     oEmitTrapKind(trWriteln)
+     % value emitted 6
+     .tWriteBegin
+       .tTrapBegin
+       .tLiteralAddress
+       oEmitValue
+       % value emitted 0
+       .tVarParm
+       .tParmEnd
+         .tLiteralString
+         oEmitValue
+         % value emitted 37
+         oEmitString
+         % value emitted 84
+         % value emitted 104
+         % value emitted 97
+         % value emitted 110
+         % value emitted 107
+         % value emitted 32
+         % value emitted 121
+         % value emitted 111
+         % value emitted 117
+         % value emitted 32
+         % value emitted 118
+         % value emitted 101
+         % value emitted 114
+         % value emitted 121
+         % value emitted 32
+         % value emitted 109
+         % value emitted 117
+         % value emitted 99
+         % value emitted 104
+         % value emitted 44
+         % value emitted 32
+         % value emitted 121
+         % value emitted 111
+         % value emitted 117
+         % value emitted 39
+         % value emitted 114
+         % value emitted 101
+         % value emitted 32
+         % value emitted 116
+         % value emitted 111
+         % value emitted 111
+         % value emitted 32
+         % value emitted 107
+         % value emitted 105
+         % value emitted 110
+         % value emitted 100
+         % value emitted 46
+       .tParmEnd
+        .tLiteralInteger
+        oEmitValue
+        % value emitted 1
+        .tParmEnd
+        .tTrap
+        oEmitTrapKind(trWriteString)
+        % value emitted 109
+      .tWriteEnd
+     .tTrapBegin
+      .tLiteralAddress
+      oEmitValue
+      % value emitted 0
+      .tVarParm
+      .tParmEnd
+     .tTrap
+     oEmitTrapKind(trWriteln)
+     % value emitted 6
+     .tWriteBegin
+       .tTrapBegin
+       .tLiteralAddress
+       oEmitValue
+       % value emitted 0
+       .tVarParm
+       .tParmEnd
+         .tLiteralString
+         oEmitValue
+         % value emitted 43
+         oEmitString
+         % value emitted 73
+         % value emitted 39
+         % value emitted 108
+         % value emitted 108
+         % value emitted 32
+         % value emitted 98
+         % value emitted 101
+         % value emitted 32
+         % value emitted 104
+         % value emitted 101
+         % value emitted 114
+         % value emitted 101
+         % value emitted 32
+         % value emitted 117
+         % value emitted 110
+         % value emitted 116
+         % value emitted 105
+         % value emitted 108
+         % value emitted 32
+         % value emitted 84
+         % value emitted 104
+         % value emitted 117
+         % value emitted 114
+         % value emitted 115
+         % value emitted 100
+         % value emitted 97
+         % value emitted 121
+         % value emitted 32
+         % value emitted 45
+         % value emitted 32
+         % value emitted 116
+         % value emitted 114
+         % value emitted 121
+         % value emitted 32
+         % value emitted 116
+         % value emitted 104
+         % value emitted 101
+         % value emitted 32
+         % value emitted 118
+         % value emitted 101
+         % value emitted 97
+         % value emitted 108
+         % value emitted 33
+       .tParmEnd
+        .tLiteralInteger
+        oEmitValue
+        % value emitted 1
+        .tParmEnd
+        .tTrap
+        oEmitTrapKind(trWriteString)
+        % value emitted 109
+      .tWriteEnd
+     .tTrapBegin
+      .tLiteralAddress
+      oEmitValue
+      % value emitted 0
+      .tVarParm
+      .tParmEnd
+     .tTrap
+     oEmitTrapKind(trWriteln)
+     % value emitted 6
+     .tTrapBegin
+      .tLiteralAddress
+      oEmitValue
+      % value emitted 0
+      .tVarParm
+      .tParmEnd
+     .tTrap
+     oEmitTrapKind(trWriteln)
+     % value emitted 6
+ .tTrapBegin
+ .tTrap
+ oEmitTrapKind(trHalt)
+ % value emitted 0
+
+Errors reported by compiler: 

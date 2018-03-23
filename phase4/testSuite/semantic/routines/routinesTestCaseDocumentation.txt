@@ -1,0 +1,42 @@
+qubyNoParamsProcedure.pt
+Test case to test Quby routine format with no parameters. This test simply tests the case of no parameters and leaves the procedure block empty. This input code should be in the form of:
+ext input
+def P
+end
+
+qubyOneParamProcedure.pt
+Test case to ensure a procedure can take a single parameter.
+Input code in the form of:
+ext input
+def P(someParam)
+end
+
+qubyPublicProcedure.pt
+Quby procedure to test that the Quby "pub" keyword can be used with a procedure to make it public. This should output tokens in the form of:
+sProcedure
+sIdentifier (procedure name)
+sPublic
+sParmEnd
+sBegin
+   sNullStmt
+sEnd
+
+qubyMultiParamsProcedure.pt
+Test case to ensure Quby procedure can take multiple parameters seperated by commas.
+Input code should be in the form of:
+ext input
+def P(param1, param2, param3)
+end
+
+qubyProcedureDeclarations.pt
+A Quby test to ensure a Quby style procedure block can contain valid declarations. To simplify the test, no statements are included.
+
+qubyProcedureStatements.pt
+Quby test to ensure a Quby style procedure block can contain valid statements. To simplify the test, no declarations are used.
+
+qubyProcedureDecAndState.pt
+Comprehensive test case to ensure a single parameter procedure can contain both declarations and statements.
+
+ptProcedure.pt
+Test case to ensure the PT style procedure block is no longer accepted.
+A scan/parse error should be present in the output for this test.

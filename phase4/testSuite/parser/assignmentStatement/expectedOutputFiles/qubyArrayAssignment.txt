@@ -1,0 +1,25 @@
+ .sProgram
+ % value emitted 51
+ % value emitted 51
+ .sIdentifier
+ .sParmEnd
+  .sVar
+   .sIdentifier
+    .sArray
+       .sInteger
+     .sRange
+       .sInteger
+     % value emitted 51
+     .sIdentifier
+   .sBegin
+    .sAssignmentStmt
+    .sIdentifier
+    .sSubscript
+        .sInteger
+    .sExpnEnd
+        % value emitted 51
+        .sInteger
+    .sExpnEnd
+   .sEnd
+
+Errors reported by compiler: 

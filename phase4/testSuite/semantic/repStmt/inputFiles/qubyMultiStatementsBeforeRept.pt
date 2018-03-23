@@ -1,0 +1,9 @@
+ext input
+var x : integer
+var y : integer
+rep
+    x = 5
+    x = x * 3
+    on x == 1 : break
+    y = 4
+end

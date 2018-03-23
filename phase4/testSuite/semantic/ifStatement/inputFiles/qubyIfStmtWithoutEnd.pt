@@ -1,0 +1,8 @@
+ext input
+con a = 1
+var result : integer
+
+if a < 2 :
+  result = 2
+
+    

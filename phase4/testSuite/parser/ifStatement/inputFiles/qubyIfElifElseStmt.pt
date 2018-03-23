@@ -1,0 +1,11 @@
+ext input
+con a = 1; var b : integer; var c : integer
+b = 2; c = 4
+if a == 1 :
+  b = 2
+elif b != 2 :
+  b = 2
+else :
+  c = 3
+end
+    

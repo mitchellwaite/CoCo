@@ -1,0 +1,14 @@
+ext input
+var a : integer; var b : integer; var c : integer
+a = 2
+b = 3
+c = 3
+
+if a == 1 :
+  a = 2
+elif b != 2 :
+  b = 2
+elif c == 3 :
+  c = 2
+end
+    

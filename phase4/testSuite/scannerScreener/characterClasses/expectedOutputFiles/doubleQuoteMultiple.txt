@@ -1,0 +1,10 @@
+  .pLiteral
+  % Output token text 'dsg"gdg'
+ .pNewLine
+  .pLiteral
+  % Output token text 'dggd"fsgf"dgd'
+ .pNewLine
+  .pLiteral
+  % Output token text 'hj'
+ .pNewLine
+ .pEndFile

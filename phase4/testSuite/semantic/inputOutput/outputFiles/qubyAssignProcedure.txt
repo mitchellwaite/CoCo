@@ -1,0 +1,78 @@
+   .tLiteralInteger
+   oEmitValue
+   % value emitted 3
+   .tLiteralAddress
+   oEmitDataAddress
+   % value emitted 0
+   .tFileDescriptor
+     .tTrapBegin
+       .tLiteralAddress
+       oEmitValue
+       % value emitted 0
+      .tVarParm
+      .tParmEnd
+        .tLiteralString
+        oEmitValue
+        % value emitted 7
+        oEmitString
+        % value emitted 102
+        % value emitted 111
+        % value emitted 111
+        % value emitted 46
+        % value emitted 116
+        % value emitted 120
+        % value emitted 116
+      .tParmEnd
+      .tLiteralInteger
+      oEmitValue
+      % value emitted 1024
+      .tParmEnd
+     .tTrap
+     oEmitTrapKind(trAssign)
+     % value emitted 12
+     .tTrapBegin
+       .tLiteralAddress
+       oEmitValue
+       % value emitted 0
+      .tVarParm
+      .tParmEnd
+     .tTrap
+     oEmitTrapKind(trRewrite)
+     % value emitted 2
+     .tWriteBegin
+      .tTrapBegin
+      .tLiteralAddress
+      oEmitValue
+      % value emitted 0
+      .tVarParm
+      .tParmEnd
+        .tLiteralString
+        oEmitValue
+        % value emitted 2
+        oEmitString
+        % value emitted 104
+        % value emitted 105
+      .tParmEnd
+       .tLiteralInteger
+       oEmitValue
+       % value emitted 1
+       .tParmEnd
+       .tTrap
+       oEmitTrapKind(trWriteString)
+       % value emitted 109
+      .tWriteEnd
+     .tTrapBegin
+       .tLiteralAddress
+       oEmitValue
+       % value emitted 0
+      .tVarParm
+      .tParmEnd
+     .tTrap
+     oEmitTrapKind(trWriteln)
+     % value emitted 6
+ .tTrapBegin
+ .tTrap
+ oEmitTrapKind(trHalt)
+ % value emitted 0
+
+Errors reported by compiler: 

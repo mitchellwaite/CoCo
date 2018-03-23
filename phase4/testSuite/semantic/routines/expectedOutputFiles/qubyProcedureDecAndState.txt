@@ -1,0 +1,31 @@
+   .tLiteralInteger
+   oEmitValue
+   % value emitted 1
+   .tLiteralAddress
+   oEmitDataAddress
+   % value emitted 0
+   .tFileDescriptor
+   .tSkipProc
+   oEmitNullAddress
+   % value emitted -32767
+     .tLiteralAddress
+     oEmitValue
+     % value emitted 4
+     .tStoreParmInteger
+     .tParmEnd
+       .tAssignBegin
+        .tLiteralAddress
+        oEmitValue
+        % value emitted 8
+          .tLiteralAddress
+          oEmitValue
+          % value emitted 4
+          .tFetchInteger
+       .tAssignInteger
+   .tProcedureEnd
+ .tTrapBegin
+ .tTrap
+ oEmitTrapKind(trHalt)
+ % value emitted 0
+
+Errors reported by compiler: 

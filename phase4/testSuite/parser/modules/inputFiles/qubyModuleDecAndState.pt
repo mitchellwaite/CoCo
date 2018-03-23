@@ -1,0 +1,5 @@
+ext input
+mod someModuleName
+   var x : integer
+   x = 5
+end

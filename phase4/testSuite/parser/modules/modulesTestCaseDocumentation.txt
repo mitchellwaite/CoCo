@@ -1,0 +1,38 @@
+qubyModuleDeclarations.pt
+Test case to test Quby's modules block with only declarations and no statements.
+Output should be in the form of:
+sModule
+sIdentifier
+   Declarations (var,con, etc.)
+sBegin
+   sNullStmt
+sEnd
+
+qubyModuleStatements.pt
+Test case to test Quby's modules block with only statements, no declarations.
+Output should be in the form of:
+sModule
+sIdentifier
+sBegin
+   Statements (x=5, etc)
+sEnd
+
+qubyModuleDecAndState.pt
+Test case to test the full Quby modules block containing both declarations and statements.
+Output should be in the form of:
+sModule
+sIdentifier
+   Declaractions (var,con, etc.)
+sBegin
+   Statements (x=5, if, etc)
+sEnd
+
+qubyModuleEmpty.pt
+Test case to ensure a module block can be declared without any declarations or statements inside.
+Output should be in the form of:
+sModule
+sIdentifier
+sBegin
+sEnd
+
+For all tests, see expectedOutputFiles directory for expected outputs.

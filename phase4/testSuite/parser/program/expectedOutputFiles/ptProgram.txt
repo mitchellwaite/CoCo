@@ -1,0 +1,8 @@
+ .sProgram
+ .sIdentifier
+ .sParmEnd
+   .sBegin
+   .sEnd
+
+Errors reported by compiler: 
+scan/parse error, line 1: syntax error at: program

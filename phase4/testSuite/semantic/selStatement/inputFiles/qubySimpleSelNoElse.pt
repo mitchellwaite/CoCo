@@ -1,0 +1,8 @@
+ext input
+var i:integer
+var x:integer
+
+sel i:
+   is 42:
+      x = 5
+end

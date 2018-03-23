@@ -1,0 +1,69 @@
+#!/usr/bin/env bash
+RED='\033[0;31m';
+BLUE='\033[0;34m';
+GREEN='\033[0;32m';
+NC='\033[0m';
+
+passed=0
+failed=0
+
+for dir in ./*;
+do
+    #If a directory (not a file)
+    if [[ -d $dir ]]; then
+       echo -e "\n\n#######################################################"
+       echo -e "${BLUE}Performing tests in $dir/inputFiles test directory.${NC}"
+       echo -e "########################################################"    
+      
+       rm -rf $dir/outputFiles/*       
+
+       #Test each PT Pascal file in the directory except documentation files.
+       for i in $dir/inputFiles/*.pt
+       do  
+           if [ -f "$i" ] && [[ $i != *"documentation" ]]
+           then
+              echo -e "\n${BLUE}Testing file: ${NC}$i"
+              fileName="$(echo "$i" | sed -r "s/.+\/(.+)\..+/\1/")"
+
+              #Run ssltrace tool in output mode and put test output into outputFiles directory
+              ssltrace "ptc -L ../../ptsrc/lib/pt -o2 -t2 $i" ../../ptsrc/lib/pt/parser.def -e > $dir/outputFiles/$fileName.txt 2> /dev/null
+
+              #Display any errors found by the parser at the end of the file (append)
+              echo -e "\nErrors reported by compiler: " >> $dir/outputFiles/$fileName.txt
+              ptc -L ../../ptsrc/lib/pt $i >> $dir/outputFiles/$fileName.txt 2> /dev/null 
+
+           fi           
+
+           OUTPUT1=""
+           OUTPUT2=""
+           echo -e "Output vs. Expected Output differences:"
+           if [ ! -f $dir/outputFiles/$fileName.txt ] || [ ! -f $dir/expectedOutputFiles/$fileName.txt ]; then
+               OUTPUT1="Output or Expected output file not found for $dir/inputFiles/${fileName}.txt!"
+               echo "${OUTPUT1}"
+           else 
+               fileName="$(echo "${dir}/outputFiles/${fileName}.txt" | sed -r "s/.+\/(.+)\..+/\1/")"
+               OUTPUT2="$(diff -b ${dir}/outputFiles/${fileName}.txt $dir/expectedOutputFiles/$fileName.txt)"
+               echo "${OUTPUT2}"
+           fi
+
+           # PRINT PASS OR FAIL for the test cases (using green or red text appropriately)
+           if [ -z "${OUTPUT1}" ] && [ -z "${OUTPUT2}" ]; then
+               echo -e "${GREEN} ${dir}/inputFiles/${fileName}.pt  TEST PASSED!${NC}";
+               passed=$((passed+1));
+           else
+               echo -e "${RED} ${dir}/inputFiles/${fileName}.pt TEST FAILED!${NC}";
+               failed=$((failed+1));
+           fi
+ 
+       done
+
+    fi
+done
+
+# Print to the user at the end of the verification phase the statistics of tests passed versus failed.
+echo -e "\n#####################TESTING STATISTICS#####################";
+echo -e "${GREEN}Tests Passed: $passed ${NC}";
+echo -e "${RED}Tests Failed: $failed ${NC}";
+testsRun=$((passed+failed));
+echo -e "${BLUE}Tests Run : $testsRun ${NC}";
+echo "############################################################";

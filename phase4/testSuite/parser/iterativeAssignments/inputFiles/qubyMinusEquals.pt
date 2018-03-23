@@ -1,0 +1,4 @@
+ext input
+var a : integer
+a = 3
+a -= 1

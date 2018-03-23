@@ -1,0 +1,60 @@
+qubyIfStmt.pt
+Quby test case to ensure the modified Quby parser can successfully parse a simple if-statement without an elif or else block.
+The input test code is in the form of:
+if expression :
+  statement
+end
+
+qubyIfElifStmt.pt
+Test case to ensure Quby's parser is successful in outputting the appropriate semantic tokens for a complete if-elif block (note the omission of an else block).
+The input test code is in the form of:
+if expression :
+  statement
+elif expression :
+  statement
+end
+
+qubyIfElseStmt.pt
+Test case to ensure the traditional simple if-else block is still valid using the Quby parser (note the omission of an elif block).
+The input test code is in the form of:
+if expression :
+  statement
+else:
+  statement
+end
+
+qubyIfElifElseStmt.pt
+Test case to ensure Quby's parser is successful in outputting the appropriate semantic tokens for a complete if-elif-else block.
+The input test code is in the form of:
+if expression :
+  statement
+elif expression :
+  statement
+else :
+  statement
+end
+
+qubyIfMultiElifStmt.pt
+Test case to ensure Quby's parser is successful in outputting the appropriate semantic tokens for a complete if-elif-elif block (note the omission of an else block and inclusion of multiple elif blocks).
+The input test code is in the form of:
+if expression :
+  statement
+elif expression :
+  statement
+elif expression :
+  statement
+end
+
+qubyIfMultiElifMultiStmt.pt
+Test case to ensure Quby's parser is successful in outputting the appropriate semantic tokens for a complete if-elif-elif block (note the omission of an else block) with *multiple* statements inside of each code block.
+The input test code is in the form of:
+if expression :
+  statement
+  statement
+elif expression :
+  statement
+  statement
+elif expression :
+  statement
+  statement
+end

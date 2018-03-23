@@ -1,0 +1,15 @@
+# Quby example program 
+# Print a triangle of stars
+ext output
+
+var stars: string
+var i: integer
+
+i = 1
+stars = ""
+rep
+    on i > 50 : break
+    stars = "*" + stars
+    print (stars) nl
+    i += 1
+end

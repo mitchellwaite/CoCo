@@ -1,0 +1,10 @@
+ext input
+con a = 1; con b = 3
+var c : integer
+
+if a == 1 :
+  c = 2
+elif b != 2 :
+  c = 2
+end
+    

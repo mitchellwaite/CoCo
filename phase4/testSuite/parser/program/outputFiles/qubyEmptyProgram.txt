@@ -1,0 +1,8 @@
+ .sProgram
+ % value emitted 51
+ .sIdentifier
+ .sParmEnd
+   .sBegin
+   .sEnd
+
+Errors reported by compiler: 

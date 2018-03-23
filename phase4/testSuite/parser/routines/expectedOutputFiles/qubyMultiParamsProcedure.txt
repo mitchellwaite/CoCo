@@ -1,0 +1,20 @@
+ .sProgram
+ % value emitted 51
+ .sIdentifier
+ .sParmEnd
+  .sProcedure
+  .sIdentifier
+   .sIdentifier
+   .sIdentifier
+   .sIdentifier
+   .sVar
+   .sIdentifier
+   % value emitted 51
+   .sParmEnd
+    .sBegin
+    .sEnd
+  % value emitted 51
+   .sBegin
+   .sEnd
+
+Errors reported by compiler: 

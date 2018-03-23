@@ -1,0 +1,35 @@
+ .sProgram
+ % value emitted 51
+ .sIdentifier
+ .sParmEnd
+  .sVar
+   .sIdentifier
+     % value emitted 51
+     .sIdentifier
+   .sBegin
+   % value emitted 51
+     .sCallStmt
+     .sIdentifier
+     .sParmEnd
+    .sAssignmentStmt
+    .sIdentifier
+        .sIdentifier
+        % value emitted 51
+        .sInteger
+      .sAdd
+    .sExpnEnd
+     .sCallStmt
+     .sIdentifier
+     .sParmEnd
+    .sAssignmentStmt
+    .sIdentifier
+        .sInteger
+    .sExpnEnd
+   % value emitted 51
+   .sEnd
+
+Errors reported by compiler: 
+semantic error, line 4: identifier not declared
+semantic error, line 4: procedure name required
+semantic error, line 5: identifier not declared
+semantic error, line 5: procedure name required

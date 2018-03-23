@@ -1,0 +1,35 @@
+   .tLiteralInteger
+   oEmitValue
+   % value emitted 1
+   .tLiteralAddress
+   oEmitDataAddress
+   % value emitted 0
+   .tFileDescriptor
+     #eUndefinedIdentifier
+     #eProcedureReqd
+     #eUndefinedIdentifier
+     .tAssignBegin
+      #eUndefinedIdentifier
+       .tLiteralInteger
+       oEmitValue
+       % value emitted 1
+     .tAssignInteger
+     #eUndefinedIdentifier
+     .tAssignBegin
+      #eUndefinedIdentifier
+       .tLiteralInteger
+       oEmitValue
+       % value emitted 2
+     .tAssignInteger
+ .tTrapBegin
+ .tTrap
+ oEmitTrapKind(trHalt)
+ % value emitted 0
+
+Errors reported by compiler: 
+semantic error, line 2: identifier not declared
+semantic error, line 2: procedure name required
+semantic error, line 2: identifier not declared
+semantic error, line 2: identifier not declared
+semantic error, line 3: identifier not declared
+semantic error, line 3: identifier not declared

@@ -1,0 +1,124 @@
+   .tLiteralInteger
+   oEmitValue
+   % value emitted 1
+   .tLiteralAddress
+   oEmitDataAddress
+   % value emitted 0
+   .tFileDescriptor
+     .tCaseBegin
+         .tLiteralAddress
+         oEmitValue
+         % value emitted 4
+         .tFetchInteger
+     .tCaseSelect
+     oEmitNullAddress
+     % value emitted -32767
+          .tAssignBegin
+           .tLiteralAddress
+           oEmitValue
+           % value emitted 8
+            .tLiteralInteger
+            oEmitValue
+            % value emitted 5
+          .tAssignInteger
+      .tCaseMerge
+      oEmitNullAddress
+      % value emitted -32767
+          .tAssignBegin
+           .tLiteralAddress
+           oEmitValue
+           % value emitted 8
+            .tLiteralInteger
+            oEmitValue
+            % value emitted 2
+          .tAssignInteger
+      .tCaseMerge
+      oEmitNullAddress
+      % value emitted -32767
+          .tAssignBegin
+           .tLiteralAddress
+           oEmitValue
+           % value emitted 12
+            .tLiteralInteger
+            oEmitValue
+            % value emitted 3
+          .tAssignInteger
+      .tCaseMerge
+      oEmitNullAddress
+      % value emitted -32767
+          .tAssignBegin
+           .tLiteralAddress
+           oEmitValue
+           % value emitted 12
+             .tLiteralAddress
+             oEmitValue
+             % value emitted 8
+             .tFetchInteger
+          .tAssignInteger
+      .tCaseMerge
+      oEmitNullAddress
+      % value emitted -32767
+     .tCaseEnd
+     oEmitCaseBranchTable
+     % value emitted 2
+     % value emitted 43
+     % value emitted 51
+     % value emitted -1
+     % value emitted -1
+     % value emitted -1
+     % value emitted -1
+     % value emitted -1
+     % value emitted -1
+     % value emitted -1
+     % value emitted -1
+     % value emitted -1
+     % value emitted -1
+     % value emitted -1
+     % value emitted -1
+     % value emitted -1
+     % value emitted -1
+     % value emitted -1
+     % value emitted -1
+     % value emitted -1
+     % value emitted -1
+     % value emitted -1
+     % value emitted -1
+     % value emitted -1
+     % value emitted 39
+     % value emitted -1
+     % value emitted -1
+     % value emitted -1
+     % value emitted -1
+     % value emitted -1
+     % value emitted -1
+     % value emitted -1
+     % value emitted -1
+     % value emitted -1
+     % value emitted -1
+     % value emitted -1
+     % value emitted -1
+     % value emitted -1
+     % value emitted -1
+     % value emitted -1
+     % value emitted -1
+     % value emitted -1
+     % value emitted 15
+     % value emitted 27
+     .tCaseElse
+         .tAssignBegin
+          .tLiteralAddress
+          oEmitValue
+          % value emitted 12
+           .tLiteralInteger
+           oEmitValue
+           % value emitted 2
+         .tAssignInteger
+     .tCaseMerge
+     oEmitNullAddress
+     % value emitted -32767
+ .tTrapBegin
+ .tTrap
+ oEmitTrapKind(trHalt)
+ % value emitted 0
+
+Errors reported by compiler: 

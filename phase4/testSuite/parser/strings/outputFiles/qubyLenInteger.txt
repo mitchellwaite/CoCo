@@ -1,0 +1,9 @@
+ .sProgram
+ % value emitted 51
+ .sIdentifier
+ .sParmEnd
+   .sBegin
+   .sEnd
+
+Errors reported by compiler: 
+scan/parse error, line 2: syntax error at: len

@@ -1,0 +1,3 @@
+ .pNotEqual
+ .pNewLine
+ .pEndFile

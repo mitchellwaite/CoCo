@@ -1,0 +1,49 @@
+# Quby example program 
+# Pascal's triangle 
+ext output
+
+var pascal : array[1 .. 15] of integer
+var col : integer
+var row : integer
+
+def addto (index : integer)
+    if index == 1 :
+        pascal [1] = pascal [1] + 1
+    else :
+        pascal [index] = pascal [index] + pascal [index - 1]
+    end
+end
+
+# initialize the array  
+pascal [1] = 1
+col = 2
+rep
+    pascal [col] = 0
+    col = col + 1
+    on col > 15: break
+end
+
+print (1:5) nl
+
+row = 2
+rep
+    # calculate a new row 
+    col = row
+    rep
+        on col == 1 : break
+        addto (col)
+        col -= 1
+    end
+
+    # print this row 
+    col = 1
+    rep
+        on col > row : break 
+        print (pascal [col] : 5)
+        col += 1
+    end
+    nl
+
+    row += 1
+    on row > 15 : break
+end

@@ -1,0 +1,40 @@
+   .tLiteralInteger
+   oEmitValue
+   % value emitted 1
+   .tLiteralAddress
+   oEmitDataAddress
+   % value emitted 0
+   .tFileDescriptor
+     .tSkipProc
+     oEmitNullAddress
+     % value emitted -32767
+       .tLiteralAddress
+       oEmitValue
+       % value emitted 8
+       .tStoreParmAddress
+       .tParmEnd
+     .tProcedureEnd
+     .tCallBegin
+        .tLiteralAddress
+        oEmitValue
+        % value emitted 4
+       .tVarParm
+      .tParmEnd
+     .tCallEnd
+     oEmitValue
+     % value emitted 11
+     #eUndefinedIdentifier
+     .tAssignBegin
+      #eUndefinedIdentifier
+       .tLiteralInteger
+       oEmitValue
+       % value emitted 1
+     .tAssignInteger
+ .tTrapBegin
+ .tTrap
+ oEmitTrapKind(trHalt)
+ % value emitted 0
+
+Errors reported by compiler: 
+semantic error, line 9: identifier not declared
+semantic error, line 9: identifier not declared

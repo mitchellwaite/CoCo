@@ -1,0 +1,82 @@
+ .sProgram
+ % value emitted 51
+ .sIdentifier
+ .sParmEnd
+  .sVar
+   .sIdentifier
+     .sIdentifier
+  .sNullStmt
+  .sVar
+   .sIdentifier
+     .sIdentifier
+  .sNullStmt
+  .sVar
+   .sIdentifier
+     % value emitted 51
+     .sIdentifier
+   .sBegin
+    .sAssignmentStmt
+    .sIdentifier
+        % value emitted 51
+        % value emitted 51
+        .sInteger
+    .sExpnEnd
+    .sSelStmt
+        .sIdentifier
+    .sExpnEnd
+    % value emitted 51
+       .sInteger
+     .sLabelEnd
+     % value emitted 51
+      .sBegin
+       .sAssignmentStmt
+       .sIdentifier
+           % value emitted 51
+           .sInteger
+       .sExpnEnd
+       .sAssignmentStmt
+       .sIdentifier
+           .sIdentifier
+           % value emitted 51
+           .sInteger
+         .sAdd
+       .sExpnEnd
+      .sEnd
+       .sInteger
+     .sLabelEnd
+     % value emitted 51
+      .sBegin
+       .sAssignmentStmt
+       .sIdentifier
+           % value emitted 51
+           .sInteger
+       .sExpnEnd
+       .sAssignmentStmt
+       .sIdentifier
+           .sIdentifier
+           % value emitted 51
+           .sInteger
+         .sSubtract
+       .sExpnEnd
+      .sEnd
+    .sElse
+    % value emitted 51
+     .sBegin
+      .sAssignmentStmt
+      .sIdentifier
+          % value emitted 51
+          .sInteger
+      .sExpnEnd
+      .sAssignmentStmt
+      .sIdentifier
+          .sIdentifier
+          % value emitted 51
+          .sInteger
+         .sMultiply
+      .sExpnEnd
+     .sEnd
+    % value emitted 51
+    .sSelEnd
+   .sEnd
+
+Errors reported by compiler: 

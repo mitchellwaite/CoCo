@@ -1,0 +1,59 @@
+# Quby example program 
+# Draw boxes on the console
+ext input, output
+
+var top : string
+var middle : string
+var bottom : string
+
+var width : integer
+var height : integer
+
+var Nacross : integer
+var Ndown : integer
+
+var i: integer
+var j : integer
+
+# Ask for size and number of boxes to draw
+print ("enter box width and height: ")
+get (width, height)
+print ("enter number of boxes across and down: ")
+get (Nacross, Ndown)
+
+# Add 1 for boundaries 
+width += 1; height += 1
+
+# Compute top, bottom and middle lines 
+top = ""; middle = ""; bottom = ""
+i = 0
+rep
+    on i > width * Nacross : break
+    if i mod width == 0 :
+	top += " "
+	middle += "|"
+	bottom += "|"
+    else : 
+	top += "_"
+	middle += " "
+	bottom += "_"
+    end
+    i += 1
+end
+
+# Now output the whole thing
+print (top) nl
+
+i = 1
+rep
+    on i > Ndown : break
+    j = 1
+    rep
+	on j >= height - 1 : break
+	print (middle) nl
+	j += 1
+    end
+
+    print (bottom) nl
+    i += 1
+end
