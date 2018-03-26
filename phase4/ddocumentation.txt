@@ -19,6 +19,10 @@ CHECKLIST CODER.SSL CHANGES
 
 1. Added the input T-codes to coder.ssl from output of semantic.ssl. Also updated coder.pt using coder.def 
 
+3. Added a string kind to the Data Kinds with the value of 3. This change was made in coder.ssl
+
+4. Removed the oOperandPushChar semantic operation from coder.pt. Also, switched the oOperandPushStringDescriptor with oOperandPushString.
+
 ===================================================================================================================================
 CHECKLIST CODER.PT CHANGES
 

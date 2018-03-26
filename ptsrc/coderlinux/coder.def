@@ -201,6 +201,7 @@
 	trEof = 16;
 	byte = 1;
 	word = 2;
+	string = 3;
 	{ Type 14 }
 	no = 0;
 	yes = 1;
