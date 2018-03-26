@@ -61,21 +61,21 @@ type INSTRUCTION :      % corresponds to semantic.ssl output
         tVarParm
         tFetchAddress
         tFetchInteger
-        tFetchChar
+        tFetchString
         tFetchBoolean
         tAssignBegin
         tAssignAddress
         tAssignInteger
-        tAssignChar
+        tAssignString
         tAssignBoolean
         tStoreParmAddress
         tStoreParmInteger
-        tStoreParmChar
+        tStoreParmString
         tStoreParmBoolean
         tSubscriptBegin
         tSubscriptAddress
         tSubscriptInteger
-        tSubscriptChar
+        tSubscriptString
         tSubscriptBoolean
         tArrayDescriptor
         tFileDescriptor
@@ -83,8 +83,8 @@ type INSTRUCTION :      % corresponds to semantic.ssl output
         tIfEnd
         tCaseBegin
         tWhileBegin
-        tRepeatBegin
-        tRepeatControl
+        tWhileOnBreak
+        tCaseElse
         tCallBegin
         tParmEnd
         tProcedureEnd
@@ -93,16 +93,18 @@ type INSTRUCTION :      % corresponds to semantic.ssl output
         tTrapBegin
         tWriteEnd
         tReadEnd
+        
+        tConcatenate
+        tSubstring
+        tLength
+        tStringEqual
 
         % Compound T-codes are those that take operands
         tLiteralAddress 
         firstCompoundTcode = tLiteralAddress
         tLiteralInteger
-        tLiteralChar
         tLiteralBoolean
         tLiteralString
-        tStringDescriptor
-        tSkipString
         tIfThen
         tIfMerge
         tCaseSelect
@@ -128,11 +130,10 @@ type TRAP :
         trReadln = 4
         trWrite = 5
         trWriteln = 6
-        trWriteString = 7
         trWriteInteger = 8
-        trWriteChar = 9
+        trWriteString = 109
         trReadInteger = 10
-        trReadChar = 11
+        trReadString = 108
         trAssign = 12
         trSubscriptAbort = 13
         trCaseAbort = 14
@@ -308,7 +309,7 @@ PTmachine :
 
                         | tAssignBegin,                 % handle all 'no op' instructions:
                           tSubscriptBegin,  tIfBegin,   tIfEnd,  tCaseBegin,  tCaseEnd,          
-                          tWhileBegin,  tRepeatBegin,  tRepeatControl, tCallBegin,  tVarParm,  tParmEnd,                
+                          tWhileBegin,  tCallBegin,  tVarParm,  tParmEnd,                
                           tWriteBegin, tReadBegin, tWriteEnd, tReadEnd, tTrapBegin, tInfixAnd,  tInfixOr:
                                 oCUincPC
                         | tAssignAddress:               %  address assignment
@@ -325,7 +326,7 @@ PTmachine :
                                 oCUmoveLtoMDR
                                 oMemoryStoreInteger
                                 oCUincPC
-                        | tAssignChar:                  % char assignment
+                        | tAssignString:                  % String assignment
                                 oALUpopL                % L <- pop
                                 oALUpopR                % R <- pop
                                 oCUmoveRtoMAR
@@ -353,7 +354,7 @@ PTmachine :
                                 oCUmoveMDRtoR
                                 oALUpushInteger
                                 oCUincPC
-                        | tFetchChar :                  % fetch char
+                        | tFetchString :                  % fetch string
                                 oALUpopR
                                 oCUmoveRtoMAR
                                 oMemoryFetchChar
@@ -381,7 +382,7 @@ PTmachine :
                                 oCUmoveMDRtoR
                                 oALUpushInteger
                                 oCUincPC
-                        | tLiteralChar :                        % push literal char
+                        | tLiteralString :                        % push literal string
                                 oCUincPC
                                 oCUmovePCtoMAR
                                 oMemoryFetchCharOperand
@@ -394,13 +395,6 @@ PTmachine :
                                 oMemoryFetchBooleanOperand
                                 oCUmoveMDRtoR
                                 oALUpushBoolean
-                                oCUincPC
-                        | tStringDescriptor :           % push string descriptor
-                                oCUincPC                % prepare to fetch operand
-                                oCUmovePCtoMAR
-                                oMemoryFetchAddressOperand  % get it
-                                oCUmoveMDRtoR
-                                oALUpushAddress         % push it onto the expn stack
                                 oCUincPC
 
                         | tStoreParmAddress, tArrayDescriptor :
@@ -419,7 +413,7 @@ PTmachine :
                                 oCUmoveLtoMDR
                                 oMemoryStoreInteger
                                 oCUincPC
-                        | tStoreParmChar:
+                        | tStoreParmString:
                                 oALUpopR
                                 oALUpopL
                                 oCUmoveRtoMAR
@@ -433,7 +427,7 @@ PTmachine :
                                 oCUmoveLtoMDR
                                 oMemoryStoreBoolean
                                 oCUincPC
-                        | tSubscriptAddress, tSubscriptInteger, tSubscriptChar, tSubscriptBoolean :
+                        | tSubscriptAddress, tSubscriptInteger, tSubscriptString, tSubscriptBoolean :
                                 % perform subscripting calculation
                                 oALUpopR                % subscript value
                                 oALUpopL                % address of array
@@ -450,7 +444,7 @@ PTmachine :
                                         | *:                            % else
                                                 oCUincPC                % skip address
                                 ]
-                        | tIfMerge, tCaseMerge, tWhileEnd, tSkipProc, tSkipString:
+                        | tIfMerge, tCaseMerge, tWhileEnd, tSkipProc:
                                 % simple jumps
                                 oCUincPC
                                 oCUmovePCtoMAR          % fetch address and
