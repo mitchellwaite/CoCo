@@ -720,12 +720,6 @@ Block:
     % array bounds and file descriptors which are emitted as assignment
     % statements, nested procedure definitions and finally statements.
     {[
-%        | tSkipString:
-            % Emit a string constant to the data area
-%            oEmitNone(iData)                    %       .data
-%            tLiteralString
-%            oEmitString                         % sNN:  .asciz  "SSSSS"
-%            oEmitNone(iText)                    %       .text
         | tLiteralInteger:
             % initialize an array or file descriptor
             oOperandPushInteger                 % ... lower bound / file number
@@ -1461,25 +1455,16 @@ OperandPushExpression:
             @OperandPushVariable
         | tLiteralInteger:
             oOperandPushInteger
-        | tLiteralString:
-            oOperandPushString
         | tLiteralBoolean:
             oOperandPushBoolean
-%        | tStringDescriptor:
-%            oOperandPushStringDescriptor
-            % Get a string literal's address
-%            @EmitStringDescriptor               %       lea     sNNN, %T
-%        | tSkipString:
+        | tLiteralString:
             % Emit string literal to data area
-%            oEmitNone(iData)                    %       .data
+            oEmitNone(iData)                    %       .data
             % Emit the string
-%            tLiteralString
-%            oEmitString                         % sNNN: .asciz  "SSSSS"
-%            oEmitNone(iText)                    %       .text
-            % Get the string literal's address
-%            tStringDescriptor
-%            oOperandPushStringDescriptor
-%            @EmitStringDescriptor               %       lea     sNNN, %T
+            oEmitString                         % sNNN: .asciz  "SSSSS"
+            oEmitNone(iText)                    %       .text
+            oOperandPushStringDescriptor
+            @EmitStringDescriptor               %       lea     sNNN, %T
         | tNegate:
             @OperandNegate
         | tAdd:
@@ -1557,8 +1542,6 @@ OperandPushVariable:
             [
                 | tSubscriptInteger:
                     @OperandSubscriptIntegerPop
-                | tSubscriptString:
-                    @OperandSubscriptStringPop
                 | tSubscriptBoolean:
                     @OperandSubscriptBooleanPop
             ]
@@ -1955,9 +1938,6 @@ OperandPushExpressionAssignPopPop:
         | tAssignInteger:
             @OperandAssignIntegerPopPop
             >
-        | tAssignString:
-            @OperandAssignStringPopPop
-            >
         | tAssignBoolean:
             @OperandAssignBooleanPopPop
             >
@@ -2038,13 +2018,7 @@ OperandPushExpressionAssignPopPop:
             @OperandGreaterPop
             @OperandNot
         | tChr:
-            [
-                | tAssignString:
-                    @OperandChrAssignPopPop
-                    >
-                | *:
-                    @OperandChr
-            ]
+            @OperandChr
         | tOrd:
             [
                 | tAssignInteger:

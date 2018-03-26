@@ -25,6 +25,13 @@ CHECKLIST CODER.SSL CHANGES
 
 4. Removed the oOperandPushChar semantic operation from coder.pt. Also, switched the oOperandPushStringDescriptor with oOperandPushString.
 
+6. Convert PT string t-code handling to Quby string t-code handling.
+   - Changed all tLiteralChar -> tLiteralString
+   - Changed all tStoreParmChar -> tStoreParmString
+   - Removed tStringDescriptor and tSkipString handling.
+   - Added handling for tLiteralString in @OperandPushExpression to be similar to handling of tSkipString.
+   - Removed handling of tAssignChar and tSubscriptChar
+
 ===================================================================================================================================
 CHECKLIST CODER.PT CHANGES
 
