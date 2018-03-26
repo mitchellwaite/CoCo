@@ -21,10 +21,15 @@ CHECKLIST CODER.SSL CHANGES
 
 2. Added new trap codes for the new Quby run time monitory string operation traps. Also ensured semantic.ssl had proper trap numbers (trWriteString as 109).
 
+3. Added a string kind to the Data Kinds with the value of 3. This change was made in coder.ssl
+
+4. Removed the oOperandPushChar semantic operation from coder.pt. Also, switched the oOperandPushStringDescriptor with oOperandPushString.
+
 ===================================================================================================================================
 CHECKLIST CODER.PT CHANGES
 
-===================================================================================================================================MISC. CHANGES
+===================================================================================================================================
+MISC. CHANGES
 
 1. Updated Quby run-time monitor with ptruntime.c from /cas/course/cisc458/quby/ptruntimelinux. Used the “make” command to make and install the Quby traps and string routines in our new Quby compiler.
 

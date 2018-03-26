@@ -165,8 +165,8 @@ type Integer:
 
     % Data kinds
     byte = 1
-    word = 2;   % 4 bytes on x86
-
+    word = 2   % 4 bytes on x86
+    string = 3;
 
 type Boolean:
     no = 0

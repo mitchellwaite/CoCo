@@ -247,6 +247,7 @@ program Coder (output, coderSsl, tCode, object, options);
 	trEof = 16;
 	byte = 1;
 	word = 2;
+	string = 3;
 	{ Type 14 }
 	no = 0;
 	yes = 1;
@@ -413,7 +414,6 @@ program Coder (output, coderSsl, tCode, object, options);
 	sslTblSize = 4006;
 	minSslTableValue = -32767;
 	maxSslTableValue = 32767;
-
 { ===== End of contents of coder.def }
 
         { S/SL table operations }
@@ -747,7 +747,7 @@ program Coder (output, coderSsl, tCode, object, options);
                         assert27:
                             write ('compound token tCode is not tCallEnd in oOperandPushProcedure');
                         assert28:
-                            write ('compound token tCode is not tStringDescriptor in oOperandPushStringDescriptor');
+                            write ('compound token tCode is not tStringDescriptor in oOperandPushString');
                         assert29:
                             write ('less than two operands in operand stack in oOperandFoldManifestSubscript');
                         assert30:
@@ -2267,7 +2267,7 @@ program Coder (output, coderSsl, tCode, object, options);
                     oOperandPushProcedure:
                         OperandPushProcedure;
 
-                    oOperandPushStringDescriptor:
+                    oOperandPushString:
                         OperandPushStringDescriptor;
 
                     oOperandPushTrap:
