@@ -1,0 +1,9 @@
+ext input
+
+#var a:integer
+#mod d
+#  var b:integer
+#  b=1
+#end
+
+#var c:integer

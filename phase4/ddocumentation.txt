@@ -25,6 +25,8 @@ CHECKLIST CODER.SSL CHANGES
 
 4. Removed the oOperandPushChar semantic operation from coder.pt. Also, switched the oOperandPushStringDescriptor with oOperandPushString.
 
+5. In the main loop within the Block rule, the alternatives in the Statement rules was added to allow for module initilizations to get mixed in with declarations. (XXX: There is currently only one test so should add more if you can think of any more)
+
 6. Convert PT string t-code handling to Quby string t-code handling.
    - Changed all tLiteralChar -> tLiteralString
    - Changed all tStoreParmChar -> tStoreParmString
