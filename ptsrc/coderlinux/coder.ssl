@@ -1559,6 +1559,8 @@ OperandPushVariable:
             [
                 | tSubscriptInteger:
                     @OperandSubscriptIntegerPop
+                | tSubscriptString:
+                    @OperandSubscriptStringPop 
                 | tSubscriptBoolean:
                     @OperandSubscriptBooleanPop
             ]
@@ -1597,25 +1599,25 @@ OperandSubscriptIntegerPop:
 
 
 OperandSubscriptStringPop:
-    % similar to above
+    % if the subscript is manifest fold it out, 
+    % otherwise generate subscripting code 
     [ oOperandChooseMode
         | mManifest:
             oOperandSwap
             [ oOperandChooseMode
                 | mTempIndirect:
+                    % var parameter subscripting cannot be folded
                     oOperandSwap
-                    @OperandSubscriptNonManifestStringPop
-                | *:
-                    % tell the folder we are working on bytes
-                    oOperandSetLength(byte)     
-                    oOperandSwap
+                    @OperandSubscriptNonManifestIntegerPop
+            | *:
+                    oOperandSwap                % ... array, subscript
                     oOperandFoldManifestSubscript
-                    oOperandPop
+                    oOperandPop                 % ... array[subscript]
             ]
         | *:
-            @OperandSubscriptNonManifestStringPop
+            @OperandSubscriptNonManifestIntegerPop
     ]
-    oOperandSetLength(byte);
+    oOperandSetLength(string);
 
 
 OperandSubscriptBooleanPop:
@@ -1954,6 +1956,12 @@ OperandPushExpressionAssignPopPop:
             oOperandPushBoolean
         | tAssignInteger:
             @OperandAssignIntegerPopPop
+            >
+        | tAssignString:
+            @OperandAssignStringPopPop
+            >
+        | tConcatenate:
+            @OperandConcatenateStringPopPop
             >
         | tAssignBoolean:
             @OperandAssignBooleanPopPop
@@ -2822,12 +2830,29 @@ OperandAssignIntegerPopPop:
 OperandAssignStringPopPop:
     % Generate code to assign the right (top) operand's value to
     % the left (second) operand and pop both operands.
+    @SaveTempRegsToStack
 
-    oOperandSetLength(byte)
-    @EmitMove                   %       movb    y, x
-    @OperandPopAndFreeTemp
-    @OperandPopAndFreeTemp;
+    oEmitDouble(iLoada)                 %       lea     s2,%T
+    @OperandForceToStack                %       pushl   %T
+    oEmitDouble(iLoada)                 %       lea     s1,%T
+    @OperandForceToStack                %       pushl   %T
 
+    tTrap
+    oOperandPushTrap
+    oEmitSingle(iCall)                  %       call    pttrap101
+    oOperandPop
+
+    % Pop arguments
+    oOperandPushMode(mStackReg)
+    oOperandSetLength(word)
+    oOperandPushMode(mManifest)
+    oOperandSetLength(word)
+    oOperandSetValue(eight)
+    oEmitDouble(iAdd)                   %       addl    $8,%esp
+    oOperandPop
+    oOperandPop
+    
+    @RestoreTempRegsFromStack;
 
 OperandAssignBooleanPopPop:
     % Generate code to assign the right (top) operand's value to
