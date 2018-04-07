@@ -813,7 +813,7 @@ Routine:
                     oOperandPushCopy            % ... formal, 8(%ebp), 8(%ebp)
                     oOperandSwapLeftAndDest     % ... 8(%ebp), formal, 8(%ebp)
                     oOperandSetLength(word)
-                    @EmitMove                   %       movl    8(%ebp),formal
+                    @OperandAssignStringPopPop  % Add handling of string parameters
                     @OperandPopAndFreeTemp      % ... 8(%ebp), formal
                     @OperandPopAndFreeTemp      % ... 8(%ebp)
 
@@ -822,7 +822,7 @@ Routine:
                     oOperandPushCopy            % ... formal, 8(%ebp), 8(%ebp)
                     oOperandSwapLeftAndDest     % ... 8(%ebp), formal, 8(%ebp)
                     oOperandSetLength(byte)
-                    @EmitMove                   %       movl    8(%ebp),formal
+                    @OperandAssignStringPopPop  % Add handling of string parameters
                     @OperandPopAndFreeTemp      % ... 8(%ebp), formal
                     @OperandPopAndFreeTemp      % ... 8(%ebp)
                 | tParmEnd:       

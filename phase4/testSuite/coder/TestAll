@@ -16,7 +16,7 @@ do
        echo -e "########################################################"    
       
        rm -rf $dir/outputFiles/*       
-       cd $dir/outputFiles/
+       pushd $dir/outputFiles/
 
        #Test each PT Pascal file in the directory except documentation files.
        for i in ../inputFiles/*.pt
@@ -57,6 +57,8 @@ do
            fi
  
        done
+
+      popd
 
     fi
 done

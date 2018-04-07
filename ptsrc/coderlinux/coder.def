@@ -286,7 +286,7 @@
 	TrapStmt = 989;
 	Routine = 193;
 	OperandNextParameter = 282;
-	EmitMove = 4117;
+	OperandAssignStringPopPop = 3306;
 	Statements = 297;
 	OperandPushVariable = 1286;
 	OperandPushExpressionAssignPopPop = 1870;
@@ -342,7 +342,6 @@
 	EmitCmp = 4061;
 	OperandPushArrayLowerBound = 1670;
 	EmitSubscriptAbort = 1703;
-	OperandAssignStringPopPop = 3306;
 	OperandConcatenatePop = 3348;
 	OperandAssignBooleanPopPop = 3414;
 	OperandNegateAssignPopPop = 2148;
@@ -352,6 +351,7 @@
 	OperandDivideAssignPopPopPop = 2620;
 	OperandNotAssignPopPop = 3165;
 	OperandOrdAssignPopPop = 2922;
+	EmitMove = 4117;
 	OperandAddRightToLeftPop = 2221;
 	EmitAdd = 4031;
 	OperandForceLeftIntoTemp = 3776;

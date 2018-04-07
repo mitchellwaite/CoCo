@@ -1,0 +1,4 @@
+ext input
+
+def test(var a: string)
+end
