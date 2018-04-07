@@ -2168,7 +2168,6 @@ program Coder (output, coderSsl, tCode, object, options);
                         begin
                             lastEmittedLineNumber := undefined;
                             OptionallyEmitSourceCoordinate;
-                            AssertTempsAreAllFree
                         end;
 
                     oEmitCaseMergeBranch:
