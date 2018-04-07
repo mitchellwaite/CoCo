@@ -7,7 +7,8 @@ all:
 	cd semantic; make $(ACTION)
 	cd coderlinux; make $(ACTION)
 	cd ptruntimelinux; make $(ACTION)
-	cd ptam; make $(ACTION)
+# Don't make PT interpreter as it's not part of the project.
+#	cd ptam; make $(ACTION)          
 
 scanner:
 	cd cmd; make $(ACTION)
