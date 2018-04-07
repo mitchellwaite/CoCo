@@ -34,6 +34,8 @@ CHECKLIST CODER.SSL CHANGES
    - Added handling for tLiteralString in @OperandPushExpression to be similar to handling of tSkipString.
    - Removed handling of tAssignChar and tSubscriptChar
 
+9.  Added subscripting of string arrays. Cloned OperandSubscriptIntegerPop and OperandSubscriptNonManifestIntegerPop rules for strings (and also OperandUncheckedSubscriptNonManifestStringPop and OperandUncheckedSubscriptNonManifestStringPop). Switched all word entries with string in the new cloned functions. 
+
 ===================================================================================================================================
 CHECKLIST CODER.PT CHANGES
 
