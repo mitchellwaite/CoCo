@@ -45,3 +45,5 @@ MISC. CHANGES
 2. Updated ptam.ssl with new output and trap codes from semantic.ssl.
 
 3. Updated ptam.ssl to use String instead of Char for read and write operations.
+
+7. Removed call to AssertTempsAreAllFree in oEmitMergeSourceCoordinate
