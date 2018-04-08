@@ -1978,7 +1978,12 @@ OperandPushExpressionAssignPopPop:
         | tLiteralInteger:
             oOperandPushInteger
         | tLiteralString:
-            oOperandPushString
+            % Emit string literal to data area
+            oEmitNone(iData)                      %       .data   
+            % Emit the string
+            oEmitString                           % sNNN: .asciz "SSSSS"
+            oEmitNone(iText)                      %       .text 
+            oOperandPushString                    % same as oOperandPushStringDescriptor
         | tLiteralBoolean:
             oOperandPushBoolean
         | tAssignInteger:
@@ -2901,15 +2906,22 @@ OperandAssignIntegerPopPop:
 OperandAssignStringPopPop:
     % Generate code to assign the right (top) operand's value to
     % the left (second) operand and pop both operands.
+    @EmitStringDescriptor               %       lea s2,%T
+
     @SaveTempRegsToStack
 
-    @EmitStringDescriptor               %       lea s2,%T
-    @OperandForceToStack                %       pushl   %T
-    @EmitStringDescriptor               %       lea s1,%T
-    @OperandForceToStack                %       pushl   %T
+    @EmitStringDescriptor               %       mov   %eax,%ebx
+    
+    @OperandForceToStack                %       pushl   %ebx
+    
+    oOperandPop
+    @EmitStringDescriptor               %       lea u+4,%eax
+    @OperandForceToStack                %       pushl   %eax
 
+    tTrapBegin
     tTrap
-    oOperandPushTrap
+    oOperandPushMode(mTrap)
+    oOperandSetValue(trAssignString)
     oEmitSingle(iCall)                  %       call    pttrap101
     oOperandPop
 
@@ -3269,6 +3281,8 @@ OperandForceIntoTemp:
             oOperandSwap
             oEmitDouble(iMov)           % mov (%rXx),%rXx
             oOperandPop                 % DON'T free it!
+        | mString:
+            @OperandForceAddressIntoTemp
         | *:
             [ oOperandChooseLength
                 | byte:

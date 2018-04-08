@@ -12,13 +12,17 @@
   oEmitDouble(iMov)
   oEmitDouble(iMov)
    oEmitSourceCoordinate
-      oEmitSingle(iPush)
-      oEmitSingle(iPush)
-      oEmitSingle(iPush)
-      oEmitSingle(iPush)
+    oEmitNone(iData)
+    oEmitString
+    oEmitNone(iText)
        oEmitDouble(iLoada)
       oEmitSingle(iPush)
+      oEmitSingle(iPush)
+      oEmitSingle(iPush)
+      oEmitSingle(iPush)
        oEmitDouble(iMov)
+      oEmitSingle(iPush)
+       oEmitDouble(iLoada)
       oEmitSingle(iPush)
 ### Coder S/SL program failure:  syntax error in Tcode token stream
 ### Coder assertion 7 failed: internal error in coder.pt (report to maintainer)

@@ -79,6 +79,8 @@ CHECKLIST CODER.SSL CHANGES
       - OperandStringEqualPop
    - All rules follow template code seen in Phase 4 documentation provided by the course instructor.
 
+12. Added alternativer for mString in OperandForceIntoTemp that call OperandForceAssressIntoTemp. Allows OperandForceIntoTemp must be modified to allow size string as well as word.
+
 ===================================================================================================================================
 CHECKLIST CODER.PT CHANGES
 

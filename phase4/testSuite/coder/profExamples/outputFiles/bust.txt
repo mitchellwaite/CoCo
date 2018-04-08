@@ -19,13 +19,14 @@
   oEmitUnconditionalForwardBranch
    oEmitProcLabel(mProc)
    oEmitNone(iEnter)
+      oEmitDouble(iMov)
      oEmitSingle(iPush)
      oEmitSingle(iPush)
      oEmitSingle(iPush)
      oEmitSingle(iPush)
       oEmitDouble(iMov)
      oEmitSingle(iPush)
-      oEmitDouble(iMov)
+      oEmitDouble(iLoada)
      oEmitSingle(iPush)
 ### Coder S/SL program failure:  syntax error in Tcode token stream
 ### Coder assertion 7 failed: internal error in coder.pt (report to maintainer)

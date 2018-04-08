@@ -15,5 +15,5 @@
 Errors reported by compiler: 
 ### S/SL program failure: Semantic choice failed
 while processing line          9
-Table index 4407;  Operation 11;  Argument 0
+Table index 4430;  Operation 11;  Argument 0
 ### Coder assertion 8 failed: 

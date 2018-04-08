@@ -8,19 +8,27 @@
   oEmitNone(iEnter)
   oEmitDouble(iMov)
    oEmitSourceCoordinate
-      oEmitSingle(iPush)
-      oEmitSingle(iPush)
-      oEmitSingle(iPush)
-      oEmitSingle(iPush)
+    oEmitNone(iData)
+    oEmitString
+    oEmitNone(iText)
        oEmitDouble(iLoada)
+      oEmitSingle(iPush)
+      oEmitSingle(iPush)
+      oEmitSingle(iPush)
       oEmitSingle(iPush)
        oEmitDouble(iMov)
       oEmitSingle(iPush)
-### Coder S/SL program failure:  syntax error in Tcode token stream
-### Coder assertion 7 failed: internal error in coder.pt (report to maintainer)
+       oEmitDouble(iLoada)
+      oEmitSingle(iPush)
+     oEmitSingle(iCall)
+     oEmitDouble(iAdd)
+      oEmitSingle(iPop)
+      oEmitSingle(iPop)
+      oEmitSingle(iPop)
+      oEmitSingle(iPop)
+  oEmitNone(iLeave)
+  oEmitNone(iReturn)
+### Coder assertion 45 failed: operand stack not empty at end of coder phase
 
 Errors reported by compiler: 
-### Coder S/SL program failure:  syntax error in Tcode token stream
-    (semantic pass output stream does not match expected input stream)
-while processing line          5
-### Coder assertion 7 failed: internal error in coder.pt (report to maintainer)
+### Coder assertion 45 failed: operand stack not empty at end of coder phase
