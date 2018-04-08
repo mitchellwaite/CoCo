@@ -275,7 +275,11 @@
 	EmitProgramPrologue = 7;
 	Block = 65;
 	EmitProgramEpilogue = 58;
+<<<<<<< HEAD
 	OperandPopAndFreeTemp = 3619;
+=======
+	OperandPopAndFreeTemp = 3658;
+>>>>>>> b01b154e05854a58bea7001980a6918197fb312c
 	AssignStmt = 353;
 	CallStmt = 361;
 	IfStmt = 436;
@@ -286,6 +290,7 @@
 	TrapStmt = 963;
 	Routine = 193;
 	OperandNextParameter = 282;
+<<<<<<< HEAD
 	OperandAssignStringPopPop = 3382;
 	Statements = 297;
 	OperandPushVariable = 1284;
@@ -373,5 +378,95 @@
 
 	{ S/SL Table Parameters }
 	sslTblSize = 4386;
+=======
+	OperandAssignStringPopPop = 3415;
+	Statements = 297;
+	OperandPushVariable = 1310;
+	OperandPushExpressionAssignPopPop = 1894;
+	OperandPushExpression = 1107;
+	OperandConvertJumpConditionToData = 3683;
+	OperandForceAddressIntoTemp = 4035;
+	OperandForceToStack = 4191;
+	OperandPushBooleanControlExpression = 489;
+	FoldIfStmt = 530;
+	OperandInfixOr = 3369;
+	OperandForceToJumpCondition = 494;
+	EmitTst = 4396;
+	SkipToEndIf = 576;
+	SkipToEndWhile = 633;
+	RepeatStmt = 652;
+	OperandFreeTemp = 3671;
+	CaseSelect = 710;
+	CaseVariant = 713;
+	CaseEnd = 721;
+	EmitDefaultCaseAbort = 731;
+	EmitCaseSubscriptJump = 755;
+	OperandForceIntoTemp = 3967;
+	OperandSubtractRightFromLeftPop = 2390;
+	WriteParameter = 829;
+	ReadParameter = 913;
+	OperandAssignIntegerPopPop = 3392;
+	EmitStringDescriptor = 1307;
+	OperandConcatenatePop = 3461;
+	OperandSubstringPopPop = 3525;
+	OperandStringEqualPop = 3589;
+	OperandNegate = 2215;
+	OperandAddPop = 2293;
+	OperandSubtractPop = 2412;
+	OperandMultiplyPop = 2563;
+	OperandDividePop = 2709;
+	OperandModPop = 2835;
+	OperandNot = 3365;
+	OperandOrPop = 3386;
+	OperandEqualPop = 3776;
+	OperandGreaterPop = 3851;
+	OperandLessPop = 3939;
+	OperandLength = 2945;
+	OperandChr = 3000;
+	OperandOrd = 3058;
+	OperandEolnFunction = 3086;
+	OperandEofFunction = 3212;
+	OperandSubscriptIntegerPop = 1377;
+	OperandSubscriptStringPop = 1406;
+	OperandSubscriptBooleanPop = 1435;
+	OperandSubscriptNonManifestIntegerPop = 1438;
+	OperandSubscriptNonManifestStringPop = 1451;
+	OperandCheckedSubscriptNonManifestIntegerPop = 1464;
+	OperandUncheckedSubscriptNonManifestIntegerPop = 1748;
+	OperandCheckedSubscriptNonManifestStringPop = 1579;
+	OperandUncheckedSubscriptNonManifestStringPop = 1821;
+	OperandPushArrayUpperBound = 1708;
+	EmitCmp = 4306;
+	OperandPushArrayLowerBound = 1694;
+	EmitSubscriptAbort = 1727;
+	OperandAssignBooleanPopPop = 3653;
+	OperandNegateAssignPopPop = 2190;
+	OperandAddAssignPopPopPop = 2230;
+	OperandSubtractAssignPopPopPop = 2370;
+	OperandMultiplyAssignPopPopPop = 2455;
+	OperandDivideAssignPopPopPop = 2662;
+	OperandNotAssignPopPop = 3274;
+	EmitMove = 4362;
+	OperandAddRightToLeftPop = 2263;
+	EmitAdd = 4276;
+	OperandForceLeftIntoTemp = 4021;
+	EmitSub = 4291;
+	OperandMultiplyLeftByRightPop = 2488;
+	OperandDivideLeftByRightPop = 2682;
+	SaveTempRegsToStack = 3148;
+	RestoreTempRegsFromStack = 3180;
+	OperandPushFalseTemp = 3760;
+	OperandPushTrueTemp = 3744;
+	OperandPushTempByte = 4182;
+	OperandFoldComparisonPopPop = 3943;
+	OperandPushTempWord = 4173;
+	OperandForceAddressIntoNewTemp = 4099;
+	OperandAreLeftAndRightManifest = 4218; >>14
+	OperandLeftOrRightIsTemp = 4247; >>14
+	}
+
+	{ S/SL Table Parameters }
+	sslTblSize = 4431;
+>>>>>>> b01b154e05854a58bea7001980a6918197fb312c
 	minSslTableValue = -32767;
 	maxSslTableValue = 32767;

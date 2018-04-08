@@ -815,8 +815,7 @@ Block :
 
 ConstantDefinitions :           % Process named constant definitions
         sIdentifier
-        @ConstantValue
-        ;
+        @ConstantValue;
 
 ConstantValue :         % An identifier token has just been accepted
         oSymbolStkPushLocalIdentifier
@@ -874,18 +873,6 @@ ConstantValue :         % An identifier token has just been accepted
                 oSymbolStkEnterValue
                 oValuePop
             | sLiteral:
-                % make it a var
-                oSymbolStkSetKind(syVariable)
-                % of type string
-                oSymbolStkLinkToStandardType(stdString)
-                oTypeStkPushSymbol
-                               
-                % allocate the var string
-                oAllocateAlignOnWord
-                oSymbolStkEnterDataAddress
-                oAllocateVariable
-                oTypeStkPop
-
                 .tAssignBegin % Pretend con string is a var type string with a following assignment
                 .tLiteralAddress
                 oValuePushSymbol
@@ -897,63 +884,62 @@ ConstantValue :         % An identifier token has just been accepted
                 oEmitString
                 .tAssignString
                 oValuePop
+                
+        
 ]
         oSymbolTblEnter
         oSymbolStkPop;          % name being defined
 
 TypeDefinitions :       % process named type definitions
-        {[
-             | sIdentifier:
-                    oSymbolStkPushLocalIdentifier
-                    @TypeBody
-                    [ oSymbolStkChooseKind
-                        | syUndefined:
-                        | syExternal:
-                            % Program parameters must be declared as file variables
-                            #eExternalDeclare
-                            % Ignore this definition
-                            oSymbolStkPop
-                            oTypeStkPop
-                            oTypeStkPop
-                            >>
-                        | *:
-                            #eMultiplyDefined
-                            % The new definition will obscure the old one
-                    ]
-                    oSymbolStkSetKind(syType)
-            
-                    % Create type table entries for the object as necessary.
-                    % Where named types were used in the declaration, a type
-                    % reference will be present, otherwise the type reference
-                    % fields will be null.
-                    oTypeStkSwap    % structure on top
-                    [ oTypeStkChooseKind
-                        | tpArray:
-                            oTypeStkSwap    % component on top
-                            [ oTypeStkChooseTypeReference
-                                | no:
-                                    % No type table entry exists,
-                                    % so create one.
-                                    oTypeTblEnter
-                                | *:
-                            ]
-                            oTypeStkEnterComponentReference
-                            oTypeStkSwap    % structure on top
-                        | *:
-                    ]
-                    [ oTypeStkChooseTypeReference
-                        | no:
-                            oTypeTblEnter
-                        | *:
-                    ]
-                    oSymbolStkEnterTypeReference
-                    oSymbolTblEnter
-                    oSymbolStkPop
-                    oTypeStkPop
-                    oTypeStkPop
-             | *:
-                >
-        ]};
+        sIdentifier
+        oSymbolStkPushLocalIdentifier
+        @TypeBody
+        [ oSymbolStkChooseKind
+            | syUndefined:
+            | syExternal:
+                % Program parameters must be declared as file variables
+                #eExternalDeclare
+                % Ignore this definition
+                oSymbolStkPop
+                oTypeStkPop
+                oTypeStkPop
+                >>
+            | *:
+                #eMultiplyDefined
+                % The new definition will obscure the old one
+        ]
+        oSymbolStkSetKind(syType)
+
+        % Create type table entries for the object as necessary.
+        % Where named types were used in the declaration, a type
+        % reference will be present, otherwise the type reference
+        % fields will be null.
+        oTypeStkSwap    % structure on top
+        [ oTypeStkChooseKind
+            | tpArray:
+                oTypeStkSwap    % component on top
+                [ oTypeStkChooseTypeReference
+                    | no:
+                        % No type table entry exists,
+                        % so create one.
+                        oTypeTblEnter
+                    | *:
+                ]
+                oTypeStkEnterComponentReference
+                oTypeStkSwap    % structure on top
+            | *:
+        ]
+        [ oTypeStkChooseTypeReference
+            | no:
+                oTypeTblEnter
+            | *:
+        ]
+        oSymbolStkEnterTypeReference
+        oSymbolTblEnter
+        oSymbolStkPop
+        oTypeStkPop
+        oTypeStkPop;
+
 TypeBody :
         % Push a type stack entry for the structure type (e.g. array)
         % and a type stack entry for its component type.  In the case
@@ -1504,7 +1490,9 @@ ModuleDefinition :
                 % New definition obscures old one.
         ]
         oSymbolStkSetKind(syModule)
+        oSymbolStkEnterCodeAddress
         oTypeStkPush(tpNull)
+        oTypeStkSetRecursionFlag(yes)
         oTypeTblEnter
         oSymbolStkEnterTypeReference
         oSymbolTblEnter
@@ -1512,6 +1500,7 @@ ModuleDefinition :
         @Block
         oSymbolTblUpdate
         oSymbolStkPop
+        oTypeStkSetRecursionFlag(no)
         oTypeTblUpdate
         oTypeStkPop
         oSymbolTblStripScope
@@ -1930,14 +1919,15 @@ UnaryOperator :
                 .tNot
                 oTypeStkPush(tpBoolean)
             | sLen:
-                .tLength
                 [ oTypeStkChooseKind
                     | tpString:
-                       oTypeStkSetKind(tpInteger)   % fake for check
+                      .tLength
+                      oTypeStkPop   % Remove string type from type stack
+                      oTypeStkPush(tpInteger) % result type
+                      >> % Bypass regular type checking as input can only be string and output can only be integer
                     | *:
-                       #eStringExpnReqd
+                      #eStringExpnReqd
                 ]
-                oTypeStkPush(tpInteger)
             | *:
                 >>              % bypass type check
         ]
@@ -2160,9 +2150,11 @@ CompareRelationalOperandTypes :
                         #eOperandOperatorTypeMismatch
                 ]
             | tpString:
+                #eIntegerExpnReqd
                 oTypeStkPop
                 [ oTypeStkChooseKind
                     | tpString:
+                      #eIntegerExpnReqd
                     | *:
                         #eOperandOperatorTypeMismatch
                 ]

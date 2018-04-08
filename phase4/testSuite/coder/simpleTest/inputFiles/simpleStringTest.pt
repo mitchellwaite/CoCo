@@ -1,0 +1,4 @@
+ext input
+
+var x : string
+x = "hello"
