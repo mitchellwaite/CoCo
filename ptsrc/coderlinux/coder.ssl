@@ -753,8 +753,6 @@ Block:
             @IfStmt
         | tWhileBegin:
             @WhileStmt
-%        | tRepeatBegin:
-%            @RepeatStmt
         | tCaseBegin:
             @CaseStmt
         | tWriteBegin:
@@ -861,8 +859,6 @@ Statements:
             @IfStmt
         | tWhileBegin:
             @WhileStmt
-%        | tRepeatBegin:
-%            @RepeatStmt
         | tCaseBegin:
             @CaseStmt
         | tWriteBegin:
@@ -1045,6 +1041,9 @@ WhileStmt:
     oFixPushAddress                             % bNNN:
     oEmitMergeSourceCoordinate
     @OperandPushBooleanControlExpression        % ... cond
+    @Statements                                 % Next 3 lines have been added to change PT while to Quby rep
+    tWhileOnBreak
+    @OperandPushExpression
     tWhileTest
     oOperandComplementJumpCondition             % ... !cond
 
@@ -1089,42 +1088,6 @@ SkipToEndWhile:
         | *:
             ?                           % accept and ignore anything else
     ]};
-
-
-RepeatStmt:
-    % Save the target address for the top-of-loop branch
-    oFixPushAddress                             % bNNN:
-    oEmitMergeSourceCoordinate
-    @Statements                                 % loop body
-%    tRepeatControl
-    @OperandPushBooleanControlExpression        % ... cond
-    tRepeatTest
-
-    % Optimize if loop condition is known at compile time
-    [ oOperandChooseJumpCondition
-        | iJnever:
-            % Exit condition is always false (until false) - an infinite loop.
-            % false branches fall through to top-of-loop backward branch
-            oFixAndFreeFalseBranches
-            oEmitUnconditionalBackwardBranch    %  jmp      bNN
-
-        | iJalways:
-            % Exit condition is always true (until true) - loop never repeats.
-            % fall through without backward branch
-            oFixAndFreeFalseBranches
-
-        | *:
-            % Emit a conditional forward branch to exit the loop.
-            % True branches follow the conditional exit path, false
-            % branches fall through to the top-of-loop branch.
-            @OperandInfixOr                     %       jcond   fNNN
-            oEmitUnconditionalBackwardBranch    %       jmp     bNNN
-    ]
-
-    oFixPopAddress
-    % Fix the true branches exiting the statement
-    oFixAndFreeShuntList                        % fNNN:
-    oOperandPop;
 
 
 CaseStmt:
