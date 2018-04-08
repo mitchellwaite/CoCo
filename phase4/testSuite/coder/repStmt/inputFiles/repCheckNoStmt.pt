@@ -1,0 +1,7 @@
+ext input, output
+var x : integer
+var y : integer
+x = 1
+rep
+  on x == 1 : break
+end

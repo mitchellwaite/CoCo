@@ -1,3 +1,4 @@
+p
 #!/usr/bin/env bash
 RED='\033[0;31m';
 BLUE='\033[0;34m';
@@ -27,12 +28,12 @@ do
               fileName="$(echo "$i" | sed -r "s/.+\/(.+)\..+/\1/")"
 
               #Run ssltrace tool in output mode and put test output into outputFiles directory
-              ssltrace "ptc -L ../../../../ptsrc/lib/pt -o4 -t4 $i" ../../../../ptsrc/lib/pt/coder.def -e > $fileName.txt #2> /dev/null
+              #ssltrace "ptc -L ../../../../ptsrc/lib/pt -o4 -t4 $i" ../../../../ptsrc/lib/pt/coder.def -e > $fileName.txt #2> /dev/null
 
-              #Display any errors found by the parser at the end of the file (append)
-              echo -e "\nErrors reported by compiler: " >> $fileName.txt
-              ptc -L ../../../../ptsrc/lib/pt $i >> $fileName.txt #2> /dev/null 
-
+              #Run the compiler to get the executable
+              #echo -e "\nErrors reported by compiler: " >> $fileName.txt
+              ptc -L ../../../../ptsrc/lib/pt $i #2> /dev/null 
+              ./$fileName.out > $fileName.txt
            fi           
 
            OUTPUT1=""

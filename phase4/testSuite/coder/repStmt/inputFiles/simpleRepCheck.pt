@@ -1,0 +1,11 @@
+ext input, output
+var x : integer
+var y : integer
+x = 1
+rep
+  y = 1
+  on x == 8 : break
+  x = x+1
+  print (x)
+  nl
+end
