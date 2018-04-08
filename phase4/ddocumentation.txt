@@ -84,6 +84,14 @@ CHECKLIST CODER.SSL CHANGES
 ===================================================================================================================================
 CHECKLIST CODER.PT CHANGES
 
+3. Changed loops in tLiteralString and EmitX86StringLiteral to handle zero length strings correctly.
+
+5. Removed all references and alternatives for tStringDescriptor and tSkipString. Also changed the Assert statements that reference tStringDescriptor to say tLiteralString instead.
+
+6. Removed the case alternative for oOperandPushChar. Changed case alternative for oOperandPushStringDescriptor to be oOperandPushString.
+
+7. Removed call to AssertTempsAreAllFree in oEmitMergeSourceCoordinate
+
 ===================================================================================================================================
 MISC. CHANGES
 
@@ -93,10 +101,5 @@ MISC. CHANGES
 
 3. Updated ptam.ssl to use String instead of Char for read and write operations.
 
-5. Removed all references and alternatives for tStringDescriptor and tSkipString. Also changed the Assert statements that reference tStringDescriptor to say tLiteralString instead.
-
-6. Removed the case alternative for oOperandPushChar. Changed case alternative for oOperandPushStringDescriptor to be oOperandPushString.
-
-7. Removed call to AssertTempsAreAllFree in oEmitMergeSourceCoordinate
 
 
