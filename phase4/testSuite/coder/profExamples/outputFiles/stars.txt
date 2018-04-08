@@ -6,6 +6,11 @@
   oEmitSingle(iGlobl)
   oEmitProcLabel(mMainProc)
   oEmitNone(iEnter)
+  oEmitDouble(iMov)
+   oEmitSourceCoordinate
+      oEmitDouble(iMov)
+   oEmitSourceCoordinate
+### Coder assertion 5 failed: compound token string literal length less than one
 
 Errors reported by compiler: 
-
+### Coder assertion 5 failed: compound token string literal length less than one
