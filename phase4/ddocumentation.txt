@@ -9,6 +9,30 @@ Group: cisc458n
 ==================================================================================================================================
 CHANGES TO THE QUBY SEMANTIC PHASE SINCE PHASE 3 SUBMISSION
 
+1. Extra loop on constantDefinition, VariableDeclarations???? ***Change not done, believed incorrect in professor solution***
+
+2. ModuleDefinition changed to removed recursion type set calls.
+
+3. Added below code to sLiteral choice in @ConstantValue 
+        % make it a var
+        oSymbolStkSetKind(syVariable)
+        % of type string
+        oSymbolStkLinkToStandardType(stdString)
+        oTypeStkPushSymbol
+        
+        % allocate the var string
+        oAllocateAlignOnWord
+        oSymboleStkEnterDataAddress
+        oAllocateVariable
+        oTypeStkPop
+
+4. Added repeating loop around body of TypeDefinitions
+
+5. Change sLen handling in @UnaryOperator
+
+6. Removed error messages in CompareRelationalOperandTypes for tpString
+
+7. sSubstring in binaryOperator instead of @TernaryOperator ***change not made as functionality is believed to be the same***
 
 ===================================================================================================================================
 NON-CHECKLIST CODER.SSL CHANGES
