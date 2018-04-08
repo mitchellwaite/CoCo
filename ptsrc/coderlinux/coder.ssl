@@ -2932,6 +2932,7 @@ OperandAssignStringPopPop:
     oEmitDouble(iAdd)                   %       addl    $8,%esp
     oOperandPop
     oOperandPop
+    oOperandPop
     
     @RestoreTempRegsFromStack;
 
