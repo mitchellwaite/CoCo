@@ -1008,7 +1008,7 @@ program Coder (output, coderSsl, tCode, object, options);
                       write (object, chr (compoundTokenText[i]));
                   i := i + 1
               until i > compoundTokenLength;
-            end
+            end;
 
             write (object, '"');
             writeln (object);
@@ -1859,7 +1859,7 @@ program Coder (output, coderSsl, tCode, object, options);
                                       read (tCode, compoundTokenText[i]);
                                       i := i + 1;
                                   until i > compoundTokenLength;
-                                end
+                                end;
                                 nextTCodeAddress := nextTCodeAddress + compoundTokenLength;
                                 if compoundTokenLength mod 2 <> 0 then
                                     compoundTokenText[compoundTokenLength+1] := null
