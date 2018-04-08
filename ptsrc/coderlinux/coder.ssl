@@ -1528,6 +1528,8 @@ OperandPushExpression:
         | tLE:
             @OperandGreaterPop
             @OperandNot
+        | tLength:
+            @OperandLength
         | tChr:
             @OperandChr
         | tOrd:
@@ -2073,6 +2075,8 @@ OperandPushExpressionAssignPopPop:
         | tLE:
             @OperandGreaterPop
             @OperandNot
+        | tLength:
+            @OperandLength
         | tChr:
             @OperandChr
         | tOrd:
@@ -2599,6 +2603,40 @@ OperandModPop:
 
     % finally, the result goes to a free temporary
     @OperandForceIntoTemp;              % ... %T
+
+OperandLength:
+    % Generate code to get the character length and leave the address of the 
+    % length result in the temporary register %X
+    @SaveTempRegsToStack
+
+    @EmitStringDescriptor               %       lea     s1,%T
+    @OperandForceToStack                %       pushl   %T
+    tTrap
+
+    % Pop argument
+    oOperandPushMode(mStackReg)
+    oOperandSetLength(string)
+    oOperandPushMode(mManifest)
+    oOperandSetLength(string)
+    oOperandSetValue(four)
+    oEmitDouble(iAdd)                   %       addl    $4,%esp
+    oOperandPop
+    oOperandPop
+
+    % movl %eax,%esi
+    oOperandPushMode(mScratchReg1)      % ... %esi       
+    oOperandSetLength(string)
+    oOperandPushMode(mResultReg)        % ... %esi, %eax 
+    oOperandSetLength(string)
+    oEmitDouble(iMov)                   %       movl    %eax, %esi
+    oOperandPop                         % ... %esi
+
+    @RestoreTempRegsFromStack
+
+    oOperandPushMode(mScratchReg1)
+    oOperandSetLength(string)
+    @OperandForceIntoTemp       %       movl    $esi, %T (force result to temp)
+    ;
 
 OperandChr:
     % Takes integer i1, converts its value to a character 
