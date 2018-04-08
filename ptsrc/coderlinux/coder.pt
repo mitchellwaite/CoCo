@@ -1770,13 +1770,26 @@ program Coder (output, coderSsl, tCode, object, options);
                 begin
                     subscript := subscript - lowerBound;
                     if operandStkLength[operandStkTop-1] = word then
+                      begin
                         { Convert a byte offset to a word offset }
                         subscript := subscript * wordSize;
-                    { Set the subscripted varable's address.  Note that the array variable's 
-                      address points to the base of a 2 word descriptor (lower, upper bound). }
-                    operandStkValue[operandStkTop-1] := 
-                        operandStkValue[operandStkTop-1] +
-                        subscript + 2 * wordSize;  { size of 2 word descriptor }
+                        { Set the subscripted varable's address.  Note that the array variable's 
+                          address points to the base of a 2 word descriptor (lower, upper bound). }
+                        operandStkValue[operandStkTop-1] := 
+                          operandStkValue[operandStkTop-1] +
+                          subscript + 2 * wordSize;  { size of 2 word descriptor }
+                      end
+                    else
+                      if operandStkLength[operandStkTop-1] = string then
+                        begin
+                          { Convert a byte offset to a string offset }
+                          subscript := subscript * stringSize;
+                          { Set the subscripted varable's address.  Note that the array variable's 
+                            address points to the base of a 2 word descriptor (lower, upper bound). }
+                          operandStkValue[operandStkTop-1] := 
+                            operandStkValue[operandStkTop-1] +
+                            subscript + 2 * stringSize;  { size of 2 word descriptor }
+                        end
                 end;
         end { OperandFoldManifestSubscript };
 

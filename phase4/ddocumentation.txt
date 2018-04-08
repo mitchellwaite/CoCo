@@ -86,6 +86,8 @@ CHECKLIST CODER.PT CHANGES
 
 3. Changed loops in tLiteralString and EmitX86StringLiteral to handle zero length strings correctly.
 
+4. Added string subscript scaling in OperandFoldManifestSubscript
+
 5. Removed all references and alternatives for tStringDescriptor and tSkipString. Also changed the Assert statements that reference tStringDescriptor to say tLiteralString instead.
 
 6. Removed the case alternative for oOperandPushChar. Changed case alternative for oOperandPushStringDescriptor to be oOperandPushString.
