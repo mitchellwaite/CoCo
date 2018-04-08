@@ -2918,8 +2918,6 @@ OperandAssignStringPopPop:
     @EmitStringDescriptor               %       lea u+4,%eax
     @OperandForceToStack                %       pushl   %eax
 
-    tTrapBegin
-    tTrap
     oOperandPushMode(mTrap)
     oOperandSetValue(trAssignString)
     oEmitSingle(iCall)                  %       call    pttrap101
