@@ -6,6 +6,25 @@
   oEmitSingle(iGlobl)
   oEmitProcLabel(mMainProc)
   oEmitNone(iEnter)
+  oEmitDouble(iMov)
+  oEmitDouble(iMov)
+  oEmitDouble(iMov)
+  oEmitDouble(iMov)
+  oEmitDouble(iMov)
+   oEmitSourceCoordinate
+      oEmitSingle(iPush)
+      oEmitSingle(iPush)
+      oEmitSingle(iPush)
+      oEmitSingle(iPush)
+       oEmitDouble(iLoada)
+      oEmitSingle(iPush)
+       oEmitDouble(iMov)
+      oEmitSingle(iPush)
+### Coder S/SL program failure:  syntax error in Tcode token stream
+### Coder assertion 7 failed: internal error in coder.pt (report to maintainer)
 
 Errors reported by compiler: 
-
+### Coder S/SL program failure:  syntax error in Tcode token stream
+    (semantic pass output stream does not match expected input stream)
+while processing line         14
+### Coder assertion 7 failed: internal error in coder.pt (report to maintainer)

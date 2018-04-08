@@ -34,9 +34,26 @@ CHECKLIST CODER.SSL CHANGES
    - Added handling for tLiteralString in @OperandPushExpression to be similar to handling of tSkipString.
    - Removed handling of tAssignChar and tSubscriptChar
 
+7. Add handling of string operations
+   - Added operand choices for tAssignString, tStoreParmString, tSubscriptString, tConcatenate, tSubstring, tLength, tChr, tOrd, and tStringEqual.
+   - Ensured all associated rule were updated as required. New rules can be seen in checklist item #10.
+   - Removed optimized rule @OperandChrAssignPopPop
+   - Removed optimized rule @OperandOrdAssignPopPop
+
 8. Added handling of string parameters in the Routine rule by replacing the EmitMove with the new OperandAssignStringPopPop rule.
 
 9.  Added subscripting of string arrays. Cloned OperandSubscriptIntegerPop and OperandSubscriptNonManifestIntegerPop rules for strings (and also OperandUncheckedSubscriptNonManifestStringPop and OperandUncheckedSubscriptNonManifestStringPop). Switched all word entries with string in the new cloned functions. 
+
+10. Add new string operation rules
+   - Added rules for:
+      - OperandAssignStringPopPop
+      - OperandConcatenatePop
+      - OperandSubstringPopPop
+      - OperandLength
+      - OperandChr
+      - OperandOrd
+      - OperandStringEqualPop
+   - All rules follow template code seen in Phase 4 documentation provided by the course instructor.
 
 ===================================================================================================================================
 CHECKLIST CODER.PT CHANGES
@@ -50,4 +67,10 @@ MISC. CHANGES
 
 3. Updated ptam.ssl to use String instead of Char for read and write operations.
 
+5. Removed all references and alternatives for tStringDescriptor and tSkipString. Also changed the Assert statements that reference tStringDescriptor to say tLiteralString instead.
+
+6. Removed the case alternative for oOperandPushChar. Changed case alternative for oOperandPushStringDescriptor to be oOperandPushString.
+
 7. Removed call to AssertTempsAreAllFree in oEmitMergeSourceCoordinate
+
+

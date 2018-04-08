@@ -6,6 +6,14 @@
   oEmitSingle(iGlobl)
   oEmitProcLabel(mMainProc)
   oEmitNone(iEnter)
+  oEmitDouble(iMov)
+  oEmitDouble(iMov)
+   oEmitMergeSourceCoordinate
+### S/SL program failure: Semantic choice failed
+### Coder assertion 8 failed: 
 
 Errors reported by compiler: 
-
+### S/SL program failure: Semantic choice failed
+while processing line          9
+Table index 4407;  Operation 11;  Argument 0
+### Coder assertion 8 failed: 

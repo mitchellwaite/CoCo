@@ -6,6 +6,12 @@
   oEmitSingle(iGlobl)
   oEmitProcLabel(mMainProc)
   oEmitNone(iEnter)
+  oEmitDouble(iMov)
+   oEmitSourceCoordinate
+     oEmitSingle(iPush)
+     oEmitNone(iData)
+     oEmitString
+     oEmitNone(iText)
 
 Errors reported by compiler: 
 

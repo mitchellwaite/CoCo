@@ -1445,6 +1445,12 @@ OperandPushExpression:
             oEmitNone(iText)                    %       .text
             oOperandPushStringDescriptor
             @EmitStringDescriptor               %       lea     sNNN, %T
+        | tConcatenate:
+            @OperandConcatenatePop
+        | tSubstring:
+            @OperandSubstringPopPop
+        | tStringEqual:
+            @OperandStringEqualPop
         | tNegate:
             @OperandNegate
         | tAdd:
@@ -1485,6 +1491,8 @@ OperandPushExpression:
         | tLE:
             @OperandGreaterPop
             @OperandNot
+        | tLength:
+            @OperandLength
         | tChr:
             @OperandChr
         | tOrd:
@@ -1942,12 +1950,18 @@ OperandPushExpressionAssignPopPop:
         | tAssignString:
             @OperandAssignStringPopPop
             >
-        | tConcatenate:
-            @OperandConcatenatePop
-            >
         | tAssignBoolean:
             @OperandAssignBooleanPopPop
             >
+        | tConcatenate:
+            @OperandConcatenatePop
+            >
+        | tSubstring:
+            @OperandSubstringPopPop
+            >
+        | tStringEqual:
+            @OperandStringEqualPop
+            > 
         | tNegate:
             [
                 | tAssignInteger:
@@ -2024,16 +2038,12 @@ OperandPushExpressionAssignPopPop:
         | tLE:
             @OperandGreaterPop
             @OperandNot
+        | tLength:
+            @OperandLength
         | tChr:
             @OperandChr
         | tOrd:
-            [
-                | tAssignInteger:
-                    @OperandOrdAssignPopPop
-                    >
-                | *:
-                    @OperandOrd
-            ]
+            @OperandOrd
         | tEoln:
             @OperandEolnFunction
         | tEOF:
@@ -2557,49 +2567,91 @@ OperandModPop:
     % finally, the result goes to a free temporary
     @OperandForceIntoTemp;              % ... %T
 
+OperandLength:
+    % Generate code to get the character length and leave the address of the 
+    % length result in the temporary register %X
+    @SaveTempRegsToStack
 
-OperandChrAssignPopPop:
-    % Assume operand's value is in range
-    % x := y;  x byte, y word
-    @OperandForceIntoTemp       %       movl    y, %T
-    oOperandSetLength(byte)     % (treat word in reg as byte to get
-                                %  the low order byte of the word)
-    oEmitDouble(iMov)           %       movb    %T, x
-    @OperandPopAndFreeTemp
-    @OperandPopAndFreeTemp;
+    @EmitStringDescriptor               %       lea     s1,%T
+    @OperandForceToStack                %       pushl   %T
+    tTrap
 
+    % Pop argument
+    oOperandPushMode(mStackReg)
+    oOperandSetLength(string)
+    oOperandPushMode(mManifest)
+    oOperandSetLength(string)
+    oOperandSetValue(four)
+    oEmitDouble(iAdd)                   %       addl    $4,%esp
+    oOperandPop
+    oOperandPop
+
+    % movl %eax,%esi
+    oOperandPushMode(mScratchReg1)      % ... %esi       
+    oOperandSetLength(string)
+    oOperandPushMode(mResultReg)        % ... %esi, %eax 
+    oOperandSetLength(string)
+    oEmitDouble(iMov)                   %       movl    %eax, %esi
+    oOperandPop                         % ... %esi
+
+    @RestoreTempRegsFromStack
+
+    oOperandPushMode(mScratchReg1)
+    oOperandSetLength(string)
+    @OperandForceIntoTemp       %       movl    $esi, %T (force result to temp)
+    ;
 
 OperandChr:
-    % Assume operand's value is in range
-    @OperandForceIntoTemp       
-    oOperandSetLength(byte);    % see comments above
+    % Takes integer i1, converts its value to a character 
+    % and returns the address of the string result in temporary 
+    % register %X
+    
+    @SaveTempRegsToStack
 
+    @OperandForceToStack                %       pushl   i1
 
-OperandOrdAssignPopPop:
-    % x := y;  x word, y byte
+    tTrap
+    oOperandPushTrap
+    oEmitSingle(iCall)                  %       call    pttrap102
+    oOperandPop
+
+    % Pop arguments
+    oOperandPushMode(mStackReg)
+    oOperandSetLength(string)             % JCC:unsure if these should all be word or string
     oOperandPushMode(mManifest)
-    oOperandSetValue(zero)
-    oOperandSetLength(word)
-    @OperandForceIntoTemp       %       movl    $0, %T
-    oOperandSetLength(byte)
-    oOperandSwap
-    oEmitDouble(iMov)           %       movb    y, %T
-    @OperandPopAndFreeTemp
-    oOperandSetLength(word)
-    oEmitDouble(iMov)           %       movl    %T, x
-    @OperandPopAndFreeTemp
-    @OperandPopAndFreeTemp;
+    oOperandSetLength(string)
+    oOperandSetValue(four)
+    oEmitDouble(iAdd)                   %       addl    $4,%esp
+    oOperandPop
+    oOperandPop
+    
+    % movl %eax,%esi
+    oOperandPushMode(mScratchReg1)      % ... %esi       
+    oOperandSetLength(string)
+    oOperandPushMode(mResultReg)        % ... %esi, %eax 
+    oOperandSetLength(string)
+    oEmitDouble(iMov)                   %       movl    %eax, %esi
+    oOperandPop                         % ... %esi
 
+    @RestoreTempRegsFromStack
+
+    oOperandPushMode(mScratchReg1)
+    oOperandSetLength(string)
+    @OperandForceIntoTemp       %       movl    $esi, %X (force result to temp)
+    ;   
 
 OperandOrd:
     % Byte operand is on top of operand stack
+    @EmitStringDescriptor               %       lea     s1,%T
+    
     oOperandPushMode(mManifest)
     oOperandSetValue(zero)
     oOperandSetLength(word)
-    @OperandForceIntoTemp       %       movl    $0, %T
-    oOperandSetLength(byte)
-    oOperandSwap
-    oEmitDouble(iMov)           %       movb    y, %T
+    @OperandForceIntoTemp       %       movl    $0, %X
+
+    oOperandSetMode(mTempIndirect)      % ... (%T)  
+    oOperandSetLength(byte)   
+    oEmitDouble(iMov)           %       movb    (%T), %X
     @OperandPopAndFreeTemp
     oOperandSetLength(word);
 
@@ -2765,7 +2817,7 @@ OperandNot:
     % Force the top operand to be a jump condition and invert the condition
     @OperandForceToJumpCondition
     oOperandComplementJumpCondition;
-
+               %       lea s1,%T
 
 OperandInfixOr:
     @OperandForceToJumpCondition
@@ -2814,9 +2866,9 @@ OperandAssignStringPopPop:
     % the left (second) operand and pop both operands.
     @SaveTempRegsToStack
 
-    oEmitDouble(iLoada)                 %       lea     s2,%T
+    @EmitStringDescriptor               %       lea s2,%T
     @OperandForceToStack                %       pushl   %T
-    oEmitDouble(iLoada)                 %       lea     s1,%T
+    @EmitStringDescriptor               %       lea s1,%T
     @OperandForceToStack                %       pushl   %T
 
     tTrap
@@ -2841,9 +2893,9 @@ OperandConcatenatePop:
     % string result of their concatenation in temporary register %X
     @SaveTempRegsToStack
 
-    oEmitDouble(iLoada)                 %       lea     s2,%T
+    @EmitStringDescriptor               %       lea     s2,%T
     @OperandForceToStack                %       pushl   %T
-    oEmitDouble(iLoada)                 %       lea     s1,%T
+    @EmitStringDescriptor               %       lea     s1,%T
     @OperandForceToStack                %       pushl   %T
 
     tTrap
@@ -2876,7 +2928,83 @@ OperandConcatenatePop:
     @OperandForceIntoTemp       %       movl    $esi, %T (force result to temp)
     ;
 
-   
+OperandSubstringPopPop:
+    @SaveTempRegsToStack
+
+    @OperandForceToStack                %       pushl   i2
+    @OperandForceToStack                %       pushl   i1
+
+    @EmitStringDescriptor               %       lea     s1,%T
+    @OperandForceToStack                %       pushl   %T
+
+    tTrap
+    oOperandPushTrap
+    oEmitSingle(iCall)                  %       call    pttrap104
+    oOperandPop
+
+    % Pop arguments
+    oOperandPushMode(mStackReg)
+    oOperandSetLength(string)
+    oOperandPushMode(mManifest)
+    oOperandSetLength(string)
+    oOperandSetValue(twelve)
+    oEmitDouble(iAdd)                   %       addl    $12,%esp
+    oOperandPop
+    oOperandPop
+    
+    % movl %eax,%esi
+    oOperandPushMode(mScratchReg1)      % ... %esi       
+    oOperandSetLength(string)
+    oOperandPushMode(mResultReg)        % ... %esi, %eax 
+    oOperandSetLength(string)
+    oEmitDouble(iMov)                   %       movl    %eax, %esi
+    oOperandPop                         % ... %esi
+
+    @RestoreTempRegsFromStack
+
+    oOperandPushMode(mScratchReg1)
+    oOperandSetLength(string)
+    @OperandForceIntoTemp       %       movl    $esi, %T (force result to temp)
+;     
+
+OperandStringEqualPop:
+    %Takes two strings s1 and s2 and returns a boolean result in temporary register %X
+    @SaveTempRegsToStack
+
+    @EmitStringDescriptor               %       lea     s2,%T
+    @OperandForceToStack                %       pushl   %T
+    @EmitStringDescriptor               %       lea     s1,%T
+    @OperandForceToStack                %       pushl   %T
+
+    tTrap
+    oOperandPushTrap
+    oEmitSingle(iCall)                  %       call    pttrap107
+    oOperandPop
+
+    % Pop arguments
+    oOperandPushMode(mStackReg)
+    oOperandSetLength(string)
+    oOperandPushMode(mManifest)
+    oOperandSetLength(string)
+    oOperandSetValue(eight)
+    oEmitDouble(iAdd)                   %       addl    $8,%esp
+    oOperandPop
+    oOperandPop
+    
+    % movl %eax,%esi
+    oOperandPushMode(mScratchReg1)      % ... %esi       
+    oOperandSetLength(string)
+    oOperandPushMode(mResultReg)        % ... %esi, %eax 
+    oOperandSetLength(string)
+    oEmitDouble(iMov)                   %       movl    %eax, %esi
+    oOperandPop                         % ... %esi
+
+    @RestoreTempRegsFromStack
+
+    oOperandPushMode(mScratchReg1)
+    oOperandSetLength(string)
+    @OperandForceIntoTemp       %       movl    $esi, %X (force result to temp)
+;
 
 OperandAssignBooleanPopPop:
     % Generate code to assign the right (top) operand's value to

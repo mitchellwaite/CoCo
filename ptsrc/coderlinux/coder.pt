@@ -747,7 +747,7 @@ program Coder (output, coderSsl, tCode, object, options);
                         assert27:
                             write ('compound token tCode is not tCallEnd in oOperandPushProcedure');
                         assert28:
-                            write ('compound token tCode is not tStringDescriptor in oOperandPushString');
+                            write ('compound token tCode is not tLiteralString in oOperandPushString');
                         assert29:
                             write ('less than two operands in operand stack in oOperandFoldManifestSubscript');
                         assert30:
@@ -1549,7 +1549,7 @@ program Coder (output, coderSsl, tCode, object, options);
     procedure OperandPushStringDescriptor;
         { Push an operand stack entry for the string descriptor }
         begin
-{            Assert ( (compoundToken = tStringDescriptor), assert28);}
+{            Assert ( (compoundToken = tLiteralString), assert28);}
             OperandPush (mString, compoundTokenValue, undefined, word);
         end { OperandPushStringDescriptor };
 
@@ -1824,8 +1824,8 @@ program Coder (output, coderSsl, tCode, object, options);
                     nextTCodeAddress := nextTCodeAddress + 1;
 
                     case compoundToken of
-{                        tLiteralAddress, tLiteralInteger, tLiteralChar,}
-{                        tLiteralBoolean, tStringDescriptor, tSkipString,}
+                        tLiteralAddress, tLiteralInteger, { tLiteralChar, }
+                        tLiteralBoolean,
                         tWhileTest, tWhileEnd, tRepeatTest, tCallEnd,
                         tLineNumber, tTrap, tIfThen, tIfMerge, tSkipProc,
                         tCaseSelect, tCaseMerge:
@@ -2212,12 +2212,6 @@ program Coder (output, coderSsl, tCode, object, options);
                             OperandPush (mManifest, compoundTokenValue, undefined, word)
                         end;
 
-{                    oOperandPushChar:
-                        begin
-                            Assert ( (compoundToken = tLiteralChar), assert19);
-                            OperandPush (mManifest, compoundTokenValue, undefined, byte)
-                        end;
-}
                     oOperandPushBoolean:
                         begin
                             Assert ( (compoundToken = tLiteralBoolean), assert20);
