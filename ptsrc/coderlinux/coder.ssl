@@ -2578,13 +2578,18 @@ OperandLength:
 
     @EmitStringDescriptor               %       lea     s1,%T
     @OperandForceToStack                %       pushl   %T
-    tTrap
+    @OperandPopAndFreeTemp
+
+    oOperandPushMode(mTrap)
+    oOperandSetValue(trLength)
+    oEmitSingle(iCall)
+    oOperandPop
 
     % Pop argument
     oOperandPushMode(mStackReg)
-    oOperandSetLength(string)
+    oOperandSetLength(word)
     oOperandPushMode(mManifest)
-    oOperandSetLength(string)
+    oOperandSetLength(word)
     oOperandSetValue(four)
     oEmitDouble(iAdd)                   %       addl    $4,%esp
     oOperandPop
@@ -2592,16 +2597,13 @@ OperandLength:
 
     % movl %eax,%esi
     oOperandPushMode(mScratchReg1)      % ... %esi       
-    oOperandSetLength(string)
+    oOperandSetLength(word)
     oOperandPushMode(mResultReg)        % ... %esi, %eax 
-    oOperandSetLength(string)
+    oOperandSetLength(word)
     oEmitDouble(iMov)                   %       movl    %eax, %esi
     oOperandPop                         % ... %esi
 
     @RestoreTempRegsFromStack
-
-    oOperandPushMode(mScratchReg1)
-    oOperandSetLength(string)
     @OperandForceIntoTemp       %       movl    $esi, %T (force result to temp)
     ;
 
