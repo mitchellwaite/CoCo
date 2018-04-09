@@ -1964,10 +1964,8 @@ OperandPushExpressionAssignPopPop:
             @OperandConcatenatePop
         | tSubstring:
             @OperandSubstringPopPop
-            >
         | tStringEqual:
-            @OperandStringEqualPop
-            > 
+            @OperandStringEqualPop 
         | tNegate:
             [
                 | tAssignInteger:
@@ -2944,22 +2942,28 @@ OperandConcatenatePop:
 OperandSubstringPopPop:
     @SaveTempRegsToStack
 
-    @OperandForceToStack                %       pushl   i2
-    @OperandForceToStack                %       pushl   i1
+    @OperandForceAddressIntoTemp
+    @OperandForceToStack
+    @OperandPopAndFreeTemp
+
+    @OperandForceAddressIntoTemp
+    @OperandForceToStack
+    @OperandPopAndFreeTemp
 
     @EmitStringDescriptor               %       lea     s1,%T
     @OperandForceToStack                %       pushl   %T
+    @OperandPopAndFreeTemp
 
-    tTrap
-    oOperandPushTrap
+    oOperandPushMode(mTrap)
+    oOperandSetValue(trSubstring)
     oEmitSingle(iCall)                  %       call    pttrap104
     oOperandPop
 
     % Pop arguments
     oOperandPushMode(mStackReg)
-    oOperandSetLength(string)
+    oOperandSetLength(word)
     oOperandPushMode(mManifest)
-    oOperandSetLength(string)
+    oOperandSetLength(word)
     oOperandSetValue(twelve)
     oEmitDouble(iAdd)                   %       addl    $12,%esp
     oOperandPop
@@ -2967,16 +2971,13 @@ OperandSubstringPopPop:
     
     % movl %eax,%esi
     oOperandPushMode(mScratchReg1)      % ... %esi       
-    oOperandSetLength(string)
+    oOperandSetLength(word)
     oOperandPushMode(mResultReg)        % ... %esi, %eax 
-    oOperandSetLength(string)
+    oOperandSetLength(word)
     oEmitDouble(iMov)                   %       movl    %eax, %esi
     oOperandPop                         % ... %esi
 
     @RestoreTempRegsFromStack
-
-    oOperandPushMode(mScratchReg1)
-    oOperandSetLength(string)
     @OperandForceIntoTemp       %       movl    $esi, %T (force result to temp)
 ;     
 

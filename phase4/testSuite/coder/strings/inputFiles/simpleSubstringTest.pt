@@ -1,0 +1,5 @@
+ext output
+
+var test : string
+test = "hello this is the Quby compiler"{15:31}
+print(test) # Should print "The Quby Compiler"
