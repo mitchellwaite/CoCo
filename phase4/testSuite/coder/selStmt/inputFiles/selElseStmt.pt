@@ -1,0 +1,10 @@
+ext output
+
+var a:integer
+a=2
+
+sel a:
+  is 1:
+  else:
+    print(a)
+end
