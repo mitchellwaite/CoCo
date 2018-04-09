@@ -1,0 +1,5 @@
+ext output
+
+var test : string
+test = "hello"
+print(test)

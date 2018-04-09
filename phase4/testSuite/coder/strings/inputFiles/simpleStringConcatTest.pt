@@ -1,0 +1,5 @@
+ext input, output
+
+var x : string
+x = "hello" + " I am quby!"
+print (x)
