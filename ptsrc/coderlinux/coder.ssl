@@ -2999,37 +2999,38 @@ OperandStringEqualPop:
 
     @EmitStringDescriptor               %       lea     s2,%T
     @OperandForceToStack                %       pushl   %T
+    @OperandPopAndFreeTemp   
+ 
     @EmitStringDescriptor               %       lea     s1,%T
     @OperandForceToStack                %       pushl   %T
+    @OperandPopAndFreeTemp
 
-    tTrap
-    oOperandPushTrap
-    oEmitSingle(iCall)                  %       call    pttrap107
+    oOperandPushMode(mTrap)
+    oOperandSetValue(trStringEqual)
+    oEmitSingle(iCall)                  %       call    pttrap103
     oOperandPop
 
     % Pop arguments
     oOperandPushMode(mStackReg)
-    oOperandSetLength(string)
+    oOperandSetLength(word)
     oOperandPushMode(mManifest)
-    oOperandSetLength(string)
+    oOperandSetLength(word)
     oOperandSetValue(eight)
     oEmitDouble(iAdd)                   %       addl    $8,%esp
     oOperandPop
     oOperandPop
-    
+ 
     % movl %eax,%esi
     oOperandPushMode(mScratchReg1)      % ... %esi       
-    oOperandSetLength(string)
+    oOperandSetLength(word)
     oOperandPushMode(mResultReg)        % ... %esi, %eax 
-    oOperandSetLength(string)
+    oOperandSetLength(word)
     oEmitDouble(iMov)                   %       movl    %eax, %esi
     oOperandPop                         % ... %esi
 
     @RestoreTempRegsFromStack
 
-    oOperandPushMode(mScratchReg1)
-    oOperandSetLength(string)
-    @OperandForceIntoTemp       %       movl    $esi, %X (force result to temp)
+    @OperandForceAddressIntoTemp    
 ;
 
 OperandAssignBooleanPopPop:

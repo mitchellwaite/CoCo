@@ -1,0 +1,21 @@
+ext output
+
+var test : string
+var other : string
+other = "not"
+test = "hello"
+
+if test == test:
+   print("test is equal to test") # Should print
+   nl
+end
+
+if test != other:
+   print("test is not equal to other") # Should print
+   nl
+end
+
+if test == other:
+   print("test is equal to other") # Shouldn't print
+   nl
+end

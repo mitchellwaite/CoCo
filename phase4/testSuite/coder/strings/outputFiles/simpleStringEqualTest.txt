@@ -1,0 +1,2 @@
+test is equal to test
+test is not equal to other
