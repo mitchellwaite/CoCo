@@ -2646,20 +2646,21 @@ OperandChr:
     ;   
 
 OperandOrd:
-    % Byte operand is on top of operand stack
-    @EmitStringDescriptor               %       lea     s1,%T
-    
-    oOperandPushMode(mManifest)
+    @OperandForceAddressIntoTemp    % ... lea s14,%eax (temp)
+    oOperandSetMode(mTempIndirect)  % ... memory(T)
+    oOperandSetLength(byte)         %     one char size
+
+    oOperandPushMode(mManifest)     %movl $0,%ebx (temp)
     oOperandSetValue(zero)
     oOperandSetLength(word)
-    @OperandForceIntoTemp       %       movl    $0, %X
+    @OperandForceIntoTemp
+    oOperandSetLength(byte)
 
-    oOperandSetMode(mTempIndirect)      % ... (%T)  
-    oOperandSetLength(byte)   
-    oEmitDouble(iMov)           %       movb    (%T), %X
+    oOperandSwap                    % swap operands 
+    oEmitDouble(iMov)               % movb  (%T), %X
     @OperandPopAndFreeTemp
-    oOperandSetLength(word);
-
+    oOperandSetLength(word)
+    ;
 
 OperandEolnFunction:
     % First save the temp registers, since we are called in an
