@@ -1,0 +1,5 @@
+ext output
+
+var test : string
+test = chr(97)
+print(test) # Should display "a"

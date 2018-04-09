@@ -2612,18 +2612,20 @@ OperandChr:
     
     @SaveTempRegsToStack
 
-    @OperandForceToStack                %       pushl   i1
+    @OperandForceAddressIntoTemp
+    @OperandForceToStack
+    @OperandPopAndFreeTemp
 
-    tTrap
-    oOperandPushTrap
+    oOperandPushMode(mTrap)
+    oOperandSetValue(trChrString)
     oEmitSingle(iCall)                  %       call    pttrap102
     oOperandPop
 
     % Pop arguments
     oOperandPushMode(mStackReg)
-    oOperandSetLength(string)             % JCC:unsure if these should all be word or string
+    oOperandSetLength(word)             % JCC:unsure if these should all be word or string
     oOperandPushMode(mManifest)
-    oOperandSetLength(string)
+    oOperandSetLength(word)
     oOperandSetValue(four)
     oEmitDouble(iAdd)                   %       addl    $4,%esp
     oOperandPop
@@ -2631,16 +2633,13 @@ OperandChr:
     
     % movl %eax,%esi
     oOperandPushMode(mScratchReg1)      % ... %esi       
-    oOperandSetLength(string)
+    oOperandSetLength(word)
     oOperandPushMode(mResultReg)        % ... %esi, %eax 
-    oOperandSetLength(string)
+    oOperandSetLength(word)
     oEmitDouble(iMov)                   %       movl    %eax, %esi
     oOperandPop                         % ... %esi
 
     @RestoreTempRegsFromStack
-
-    oOperandPushMode(mScratchReg1)
-    oOperandSetLength(string)
     @OperandForceIntoTemp       %       movl    $esi, %X (force result to temp)
     ;   
 
