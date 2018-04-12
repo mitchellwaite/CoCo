@@ -1,0 +1,7 @@
+ext input, output
+
+mod d
+  var b:integer
+  b=1
+  print(b)
+end
