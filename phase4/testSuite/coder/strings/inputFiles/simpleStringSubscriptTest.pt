@@ -1,0 +1,6 @@
+ext output
+
+var a: array[2..5] of string
+
+a[2] = "aaaaaaa"
+print(a[2]) nl

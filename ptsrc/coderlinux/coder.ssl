@@ -130,6 +130,7 @@ type Integer:
     two = 2
     four = 4
     eight = 8
+    ten = 10
     twelve = 12
 
     % Temporary registers
@@ -1593,6 +1594,7 @@ OperandSubscriptStringPop:
                     oOperandSwap
                     @OperandSubscriptNonManifestStringPop
             | *:
+                    oOperandSetLength(string)
                     oOperandSwap                % ... array, subscript
                     oOperandFoldManifestSubscript
                     oOperandPop                 % ... array[subscript]
@@ -1752,8 +1754,8 @@ OperandCheckedSubscriptNonManifestStringPop:
     % Scale subscript by string size              % ... arraydesc, %T
     oOperandPushMode(mManifest)
     oOperandSetLength(string)
-    oOperandSetValue(two)                       % ... arraydesc, %T, 2
-    oEmitDouble(iShl)                           %       shll    $2, %T
+    oOperandSetValue(ten)                       % ... arraydesc, %T, 10
+    oEmitDouble(iShl)                           %       shll    $10, %T
     oOperandPop                                 % ... arraydesc, %T
 
     % Add normalized and scaled subscript to array address
@@ -1902,8 +1904,8 @@ OperandUncheckedSubscriptNonManifestStringPop:
              @OperandForceIntoTemp               %       movl    subscript, %T
              oOperandPushMode(mManifest)
              oOperandSetLength(string)
-             oOperandSetValue(two)
-             oEmitDouble(iShl)                   %       shl     $2, %T
+             oOperandSetValue(ten)
+             oEmitDouble(iShl)                   %       shl     $10, %T
              oOperandPop
              oOperandSwap                        % ... %T, arraydesc
 
