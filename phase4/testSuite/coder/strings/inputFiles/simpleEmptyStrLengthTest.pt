@@ -1,0 +1,5 @@
+ext output
+
+var test : integer
+test = len("")
+print(test)
