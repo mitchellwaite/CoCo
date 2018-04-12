@@ -79,6 +79,8 @@ CHECKLIST CODER.SSL CHANGES
       - OperandStringEqualPop
    - All rules follow template code seen in Phase 4 documentation provided by the course instructor.
 
+11. Forced the address of the string to a temporary register(OperandForceAddresIntoTemp), forced the result to the stack (OperandForceToStack), then popped and free the temporary (OperandPopAndFreeTemp). The string result of a string trap routine is returned as the address of the result in the result register. To represent that, the result register (mResultReg) was pushed on the Operand Stack and generated code to copy it into a scratch register (mScratchReg1) before restoring the temporary registers (RestoreTempRegsFromStack). Then forced the scratch register to a temporary register (OperandForceIntoTemp).
+
 12. Added alternativer for mString in OperandForceIntoTemp that call OperandForceAssressIntoTemp. Allows OperandForceIntoTemp must be modified to allow size string as well as word.
 
 13. Modifed the PT WhileStmt in coder.ssl to work as Quby repStmt. Removed the RepeatStmt rule and all its calls. Added tWhileOnBreak in coder.pt to do nothing.
