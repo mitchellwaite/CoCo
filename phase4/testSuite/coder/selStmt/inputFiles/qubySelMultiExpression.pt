@@ -1,0 +1,11 @@
+ext input, output
+var i:integer
+var x:integer
+var y:integer
+
+sel i:
+   is 42,2,4,5:
+      print ("multi case valid") 
+   else:
+      print ("none of the above cases were valid")
+end

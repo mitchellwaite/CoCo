@@ -1,0 +1,12 @@
+ext input, output
+var i:integer
+var x:integer
+
+sel i:
+   is 42:
+     print ("42")
+   #else:
+   #  print ("something") 
+end
+
+#print ("No statements were true.")

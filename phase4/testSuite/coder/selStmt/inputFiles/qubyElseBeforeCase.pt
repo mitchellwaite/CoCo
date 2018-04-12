@@ -1,0 +1,13 @@
+ext input, output
+var i:integer
+var x:integer
+var y:integer
+
+sel i:
+   is 42:
+      print("42")
+   else:
+      print("not 42")
+   is 43:
+      x = 2
+end

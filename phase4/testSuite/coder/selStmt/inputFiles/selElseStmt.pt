@@ -4,7 +4,7 @@ var a:integer
 a=2
 
 sel a:
-  is 1:
+  is 3:
   else:
-    print(a)
+    print ("3 was not true")
 end

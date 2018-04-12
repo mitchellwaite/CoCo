@@ -1,0 +1,17 @@
+ext input, output
+var i:integer
+var x:integer
+var y:integer
+
+sel i:
+   is 42:
+     print ("42") 
+   is 43:
+     print ("43")
+   is 24:
+     print ("24")
+   is 2:
+     print ("2")
+   else:
+     print ("none of the above")
+end
