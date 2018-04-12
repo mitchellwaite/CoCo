@@ -1,0 +1,7 @@
+ext input,output
+
+var x : string
+x = ""
+x = x + "I used to be empty!"
+
+print(x) nl

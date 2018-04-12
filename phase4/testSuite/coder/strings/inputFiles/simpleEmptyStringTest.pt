@@ -1,0 +1,5 @@
+ext input, output
+
+var x : string
+x = ""
+print(x) ln
