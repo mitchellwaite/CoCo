@@ -1,9 +1,7 @@
 qubySimpleSel.pt
-Test case to ensure Quby's new "sel" statement produces the proper t-code in Quby's semantic pahse.
 Specifically this test *includes* the new "else" block which is optional in the Quby "sel" statement.
 
 qubySimpleSelNoElse.pt
-Test case to ensure Quby's new "sel" statement is accepted by the Quby semantic phase.
 Specifically this test *omits* the new "else" block which is optional in the Quby "sel" statement.
 
 qubySelMultiExpression.pt
