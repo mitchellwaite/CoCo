@@ -1,0 +1,26 @@
+moduleSimple.pt
+Test case to test a simple Quby modules block with only one declaration and one statement.
+A print statement in the module is used to test for valid output.
+Output should be:
+1
+
+moduleEmpty.pt
+Test case to test an empty Quby modules block.
+A print statement after the empty module is used to test for valid output.
+Output should be:
+1
+
+moduleNested.pt
+Test case to test nested Quby modules blocks.
+A print statement within the inner of the two nested modules is used to test for valid output.
+Output should be:
+1
+
+moduleMultiple.pt
+Test case to test multiple Quby module blocks.
+A print statement within each of the two modules is used to test for valid output.
+Output should be:
+1
+2
+
+For all tests, see expectedOutputFiles directory for expected outputs.

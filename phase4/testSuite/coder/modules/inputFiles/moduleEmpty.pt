@@ -1,0 +1,9 @@
+ext input, output
+
+var i: integer
+
+mod a
+end
+
+i=1
+print(i)

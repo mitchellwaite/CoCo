@@ -1,0 +1,9 @@
+ext input, output
+
+mod a
+  mod b
+    var i: integer
+    i=1
+    print(i)
+  end
+end
