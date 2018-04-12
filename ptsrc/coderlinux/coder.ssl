@@ -2885,6 +2885,15 @@ OperandAssignIntegerPopPop:
     ];
 
 
+OperandAssignCharPopPop:
+    % Generate code to assign the right (top) operand's value to
+    % the left (second) operand and pop both operands.
+
+    oOperandSetLength(byte)
+    @EmitMove                   %       movb    y, x
+    @OperandPopAndFreeTemp
+    @OperandPopAndFreeTemp;    
+
 OperandAssignStringPopPop:
     % Generate code to assign the right (top) operand's value to
     % the left (second) operand and pop both operands.
@@ -3046,7 +3055,7 @@ OperandAssignBooleanPopPop:
     % the left (second) operand and pop both operands.
 
     @OperandConvertJumpConditionToData
-    @OperandAssignStringPopPop;
+    @OperandAssignCharPopPop;
 
 
 OperandPopAndFreeTemp:
