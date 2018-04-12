@@ -1,4 +1,11 @@
-ext input
+ext input, output
+var x : integer
 
-def test(var a: string, var b: string)
+def test(var a:integer, y:string, z:string)
+    print(a)
+    print(y)
+    print(z)
 end
+
+x = 3
+test(x, " parameters", " were passed")

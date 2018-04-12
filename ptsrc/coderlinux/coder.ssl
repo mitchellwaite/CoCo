@@ -762,10 +762,6 @@ Block:
             @ReadProc
         | tTrapBegin:
             @TrapStmt
-        | *:
-            >
-    ]}
-    [
         | tSkipProc:
             % Branch around procedure definitions.
             oEmitUnconditionalForwardBranch
@@ -781,8 +777,11 @@ Block:
 
             oFixForwardBranch   % Branch around procedure defn's
             oFixPopAddress
+
         | *:
-    ];
+            >
+    ]}
+    ;
 
 
 Routine:
@@ -812,18 +811,25 @@ Routine:
                     oOperandPushCopy            % ... formal, 8(%ebp), 8(%ebp)
                     oOperandSwapLeftAndDest     % ... 8(%ebp), formal, 8(%ebp)
                     oOperandSetLength(word)
-                    @OperandAssignStringPopPop  % Add handling of string parameters
+                    @EmitMove                   %     movl    8(%ebp),formal
                     @OperandPopAndFreeTemp      % ... 8(%ebp), formal
                     @OperandPopAndFreeTemp      % ... 8(%ebp)
-
-                | tStoreParmString, tStoreParmBoolean:
+                | tStoreParmBoolean:
                     oOperandSwap                % ... formal, 8(%ebp)
                     oOperandPushCopy            % ... formal, 8(%ebp), 8(%ebp)
                     oOperandSwapLeftAndDest     % ... 8(%ebp), formal, 8(%ebp)
                     oOperandSetLength(byte)
-                    @OperandAssignStringPopPop  % Add handling of string parameters
+                    @EmitMove                   %     movl    8(%ebp),formal
                     @OperandPopAndFreeTemp      % ... 8(%ebp), formal
                     @OperandPopAndFreeTemp      % ... 8(%ebp)
+                | tStoreParmString:
+                    oOperandSwap                % ... formal, 8(%ebp)
+                    oOperandPushCopy            % ... formal, 8(%ebp), 8(%ebp)
+                    oOperandSwapLeftAndDest     % ... 8(%ebp), formal, 8(%ebp)
+                    oOperandSetLength(string)
+                    @OperandAssignStringPopPop  % Add handling of string parameters
+                    %@OperandPopAndFreeTemp      % ... 8(%ebp), formal
+                    %@OperandPopAndFreeTemp      % ... 8(%ebp)
                 | tParmEnd:       
                     >
             ]}

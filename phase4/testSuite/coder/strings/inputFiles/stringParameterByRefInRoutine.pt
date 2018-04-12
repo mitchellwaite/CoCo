@@ -1,11 +1,13 @@
 ext input, output
 var x : string
+var y : string
 
-def P(x:string,y:string)
+def P(x:string,var y:string)
      print(x)
      nl
      print(y)
 end
 
 x = "this is a test"
-P(x,"Second parameter also works")
+y = "this is by reference"
+P(x,y)
