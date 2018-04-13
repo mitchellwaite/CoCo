@@ -110,5 +110,4 @@ MISC. CHANGES
 
 3. Updated ptam.ssl to use String instead of Char for read and write operations.
 
-
-
+4. Updated testing script to capture stdout and stderr from ptc and check for errors
