@@ -200,12 +200,15 @@ seed = 13277
 multiplier = 17
 
 # Get the number of customers in the database N and the number of random lookups to try M 
-print ("Enter N (number of elements, at most 1000, e.g. 100): ")
-get (N) 
-print ("Enter M (number of lookups, e.g. 1000): ")
-get (M) 
-print ("Enter a prime number (e.g. 13, 19, 51, ...): ")
-get (multiplier) 
+#print ("Enter N (number of elements, at most 1000, e.g. 100): ")
+#get (N) 
+N=100
+#print ("Enter M (number of lookups, e.g. 1000): ")
+#get (M) 
+M=1000
+#print ("Enter a prime number (e.g. 13, 19, 51, ...): ")
+#get (multiplier) 
+multiplier=13
 
 initialize
 

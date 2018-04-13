@@ -4,7 +4,8 @@ var word : string
 
 print ("Anything you can say, I can say twice (end with 'bye'):") nl
 rep
-    get (word)
+#    get (word)
+    word = "bye"
     print (word + " " + word) nl
     on word == "bye" : break
     getnl 

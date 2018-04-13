@@ -7,7 +7,8 @@ var root : string
 
 rep
     print("Please give me a regular French 'er' verb (end with 'arreter')") nl
-    get (infinitive)
+    #get (infinitive)
+    infinitive = "arreter"
     nl
 
     print ("Thanks, here is the present conjugation") nl

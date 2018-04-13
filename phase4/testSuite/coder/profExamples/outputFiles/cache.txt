@@ -1,0 +1,9 @@
+
+Linear lookup
+N = 100  Average compares per search (Cavg) == 51
+
+Linear lookup with cache
+N = 100  Average compares per search (Cavg) == 51
+
+Binary search
+N = 100  Average compares per search (Cavg) == 12

@@ -16,10 +16,16 @@ var i: integer
 var j : integer
 
 # Ask for size and number of boxes to draw
-print ("enter box width and height: ")
-get (width, height)
-print ("enter number of boxes across and down: ")
-get (Nacross, Ndown)
+#print ("enter box width and height: ")
+
+#get (width, height)
+width=2
+height=3
+
+#print ("enter number of boxes across and down: ")
+#get (Nacross, Ndown)
+Nacross=4
+Ndown=2
 
 # Add 1 for boundaries 
 width += 1; height += 1

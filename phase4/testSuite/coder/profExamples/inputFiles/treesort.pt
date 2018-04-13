@@ -12,6 +12,7 @@ var root : treeReference
 var treeleft : array [0 .. maxTreeElements] of treeReference
 var treeright : array [0 .. maxTreeElements] of treeReference
 var treeval : array [0 .. maxTreeElements] of integer
+var sample : array [ 0 .. 5] of integer
 
 # Keep track of next free node
 var avail : integer
@@ -88,7 +89,12 @@ end
 # Main program  
 var s : integer
 var i : integer
-
+sample [0] = 67
+sample [1] = 103
+sample [2] = 57
+sample [3] = 91
+sample [4] = 32
+sample [5] = 0
 # Initialization 
 i = 1
 rep
@@ -105,9 +111,11 @@ root = nilPointer
 # Get integers to be sorted and insert them in the binary tree
 print ("Type in some integers, please, ending with 0")
 nl
-
+i = 0
 rep
-    get (s)
+    #get (s)
+    s = sample[i]
+    i += 1
     if s != 0 :
         Insert (s)
     end

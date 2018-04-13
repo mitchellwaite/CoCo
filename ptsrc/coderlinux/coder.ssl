@@ -748,6 +748,8 @@ Block:
             oOperandPop                         % ...
         | tAssignBegin:
             @AssignStmt
+        | tCallBegin:
+            @CallStmt
         | tIfBegin:
             @IfStmt
         | tWhileBegin:
