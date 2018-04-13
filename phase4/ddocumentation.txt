@@ -4,7 +4,7 @@ Team Members : Clara Fu, Parv Mital, Johan Cornelissen, Mitchell Waite
 Group: cisc458n 
 
 ==================================================================================================================================
-<Insert summary of phase>
+The goal of these modifications is to convert the Code Generator of the PT Pascal compiler into the Code Generator for Quby. A detailed listing of all the changes made are listed below. They follow the order of the checklist provided in the assignment documentation, adjusted where applicable.
 
 ==================================================================================================================================
 CHANGES TO THE QUBY SEMANTIC PHASE SINCE PHASE 3 SUBMISSION
@@ -30,12 +30,7 @@ CHANGES TO THE QUBY SEMANTIC PHASE SINCE PHASE 3 SUBMISSION
 
 5. Removed error messages in CompareRelationalOperandTypes for tpString
 
-6. Updated oAllocateVariable to include size := size * stringSize if it is a string
-
-
-===================================================================================================================================
-NON-CHECKLIST CODER.SSL CHANGES
-
+6. Updated oAllocateVariable in semantic.pt to include size := size * stringSize if it is a string
 
 ====================================================================================================================================
 CHECKLIST CODER.SSL CHANGES
@@ -82,7 +77,9 @@ CHECKLIST CODER.SSL CHANGES
 
 12. Added alternativer for mString in OperandForceIntoTemp that call OperandForceAssressIntoTemp. Allows OperandForceIntoTemp must be modified to allow size string as well as word.
 
-13. Modifed the PT WhileStmt in coder.ssl to work as Quby repStmt. Removed the RepeatStmt rule and all its calls. Added tWhileOnBreak in coder.pt to do nothing.
+13. Modified the PT WhileStmt in coder.ssl to work as Quby repStmt. Removed the RepeatStmt rule and all its calls. Added tWhileOnBreak in coder.pt to do nothing.
+
+14. Modified EmitDefaultCaseAbort rule that now checks for an else clause before emitting the trap call. If it is an else clause, it skips the trap call and pretends that it's a case variant. 
 
 ===================================================================================================================================
 CHECKLIST CODER.PT CHANGES
@@ -106,8 +103,4 @@ MISC. CHANGES
 
 1. Updated Quby run-time monitor with ptruntime.c from /cas/course/cisc458/quby/ptruntimelinux. Used the “make” command to make and install the Quby traps and string routines in our new Quby compiler.
 
-2. Updated ptam.ssl with new output and trap codes from semantic.ssl.
-
-3. Updated ptam.ssl to use String instead of Char for read and write operations.
-
-4. Updated testing script to capture stdout and stderr from ptc and check for errors
+2. Updated testing script to capture stdout and stderr from ptc and check for errors
