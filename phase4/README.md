@@ -5,8 +5,12 @@ Phase 4 of the CISC/CMPE 458 project outlines changes to the code generator of t
 ### Main documentation file:
 ./ddocumentation.txt
 ### A documentation file can also be found for each test case in the corresponding test suite directories. The files have been listed below for convenience.
-<Put test case documentation locations here>
-                                                        
+testStuite/repStmt/repStatementTestCaseDocumentation.txt
+testStuite/profExamples/profExamplesTestCaseDocumentation.txt
+testStuite/modules/modulesTestCaseDocumentation.txt
+testStuite/selStmt/selStatementTestCaseDocumentation.txt
+testStuite/strings/stringsTestCaseDocumentation.txt
+
 ## Directory structure
 * phase4
    * ptsrc/ (complete source code including code generator, semantic phase, parser, and scanner/screener changes)
