@@ -24,73 +24,73 @@ Choose a player (e for E.O.Thorp, j for Jim, p for Pooja, q to quit):
 E.O.Thorp plays this time.
 
 New game.
-The initial deal gives E.O. Thorp :    
-  and the dealer :    .
-E.O. Thorp takes a card and now has       
-E.O. Thorp takes a card and now has         
-E.O. Thorp takes a card and now has           
+The initial deal gives E.O. Thorp : 2 A
+  and the dealer : 9 J.
+E.O. Thorp takes a card and now has  2 A 2
+E.O. Thorp takes a card and now has  2 A 2 J
+E.O. Thorp takes a card and now has  2 A 2 J 6
 E.O. Thorp calls blackjack.
 E.O. Thorp stands with 21.
 
 New game.
-The initial deal gives E.O. Thorp :    
-  and the dealer :    .
-E.O. Thorp takes a card and now has       
+The initial deal gives E.O. Thorp : 8 4
+  and the dealer : 2 K.
+E.O. Thorp takes a card and now has  8 4 7
 E.O. Thorp stands with 19.
-Dealer takes a card and now has       
+Dealer takes a card and now has  2 K 5
 Dealer stands with 17.
 E.O. Thorp wins.
 
 New game.
-The initial deal gives E.O. Thorp :    
-  and the dealer :    .
-E.O. Thorp takes a card and now has       
-E.O. Thorp takes a card and now has         
+The initial deal gives E.O. Thorp : 2 8
+  and the dealer : A J.
+E.O. Thorp takes a card and now has  2 8 5
+E.O. Thorp takes a card and now has  2 8 5 4
 E.O. Thorp stands with 19.
 Dealer calls blackjack.
 Dealer stands with 21.
 House wins.
 
 New game.
-The initial deal gives E.O. Thorp :    
-  and the dealer :    .
-E.O. Thorp takes a card and now has       
+The initial deal gives E.O. Thorp : 7 8
+  and the dealer : 8 K.
+E.O. Thorp takes a card and now has  7 8 J
 E.O. Thorp goes bust.
 E.O. Thorp stands with 25.
 
 New game.
-The initial deal gives E.O. Thorp :    
-  and the dealer :    .
-E.O. Thorp takes a card and now has       
-E.O. Thorp takes a card and now has         
+The initial deal gives E.O. Thorp : 7 A
+  and the dealer : K Q.
+E.O. Thorp takes a card and now has  7 A 6
+E.O. Thorp takes a card and now has  7 A 6 6
 E.O. Thorp stands with 20.
 Dealer stands with 20.
 Tie game.
 
 New game.
-The initial deal gives E.O. Thorp :    
-  and the dealer :    .
+The initial deal gives E.O. Thorp : 7 10
+  and the dealer : K 6.
 E.O. Thorp stands with 17.
-Dealer takes a card and now has       
+Dealer takes a card and now has  K 6 4
 Dealer stands with 20.
 House wins.
 
 New game.
-The initial deal gives E.O. Thorp :    
-  and the dealer :    .
-E.O. Thorp takes a card and now has       
+The initial deal gives E.O. Thorp : A 5
+  and the dealer : 3 10.
+E.O. Thorp takes a card and now has  A 5 10
 E.O. Thorp stands with 16.
-Dealer takes a card and now has       
-Dealer takes a card and now has         
+Dealer takes a card and now has  3 10 3
+Dealer takes a card and now has  3 10 3 Q
 Dealer goes bust.
 Dealer stands with 26.
 House wins.
 
 New game.
-The initial deal gives E.O. Thorp :    
-  and the dealer :    .
+The initial deal gives E.O. Thorp : Q 9
+  and the dealer : 4 10.
 E.O. Thorp stands with 19.
-Dealer takes a card and now has       
+Dealer takes a card and now has  4 10 3
 Dealer stands with 17.
 E.O. Thorp wins.
 
