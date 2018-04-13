@@ -9,11 +9,18 @@ Phase 4 of the CISC/CMPE 458 project outlines changes to the code generator of t
                                                         
 ## Directory structure
 * phase4
-   * ptsrc/ (complete source code including semantic changes)
+   * ptsrc/ (complete source code including code generator, semantic phase, parser, and scanner/screener changes)
    * README.MD (this file)
    * ddocumentation.txt (main documentation file)
    * testSuite/
-		* semantic (Automated test suite for testing Quby semantic phase)
+		* coder (Automated test suite for testing Quby semantic phase)
+			* modules/ (test suite for Quby's new 'mod' block)
+			* profExamples/ (test suite with full Quby programs for testing)
+			* repStmt/ (test suite for Quby's new 'rep' block)
+			* selStmt/ (test suite for Quby's new 'sel' block)
+			* strings/ (test suite for Quby's string declarations/assignments/operations)
+			* TestAll (Script used to run and verify all code generator related tests)
+		* semantic (Regression test suite for testing Quby semantic phase)
 			* declarations/ (test suite for declaration changes)
 			* ifStatement/ (test suite for 'if'/'elif'/'else' statement related changes)
 			* inputOutput/ (test suite for input/output related changes)
@@ -46,7 +53,10 @@ Phase 4 of the CISC/CMPE 458 project outlines changes to the code generator of t
 			* TestAll (Script used to run and verify all scanner/screener related tests)
 
 ## How to run tests
-### Semantic Phase Automated Test Suite
+### Code Generator Automated Test Suite
+To run all of the code generator related test cases (encompassing the 5 test suites seen above), simply run the bash script provided in the coder testSuite directory (**testSuite/coder/TestAll**). This script will both **run** all of the tests using the input files provided (testSuite/coder/\*/inputFiles) and place the outputs into "testSuite/coder/\*/outputFiles" and also **verify** the output files against the expected output in "testSuite/coder/\*/expectedOutputFiles.
+An output file containing the console output (print statements) as well as .compile and .error files are created for each test and compared to the exprected output. The .compile test has the stdout of the compiler, and .error contains the error stream provided by the compiler. In this was even error cases can be tested using the test suites.
+### Semantic Phase Automated Regression Test Suite
 To run all of the semantic related test cases (encompassing the 9 test suites seen above), simply run the bash script provided in the semantic testSuite directory (**testSuite/semantic/TestAll**). This script will both **run** all of the tests using the input files provided (testSuite/semantic/\*/inputFiles) and place the outputs into "testSuite/semantic/\*/outputFiles" and also **verify** the output files against the expected output in "testSuite/semantic/\*/expectedOutputFiles.
 Ssltrace was used with the "-e" output token mode to show the t-code outputted by the parser in a condensed human readable form.
 The output file for each test contains the ssltrace output as well as any error messages provided by the compiler (by appending output of "ptc -L ../lib/pt filename.pt").
