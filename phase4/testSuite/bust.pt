@@ -40,7 +40,7 @@ var deck : array [1 .. 52] of integer
 var nextcard : integer
 
 # alphanumeric card names 
-var cardnames : array [1 .. 15] of string
+var cardnames : array [1 .. 13] of string
 
 # random seed 
 var seed : integer
@@ -139,8 +139,7 @@ def somebodyplays (var r : boolean)
     print ("New shuffle.") nl
     nl
     print ("Choose a player (e for E.O.Thorp, j for Jim, p for Pooja, q to quit): ")
-    #get (playersname) getnl
-    playersname = "q"
+    get (playersname) getnl
 
     if playersname == "q" :
         r = false
@@ -148,7 +147,6 @@ def somebodyplays (var r : boolean)
         if playersname != "e" :
             print ("What does s/he stand on? ")
             get (joenaivesguts) getnl 
-            
             rep
                 on (joenaivesguts > 0) and (joenaivesguts < 21) : break
                 print ("(1..20): ")

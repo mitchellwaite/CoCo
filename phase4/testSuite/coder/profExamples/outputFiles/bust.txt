@@ -1,0 +1,23 @@
+This program simulates the game of blackjack.
+
+The dealer plays the compulsory strategy of standing on 17 or better.
+
+The player plays either
+  [1] The standard naive strategy of standing on n or better, or
+  [2] A simplified version of the strategy described by  E.O.Thorp
+      in his book "Beat the Dealer" (Vintage Books, 1966) pp. 20-21.
+
+Input :
+  For each shuffle, a player name (character string of <= 20 characters),
+  and if (the player name specified is not "E.O.Thorp", the count [n]
+  on which the player stands.
+
+If the player name specified is "E.O.Thorp", the player strategy used will be Thorp's.
+Otherwise, the player will use the standard stop on count > n strategy.
+
+The program will simulate one complete shuffle of play for each player.
+
+
+New shuffle.
+
+Choose a player (e for E.O.Thorp, j for Jim, p for Pooja, q to quit): 

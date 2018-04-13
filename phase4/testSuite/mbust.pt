@@ -168,8 +168,8 @@ def somebodyplays (var r : boolean)
     print ("New shuffle.") nl
     nl
     print ("Choose a player (e for E.O.Thorp, j for Jim, p for Pooja, q to quit): ")
-    #get (playersname) getnl
-    playersname = "e"
+    get (playersname) getnl
+
     if playersname == "q" :
         r = false
     else :
@@ -205,56 +205,6 @@ def somebodyplays (var r : boolean)
         r = true
     end
 end #somebodyplays 
-
-
-def somebodyquits (var r : boolean)
-     # returns true if (there is another shuffle to
-     # be played (i.e. if (another player name is
-     # input), false otherwise initializes new shuffle
-     gamesplayed = 0
-     gamesplayerwon = 0
-     gamesdealerwon = 0
-     nl nl
-     print ("New shuffle.") nl
-     nl
-     print ("Choose a player (e for E.O.Thorp, j for Jim, p for Pooja, q to quit): ")
-     #get (playersname) getnl
-     playersname = "q"
-     if playersname == "q" :
-         r = false
-     else :
-         if playersname != "e" :
-             print ("What does s/he stand on? ")
-             get (joenaivesguts) getnl
-             rep
-                 on (joenaivesguts > 0) and (joenaivesguts < 21) : break
-                 print ("(1..20): ")
-                 get (joenaivesguts) getnl
-             end
-         end
-
-         if playersname == "e" :
-             nl
-             print ("E.O.Thorp plays this time.") nl
-         else :
-             nl
-             print ("Next player is ")
-             printplayersname
-             print (".") nl
-             print ("S/he stops at ", joenaivesguts:1, ".") nl
-
-             if joenaivesguts < 15 :
-                 print ("(What a hamburger!)") nl
-             else :
-                 print ("Good luck, ")
-                 printplayersname
-                 print (".") nl
-             end
-         end
-
-         r = true
-     end
- end #somebodyquits
 
 
 def playing (var r : boolean)
@@ -562,5 +512,4 @@ rep
     end
 
     somebodyplays (continue)
-    somebodyquits (continue)
 end

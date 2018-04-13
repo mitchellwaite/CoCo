@@ -1587,6 +1587,26 @@ OperandSubscriptIntegerPop:
     ]
     oOperandSetLength(word);
 
+OperandSubscriptCharPop:
+    % similar to above
+    [ oOperandChooseMode
+        | mManifest:
+            oOperandSwap
+            [ oOperandChooseMode
+                | mTempIndirect:
+                    oOperandSwap
+                    @OperandSubscriptNonManifestCharPop
+                | *:
+                    % tell the folder we are working on bytes
+                    oOperandSetLength(byte)     
+                    oOperandSwap
+                    oOperandFoldManifestSubscript
+                    oOperandPop
+            ]
+        | *:
+            @OperandSubscriptNonManifestCharPop
+    ]
+    oOperandSetLength(byte);
 
 OperandSubscriptStringPop:
     % if the subscript is manifest fold it out, 
@@ -1612,7 +1632,7 @@ OperandSubscriptStringPop:
 
 
 OperandSubscriptBooleanPop:
-    @OperandSubscriptStringPop;
+    @OperandSubscriptCharPop;
 
 
 OperandSubscriptNonManifestIntegerPop:
@@ -1630,6 +1650,14 @@ OperandSubscriptNonManifestStringPop:
          | *:
              @OperandUncheckedSubscriptNonManifestStringPop
      ];
+
+OperandSubscriptNonManifestCharPop:
+    [ oOptionTestChecking
+        | yes:
+            @OperandCheckedSubscriptNonManifestCharPop
+        | *:
+            @OperandUncheckedSubscriptNonManifestCharPop
+    ];
 
 
 OperandCheckedSubscriptNonManifestIntegerPop:
@@ -1794,6 +1822,122 @@ OperandCheckedSubscriptNonManifestStringPop:
     % Result element address is in %T
     oOperandSetMode(mTempIndirect)              % ... (%T)
     oOperandSetLength(string);
+
+OperandCheckedSubscriptNonManifestCharPop:
+    % Default bounds checking subscript operation
+
+    % Get subscript                             % ... arraydesc, subscript
+    @OperandForceIntoTemp                       % ... arraydesc, %T
+
+    % Check range if checking, otherwise don't bother
+    [ oOptionTestChecking
+        | yes:
+            oOperandSwap                        % ... %T, arraydesc
+            @OperandPushArrayUpperBound         % ... %T, arraydesc, upper
+            oOperandSwapLeftAndDest             % ... arraydesc, %T, upper
+            @EmitCmp                            %       cmpl    upper, %T
+            oOperandPushJumpCondition(iJle)     % if subscript <= upper 
+            oEmitConditionalForwardBranch       %       jle     fNN
+            oFixPushLastAddress
+            oOperandPop                         % ... arraydesc, %T, upper
+            oOperandPop                         % ... arraydesc, %T
+
+            oOperandSwap                        % ... %T, arraydesc
+            @OperandPushArrayLowerBound         % ... %T, arraydesc, lower
+            oOperandSwapLeftAndDest             % ... arraydesc, %T, lower
+            @EmitCmp                            %       cmpl    lower, %T
+            oOperandPushJumpCondition(iJge)     % if subscript >= lower 
+            oEmitConditionalForwardBranch       %       jge     fMM
+            oFixPushLastAddress
+            oOperandPop                         % ... arraydesc, %T, lower
+            oOperandPop                         % ... arraydesc, %T
+
+            @EmitSubscriptAbort                 %       call    subscriptAbort
+            oFixForwardBranch                   % fMM:
+            oFixPopAddress
+            oFixForwardBranch                   % fNM:
+            oFixPopAddress
+        | *:
+    ]
+
+    % Normalize subscript                       % ... arraydesc, %T
+    oOperandSwap                                % ... %T, arraydesc
+    @OperandPushArrayLowerBound                 % ... %T, arraydesc, lower
+    oOperandSwapLeftAndDest                     % ... arraydesc, %T, lower
+    @OperandSubtractPop                         %       subl lower, %T
+
+    % Add normalized subscript to array address
+    oOperandSwap                                % ... %T, arraydesc
+    [ oOperandChooseMode
+        | mStatic:
+            % Optimize by folding array offset into array descriptor address 
+            oOperandPushMode(mManifest)
+            oOperandSetLength(word)
+            oOperandSetValue(eight)
+            oOperandAddManifestValues           % ... %T, arraydesc+8, 8
+            oOperandPop                         % ... %T, arraydesc+8
+            @OperandForceAddressIntoTemp        %       mov     $arraydesc+8, %T2
+                                                % ... %T, %T2
+            % Add array address to normalized and scaled subscript
+            oEmitDouble(iAdd)                   %       addl    %T2, %T
+            @OperandPopAndFreeTemp              % ... %T
+        | *:
+            % Can't optimize
+            @OperandForceAddressIntoTemp        % ... %T, %T2
+            oOperandPushMode(mManifest)
+            oOperandSetLength(word)
+            oOperandSetValue(eight)             % ... %T, %T2, 8
+            oEmitDouble(iAdd)                   %       addl    $8, %T2
+            oOperandPop                         % ... %T, %T2
+            oEmitDouble(iAdd)                   %       addl    %T2, %T
+            @OperandPopAndFreeTemp              % ... %T
+    ]
+
+    % Result element address is in %T
+    oOperandSetMode(mTempIndirect)              % ... (%T)
+    oOperandSetLength(byte);
+
+
+OperandUncheckedSubscriptNonManifestCharPop:
+    % Optimized non-bounds checking subscript operation
+    oOperandSwap                                % ... subscript, arraydesc
+
+    [ oOperandChooseMode
+        | mTempIndirect:
+            % Var parameter array - don't know the characteristics
+            % until run time, so give up and use regular checked subscripting
+            oOperandSwap
+            @OperandCheckedSubscriptNonManifestCharPop
+
+        | mStatic:
+            % Any other array - know all the characteristics now,
+            % so optimize subscripting as best we can
+            oOperandSwap                        % ... arraydesc, subscript
+            @OperandForceIntoTemp               %       movl    subscript, %T
+            oOperandSwap                        % ... %T, arraydesc
+
+            % Fold lower bound into array address to avoid normalizing
+            % subscript at run time
+            oOperandPushArrayLowerBound         % ... %T, arraydesc, lower
+            oOperandSwap                        % ... %T, lower, arraydesc
+            oOperandSetMode(mManifest)          % (eliminate indirection)
+            oOperandPushMode(mManifest)         % ... %T, lower, arraydesc, 8
+            oOperandSetLength(word)
+            oOperandSetValue(eight)
+            oOperandAddManifestValues           % ... %T, lower, arraydesc+8, 8
+            oOperandPop                         % ... %T, lower, arraydesc+8
+            oOperandSwap                        % ... %T, arraydesc+8, lower
+            oOperandSubtractManifestValues      % ... %T, arraydesc+8-lower
+
+            % Add array base to subscript
+            oOperandSetMode(mStaticManifest)    % (u+normalizedArrayBase)
+            oEmitDouble(iAdd)                   %       addl    $u+normalizedArrayBase, %T
+            oOperandPop                         % ... %T
+
+            % Element address is in %T
+            oOperandSetMode(mTempIndirect)      % ... (%T)
+            oOperandSetLength(byte)
+    ];
 
 OperandPushArrayLowerBound:
     % Push the value of the lower bound on the operand stack
@@ -2623,6 +2767,7 @@ OperandLength:
 
     @RestoreTempRegsFromStack
     @OperandForceIntoTemp       %       movl    $esi, %T (force result to temp)
+    oOperandSetLength(word)
     ;
 
 OperandChr:
@@ -2661,6 +2806,7 @@ OperandChr:
 
     @RestoreTempRegsFromStack
     @OperandForceIntoTemp       %       movl    $esi, %X (force result to temp)
+    oOperandSetLength(word)
     ;   
 
 OperandOrd:
@@ -2964,8 +3110,8 @@ OperandConcatenatePop:
     oOperandPop                         % ... %esi
 
     @RestoreTempRegsFromStack
-
-    @OperandForceAddressIntoTemp    
+    @OperandForceIntoTemp
+    oOperandSetLength(word)    
 ;
 
 OperandSubstringPopPop:
@@ -3008,7 +3154,8 @@ OperandSubstringPopPop:
 
     @RestoreTempRegsFromStack
     @OperandForceIntoTemp       %       movl    $esi, %T (force result to temp)
-;     
+    oOperandSetLength(word) 
+ ;     
 
 OperandStringEqualPop:
     %Takes two strings s1 and s2 and returns a boolean result in temporary register %X
@@ -3046,7 +3193,6 @@ OperandStringEqualPop:
     oOperandPop                         % ... %esi
 
     @RestoreTempRegsFromStack
-
     @OperandForceAddressIntoTemp    
 ;
 
