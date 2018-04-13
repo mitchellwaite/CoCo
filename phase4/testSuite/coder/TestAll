@@ -1,4 +1,3 @@
-p
 #!/usr/bin/env bash
 RED='\033[0;31m';
 BLUE='\033[0;34m';
@@ -32,10 +31,11 @@ do
 
               #Run the compiler to get the executable
               #echo -e "\nErrors reported by compiler: " >> $fileName.txt
-              ptc -L ../../../../ptsrc/lib/pt $i #2> /dev/null 
+              ptc -L ../../../../ptsrc/lib/pt $i > $fileName.compile 2> $fileName.error 
               ./$fileName.out > $fileName.txt
            fi           
 
+           # Program Output Matches
            OUTPUT1=""
            OUTPUT2=""
            echo -e "Output vs. Expected Output differences:"
@@ -48,8 +48,34 @@ do
                echo "${OUTPUT2}"
            fi
 
+           # Ptc stdout Matches
+           OUTPUT3=""
+           OUTPUT4=""
+           echo -e "ptc stdout Output vs. Expected Output differences:"
+           if [ ! -f $fileName.compile ] || [ ! -f ../expectedOutputFiles/$fileName.compile ]; then
+               OUTPUT3="Output or Expected output file not found for $dir/inputFiles/${fileName}.compile!"
+               echo "${OUTPUT3}"
+           else 
+               fileName="$(echo "${dir}/outputFiles/${fileName}.compile" | sed -r "s/.+\/(.+)\..+/\1/")"
+               OUTPUT4="$(diff -b ${fileName}.compile ../expectedOutputFiles/$fileName.compile)"
+               echo "${OUTPUT4}"
+           fi
+
+           # Ptc stderr Matches
+           OUTPUT5=""
+           OUTPUT6=""
+           echo -e "ptc stderr Output vs. Expected Output differences:"
+           if [ ! -f $fileName.error ] || [ ! -f ../expectedOutputFiles/$fileName.error ]; then
+               OUTPUT5="Output or Expected output file not found for $dir/inputFiles/${fileName}.error!"
+               echo "${OUTPUT5}"
+           else 
+               fileName="$(echo "${dir}/outputFiles/${fileName}.error" | sed -r "s/.+\/(.+)\..+/\1/")"
+               OUTPUT6="$(diff -b ${fileName}.error ../expectedOutputFiles/$fileName.error)"
+               echo "${OUTPUT6}"
+           fi
+
            # PRINT PASS OR FAIL for the test cases (using green or red text appropriately)
-           if [ -z "${OUTPUT1}" ] && [ -z "${OUTPUT2}" ]; then
+           if [ -z "${OUTPUT1}" ] && [ -z "${OUTPUT2}" ] && [ -z "${OUTPUT3}" ] && [ -z "${OUTPUT4}" ] && [ -z "${OUTPUT5}" ] && [ -z "${OUTPUT6}" ]; then
                echo -e "${GREEN} ${dir}/inputFiles/${fileName}.pt  TEST PASSED!${NC}";
                passed=$((passed+1));
            else
