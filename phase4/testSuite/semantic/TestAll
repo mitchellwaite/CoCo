@@ -16,9 +16,10 @@ do
        echo -e "########################################################"    
       
        rm -rf $dir/outputFiles/*       
+       pushd $dir/outputFiles/ > /dev/null
 
        #Test each PT Pascal file in the directory except documentation files.
-       for i in $dir/inputFiles/*.pt
+       for i in ../inputFiles/*.pt
        do  
            if [ -f "$i" ] && [[ $i != *"documentation" ]]
            then
@@ -26,23 +27,23 @@ do
               fileName="$(echo "$i" | sed -r "s/.+\/(.+)\..+/\1/")"
 
               #Run ssltrace tool in output mode and put test output into outputFiles directory
-              ssltrace "ptc -L ../../ptsrc/lib/pt -o3 -t3 $i" ../../ptsrc/lib/pt/semantic.def -e > $dir/outputFiles/$fileName.txt 2> /dev/null
+              ssltrace "ptc -L ../../../../ptsrc/lib/pt -o3 -t3 $i" ../../../../ptsrc/lib/pt/semantic.def -e > $fileName.txt 2> /dev/null
 
               #Display any errors found by the parser at the end of the file (append)
-              echo -e "\nErrors reported by compiler: " >> $dir/outputFiles/$fileName.txt
-              ptc -L ../../ptsrc/lib/pt $i >> $dir/outputFiles/$fileName.txt 2> /dev/null 
+              echo -e "\nErrors reported by compiler: " >> $fileName.txt
+              ptc -L ../../../../ptsrc/lib/pt $i >> $fileName.txt 2> /dev/null 
 
            fi           
 
            OUTPUT1=""
            OUTPUT2=""
            echo -e "Output vs. Expected Output differences:"
-           if [ ! -f $dir/outputFiles/$fileName.txt ] || [ ! -f $dir/expectedOutputFiles/$fileName.txt ]; then
+           if [ ! -f $fileName.txt ] || [ ! -f ../expectedOutputFiles/$fileName.txt ]; then
                OUTPUT1="Output or Expected output file not found for $dir/inputFiles/${fileName}.txt!"
                echo "${OUTPUT1}"
            else 
                fileName="$(echo "${dir}/outputFiles/${fileName}.txt" | sed -r "s/.+\/(.+)\..+/\1/")"
-               OUTPUT2="$(diff -b ${dir}/outputFiles/${fileName}.txt $dir/expectedOutputFiles/$fileName.txt)"
+               OUTPUT2="$(diff -b ${fileName}.txt ../expectedOutputFiles/$fileName.txt)"
                echo "${OUTPUT2}"
            fi
 
@@ -56,6 +57,8 @@ do
            fi
  
        done
+
+       popd > /dev/null # restore main test directory   
 
     fi
 done
