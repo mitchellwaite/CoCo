@@ -1,0 +1,5 @@
+ext output
+
+var test : integer
+test = ord("apple")
+print(test) # Should display only 97 due to ord operator only using the first character

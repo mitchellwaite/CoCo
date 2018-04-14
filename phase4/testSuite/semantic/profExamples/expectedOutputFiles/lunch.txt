@@ -24,14 +24,14 @@
      % value emitted 1
      .tLiteralAddress
      oEmitDataAddress
-     % value emitted 20
+     % value emitted 8204
      .tArrayDescriptor
      .tLiteralInteger
      oEmitValue
      % value emitted 8
      .tLiteralAddress
      oEmitDataAddress
-     % value emitted 24
+     % value emitted 8208
      .tArrayDescriptor
      .tAssignBegin
       .tLiteralAddress
@@ -179,7 +179,7 @@
      .tAssignBegin
       .tLiteralAddress
       oEmitValue
-      % value emitted 20
+      % value emitted 8204
        .tSubscriptBegin
          .tLiteralInteger
          oEmitValue
@@ -230,7 +230,7 @@
      .tAssignBegin
       .tLiteralAddress
       oEmitValue
-      % value emitted 20
+      % value emitted 8204
        .tSubscriptBegin
          .tLiteralInteger
          oEmitValue
@@ -292,7 +292,7 @@
      .tAssignBegin
       .tLiteralAddress
       oEmitValue
-      % value emitted 20
+      % value emitted 8204
        .tSubscriptBegin
          .tLiteralInteger
          oEmitValue
@@ -336,7 +336,7 @@
      .tAssignBegin
       .tLiteralAddress
       oEmitValue
-      % value emitted 20
+      % value emitted 8204
        .tSubscriptBegin
          .tLiteralInteger
          oEmitValue
@@ -384,7 +384,7 @@
      .tAssignBegin
       .tLiteralAddress
       oEmitValue
-      % value emitted 20
+      % value emitted 8204
        .tSubscriptBegin
          .tLiteralInteger
          oEmitValue
@@ -427,7 +427,7 @@
      .tAssignBegin
       .tLiteralAddress
       oEmitValue
-      % value emitted 20
+      % value emitted 8204
        .tSubscriptBegin
          .tLiteralInteger
          oEmitValue
@@ -472,7 +472,7 @@
      .tAssignBegin
       .tLiteralAddress
       oEmitValue
-      % value emitted 20
+      % value emitted 8204
        .tSubscriptBegin
          .tLiteralInteger
          oEmitValue
@@ -526,7 +526,7 @@
      .tAssignBegin
       .tLiteralAddress
       oEmitValue
-      % value emitted 20
+      % value emitted 8204
        .tSubscriptBegin
          .tLiteralInteger
          oEmitValue
@@ -606,7 +606,7 @@
      .tAssignBegin
       .tLiteralAddress
       oEmitValue
-      % value emitted 36
+      % value emitted 16404
        .tLiteralInteger
        oEmitValue
        % value emitted 1
@@ -615,7 +615,7 @@
      .tWhileOnBreak
          .tLiteralAddress
          oEmitValue
-         % value emitted 36
+         % value emitted 16404
          .tFetchInteger
         .tLiteralInteger
         oEmitValue
@@ -714,7 +714,7 @@
                .tSubscriptBegin
                   .tLiteralAddress
                   oEmitValue
-                  % value emitted 36
+                  % value emitted 16404
                   .tFetchInteger
                .tSubscriptString
               .tFetchString
@@ -746,11 +746,11 @@
           .tParmEnd
            .tLiteralAddress
            oEmitValue
-           % value emitted 20
+           % value emitted 8204
             .tSubscriptBegin
                .tLiteralAddress
                oEmitValue
-               % value emitted 36
+               % value emitted 16404
                .tFetchInteger
             .tSubscriptString
            .tFetchString
@@ -775,17 +775,17 @@
          .tAssignBegin
           .tLiteralAddress
           oEmitValue
-          % value emitted 40
+          % value emitted 16408
             .tLiteralAddress
             oEmitValue
-            % value emitted 36
+            % value emitted 16404
             .tFetchInteger
          .tAssignInteger
          .tWhileBegin
          .tWhileOnBreak
              .tLiteralAddress
              oEmitValue
-             % value emitted 40
+             % value emitted 16408
              .tFetchInteger
             .tLiteralInteger
             oEmitValue
@@ -830,7 +830,7 @@
                    .tSubscriptBegin
                       .tLiteralAddress
                       oEmitValue
-                      % value emitted 40
+                      % value emitted 16408
                       .tFetchInteger
                    .tSubscriptString
                   .tFetchString
@@ -875,7 +875,7 @@
                    .tSubscriptBegin
                       .tLiteralAddress
                       oEmitValue
-                      % value emitted 40
+                      % value emitted 16408
                       .tFetchInteger
                      .tLiteralInteger
                      oEmitValue
@@ -911,10 +911,10 @@
              .tAssignBegin
               .tLiteralAddress
               oEmitValue
-              % value emitted 40
+              % value emitted 16408
                 .tLiteralAddress
                 oEmitValue
-                % value emitted 40
+                % value emitted 16408
                 .tFetchInteger
                .tLiteralInteger
                oEmitValue
@@ -926,7 +926,7 @@
          .tIfBegin
              .tLiteralAddress
              oEmitValue
-             % value emitted 36
+             % value emitted 16404
              .tFetchInteger
             .tLiteralInteger
             oEmitValue
@@ -944,7 +944,7 @@
               .tParmEnd
                .tLiteralAddress
                oEmitValue
-               % value emitted 20
+               % value emitted 8204
                 .tSubscriptBegin
                   .tLiteralInteger
                   oEmitValue
@@ -973,7 +973,7 @@
          .tIfBegin
              .tLiteralAddress
              oEmitValue
-             % value emitted 36
+             % value emitted 16404
              .tFetchInteger
             .tLiteralInteger
             oEmitValue
@@ -1034,10 +1034,10 @@
          .tAssignBegin
           .tLiteralAddress
           oEmitValue
-          % value emitted 36
+          % value emitted 16404
             .tLiteralAddress
             oEmitValue
-            % value emitted 36
+            % value emitted 16404
             .tFetchInteger
            .tLiteralInteger
            oEmitValue

@@ -40,12 +40,14 @@ var deck : array [1 .. 52] of integer
 var nextcard : integer
 
 # alphanumeric card names 
-var cardnames : array [1 .. 15] of string
+var cardnames : array [1 .. 13] of string
 
 # random seed 
 var seed : integer
 var multiplier : integer
 
+# play counter
+var playCount : integer
 
 def randint (var result : integer, modulus : integer)
     # random number generation 
@@ -140,7 +142,12 @@ def somebodyplays (var r : boolean)
     nl
     print ("Choose a player (e for E.O.Thorp, j for Jim, p for Pooja, q to quit): ")
     #get (playersname) getnl
-    playersname = "q"
+    if (playCount > 3):
+        playersname = "q"
+    else:
+        playersname = "e"
+    end
+    playCount += 1
 
     if playersname == "q" :
         r = false
@@ -436,6 +443,7 @@ end #player
 
 
 # main program  
+playCount = 0
 
 # print program explanation 
 print ("This program simulates the game of blackjack.") nl

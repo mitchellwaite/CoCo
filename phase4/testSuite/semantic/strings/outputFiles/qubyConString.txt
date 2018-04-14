@@ -8,7 +8,7 @@
     .tAssignBegin
     .tLiteralAddress
     oEmitValue
-    % value emitted 0
+    % value emitted 4
     .tLiteralString
     oEmitValue
     % value emitted 3

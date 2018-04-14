@@ -21,3 +21,318 @@ The program will simulate one complete shuffle of play for each player.
 New shuffle.
 
 Choose a player (e for E.O.Thorp, j for Jim, p for Pooja, q to quit): 
+E.O.Thorp plays this time.
+
+New game.
+The initial deal gives E.O. Thorp : 2 A
+  and the dealer : 9 J.
+E.O. Thorp takes a card and now has  2 A 2
+E.O. Thorp takes a card and now has  2 A 2 J
+E.O. Thorp takes a card and now has  2 A 2 J 6
+E.O. Thorp calls blackjack.
+E.O. Thorp stands with 21.
+
+New game.
+The initial deal gives E.O. Thorp : 8 4
+  and the dealer : 2 K.
+E.O. Thorp takes a card and now has  8 4 7
+E.O. Thorp stands with 19.
+Dealer takes a card and now has  2 K 5
+Dealer stands with 17.
+E.O. Thorp wins.
+
+New game.
+The initial deal gives E.O. Thorp : 2 8
+  and the dealer : A J.
+E.O. Thorp takes a card and now has  2 8 5
+E.O. Thorp takes a card and now has  2 8 5 4
+E.O. Thorp stands with 19.
+Dealer calls blackjack.
+Dealer stands with 21.
+House wins.
+
+New game.
+The initial deal gives E.O. Thorp : 7 8
+  and the dealer : 8 K.
+E.O. Thorp takes a card and now has  7 8 J
+E.O. Thorp goes bust.
+E.O. Thorp stands with 25.
+
+New game.
+The initial deal gives E.O. Thorp : 7 A
+  and the dealer : K Q.
+E.O. Thorp takes a card and now has  7 A 6
+E.O. Thorp takes a card and now has  7 A 6 6
+E.O. Thorp stands with 20.
+Dealer stands with 20.
+Tie game.
+
+New game.
+The initial deal gives E.O. Thorp : 7 10
+  and the dealer : K 6.
+E.O. Thorp stands with 17.
+Dealer takes a card and now has  K 6 4
+Dealer stands with 20.
+House wins.
+
+New game.
+The initial deal gives E.O. Thorp : A 5
+  and the dealer : 3 10.
+E.O. Thorp takes a card and now has  A 5 10
+E.O. Thorp stands with 16.
+Dealer takes a card and now has  3 10 3
+Dealer takes a card and now has  3 10 3 Q
+Dealer goes bust.
+Dealer stands with 26.
+House wins.
+
+New game.
+The initial deal gives E.O. Thorp : Q 9
+  and the dealer : 4 10.
+E.O. Thorp stands with 19.
+Dealer takes a card and now has  4 10 3
+Dealer stands with 17.
+E.O. Thorp wins.
+
+Too few cards left for another game.
+Of 8 games, E.O. Thorp won 4, dealer won 5.
+House cleans up on E.O. Thorp this time.
+
+
+New shuffle.
+
+Choose a player (e for E.O.Thorp, j for Jim, p for Pooja, q to quit): 
+E.O.Thorp plays this time.
+
+New game.
+The initial deal gives E.O. Thorp : 6 A
+  and the dealer : Q 3.
+E.O. Thorp takes a card and now has  6 A K
+E.O. Thorp stands with 17.
+Dealer takes a card and now has  Q 3 10
+Dealer goes bust.
+Dealer stands with 23.
+House wins.
+
+New game.
+The initial deal gives E.O. Thorp : J J
+  and the dealer : K K.
+E.O. Thorp stands with 20.
+Dealer stands with 20.
+Tie game.
+
+New game.
+The initial deal gives E.O. Thorp : K 2
+  and the dealer : 8 Q.
+E.O. Thorp takes a card and now has  K 2 Q
+E.O. Thorp goes bust.
+E.O. Thorp stands with 22.
+
+New game.
+The initial deal gives E.O. Thorp : 8 9
+  and the dealer : 2 7.
+E.O. Thorp stands with 17.
+Dealer takes a card and now has  2 7 Q
+Dealer stands with 19.
+House wins.
+
+New game.
+The initial deal gives E.O. Thorp : 8 5
+  and the dealer : A 4.
+E.O. Thorp takes a card and now has  8 5 A
+E.O. Thorp takes a card and now has  8 5 A 5
+E.O. Thorp stands with 19.
+Dealer takes a card and now has  A 4 4
+Dealer stands with 19.
+Tie game.
+
+New game.
+The initial deal gives E.O. Thorp : 9 3
+  and the dealer : 5 3.
+E.O. Thorp stands with 12.
+Dealer takes a card and now has  5 3 4
+Dealer takes a card and now has  5 3 4 4
+Dealer takes a card and now has  5 3 4 4 2
+Dealer stands with 18.
+House wins.
+
+New game.
+The initial deal gives E.O. Thorp : 9 3
+  and the dealer : 7 7.
+E.O. Thorp takes a card and now has  9 3 9
+E.O. Thorp calls blackjack.
+E.O. Thorp stands with 21.
+
+New game.
+The initial deal gives E.O. Thorp : A 6
+  and the dealer : J 8.
+E.O. Thorp takes a card and now has  A 6 J
+E.O. Thorp stands with 17.
+Dealer stands with 18.
+House wins.
+
+Too few cards left for another game.
+Of 8 games, E.O. Thorp won 2, dealer won 5.
+House cleans up on E.O. Thorp this time.
+
+
+New shuffle.
+
+Choose a player (e for E.O.Thorp, j for Jim, p for Pooja, q to quit): 
+E.O.Thorp plays this time.
+
+New game.
+The initial deal gives E.O. Thorp : 3 J
+  and the dealer : 4 6.
+E.O. Thorp stands with 13.
+Dealer takes a card and now has  4 6 9
+Dealer stands with 19.
+House wins.
+
+New game.
+The initial deal gives E.O. Thorp : 3 8
+  and the dealer : J 6.
+E.O. Thorp takes a card and now has  3 8 K
+E.O. Thorp calls blackjack.
+E.O. Thorp stands with 21.
+
+New game.
+The initial deal gives E.O. Thorp : 9 Q
+  and the dealer : 10 6.
+E.O. Thorp stands with 19.
+Dealer takes a card and now has  10 6 A
+Dealer stands with 17.
+E.O. Thorp wins.
+
+New game.
+The initial deal gives E.O. Thorp : 9 3
+  and the dealer : J 9.
+E.O. Thorp takes a card and now has  9 3 K
+E.O. Thorp goes bust.
+E.O. Thorp stands with 22.
+
+New game.
+The initial deal gives E.O. Thorp : 4 10
+  and the dealer : 8 6.
+E.O. Thorp takes a card and now has  4 10 4
+E.O. Thorp stands with 18.
+Dealer takes a card and now has  8 6 8
+Dealer goes bust.
+Dealer stands with 22.
+House wins.
+
+New game.
+The initial deal gives E.O. Thorp : J 4
+  and the dealer : Q 3.
+E.O. Thorp takes a card and now has  J 4 2
+E.O. Thorp takes a card and now has  J 4 2 5
+E.O. Thorp calls blackjack.
+E.O. Thorp stands with 21.
+
+New game.
+The initial deal gives E.O. Thorp : 10 K
+  and the dealer : A 10.
+E.O. Thorp stands with 20.
+Dealer calls blackjack.
+Dealer stands with 21.
+House wins.
+
+New game.
+The initial deal gives E.O. Thorp : K A
+  and the dealer : A 7.
+E.O. Thorp calls blackjack.
+E.O. Thorp stands with 21.
+
+New game.
+The initial deal gives E.O. Thorp : 7 5
+  and the dealer : 7 2.
+E.O. Thorp takes a card and now has  7 5 8
+E.O. Thorp stands with 20.
+Dealer takes a card and now has  7 2 5
+Dealer takes a card and now has  7 2 5 7
+Dealer calls blackjack.
+Dealer stands with 21.
+House wins.
+
+Too few cards left for another game.
+Of 9 games, E.O. Thorp won 5, dealer won 7.
+House cleans up on E.O. Thorp this time.
+
+
+New shuffle.
+
+Choose a player (e for E.O.Thorp, j for Jim, p for Pooja, q to quit): 
+E.O.Thorp plays this time.
+
+New game.
+The initial deal gives E.O. Thorp : Q 9
+  and the dealer : K 7.
+E.O. Thorp stands with 19.
+Dealer stands with 17.
+E.O. Thorp wins.
+
+New game.
+The initial deal gives E.O. Thorp : 9 Q
+  and the dealer : 3 9.
+E.O. Thorp stands with 19.
+Dealer takes a card and now has  3 9 7
+Dealer stands with 19.
+Tie game.
+
+New game.
+The initial deal gives E.O. Thorp : 8 Q
+  and the dealer : K K.
+E.O. Thorp stands with 18.
+Dealer stands with 20.
+House wins.
+
+New game.
+The initial deal gives E.O. Thorp : 10 10
+  and the dealer : 7 Q.
+E.O. Thorp stands with 20.
+Dealer stands with 17.
+E.O. Thorp wins.
+
+New game.
+The initial deal gives E.O. Thorp : 2 6
+  and the dealer : 7 A.
+E.O. Thorp takes a card and now has  2 6 3
+E.O. Thorp takes a card and now has  2 6 3 4
+E.O. Thorp takes a card and now has  2 6 3 4 K
+E.O. Thorp goes bust.
+E.O. Thorp stands with 25.
+
+New game.
+The initial deal gives E.O. Thorp : 6 4
+  and the dealer : 5 4.
+E.O. Thorp takes a card and now has  6 4 4
+E.O. Thorp stands with 14.
+Dealer takes a card and now has  5 4 6
+Dealer takes a card and now has  5 4 6 A
+Dealer takes a card and now has  5 4 6 A 2
+Dealer stands with 18.
+House wins.
+
+New game.
+The initial deal gives E.O. Thorp : A 10
+  and the dealer : 5 3.
+E.O. Thorp calls blackjack.
+E.O. Thorp stands with 21.
+
+New game.
+The initial deal gives E.O. Thorp : A 5
+  and the dealer : 10 9.
+E.O. Thorp takes a card and now has  A 5 6
+E.O. Thorp takes a card and now has  A 5 6 3
+E.O. Thorp takes a card and now has  A 5 6 3 8
+E.O. Thorp goes bust.
+E.O. Thorp stands with 23.
+
+Too few cards left for another game.
+Of 8 games, E.O. Thorp won 3, dealer won 4.
+House cleans up on E.O. Thorp this time.
+
+
+New shuffle.
+
+Choose a player (e for E.O.Thorp, j for Jim, p for Pooja, q to quit): 

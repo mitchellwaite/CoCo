@@ -1,0 +1,8 @@
+ext input, output
+
+mod d
+    def privatePrint
+        print("I am a private routine and can only be called from within my module")
+    end
+    privatePrint
+end

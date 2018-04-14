@@ -1,0 +1,51 @@
+simpleEmptyStringTest.pt
+Test case to ensure emtpy strings can be initialized in Quby, and that the proper code is generated.
+
+emptyStringConcat.pt
+Test case to see if an empty string is still table to be used in a concatenation.
+Empty strings did not exist in PT so adequate testing was required in this area.
+
+simpleEmptyStrLengthTest.pt
+This test case confirms that the length of an empty string is 0.
+
+simpleChrTest.pt
+Test case to test the Chr operator which takes an integer and returns the ASCII string. 
+Print statement output should display "a" if successful.
+
+simpleOrdTest.pt
+Similar to the simpleChrTest test case, this test case ensures the Ord operator can be used to convert an ASCII string character 
+to an integer value.
+
+ordTestLongString.txt
+This test ensures that if the ord operator is provided a string longer than one character, the operation is only performed on the first character of the string.
+
+simpleStringConcatTest.pt
+Test case to ensure two strings can be concatenated to form one larger new string variable.
+
+simpleStringEqualTest.pt
+Test case to ensure Quby is able to accurately determine if two strings are equal (the same).
+
+simpleStringSubscriptTest.pt
+This test ensures an array of strings can be declared, intialized and accessed appropriately.
+A print statement is used to ensure the accessed element is that of which it was initialized.
+
+simpleStringTest.pt
+Basic test to ensure Quby's new strings (instead of character arrays) can be declared and initialized.
+
+simpleStrLengthTest.pt
+Test case to ensure the length operator functions accurately on a non-zero length string.
+
+simpleSubstringTest.pt
+Test used to test Quby's new substring operator. A print statement is used to confirm a subset of the string was captured.
+
+stringParameterByRefInRoutine.pt
+Due to the addition of strings, Quby now allows strings to be passed to routines.
+This test ensures routines can accept strings by reference using "var" in the parameter list.
+
+stringParameterInRoutineQuby.pt
+Similarly, due to the addition of strings, this test ensures Quby now allows strings to be passed to routines by value.
+
+stringMultipleParametersInRoutineQuby.pt
+Test case used to ensure that a routine can accept multiple string parameters.
+
+For all tests, see expectedOutputFiles directory for expected outputs.

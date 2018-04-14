@@ -23,4 +23,20 @@ Output should be:
 1
 2
 
+modulePrivate.pt
+Test case to ensure a private routine can be declared and called from within a module.
+This routine should not be able to be called from outside of the module (tested in moduleNegativePublicTest.pt).
+Output should be:
+I am a private routine and can only be called from within my module
+
+modulePublic.pt
+Test case to test that a public routine can be declared within a module but be called outside of the module.
+The special "pub" keyword is used to indicate the routine is public.
+Output should be:
+I am a public routine and can be called from outside a module
+
+moduleNegativePublicTest.pt
+Test case to ensure that a private routine defined in a module can not be called from outside of that module.
+This test is expected to produce an error in it's associated .compile output file.
+
 For all tests, see expectedOutputFiles directory for expected outputs.

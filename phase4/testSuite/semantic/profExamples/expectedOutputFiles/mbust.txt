@@ -448,17 +448,17 @@
      % value emitted -32767
        .tLiteralAddress
        oEmitValue
-       % value emitted 1488
+       % value emitted 14784
        .tStoreParmAddress
        .tLiteralAddress
        oEmitValue
-       % value emitted 1484
+       % value emitted 14780
        .tStoreParmInteger
        .tParmEnd
          .tAssignBegin
           .tLiteralAddress
           oEmitValue
-          % value emitted 1492
+          % value emitted 14788
            .tLiteralInteger
            oEmitValue
            % value emitted 1
@@ -467,11 +467,11 @@
          .tWhileOnBreak
              .tLiteralAddress
              oEmitValue
-             % value emitted 1492
+             % value emitted 14788
              .tFetchInteger
              .tLiteralAddress
              oEmitValue
-             % value emitted 1484
+             % value emitted 14780
              .tFetchInteger
             .tGT
          .tNot
@@ -510,12 +510,12 @@
                    .tSubscriptBegin
                       .tLiteralAddress
                       oEmitValue
-                      % value emitted 1488
+                      % value emitted 14784
                       .tFetchAddress
                        .tSubscriptBegin
                           .tLiteralAddress
                           oEmitValue
-                          % value emitted 1492
+                          % value emitted 14788
                           .tFetchInteger
                        .tSubscriptInteger
                       .tFetchInteger
@@ -533,10 +533,10 @@
              .tAssignBegin
               .tLiteralAddress
               oEmitValue
-              % value emitted 1492
+              % value emitted 14788
                 .tLiteralAddress
                 oEmitValue
-                % value emitted 1492
+                % value emitted 14788
                 .tFetchInteger
                .tLiteralInteger
                oEmitValue
@@ -866,7 +866,7 @@
    % value emitted -32767
      .tLiteralAddress
      oEmitValue
-     % value emitted 1496
+     % value emitted 14792
      .tStoreParmAddress
      .tParmEnd
        .tAssignBegin
@@ -1093,7 +1093,7 @@
            .tAssignBegin
             .tLiteralAddress
             oEmitValue
-            % value emitted 1496
+            % value emitted 14792
             .tFetchAddress
               .tLiteralBoolean
               oEmitValue
@@ -1640,7 +1640,7 @@
            .tAssignBegin
             .tLiteralAddress
             oEmitValue
-            % value emitted 1496
+            % value emitted 14792
             .tFetchAddress
               .tLiteralBoolean
               oEmitValue
@@ -1653,13 +1653,13 @@
    % value emitted -32767
      .tLiteralAddress
      oEmitValue
-     % value emitted 1500
+     % value emitted 14796
      .tStoreParmAddress
      .tParmEnd
        .tCallBegin
           .tLiteralAddress
           oEmitValue
-          % value emitted 1504
+          % value emitted 14800
          .tVarParm
         .tParmEnd
        .tCallEnd
@@ -1668,7 +1668,7 @@
        .tIfBegin
            .tLiteralAddress
            oEmitValue
-           % value emitted 1504
+           % value emitted 14800
            .tFetchInteger
           .tLiteralInteger
           oEmitValue
@@ -1740,7 +1740,7 @@
            .tAssignBegin
             .tLiteralAddress
             oEmitValue
-            % value emitted 1500
+            % value emitted 14796
             .tFetchAddress
               .tLiteralBoolean
               oEmitValue
@@ -2312,7 +2312,7 @@
            .tAssignBegin
             .tLiteralAddress
             oEmitValue
-            % value emitted 1500
+            % value emitted 14796
             .tFetchAddress
               .tLiteralBoolean
               oEmitValue
@@ -2618,25 +2618,25 @@
    % value emitted -32767
      .tLiteralAddress
      oEmitValue
-     % value emitted 1520
+     % value emitted 14816
      .tStoreParmAddress
      .tLiteralAddress
      oEmitValue
-     % value emitted 1516
+     % value emitted 14812
      .tStoreParmAddress
      .tLiteralAddress
      oEmitValue
-     % value emitted 1512
+     % value emitted 14808
      .tStoreParmAddress
      .tLiteralAddress
      oEmitValue
-     % value emitted 1508
+     % value emitted 14804
      .tStoreParmInteger
      .tParmEnd
        .tAssignBegin
         .tLiteralAddress
         oEmitValue
-        % value emitted 1520
+        % value emitted 14816
         .tFetchAddress
          .tLiteralInteger
          oEmitValue
@@ -2645,7 +2645,7 @@
        .tAssignBegin
         .tLiteralAddress
         oEmitValue
-        % value emitted 1524
+        % value emitted 14820
          .tLiteralInteger
          oEmitValue
          % value emitted 0
@@ -2653,7 +2653,7 @@
        .tAssignBegin
         .tLiteralAddress
         oEmitValue
-        % value emitted 1528
+        % value emitted 14824
          .tLiteralInteger
          oEmitValue
          % value emitted 1
@@ -2662,11 +2662,11 @@
        .tWhileOnBreak
            .tLiteralAddress
            oEmitValue
-           % value emitted 1528
+           % value emitted 14824
            .tFetchInteger
            .tLiteralAddress
            oEmitValue
-           % value emitted 1508
+           % value emitted 14804
            .tFetchInteger
           .tGT
        .tNot
@@ -2676,12 +2676,12 @@
            .tCaseBegin
                .tLiteralAddress
                oEmitValue
-               % value emitted 1512
+               % value emitted 14808
                .tFetchAddress
                 .tSubscriptBegin
                    .tLiteralAddress
                    oEmitValue
-                   % value emitted 1528
+                   % value emitted 14824
                    .tFetchInteger
                 .tSubscriptInteger
                .tFetchInteger
@@ -2691,21 +2691,21 @@
                 .tAssignBegin
                  .tLiteralAddress
                  oEmitValue
-                 % value emitted 1520
+                 % value emitted 14816
                  .tFetchAddress
                    .tLiteralAddress
                    oEmitValue
-                   % value emitted 1520
+                   % value emitted 14816
                    .tFetchAddress
                    .tFetchInteger
                    .tLiteralAddress
                    oEmitValue
-                   % value emitted 1512
+                   % value emitted 14808
                    .tFetchAddress
                     .tSubscriptBegin
                        .tLiteralAddress
                        oEmitValue
-                       % value emitted 1528
+                       % value emitted 14824
                        .tFetchInteger
                     .tSubscriptInteger
                    .tFetchInteger
@@ -2717,11 +2717,11 @@
                 .tAssignBegin
                  .tLiteralAddress
                  oEmitValue
-                 % value emitted 1520
+                 % value emitted 14816
                  .tFetchAddress
                    .tLiteralAddress
                    oEmitValue
-                   % value emitted 1520
+                   % value emitted 14816
                    .tFetchAddress
                    .tFetchInteger
                   .tLiteralInteger
@@ -2732,10 +2732,10 @@
                 .tAssignBegin
                  .tLiteralAddress
                  oEmitValue
-                 % value emitted 1524
+                 % value emitted 14820
                    .tLiteralAddress
                    oEmitValue
-                   % value emitted 1524
+                   % value emitted 14820
                    .tFetchInteger
                   .tLiteralInteger
                   oEmitValue
@@ -2763,11 +2763,11 @@
                .tAssignBegin
                 .tLiteralAddress
                 oEmitValue
-                % value emitted 1520
+                % value emitted 14816
                 .tFetchAddress
                   .tLiteralAddress
                   oEmitValue
-                  % value emitted 1520
+                  % value emitted 14816
                   .tFetchAddress
                   .tFetchInteger
                  .tLiteralInteger
@@ -2781,10 +2781,10 @@
            .tAssignBegin
             .tLiteralAddress
             oEmitValue
-            % value emitted 1528
+            % value emitted 14824
               .tLiteralAddress
               oEmitValue
-              % value emitted 1528
+              % value emitted 14824
               .tFetchInteger
              .tLiteralInteger
              oEmitValue
@@ -2797,7 +2797,7 @@
        .tWhileOnBreak
            .tLiteralAddress
            oEmitValue
-           % value emitted 1520
+           % value emitted 14816
            .tFetchAddress
            .tFetchInteger
           .tLiteralInteger
@@ -2807,7 +2807,7 @@
           .tInfixOr
            .tLiteralAddress
            oEmitValue
-           % value emitted 1524
+           % value emitted 14820
            .tFetchInteger
           .tLiteralInteger
           oEmitValue
@@ -2821,11 +2821,11 @@
            .tAssignBegin
             .tLiteralAddress
             oEmitValue
-            % value emitted 1520
+            % value emitted 14816
             .tFetchAddress
               .tLiteralAddress
               oEmitValue
-              % value emitted 1520
+              % value emitted 14816
               .tFetchAddress
               .tFetchInteger
              .tLiteralInteger
@@ -2836,10 +2836,10 @@
            .tAssignBegin
             .tLiteralAddress
             oEmitValue
-            % value emitted 1524
+            % value emitted 14820
               .tLiteralAddress
               oEmitValue
-              % value emitted 1524
+              % value emitted 14820
               .tFetchInteger
              .tLiteralInteger
              oEmitValue
@@ -2851,11 +2851,11 @@
        .tAssignBegin
         .tLiteralAddress
         oEmitValue
-        % value emitted 1516
+        % value emitted 14812
         .tFetchAddress
           .tLiteralAddress
           oEmitValue
-          % value emitted 1524
+          % value emitted 14820
           .tFetchInteger
          .tLiteralInteger
          oEmitValue
@@ -2880,7 +2880,7 @@
         .tParmEnd
           .tLiteralAddress
           oEmitValue
-          % value emitted 1532
+          % value emitted 14828
          .tVarParm
         .tParmEnd
           .tLiteralAddress
@@ -3480,13 +3480,13 @@
      % value emitted -32767
        .tLiteralAddress
        oEmitValue
-       % value emitted 1533
+       % value emitted 14829
        .tStoreParmBoolean
        .tParmEnd
          .tAssignBegin
           .tLiteralAddress
           oEmitValue
-          % value emitted 1536
+          % value emitted 14832
             .tLiteralAddress
             oEmitValue
             % value emitted 44
@@ -3500,7 +3500,7 @@
          .tIfBegin
              .tLiteralAddress
              oEmitValue
-             % value emitted 1533
+             % value emitted 14829
              .tFetchBoolean
          .tIfThen
          oEmitNullAddress
@@ -3508,7 +3508,7 @@
              .tIfBegin
                  .tLiteralAddress
                  oEmitValue
-                 % value emitted 1536
+                 % value emitted 14832
                  .tFetchInteger
                 .tLiteralInteger
                 oEmitValue
@@ -3553,7 +3553,7 @@
              .tIfBegin
                  .tLiteralAddress
                  oEmitValue
-                 % value emitted 1536
+                 % value emitted 14832
                  .tFetchInteger
                 .tLiteralInteger
                 oEmitValue
@@ -3562,7 +3562,7 @@
                 .tInfixAnd
                  .tLiteralAddress
                  oEmitValue
-                 % value emitted 1536
+                 % value emitted 14832
                  .tFetchInteger
                 .tLiteralInteger
                 oEmitValue
@@ -3591,7 +3591,7 @@
                .tIfBegin
                    .tLiteralAddress
                    oEmitValue
-                   % value emitted 1536
+                   % value emitted 14832
                    .tFetchInteger
                   .tLiteralInteger
                   oEmitValue
@@ -3600,7 +3600,7 @@
                   .tInfixAnd
                    .tLiteralAddress
                    oEmitValue
-                   % value emitted 1536
+                   % value emitted 14832
                    .tFetchInteger
                   .tLiteralInteger
                   oEmitValue
@@ -3674,7 +3674,7 @@
           .tParmEnd
             .tLiteralAddress
             oEmitValue
-            % value emitted 1540
+            % value emitted 14836
            .tVarParm
           .tParmEnd
             .tLiteralAddress
@@ -3884,7 +3884,7 @@
                    .tCallBegin
                        .tLiteralAddress
                        oEmitValue
-                       % value emitted 1540
+                       % value emitted 14836
                        .tFetchBoolean
                     .tParmEnd
                    .tCallEnd

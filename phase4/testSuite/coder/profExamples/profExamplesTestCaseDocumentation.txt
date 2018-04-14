@@ -20,3 +20,4 @@ treesort.pt
 double.pt
 lunch.pt
 
+Note: Some test files were modified slightly to override areas of code that required user input. Instead example input was inserted into the code to allow for automated testing.

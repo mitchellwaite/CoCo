@@ -34,8 +34,6 @@
         % value emitted 115
         % value emitted 116
         .tGE
-         #eIntegerExpnReqd
-         #eIntegerExpnReqd
      .tIfThen
      oEmitNullAddress
      % value emitted -32767
@@ -46,5 +44,3 @@
  % value emitted 0
 
 Errors reported by compiler: 
-semantic error, line 7: integer type expression required
-semantic error, line 7: integer type expression required

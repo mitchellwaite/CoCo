@@ -1,0 +1,9 @@
+ext input, output
+
+mod d
+    def dontPrintMe
+       print("I am a not public routine and can NOT be called from outside a module")
+    end
+end
+
+dontPrintMe # should fail because dontPrintMe is not a public routine

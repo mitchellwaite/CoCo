@@ -3062,9 +3062,9 @@ OperandAssignStringPopPop:
 
     % Pop arguments
     oOperandPushMode(mStackReg)
-    oOperandSetLength(string)
+    oOperandSetLength(word)
     oOperandPushMode(mManifest)
-    oOperandSetLength(string)
+    oOperandSetLength(word)
     oOperandSetValue(eight)
     oEmitDouble(iAdd)                   %       addl    $8,%esp
     oOperandPop
